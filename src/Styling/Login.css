@@ -1,8 +1,15 @@
 * {
   font-family: "rubik";
-  background-color: #161616;
+
   color: white;
+  box-sizing: border-box;
 }
+.login {
+  height: 100vh;
+  background-color: #161616;
+  width: 100%;
+}
+
 header {
   text-align: center;
   margin-top: 12rem;
@@ -31,7 +38,7 @@ input {
   padding-left: 20px;
   border: 0px;
 }
-button {
+.lesgo-btn {
   height: 45px;
   border: 0px;
   border-radius: 7px;
@@ -43,7 +50,6 @@ button {
     rgba(255, 0, 33, 1) 100%
   );
   width: 9rem;
-  margin-top: 10px;
 }
 h3 {
   margin: 20px;
@@ -53,4 +59,24 @@ span {
   background: -webkit-linear-gradient(#a03989, orange);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.login-btn {
+  height: 45px;
+  border: 0px;
+  border-radius: 7px;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(158, 57, 138, 1) 0%,
+    rgba(255, 0, 33, 1) 100%
+  );
+  width: 9rem;
+  margin-right: 20px;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
 }
