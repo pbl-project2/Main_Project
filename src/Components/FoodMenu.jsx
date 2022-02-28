@@ -4,7 +4,7 @@ import "../Styling/FoodMenu.css";
 import { useNavigate } from "react-router-dom";
 import FoodCard from "./FoodCard";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import Cart from "./Cart"
+import Cart from "./Cart";
 
 const FoodMenu = () => {
   const home = useNavigate();
@@ -38,11 +38,34 @@ const FoodMenu = () => {
           </a>
         </div>
         <div className="food-card-list">
-          <FoodCard name="Poha" price="40" />
-          <FoodCard name="Upma" price="35" />
-          <FoodCard name="Misal" price="70" />
-          <FoodCard name="Vadapav" price="15" />
-          <FoodCard name="Lassi" price="12" />
+          <FoodCard
+            name="Poha"
+            price="40"
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, nam."
+          />
+          <FoodCard
+            name="Upma"
+            price="35"
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, nam."
+          />
+          <FoodCard
+            name="Misal"
+            price="70"
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Non, nam."
+          />
+          <FoodCard
+            name="Vadapav"
+            price="15"
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Non, nam."
+          />
+          <FoodCard
+            name="Lassi"
+            price="12"
+            description="Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Non, nam."
+          />
         </div>
         <Cart></Cart>
       </div>

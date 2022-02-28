@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
+import { signInWithPopup } from "firebase/auth";
 
 import "../Styling/Login.css";
+import { auth, provider } from "../firebase/firebase";
 
 // import firebase from "firebase";
 // import { auth } from "../firebase";
@@ -21,13 +23,28 @@ const Login = () => {
 
   const history = useNavigate();
 
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        if (result.user.email === "mrudulpatel04@gmail.com") {
+          history("/admin");
+        } else {
+          alert("Sorry you are not an admin!!");
+        }
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+
   return (
     <div className="login">
       <div className="main_login">
         <nav>
           <h3>UpMenu</h3>
-
-          <button className="login-btn">LogIn as Admin</button>
+          <button className="login-btn" onClick={signInWithGoogle}>
+            LogIn as Admin
+          </button>
         </nav>
 
         <header>
