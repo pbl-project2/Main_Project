@@ -1,0 +1,5 @@
+.cart_items {
+    display: flex;
+    margin: 5px;
+    justify-content: space-between;
+}

@@ -1,6 +1,6 @@
 import { Cancel } from "@mui/icons-material";
 import React from "react";
-import "../Styling/Cart.css";
+import "../Styling/CartItems.css";
 
 function CartItems({ props }) {
   

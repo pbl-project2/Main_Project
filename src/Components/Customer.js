@@ -16,7 +16,7 @@ function Customer() {
   }, []);
   const history = useHistory();
   const [name, setName] = useState("");
-  const [mobile, setMobile] = useState(0);
+  const [mobile, setMobile]= useState(0);
   
   const handleSubmit = async (e) => {
     e.preventDefault();
