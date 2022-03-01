@@ -5,4 +5,11 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     height:fit-content;
     padding: 2rem;
+    width: 35%;
+}
+
+.cart_items {
+    display: flex;
+    margin: 5px;
+    justify-content: space-between;
 }

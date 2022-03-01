@@ -4,6 +4,29 @@
   color: white;
   box-sizing: border-box;
 }
+.admin-nav {
+  height: fit-content;
+  background-color: #161616;
+  width: 100%;
+}
+
+.adminuser {
+    display: flex;
+    flex-direction: column;
+    width:140px;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    align-items: center;
+}
+
+.user {
+    /* display: flex; */
+    /* flex-direction: column; */
+    width: 100%;
+}
+
 .login {
   height: 100vh;
   background-color: #161616;
