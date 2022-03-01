@@ -21,6 +21,7 @@ const Cart = () => {
         setCart(cartArr);
       });
   }, [db]);
+  
   const handleDelete = async (id) => {
     await db
       .collection("users")

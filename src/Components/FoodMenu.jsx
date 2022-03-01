@@ -1,13 +1,14 @@
 import React from "react";
 import { Row, Col } from "react-bootstrap";
 import "../Styling/FoodMenu.css";
-import { useNavigate } from "react-router-dom";
 import FoodCard from "./FoodCard";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Cart from "./Cart";
+import { useHistory } from "react-router-dom";
+import { foodMenu } from "../FoodMenu";
 
-const FoodMenu = () => {
-  const home = useNavigate();
+const FoodMenu = ({props}) => {
+  const history = useHistory();
 
   return (
     <div className="food-menu">
@@ -17,7 +18,7 @@ const FoodMenu = () => {
           <button className="Cart-link">
             <AddShoppingCartIcon />
           </button>
-          <button onClick={() => home("/")} className="home-btn">
+          <button onClick={() => history.replace("/")} className="home-btn">
             Home Page
           </button>
         </div>
@@ -38,36 +39,19 @@ const FoodMenu = () => {
           </a>
         </div>
         <div className="food-card-list">
-          <FoodCard
-            name="Poha"
-            price="40"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, nam."
-          />
-          <FoodCard
-            name="Upma"
-            price="35"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit. Non, nam."
-          />
-          <FoodCard
-            name="Misal"
-            price="70"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Non, nam."
-          />
-          <FoodCard
-            name="Vadapav"
-            price="15"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Non, nam."
-          />
-          <FoodCard
-            name="Lassi"
-            price="12"
-            description="Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Non, nam."
-          />
+          {foodMenu.map((item) => (
+            <FoodCard
+              key={item.id}
+              id={item.id}
+              name={item.name}
+              type={item.type}
+              price={item.price}
+              description={item.description}
+            />
+            
+          ))}
         </div>
-        <Cart></Cart>
+        <Cart  />
       </div>
     </div>
   );

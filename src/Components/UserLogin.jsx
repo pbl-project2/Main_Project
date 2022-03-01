@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
-import { signInWithPopup } from "firebase/auth";
+import React, { useState } from "react";
 
 import "../Styling/Login.css";
 import { auth, provider } from "../firebase/firebase";
+import { useHistory } from "react-router-dom";
+import FoodMenu from "./FoodMenu";
 
 // import firebase from "firebase";
 // import { auth } from "../firebase";
@@ -21,13 +21,14 @@ const Login = () => {
   //   alert("hi");
   // };
 
-  const history = useNavigate();
-
+  const history = useHistory();
+  const [user, setUser] = useState([]);
   const signInWithGoogle = () => {
-    signInWithPopup(auth, provider)
+    auth
+      .signInWithPopup(provider)
       .then((result) => {
         if (result.user.email === "mrudulpatel04@gmail.com") {
-          history("/admin");
+          history.push("/admin");
         } else {
           alert("Sorry you are not an admin!!");
         }
@@ -35,6 +36,14 @@ const Login = () => {
       .catch((error) => {
         alert(error.message);
       });
+  };
+
+  const handleClick = () => {
+    auth.signInWithPopup(provider).then((result) => {
+      // history.push("/foodmenu");
+      setUser(result.user.providerData);
+      console.log(user);
+    });
   };
 
   return (
@@ -69,13 +78,7 @@ const Login = () => {
               setPass(e.target.value);
             }}
           /> */}
-            <button
-              className="lesgo-btn"
-              type="submit"
-              onClick={() => {
-                history("/FoodMenu");
-              }}
-            >
+            <button className="lesgo-btn" type="submit" onClick={() => history.push('/customer-login')}>
               Lesgo
             </button>
           </div>
