@@ -1,5 +1,13 @@
 .cart_items {
-    display: flex;
+    /* display: flex; */
     margin: 5px;
     justify-content: space-between;
+}
+
+.name {
+    max-width: 1px;
+}
+
+.price {
+    margin: 0;
 }

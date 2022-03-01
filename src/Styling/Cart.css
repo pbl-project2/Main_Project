@@ -10,6 +10,15 @@
 
 .cart_items {
     display: flex;
-    margin: 5px;
+    margin: 2px;
+    align-items: center;
     justify-content: space-between;
+}
+
+.name {
+    width: 120px;
+}
+
+.price {
+    margin: 0;
 }

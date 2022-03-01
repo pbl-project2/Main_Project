@@ -22,7 +22,7 @@ export const foodMenu = [
     // description: "Upma is a flavorful South Indian breakfast dish made from rava in water that has been flavored by ghee (or oil), cashews, urad dal (lentils), chana dal (husked chickpeas), onion, ginger and additional herbs and spices. Sugar can be added for a mildly sweet and savory dish.",
   },
   {
-    id: "2",
+    id: "3",
     name: "Poha Upma mix",
     price: 20,
     type: "Snacks",
@@ -33,7 +33,7 @@ export const foodMenu = [
     description: "This dish is usually a mixtrue of poha and upma",
   },
   {
-    id: "3",
+    id: "4",
     name: "Shira",
     price: 20,
     type: "Snacks",
@@ -45,7 +45,7 @@ export const foodMenu = [
       "A simple and classical recipe made with semolina, ghee and sugar.",
   },
   {
-    id: "4",
+    id: "5",
     name: "Wada Pav",
     price: 20,
     type: "Snacks",
@@ -57,7 +57,7 @@ export const foodMenu = [
       "This is a vegetarian fast food dish native to the state of Maharashtra.",
   },
   {
-    id: "5",
+    id: "6",
     name: "Pattis",
     price: 20,
     type: "Snacks",
@@ -68,7 +68,7 @@ export const foodMenu = [
       "This snack is nothing but potato stuffing between 2 triangle shaped bread slices.",
   },
   {
-    id: "6",
+    id: "7",
     name: "Samosa",
     price: 15,
     type: "Snacks",
@@ -80,7 +80,7 @@ export const foodMenu = [
     description: "Samosa is a fried or baked pastry with a savory filling of spices potatoes.",
   },
   {
-    id: "7",
+    id: "9",
     name: "Kanda Bhaji",
     price: 15,
     type: "Snacks",
@@ -92,7 +92,7 @@ export const foodMenu = [
   },
 
   {
-    id: "7",
+    id: "10",
     name: "Batata Bhaji",
     price: 25,
     type: "Snacks",
@@ -103,7 +103,7 @@ export const foodMenu = [
       "Batata bhaji are crisp and crunchy fried ovel shaped made mainly with Potato and gram flour.",
   },
   {
-    id: "8",
+    id: "11",
     name: "Single Wada",
     price: 15,
     type: "Snacks",
@@ -114,7 +114,7 @@ export const foodMenu = [
       "The dish consists of a deep fried potato dumpling cooked with Potato, onions, spices and herbs.",
   },
   {
-    id: "9",
+    id: "12",
     name: "Pav Jodi",
     price: 15,
     type: "Snacks",
@@ -124,7 +124,7 @@ export const foodMenu = [
     description: "This includes a couple of bread",
   },
   {
-    id: "10",
+    id: "13",
     name: "Idli Sambhar",
     price: 30,
     type: "Snacks",
@@ -136,7 +136,7 @@ export const foodMenu = [
     description: "Idli sambar is a South Indian breakfast meal where idli is served with sambar and chutney.",
   },
   {
-    id: "11",
+    id: "14",
     name: "Single Idli Wada",
     price: 20,
     type: "Snacks",
@@ -146,7 +146,7 @@ export const foodMenu = [
     description: "",
   },
   {
-    id: "12",
+    id: "15",
     name: "Udid Wada Sambhar",
     price: 40,
     type: "Snacks",
@@ -156,7 +156,7 @@ export const foodMenu = [
     description: "",
   },
   {
-    id: "13",
+    id: "16",
     name: "Idli Wada Mix",
     price: 40,
     type: "Snacks",
@@ -166,7 +166,7 @@ export const foodMenu = [
     description: "",
   },
   {
-    id: "14",
+    id: "17",
     name: "Batata Wada Sambhar",
     price: 40,
     type: "Snacks",
@@ -176,7 +176,7 @@ export const foodMenu = [
     description: "",
   },
   {
-    id: "15",
+    id: "18",
     name: "Single Wada Sambhar",
     price: 25,
     type: "Snacks",
@@ -186,7 +186,7 @@ export const foodMenu = [
     description: "",
   },
   {
-    id: "16",
+    id: "19",
     name: "Batata Bhaji",
     price: 25,
     type: "Snacks",
@@ -195,135 +195,4 @@ export const foodMenu = [
     marathi_name: "बटाटा भजी",
     description: "",
   },
-  // {
-  // id: "1",//
-  // name: "",
-  //   price: 0,
-  //   type: "Snacks",
-  //   meal: "Break Fast",
-  //   avlaibility: "Yes",
-  //   marathi_name: "",
-  //   description: "",
-  // },
-  // {
-  //id: "1",//
-  //   name: "",
-  //   price: 0,
-  //   type: "Snacks",
-  //   meal: "Break Fast",
-  //   avlaibility: "Yes",
-  //   marathi_name: "",
-  //   description: "",
-  // },
-  // {
-  // id: "1",//
-  // name: "",
-  //   price: 0,
-  //   type: "Snacks",
-  //   meal: "Break Fast",
-  //   avlaibility: "Yes",
-  //   marathi_name: "",
-  //   description: "",
-  // },
-  // {
-  // id: "1",//
-  // name: "",
-  //   price: 0,
-  //   type: "Snacks",
-  //   meal: "Break Fast",
-  //   avlaibility: "Yes",
-  //   marathi_name: "",
-  //   description: "",
-  // },
-  // {
-  // id: "1",//
-  // name: "",
-  //   price: 0,
-  //   type: "Snacks",
-  //   meal: "Break Fast",
-  //   avlaibility: "Yes",
-  //   marathi_name: "",
-  //   description: "",
-  // },
-  // {
-  // id: "1",//
-  // name: "",
-  //   price: 0,
-  //   type: "Snacks",
-  //   meal: "Break Fast",
-  //   avlaibility: "Yes",
-  //   marathi_name: "",
-  //   description: "",
-  // },
-  // {
-  // id: "1",//
-  // name: "",
-  //   price: 0,
-  //   type: "Snacks",
-  //   meal: "Break Fast",
-  //   avlaibility: "Yes",
-  //   marathi_name: "",
-  //   description: "",
-  // },
-  // {
-  // id: "1",//
-  // name: "",
-  //   price: 0,
-  //   type: "Snacks",
-  //   meal: "Break Fast",
-  //   avlaibility: "Yes",
-  //   marathi_name: "",
-  //   description: "",
-  // },
-  // {
-  // id: "1",//
-  // name: "",
-  //   price: 0,
-  //   type: "Snacks",
-  //   meal: "Break Fast",
-  //   avlaibility: "Yes",
-  //   marathi_name: "",
-  //   description: "",
-  // },
-  // {
-  // id: "1",//
-  // name: "",
-  //   price: 0,
-  //   type: "Snacks",
-  //   meal: "Break Fast",
-  //   avlaibility: "Yes",
-  //   marathi_name: "",
-  //   description: "",
-  // },
-  // {
-  // id: "1",//
-  // name: "",
-  //   price: 0,
-  //   type: "Snacks",
-  //   meal: "Break Fast",
-  //   avlaibility: "Yes",
-  //   marathi_name: "",
-  //   description: "",
-  // },
-  // {
-  // id: "1",//
-  // name: "",
-  //   price: 0,
-  //   type: "Snacks",
-  //   meal: "Break Fast",
-  //   avlaibility: "Yes",
-  //   marathi_name: "",
-  //   description: "",
-  // },
 ];
-// for (let i = 0; i < food.length; i++) {
-//   coid: "1", nsole.log(food[i].
-//     name);
-//   console.log(food[i].marathi_name);
-//   console.log(food[i].price);
-//   console.log(food[i].type);
-//   console.log(food[i].meal);
-//   console.log(food[i].avlaibility);
-//   console.log(food[i].description);
-//   console.log("\n")
-// }

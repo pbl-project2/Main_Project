@@ -21,7 +21,7 @@ const Cart = () => {
         setCart(cartArr);
       });
   }, [db]);
-  
+
   const handleDelete = async (id) => {
     await db
       .collection("users")
@@ -38,8 +38,12 @@ const Cart = () => {
         ? cart.map((item) => (
             <>
               <div className="cart_items">
-                <p>{item.name}</p>
-                <p>₹{item.price}</p>
+                <div className="name">
+                  <p>{item.name}</p>
+                </div>
+                <div className="price">
+                  <p>₹{item.price}</p>
+                </div>
                 <Cancel onClick={() => handleDelete(item.id)} />
               </div>
             </>
