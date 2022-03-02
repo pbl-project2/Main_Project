@@ -5,6 +5,8 @@ import "../Styling/Cart.css";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [sum, setSum] = useState(total);
   const userId = localStorage.getItem("userId");
 
   useEffect(() => {
@@ -19,6 +21,19 @@ const Cart = () => {
         });
         console.log("ARRAY: ", cartArr);
         setCart(cartArr);
+        console.log("CART: ", cartArr);
+        console.log("Length: ", cartArr.length);
+        let sumPrice = 0;
+        for (let i = 0; i < cartArr.length; i++) {
+          sumPrice += cartArr[i].price;
+          setTotal(sumPrice);
+          console.log("SUM: ", sumPrice);
+        }
+        setSum(sumPrice);
+        db.collection("users").doc(`${userId}`).update({
+          total: sumPrice,
+        });
+        console.log("SUM1: ", sumPrice);
       });
   }, [db]);
 
@@ -49,6 +64,7 @@ const Cart = () => {
             </>
           ))
         : "Your Cart is empty right now..."}
+      <h3>Total: ₹{sum}</h3>
     </div>
   );
 };

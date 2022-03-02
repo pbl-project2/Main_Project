@@ -48,7 +48,6 @@ const FoodMenu = ({props}) => {
               price={item.price}
               description={item.description}
             />
-            
           ))}
         </div>
         <Cart  />
