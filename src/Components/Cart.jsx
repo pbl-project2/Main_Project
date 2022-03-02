@@ -69,10 +69,10 @@ const Cart = () => {
             </>
           ))
         : "Your Cart is empty right now..."}
-      <h3>Total: ₹{sum}</h3>
       <div>
         {sum > 0 ? (
           <>
+            <h3>Total: ₹{sum}</h3>
             <button
               className="checkout-btn"
               onClick={() => history.push(`/bill/${userId}`)}
