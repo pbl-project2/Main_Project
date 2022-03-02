@@ -6,6 +6,13 @@
   display: flex;
   justify-content: space-between;
   padding-top: 30px;
+  height: 6.5rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #161616;
+  width: 100%;
+  z-index: 1;
 }
 
 .add-btn {
@@ -27,8 +34,9 @@
   background: -webkit-linear-gradient(#a03989, orange);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-top: 5rem;
+  margin-top: 6rem;
   font-size: 35px;
+  position: fixed;
 }
 .card-menu {
   background-color: #222222;
@@ -48,6 +56,7 @@
   font-size: 20px;
   padding: 10px;
   color: gray;
+  padding-left: 20px;
 }
 .add-button {
   font-size: 30px;
@@ -89,6 +98,11 @@ hr {
 .info {
   text-align: left;
   margin-left: 20px;
+
+  max-width: 27rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .add-btn {
   position: absolute;
@@ -123,6 +137,7 @@ hr {
   flex-direction: column;
   width: 20rem;
   margin-left: 5rem;
+  position: fixed;
 }
 .home-btn:hover {
   color: black;
@@ -145,9 +160,11 @@ hr {
 }
 .food-cards {
   display: flex;
+  margin-top: 10rem;
 }
 .food-card-list {
   overflow-y: visible;
+  padding-left: 25rem;
 }
 .food-title {
   letter-spacing: 2px;
@@ -155,5 +172,7 @@ hr {
 .Cart-link {
   border: none;
   background-color: #161616;
-
+}
+.header {
+  position: fixed;
 }

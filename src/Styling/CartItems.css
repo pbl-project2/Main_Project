@@ -1,13 +1,30 @@
-.cart_items {
-    /* display: flex; */
-    margin: 5px;
-    justify-content: space-between;
+.main-cart {
+  text-align: center;
+  margin-left: 68rem;
+  border: none;
+
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  height: fit-content;
+  padding: 2rem;
+
+  position: fixed;
+  /* 888 */
 }
 
+.cart_items {
+  display: flex;
+  margin: 2px;
+  align-items: center;
+  justify-content: space-between;
+}
 .name {
-    max-width: 1px;
+  width: 120px;
 }
 
 .price {
-    margin: 0;
+  margin: 0px;
+  margin-right: 20px;
+}
+.cancel-btn {
+  margin-bottom: 10px;
 }
