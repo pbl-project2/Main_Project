@@ -1,0 +1,34 @@
+*{
+    background: #161616;
+}
+
+.admin-nav {
+  height: fit-content;
+  background-color: #161616;
+  width: 100%;
+}
+
+.bill {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid white;
+    border-radius: 5px;
+    height: 80vh;
+}
+.bill-title {
+    margin-top: 30px;
+    
+}
+
+.food-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 2px;
+}
+
+.container {
+    padding: 45px;
+}

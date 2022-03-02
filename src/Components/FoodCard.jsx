@@ -1,15 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { db } from "../firebase/firebase";
 import "../Styling/FoodMenu.css";
 
 const FoodCard = (props) => {
-
   const foodItem = {
     name: "",
     price: "",
     type: "",
     id: "",
   };
+  const [quantity, setQuantity] = useState(1);
 
   const handleClick = async () => {
     let foodItem = {
@@ -18,34 +18,38 @@ const FoodCard = (props) => {
       type: props.type,
       id: props.id,
     };
-    
-    // await addDoc(collection(db, "users"), {
-    //   foodItem: foodItem,
-    // });
-    // await db.collection("food").add({
-    //   foodItem: foodItem,
-    // });
-    // await db.collection("users").doc(`${userId}`).collection("food").doc(`${props.id}`).set({
-    //   foodItem: foodItem,
-    // });
-    // localStorage.setItem(`${props.foodId}`, props.id);
     const id = localStorage.getItem("userId");
-    await db.collection("users").doc(`${id}`).collection("food").doc(`${props.id}`).set({
+    await db
+      .collection("users")
+      .doc(`${id}`)
+      .collection("food")
+      .doc(`${props.id}`)
+      .set({
         name: props.name,
-        price: props.price,
+        price: props.price * quantity,
         type: props.type,
         id: props.id,
+        quantity: quantity,
       });
-    alert("Food Item Added");
-    console.log(foodItem);
+    setQuantity(1);
+    // alert("Food Item Added");
+    // console.log(foodItem);
   };
   return (
     <div className="food-card">
-      {/* <div class="vl"></div> */}
       <div className="card-info">
         <div className="card-1">
           <h3 className="food-title">{props.name}</h3>
-          <div className="price">{props.price}</div>
+          <div className="price">Price: ₹{props.price}</div>
+          <p>Quantity: <input
+            type="number"
+            value={quantity}
+            placeholder=""
+            style={{ width: "24%", borderRadius: "2px", outline: "none" }}
+            onChange={(e) => {
+              setQuantity(e.target.value);
+            }}
+          /></p>
           <p className="info">{props.description}</p>
           <hr className="card-diversion" />
         </div>

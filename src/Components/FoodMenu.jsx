@@ -5,7 +5,7 @@ import FoodCard from "./FoodCard";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Cart from "./Cart";
 import { useHistory } from "react-router-dom";
-import { foodMenu } from "../FoodMenu";
+import { data } from "../data";
 
 const FoodMenu = ({props}) => {
   const history = useHistory();
@@ -38,8 +38,8 @@ const FoodMenu = ({props}) => {
             Beverages
           </a>
         </div>
-        <div className="food-card-list">
-          {foodMenu.map((item) => (
+        <div className="food-card-list">  
+          {data.map((item) => (
             <FoodCard
               key={item.id}
               id={item.id}

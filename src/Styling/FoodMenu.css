@@ -82,7 +82,7 @@ hr {
 }
 .food-card {
   display: flex;
-  height: 11rem;
+  height: 15rem;
   padding-top: -11rem;
   /* border-left: 2px solid gray; */
 }

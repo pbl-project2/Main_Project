@@ -7,6 +7,7 @@ import Admin from "./Components/Admin";
 import { db } from "./firebase/firebase";
 import Customer from "./Components/Customer";
 import AdminNav from "./Components/AdminNav";
+import Bill from "./Components/Bill";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -65,6 +66,9 @@ function App() {
                 <Admin key={user.id} user={user} handleDelete={handleDelete} />
               ))}
             </div>
+          </Route>
+          <Route path="/bill">
+            <Bill />
           </Route>
         </Switch>
       </Router>

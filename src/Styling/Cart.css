@@ -28,3 +28,18 @@
 .cancel-btn {
   margin-bottom: 10px;
 }
+
+.checkout-btn{
+  height: 45px;
+  border: 0;
+  border-radius: 7px;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(158, 57, 138, 1) 0%,
+    rgba(255, 0, 33, 1) 100%
+  );
+  width: 9rem;
+  cursor: pointer;
+}
