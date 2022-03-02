@@ -8,6 +8,7 @@ const Cart = () => {
   const [total, setTotal] = useState(0);
   const [sum, setSum] = useState(total);
   const userId = localStorage.getItem("userId");
+  const [flag, setFlag] = useState(false);
 
   useEffect(() => {
     db.collection("users")
