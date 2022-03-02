@@ -41,7 +41,8 @@ const FoodCard = (props) => {
         <div className="card-1">
           <h3 className="food-title">{props.name}</h3>
           <div className="price">Price: ₹{props.price}</div>
-          <p>Quantity: <input
+          <p className="quantity">Quantity: 
+            <input
             type="number"
             value={quantity}
             placeholder=""

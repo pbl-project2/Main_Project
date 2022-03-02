@@ -27,6 +27,7 @@
 }
 .cancel-btn {
   margin-bottom: 10px;
+  cursor: pointer;
 }
 
 .checkout-btn{
