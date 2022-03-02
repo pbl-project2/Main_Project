@@ -1,11 +1,13 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom';
+import { auth } from '../firebase/firebase';
 import "../Styling/Login.css";
 
 function AdminNav() {
     const history = useHistory();
     const handleClick = () => {
         history.push("/");
+        auth.signOut();
     };
   return (
     <div className="admin-nav">

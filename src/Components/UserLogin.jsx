@@ -52,7 +52,7 @@ const Login = () => {
         <nav>
           <h3>UpMenu</h3>
           <button className="login-btn" onClick={signInWithGoogle}>
-            LogIn as Admin
+            Login as Admin
           </button>
         </nav>
 
@@ -62,7 +62,7 @@ const Login = () => {
           </h1>
         </header>
         <div className="input_fields">
-          <p>Lets get you to our canteen menu</p>
+          {/* <p>Lets get you to our canteen menu</p> */}
           <div className="creds">
             {/* <input
             type="email"

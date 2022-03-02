@@ -20,7 +20,7 @@ function App() {
         snapshot.forEach((doc) => {
           userArr.push({ ...doc.data(), id: doc.id });
         });
-        console.log(userArr);
+        // console.log(userArr);
         setUsers(userArr);
       });
     // const q = query(collection(db, 'users'), orderBy("timestamp", "desc"));

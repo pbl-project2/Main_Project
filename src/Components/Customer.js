@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { db } from "../firebase/firebase";
 import firebase from "firebase";
 import { v4 as uuid } from "uuid";
+import uniqueRandom from "unique-random";
 
 //Styling
 import "../Styling/Login.css";
@@ -22,7 +23,9 @@ function Customer() {
     e.preventDefault();
     if (name !== "" && mobile !== 0) {
       let timestamp = firebase.firestore.FieldValue.serverTimestamp();
-      let token = Math.floor(Math.random() * 100 + 1);
+      // let token = Math.floor(Math.random() * 100 + 1);
+      let random = uniqueRandom(1000, 2000);
+      let token = random();
       localStorage.setItem("userId", userId);
       await db.collection("users").doc(`${userId}`).set({
         id: userId,
