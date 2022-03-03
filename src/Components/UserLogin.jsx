@@ -30,7 +30,7 @@ const Login = () => {
         if (
           result.user.email === "mrudulpatel04@gmail.com" ||
           result.user.email === "atharvakurumbhatte47@gmail.com"
-        ) {
+        ) { 
           history.push(`/admin/${localStorage.getItem("o")}`);
         } else {
           alert("Sorry you are not an admin!!");
