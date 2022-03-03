@@ -13,6 +13,7 @@ function AdminNav() {
     <div className="admin-nav">
         <nav>
             <h3>UpMenu</h3>
+            <button className='login-btn' onClick={() => history.push("/details")}>View Details</button>
             <button className='login-btn' onClick={handleClick}>Logout</button>
         </nav>
     </div>

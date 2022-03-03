@@ -24,7 +24,7 @@ function Customer() {
     if (name !== "" && mobile !== 0) {
       let timestamp = firebase.firestore.FieldValue.serverTimestamp();
       // let token = Math.floor(Math.random() * 100 + 1);
-      let random = uniqueRandom(1000, 2000);
+      let random = uniqueRandom(1000, 9999);
       let token = random();
       localStorage.setItem("userId", userId);
       await db.collection("users").doc(`${userId}`).set({

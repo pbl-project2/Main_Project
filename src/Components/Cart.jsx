@@ -34,6 +34,7 @@ const Cart = () => {
         setSum(sumPrice);
         db.collection("users").doc(`${userId}`).update({
           total: sumPrice,
+          completed: false,
         });
         // console.log("SUM1: ", sumPrice);
       });

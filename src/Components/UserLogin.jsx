@@ -28,7 +28,7 @@ const Login = () => {
       .signInWithPopup(provider)
       .then((result) => {
         if (result.user.email === "mrudulpatel04@gmail.com") {
-          history.push("/admin");
+          history.push(`/admin/${localStorage.getItem("o")}`);
         } else {
           alert("Sorry you are not an admin!!");
         }
@@ -36,14 +36,6 @@ const Login = () => {
       .catch((error) => {
         alert(error.message);
       });
-  };
-
-  const handleClick = () => {
-    auth.signInWithPopup(provider).then((result) => {
-      // history.push("/foodmenu");
-      setUser(result.user.providerData);
-      console.log(user);
-    });
   };
 
   return (
@@ -64,20 +56,6 @@ const Login = () => {
         <div className="input_fields">
           {/* <p>Lets get you to our canteen menu</p> */}
           <div className="creds">
-            {/* <input
-            type="email"
-            placeholder="Enter your name"
-            onChange={(e) => {
-              setName(e.target.value);
-            }} 
-          />  */}
-            {/* <input
-            type="password"
-            placeholder="Enter Your password"
-            onChange={(e) => {
-              setPass(e.target.value);
-            }}
-          /> */}
             <button className="lesgo-btn" type="submit" onClick={() => history.push('/customer-login')}>
               Lesgo
             </button>

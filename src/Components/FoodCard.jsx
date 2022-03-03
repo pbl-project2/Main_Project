@@ -19,6 +19,7 @@ const FoodCard = (props) => {
       id: props.id,
     };
     const id = localStorage.getItem("userId");
+    if(quantity > 0){
     await db
       .collection("users")
       .doc(`${id}`)
@@ -32,16 +33,36 @@ const FoodCard = (props) => {
         quantity: quantity,
       });
     setQuantity(1);
-    // alert("Food Item Added");
-    // console.log(foodItem);
+    } else {
+      alert("Please enter a valid quantity");
+    }
   };
+
   return (
     <div className="food-card">
       <div className="card-info">
         <div className="card-1">
           <h3 className="food-title">{props.name}</h3>
           <div className="price">Price: ₹{props.price}</div>
+<<<<<<< HEAD
 
+=======
+          {/* <p className="quantity">Quantity: 
+            <input
+            type="number"
+            value={quantity}
+            placeholder=""
+            style={{ width: "24%", borderRadius: "2px", outline: "none" }}
+            onChange={(e) => {
+              setQuantity(e.target.value);
+            }}
+          /></p> */}
+          <div className="quantity">
+            <button className="btn" onClick={() => setQuantity(quantity-1)}>-</button>
+            <p>{quantity}</p>
+            <button className="btn" onClick={() => setQuantity(quantity+1)}>+</button>
+          </div>
+>>>>>>> cb39e887a1b24cc9230569aab33e2a5f37eb84f0
           <p className="info">{props.description}</p>
           <hr className="card-diversion" />
         </div>

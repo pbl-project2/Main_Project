@@ -185,6 +185,7 @@ hr {
   position: fixed;
 }
 
+<<<<<<< HEAD
 
 .card-btns{
   height:fit-content;
@@ -197,4 +198,21 @@ hr {
 
 
   
+=======
+.quantity {
+  display: flex;
+}
+
+.btn {
+  outline: none;
+  width: 40px;
+  border-radius: 2px;
+  border: none;
+}
+
+.add {
+  display: flex;
+  flex-direction: column;
+}
+>>>>>>> cb39e887a1b24cc9230569aab33e2a5f37eb84f0
 
