@@ -182,6 +182,18 @@ hr {
 }
 
 .quantity {
-  margin-left: 20px;
-  text-align: left;
+  display: flex;
 }
+
+.btn {
+  outline: none;
+  width: 40px;
+  border-radius: 2px;
+  border: none;
+}
+
+.add {
+  display: flex;
+  flex-direction: column;
+}
+

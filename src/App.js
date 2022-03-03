@@ -8,9 +8,13 @@ import { db } from "./firebase/firebase";
 import Customer from "./Components/Customer";
 import AdminNav from "./Components/AdminNav";
 import Bill from "./Components/Bill";
+import { v4 as uuid } from 'uuid';
+import AdminDetails from "./Components/AdminDetails";
 
 function App() {
   const [users, setUsers] = useState([]);
+  const [income, setIncome] = useState(0);
+  const [order, setOrder] = useState(0);
 
   useEffect(() => {
     db.collection("users")
@@ -23,29 +27,22 @@ function App() {
         // console.log(userArr);
         setUsers(userArr);
       });
-    // const q = query(collection(db, 'users'), orderBy("timestamp", "desc"));
-    // const unsubscribe = onSnapshot(q, (snapshot) => {
-    //   let userArr =[];
-    //   snapshot.forEach((doc) => {
-    //     userArr.push({ ...doc.data(), id: doc.id });
-    //   });
-    //   setUsers(userArr);
-    // });
-    // return () => unsubscribe;
-
-    // const unsubscribe = db.collection("users").onSnapshot((snapshot) => {
-    //   let userArr = [];
-    //   snapshot.forEach((doc) => {
-    //     userArr.push({ ...doc.data(), id: doc.id });
-    //   });
-    // });
-    // return () => unsubscribe;
-  }, [db]);
+  }, [db]);  
 
   const handleDelete = async (id) => {
+    await db.collection("users").doc(`${id}`).get().then(
+      (doc) => {
+        setIncome(income + doc.data().total);
+        console.log("INCOME: ", income);
+        setOrder(order + 1);
+        console.log("ORDER: ", order);
+      }
+    );
     await db.collection("users").doc(`${id}`).delete();
-    // await deleteDoc(doc(db, "users", id));
   };
+
+  let id = uuid();
+  localStorage.setItem("o", id);
   return (
     <div className="app">
       <Router>
@@ -59,13 +56,23 @@ function App() {
           <Route path="/foodmenu">
             <FoodMenu />
           </Route>
-          <Route path="/admin">
+          <Route path={`/admin`}>
             <AdminNav />
             <div className="container">
+              {/* <h2>Income: ₹{income} </h2>
+              <h2>Orders: {order}</h2> */}
+              {/* <h2>Orders Served: {order}</h2> */}
               {users.map((user) => (
-                <Admin key={user.id} user={user} handleDelete={handleDelete} />
+                <Admin
+                  key={user.id}
+                  user={user}
+                  handleDelete={handleDelete}
+                />
               ))}
             </div>
+          </Route>
+          <Route path="/details">
+            <AdminDetails income={income} order={order} />
           </Route>
           <Route path="/bill">
             <Bill />

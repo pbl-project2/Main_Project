@@ -51,7 +51,7 @@ function Bill() {
       <div className="bill">
         <div className="bill-items">
           <h1 className="bill-title">Bill</h1>
-          <h1 style={{ color: "red" }}>{token}</h1>
+          <h1 style={{ color: "red" }}>#{token}</h1>
           <h1>Name: {name}</h1>
           {food.map((item) => (
             <>
