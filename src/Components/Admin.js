@@ -17,9 +17,6 @@ function Admin({ user, handleDelete, income }) {
         setFood(foodArr);
         console.log("FOOD ARR: ", foodArr);
       });
-    db.collection("users").doc(`${user.id}`).update({
-      completed: true
-      });
   }, [db]);
     // const handleComplete = async (id) => {
     //   await db.collection("users").doc(`${user.id}`).collection("food").doc(`${id}`).update({

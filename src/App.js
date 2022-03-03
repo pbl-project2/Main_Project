@@ -10,6 +10,8 @@ import AdminNav from "./Components/AdminNav";
 import Bill from "./Components/Bill";
 import { v4 as uuid } from 'uuid';
 import AdminDetails from "./Components/AdminDetails";
+import AdminMenu from "./Components/AdminMenu";
+import MenuNew from "./Components/MenuNew";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -18,7 +20,7 @@ function App() {
 
   useEffect(() => {
     db.collection("users")
-      .orderBy("timestamp", "desc")
+      .orderBy("timestamp", "asc")
       .onSnapshot((snapshot) => {
         let userArr = [];
         snapshot.forEach((doc) => {
@@ -73,6 +75,12 @@ function App() {
           </Route>
           <Route path="/details">
             <AdminDetails income={income} order={order} />
+          </Route>
+          <Route path="/menu">
+            <AdminMenu />
+          </Route>
+          <Route path="/new">
+            <MenuNew />
           </Route>
           <Route path="/bill">
             <Bill />

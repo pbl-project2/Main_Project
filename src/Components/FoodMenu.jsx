@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col } from "react-bootstrap";
 import "../Styling/FoodMenu.css";
 import FoodCard from "./FoodCard";
@@ -6,10 +6,21 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Cart from "./Cart";
 import { useHistory } from "react-router-dom";
 import { data } from "../data";
+import { db } from "../firebase/firebase";
 
 const FoodMenu = ({props}) => {
   const history = useHistory();
-
+  const [food, setFood] = useState([]);
+  useEffect(() => {
+    db.collection("foodMenu").onSnapshot((snapshot) => {
+      let foodArr = [];
+      snapshot.forEach((doc) => {
+        foodArr.push({ ...doc.data(), id: doc.id });
+      });
+      setFood(foodArr);
+      console.log(foodArr);
+    });
+  }, [db]);
   return (
     <div className="food-menu">
       <div className="nav">
@@ -39,7 +50,7 @@ const FoodMenu = ({props}) => {
           </a>
         </div>
         <div className="food-card-list">  
-          {data.map((item) => (
+          {food.map((item) => (
             <FoodCard
               key={item.id}
               id={item.id}

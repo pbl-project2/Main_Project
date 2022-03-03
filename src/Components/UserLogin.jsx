@@ -27,7 +27,10 @@ const Login = () => {
     auth
       .signInWithPopup(provider)
       .then((result) => {
-        if (result.user.email === "mrudulpatel04@gmail.com") {
+        if (
+          result.user.email === "mrudulpatel04@gmail.com" ||
+          result.user.email === "atharvakurumbhatte47@gmail.com"
+        ) {
           history.push(`/admin/${localStorage.getItem("o")}`);
         } else {
           alert("Sorry you are not an admin!!");
@@ -56,7 +59,11 @@ const Login = () => {
         <div className="input_fields">
           {/* <p>Lets get you to our canteen menu</p> */}
           <div className="creds">
-            <button className="lesgo-btn" type="submit" onClick={() => history.push('/customer-login')}>
+            <button
+              className="lesgo-btn"
+              type="submit"
+              onClick={() => history.push("/customer-login")}
+            >
               Lesgo
             </button>
           </div>
