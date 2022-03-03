@@ -26,8 +26,9 @@
     rgba(158, 57, 138, 1) 0%,
     rgba(255, 0, 33, 1) 100%
   );
-  width: 9rem;
-  margin-right: 20px;
+  width: 7rem;
+  margin-left:-8rem;
+  margin-top:10px;
   cursor: pointer;
 }
 
@@ -86,6 +87,7 @@ hr {
   display: flex;
   height: 15rem;
   padding-top: -11rem;
+  width:fit-content;
   /* border-left: 2px solid gray; */
 }
 
@@ -106,24 +108,25 @@ hr {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.add-btn {
+/* .add-btn {
   position: absolute;
   right: 550px;
   margin-top: 20px;
   width: 100px;
   cursor: pointer;
-}
+} */
 .card-info {
   display: flex;
   margin-left: 30px;
 }
 .card-diversion {
   margin: 1.2rem;
-  width: 110%;
+  width: 150%;
   margin-top: 2rem;
 }
 .card-1 {
   height: 100px;
+  width:20rem;
 }
 .home-btn {
   background-color: #161616;
@@ -172,6 +175,7 @@ hr {
 }
 .food-title {
   letter-spacing: 2px;
+  width:fit-content;
 }
 .Cart-link {
   border: none;
@@ -181,7 +185,16 @@ hr {
   position: fixed;
 }
 
-.quantity {
-  margin-left: 20px;
-  text-align: left;
-}
+
+.card-btns{
+  height:fit-content;
+  display:flex;
+  margin-right:20rem;
+  
+} 
+  
+  
+
+
+  
+

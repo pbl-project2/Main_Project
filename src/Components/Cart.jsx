@@ -58,7 +58,7 @@ const Cart = () => {
                 <div className="name">
                   <p>{item.name}</p>
                 </div>
-                <div className="quantity">
+                <div className="quantity-cart">
                   <p>x {item.quantity}</p>
                 </div>
                 <div className="price">

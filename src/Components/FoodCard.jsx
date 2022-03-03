@@ -41,20 +41,23 @@ const FoodCard = (props) => {
         <div className="card-1">
           <h3 className="food-title">{props.name}</h3>
           <div className="price">Price: ₹{props.price}</div>
-          <p className="quantity">Quantity: 
-            <input
-            type="number"
-            value={quantity}
-            placeholder=""
-            style={{ width: "24%", borderRadius: "2px", outline: "none" }}
-            onChange={(e) => {
-              setQuantity(e.target.value);
-            }}
-          /></p>
+
           <p className="info">{props.description}</p>
           <hr className="card-diversion" />
         </div>
-        <div>
+        <div className="card-btns">
+          <div className="quantity">
+            <input
+              type="number"
+              value={quantity}
+              placeholder=""
+              style={{ width: "24%", borderRadius: "2px", outline: "none" }}
+              onChange={(e) => {
+                setQuantity(e.target.value);
+              }}
+            />
+          </div>
+
           <button className="add-btn" onClick={handleClick}>
             ADD
           </button>
