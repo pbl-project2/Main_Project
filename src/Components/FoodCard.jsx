@@ -44,9 +44,6 @@ const FoodCard = (props) => {
         <div className="card-1">
           <h3 className="food-title">{props.name}</h3>
           <div className="price">Price: ₹{props.price}</div>
-<<<<<<< HEAD
-
-=======
           {/* <p className="quantity">Quantity: 
             <input
             type="number"
@@ -62,7 +59,6 @@ const FoodCard = (props) => {
             <p>{quantity}</p>
             <button className="btn" onClick={() => setQuantity(quantity+1)}>+</button>
           </div>
->>>>>>> cb39e887a1b24cc9230569aab33e2a5f37eb84f0
           <p className="info">{props.description}</p>
           <hr className="card-diversion" />
         </div>

@@ -185,20 +185,6 @@ hr {
   position: fixed;
 }
 
-<<<<<<< HEAD
-
-.card-btns{
-  height:fit-content;
-  display:flex;
-  margin-right:20rem;
-  
-} 
-  
-  
-
-
-  
-=======
 .quantity {
   display: flex;
 }
@@ -214,5 +200,4 @@ hr {
   display: flex;
   flex-direction: column;
 }
->>>>>>> cb39e887a1b24cc9230569aab33e2a5f37eb84f0
 
