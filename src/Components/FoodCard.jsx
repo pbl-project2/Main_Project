@@ -54,11 +54,7 @@ const FoodCard = (props) => {
               setQuantity(e.target.value);
             }}
           /></p> */}
-          <div className="quantity">
-            <button className="btn" onClick={() => setQuantity(quantity-1)}>-</button>
-            <p>{quantity}</p>
-            <button className="btn" onClick={() => setQuantity(quantity+1)}>+</button>
-          </div>
+          
           <p className="info">{props.description}</p>
           <hr className="card-diversion" />
         </div>

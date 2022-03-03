@@ -201,3 +201,7 @@ hr {
   flex-direction: column;
 }
 
+.card-btns{
+  display:flex;
+  height:fit-content;
+}
