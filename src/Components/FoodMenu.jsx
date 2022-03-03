@@ -8,9 +8,10 @@ import { useHistory } from "react-router-dom";
 import { data } from "../data";
 import { db } from "../firebase/firebase";
 
-const FoodMenu = ({props}) => {
+const FoodMenu = ({ props }) => {
   const history = useHistory();
   const [food, setFood] = useState([]);
+
   useEffect(() => {
     db.collection("foodMenu").onSnapshot((snapshot) => {
       let foodArr = [];
@@ -21,6 +22,49 @@ const FoodMenu = ({props}) => {
       console.log(foodArr);
     });
   }, [db]);
+
+  const handleSnacks = () => {
+    db.collection("foodMenu")
+      .where("type", "==", "Snacks")
+      .get()
+      .then((snapshot) => {
+        let snacksArr = [];
+        snapshot.forEach((doc) => {
+          snacksArr.push({ ...doc.data(), id: doc.id });
+        });
+        setFood(snacksArr);
+        console.log(snacksArr);
+      });
+  };
+
+  const handleLunch = async () => {
+    db.collection("foodMenu")
+      .where("type", "==", "Lunch")
+      .get()
+      .then((snapshot) => {
+        let snacksArr = [];
+        snapshot.forEach((doc) => {
+          snacksArr.push({ ...doc.data(), id: doc.id });
+        });
+        setFood(snacksArr);
+        console.log(snacksArr);
+      });
+  };
+
+  const handleBeverages = async () => {
+    db.collection("foodMenu")
+      .where("type", "==", "Beverages")
+      .get()
+      .then((snapshot) => {
+        let snacksArr = [];
+        snapshot.forEach((doc) => {
+          snacksArr.push({ ...doc.data(), id: doc.id });
+        });
+        setFood(snacksArr);
+        console.log(snacksArr);
+      });
+  };
+
   return (
     <div className="food-menu">
       <div className="nav">
@@ -39,17 +83,26 @@ const FoodMenu = ({props}) => {
       <hr />
       <div className="food-cards">
         <div className="categories">
-          <a href="#" className="category">
+          {/* <a href="#" className="category" onClick={handleSnacks}>
             Breakfast
           </a>
-          <a href="#" className="category">
+          <a href="#" className="category" onClick={handleLunch}>
             Lunch
           </a>
-          <a href="#" className="category">
+          <a href="#" className="category" onClick={handleBeverages}>
+            Beverages
+          </a> */}
+          <a className="category" onClick={handleSnacks}>
+            Breakfast
+          </a>
+          <a className="category" onClick={handleLunch}>
+            Lunch
+          </a>
+          <a className="category" onClick={handleBeverages}>
             Beverages
           </a>
         </div>
-        <div className="food-card-list">  
+        <div className="food-card-list">
           {food.map((item) => (
             <FoodCard
               key={item.id}
@@ -61,7 +114,7 @@ const FoodMenu = ({props}) => {
             />
           ))}
         </div>
-        <Cart  />
+        <Cart />
       </div>
     </div>
   );

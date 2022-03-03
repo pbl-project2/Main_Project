@@ -48,6 +48,7 @@ function Admin({ user, handleDelete, income }) {
           {food.map((item) => (
             <div className="food-items">
               <p>{item.name}</p>
+              <p> x {item.quantity}</p>
               <p>₹{item.price}</p>
             </div>
           ))}
