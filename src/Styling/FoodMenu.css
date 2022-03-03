@@ -27,8 +27,8 @@
     rgba(255, 0, 33, 1) 100%
   );
   width: 7rem;
-  margin-left:-8rem;
-  margin-top:10px;
+  margin-left: -8rem;
+  margin-top: 10px;
   cursor: pointer;
 }
 
@@ -87,7 +87,7 @@ hr {
   display: flex;
   height: 15rem;
   padding-top: -11rem;
-  width:fit-content;
+  width: fit-content;
   /* border-left: 2px solid gray; */
 }
 
@@ -126,7 +126,7 @@ hr {
 }
 .card-1 {
   height: 100px;
-  width:20rem;
+  width: 20rem;
 }
 .home-btn {
   background-color: #161616;
@@ -164,6 +164,7 @@ hr {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    cursor: pointer;
 }
 .food-cards {
   display: flex;
@@ -175,7 +176,7 @@ hr {
 }
 .food-title {
   letter-spacing: 2px;
-  width:fit-content;
+  width: fit-content;
 }
 .Cart-link {
   border: none;
@@ -185,8 +186,9 @@ hr {
   position: fixed;
 }
 
-.quantity {
+.quantity-input{
   display: flex;
+  border-radius: 100px;
 }
 
 .btn {
@@ -201,7 +203,7 @@ hr {
   flex-direction: column;
 }
 
-.card-btns{
-  display:flex;
-  height:fit-content;
+.card-btns {
+  display: flex;
+  height: fit-content;
 }

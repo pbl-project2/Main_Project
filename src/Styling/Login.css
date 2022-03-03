@@ -3,6 +3,8 @@
 
   color: white;
   box-sizing: border-box;
+  
+  /* animation: animate 15s ease infinite; */
 }
 
 .admin-nav {
@@ -27,16 +29,37 @@
     /* flex-direction: column; */
     width: 100%;
 }
+/* .main-login{
+  background: linear-gradient(-45deg, red, green, blue, yellow);
+  background-size: 400% 400%;
+  animation: animate 15s ease infinite;
+} */
 
 .login {
   height: 100vh;
-  background-color: #161616;
+  /* background-color: #161616; */
+  /* background: linear-gradient(-45deg, red, green, blue, yellow);
+  background-size: 400% 400%;
+  animation: animate 15s ease infinite; */
   width: 100%;
+}
+@keyframes animate {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 header {
   text-align: center;
   margin-top: 12rem;
+  
+  animation: animate 15s ease infinite;
 }
 
 .input_field {
@@ -66,13 +89,16 @@ input {
   height: 45px;
   border: 0px;
   border-radius: 7px;
-  background: rgb(2, 0, 36);
+  /* background: rgb(2, 0, 36);
   background: linear-gradient(
     90deg,
     rgba(2, 0, 36, 1) 0%,
     rgba(158, 57, 138, 1) 0%,
     rgba(255, 0, 33, 1) 100%
-  );
+  ); */
+  background: linear-gradient(-45deg, red, green, blue, yellow);
+  background-size: 400% 400%;
+  animation: animate 15s ease infinite;
   width: 9rem;
   cursor: pointer;
 }
@@ -90,13 +116,16 @@ span {
   height: 45px;
   border: 0px;
   border-radius: 7px;
-  background: rgb(2, 0, 36);
+  /* background: rgb(2, 0, 36);
   background: linear-gradient(
     90deg,
     rgba(2, 0, 36, 1) 0%,
     rgba(158, 57, 138, 1) 0%,
     rgba(255, 0, 33, 1) 100%
-  );
+  ); */
+  background: linear-gradient(-45deg, red, green, blue, yellow);
+  background-size: 400% 400%;
+  animation: animate 15s ease infinite;
   width: 9rem;
   margin-right: 20px;
   cursor: pointer;

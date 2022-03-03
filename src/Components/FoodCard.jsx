@@ -64,6 +64,7 @@ const FoodCard = (props) => {
               type="number"
               value={quantity}
               placeholder=""
+              className="quantity-input"
               style={{ width: "24%", borderRadius: "2px", outline: "none" }}
               onChange={(e) => {
                 setQuantity(e.target.value);

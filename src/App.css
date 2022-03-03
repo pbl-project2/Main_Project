@@ -5,6 +5,20 @@
 }
 .app {
   background-color: #161616;
+  /* background: linear-gradient(-45deg, red, green, blue, yellow);
+  background-size: 400% 400%;
+  animation: animate 15s ease infinite; */
   height: fit-content;
   padding: 0 5rem;
 }
+/* @keyframes animate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+} */

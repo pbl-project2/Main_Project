@@ -48,22 +48,27 @@ function Bill() {
           </button>
         </nav>
       </div>
-      <div className="bill">
-        <div className="bill-items">
-          <h1 className="bill-title">Bill</h1>
-          <h1 style={{ color: "red" }}>#{token}</h1>
+      <div className="whole-bill">
+        <div className="bill">
+          {/* <div className="bill-items"> */}
+          <h1 className="bill-title">Billing</h1>
+          <hr />
+          <h1 className="token-num" style={{ color: "red" }}>
+            #{token}
+          </h1>
           <h1>Name: {name}</h1>
           {food.map((item) => (
             <>
-              <div className="food-items">
+              <div className="bill-food-items">
                 <p>{item.name}</p>
                 <p>{item.quantity}No.</p>
                 <p>₹{item.price}</p>
               </div>
             </>
           ))}
-          <h1>Total: ₹{total}</h1>
-          <p>**PAY AT THE CANTEEN**</p>
+          <h1 className="total">Total: ₹{total}</h1>
+          <p className="messege">**PAY AT THE CANTEEN**</p>
+          {/* </div> */}
         </div>
       </div>
     </>

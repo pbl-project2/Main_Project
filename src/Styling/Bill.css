@@ -7,26 +7,56 @@
   background-color: #161616;
   width: 100%;
 }
+.whole-bill{
+    display:flex;
+    justify-content: center;
+}
 
 .bill {
-    display: flex;
+    display: flex; 
     flex: 1;
     flex-direction: column;
     align-items: center;
-    border: 1px solid white;
-    border-radius: 5px;
-    height: 80vh;
+    /* justify-content:center; */
+    /* border: 0px solid white; */
+    text-align: left;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 20px;
+    height: 60vh;
+    /* width:50%; */
+    /* margin-left: 20rem; */
+    /* margin-top: 5rem;
+    text-align: left; */
+    width:fit-content;
+    margin:0px 20rem;
+    
+    
+}
+.token-num{
+    padding-top:30px;
 }
 .bill-title {
     margin-top: 30px;
-    
+    text-align:left;
+    /* padding-right:74rem; */
+    padding-top:30px;
+    letter-spacing:2px;
+    background: -webkit-linear-gradient(#a03989, orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+hr{
+    margin-left:43px;
+    margin-top:5px;
 }
 
-.food-items {
+.bill-food-items {
     display: flex;
     flex-direction: row;
+    /* align-items:flex-start; */
     justify-content: space-between;
-    margin: 2px;
+    margin: 20px;
+    padding-bottom:20px;
 }
 
 .container {
