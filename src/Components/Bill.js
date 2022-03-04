@@ -60,9 +60,9 @@ function Bill() {
           {food.map((item) => (
             <>
               <div className="bill-food-items">
-                <p>{item.name}</p>
-                <p>{item.quantity}No.</p>
-                <p>₹{item.price}</p>
+                <p className="food-items">{item.name}</p>
+                <p className="food-items"> x {item.quantity}</p>
+                <p className="food-items">₹{item.price}</p>
               </div>
             </>
           ))}
