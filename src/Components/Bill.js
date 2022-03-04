@@ -10,9 +10,11 @@ function Bill() {
   const [token, setToken] = useState("");
   const [total, setTotal] = useState(0);
   const [food, setFood] = useState([]);
+  
   const handleClick = () => {
     history.push("/");
   };
+ 
   useEffect(async () => {
     await db // user details
       .collection("users")
@@ -33,9 +35,9 @@ function Bill() {
         snapshot.forEach((doc) => {
           billArr.push({ ...doc.data(), id: doc.id });
         });
-        console.log(billArr);
+        // console.log(billArr);
         setFood(billArr);
-        console.log("BILLARR: ", food);
+        // console.log("BILLARR: ", food);
       });
   }, [db]);
   return (
@@ -50,7 +52,6 @@ function Bill() {
       </div>
       <div className="whole-bill">
         <div className="bill">
-          {/* <div className="bill-items"> */}
           <h1 className="bill-title">Billing</h1>
           <hr />
           <h1 className="token-num" style={{ color: "red" }}>
@@ -68,7 +69,6 @@ function Bill() {
           ))}
           <h1 className="total">Total: ₹{total}</h1>
           <p className="messege">**PAY AT THE CANTEEN**</p>
-          {/* </div> */}
         </div>
       </div>
     </>

@@ -1,4 +1,4 @@
-import { Cancel, DvrTwoTone } from "@mui/icons-material";
+import { Cancel } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
@@ -8,12 +8,12 @@ const Cart = () => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [sum, setSum] = useState(total);
-  const userId = localStorage.getItem("userId");
   const history = useHistory();
-
+  const userId = localStorage.getItem("userId");
+  
   useEffect(() => {
     db.collection("users")
-      .doc(`${userId}`)
+      .doc(`${localStorage.getItem("userId")}`)
       .collection("food")
       .orderBy("id", "asc")
       .onSnapshot((snapshot) => {
@@ -32,7 +32,7 @@ const Cart = () => {
           // console.log("SUM: ", sumPrice);
         }
         setSum(sumPrice);
-        db.collection("users").doc(`${userId}`).update({
+        db.collection("users").doc(`${localStorage.getItem("userId")}`).update({
           total: sumPrice,
           completed: false,
         });

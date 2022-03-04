@@ -8,7 +8,8 @@ function Admin({ user, handleDelete, income }) {
   // const [completedArr1, setCompletedArr1] = useState([]);
   useEffect(() => {
     db.collection("users")
-      .doc(`${user.id}`).collection("food")
+      .doc(`${user.id}`)
+      .collection("food")
       .onSnapshot((snapshot) => {
         let foodArr = [];
         snapshot.forEach((doc) => {
@@ -18,31 +19,54 @@ function Admin({ user, handleDelete, income }) {
         console.log("FOOD ARR: ", foodArr);
       });
   }, [db]);
-    // const handleComplete = async (id) => {
-    //   await db.collection("users").doc(`${user.id}`).collection("food").doc(`${id}`).update({
-    //     completed: true,
-    //   });
-    //   setCompleted(true);
-    //   await db.collection("users").where("completed", "==", false).get().then(function(querySnapshot) {
-    //     let completedArr = [];
-    //     querySnapshot.forEach(function(doc) {
-    //       completedArr.push({ ...doc.data(), id: doc.id });
-    //     });
-    //     setCompletedArr1(completedArr);
-    //     console.log("COMPLETED ARR: ", completedArr1);
-    //   });
-    // }
-    const handleComplete = async (id) => {
-      await db.collection("users").doc(`${user.id}`).update({
-        completed: true,
-      });
-    }
+  // const handleComplete = async (id) => {
+  //   await db.collection("users").doc(`${user.id}`).collection("food").doc(`${id}`).update({
+  //     completed: true,
+  //   });
+  //   setCompleted(true);
+  //   await db.collection("users").where("completed", "==", false).get().then(function(querySnapshot) {
+  //     let completedArr = [];
+  //     querySnapshot.forEach(function(doc) {
+  //       completedArr.push({ ...doc.data(), id: doc.id });
+  //     });
+  //     setCompletedArr1(completedArr);
+  //     console.log("COMPLETED ARR: ", completedArr1);
+  //   });
+  // }
+  const handleComplete = async (id) => {
+    await db.collection("users").doc(`${user.id}`).update({
+      completed: true,
+    });
+  };
 
   return (
     <>
       <div className="container">
         <div className="adminuser">
-          <h1>{user.token}</h1>
+          {user ? (
+            <>
+              <h1>{user.token}</h1>
+              <p>{user.name}</p>
+              <p>{user.mobile}</p>
+              {food.map((item) => (
+                <div className="food-items">
+                  <p>{item.name}</p>
+                  <p> x {item.quantity}</p>
+                  <p>₹{item.price}</p>
+                </div>
+              ))}
+              <p>Total: ₹{user.total}</p>
+              <button
+                className="delete-btn"
+                onClick={() => handleDelete(user.id)}
+              >
+                Delete
+              </button>
+            </>
+          ) : (
+            "No orders right now"
+          )}
+          {/* <h1>{user.token}</h1>
           <p>{user.name}</p>
           <p>{user.mobile}</p>
           {food.map((item) => (
@@ -55,7 +79,7 @@ function Admin({ user, handleDelete, income }) {
           <p>Total: ₹{user.total}</p>
           <button className="delete-btn" onClick={() => handleDelete(user.id)}>
             Delete
-          </button>
+          </button> */}
         </div>
       </div>
     </>

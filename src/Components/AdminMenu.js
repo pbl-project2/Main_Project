@@ -14,7 +14,7 @@ function AdminMenu() {
         foodArr.push({ ...doc.data(), id: doc.id });
       });
       setFood(foodArr);
-      console.log(foodArr);
+      // console.log(foodArr);
     });
   }, [db]);
 

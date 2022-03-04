@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
 import "../Styling/FoodMenu.css";
 import FoodCard from "./FoodCard";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Cart from "./Cart";
 import { useHistory } from "react-router-dom";
-import { data } from "../data";
 import { db } from "../firebase/firebase";
 
 const FoodMenu = ({ props }) => {
@@ -19,7 +17,7 @@ const FoodMenu = ({ props }) => {
         foodArr.push({ ...doc.data(), id: doc.id });
       });
       setFood(foodArr);
-      console.log(foodArr);
+      // console.log(foodArr);
     });
   }, [db]);
 
@@ -33,7 +31,7 @@ const FoodMenu = ({ props }) => {
           snacksArr.push({ ...doc.data(), id: doc.id });
         });
         setFood(snacksArr);
-        console.log(snacksArr);
+        // console.log(snacksArr);
       });
   };
 
@@ -47,7 +45,7 @@ const FoodMenu = ({ props }) => {
           snacksArr.push({ ...doc.data(), id: doc.id });
         });
         setFood(snacksArr);
-        console.log(snacksArr);
+        // console.log(snacksArr);
       });
   };
 
@@ -61,7 +59,7 @@ const FoodMenu = ({ props }) => {
           snacksArr.push({ ...doc.data(), id: doc.id });
         });
         setFood(snacksArr);
-        console.log(snacksArr);
+        // console.log(snacksArr);
       });
   };
 
@@ -92,13 +90,13 @@ const FoodMenu = ({ props }) => {
           <a href="#" className="category" onClick={handleBeverages}>
             Beverages
           </a> */}
-          <a className="category" onClick={handleSnacks}>
+          <a href="#" className="category" onClick={handleSnacks}>
             Breakfast
           </a>
-          <a className="category" onClick={handleLunch}>
+          <a href="#" className="category" onClick={handleLunch}>
             Lunch
           </a>
-          <a className="category" onClick={handleBeverages}>
+          <a href="#" className="category" onClick={handleBeverages}>
             Beverages
           </a>
         </div>

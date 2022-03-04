@@ -13,7 +13,6 @@ function Customer() {
   useEffect(() => {
     let id = uuid();
     setUserId(id);
-    console.log(id);
   }, []);
   const history = useHistory();
   const [name, setName] = useState("");
@@ -35,7 +34,6 @@ function Customer() {
         token: token,
       });
       history.push(`/foodmenu/${userId}`);
-      console.log("Customer Added");
       setName("");
       setMobile(0);
     } else {

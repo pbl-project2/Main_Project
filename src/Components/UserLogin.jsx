@@ -1,28 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 
 import "../Styling/Login.css";
 import { auth, provider } from "../firebase/firebase";
 import { useHistory } from "react-router-dom";
-import FoodMenu from "./FoodMenu";
-
-// import firebase from "firebase";
-// import { auth } from "../firebase";
 
 const Login = () => {
-  // const [name, setName] = useState("");
-  // const [pass, setPass] = useState("");
-  // const handleSubmit = () => {
-  //   auth
-  //     .createUserWithEmailAndPassword(name, pass)
-  //     .then((authUser) => {
-  //       console.log(authUser);
-  //     })
-  //     .catch((error) => alert(error.message));
-  //   alert("hi");
-  // };
-
   const history = useHistory();
-  const [user, setUser] = useState([]);
+
   const signInWithGoogle = () => {
     auth
       .signInWithPopup(provider)
@@ -30,9 +14,10 @@ const Login = () => {
         if (
           result.user.email === "mrudulpatel04@gmail.com" ||
           result.user.email === "atharvakurumbhatte47@gmail.com"
-        ) { 
+        ) {
           history.push(`/admin/${localStorage.getItem("o")}`);
-        } else {
+        }
+        else {
           alert("Sorry you are not an admin!!");
         }
       })
@@ -46,7 +31,10 @@ const Login = () => {
       <div className="main_login">
         <nav>
           <h3>UpMenu</h3>
-          <button className="login-btn" onClick={signInWithGoogle}>
+          <button
+            className="login-btn"
+            onClick={signInWithGoogle}
+          >
             Login as Admin
           </button>
         </nav>
