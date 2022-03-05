@@ -16,8 +16,8 @@ function Customer() {
   }, []);
   const history = useHistory();
   const [name, setName] = useState("");
-  const [mobile, setMobile]= useState(0);
-  
+  const [mobile, setMobile] = useState(0);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (name !== "" && mobile !== 0) {
@@ -44,7 +44,9 @@ function Customer() {
     <div className="login">
       <div className="main_login">
         <nav>
-          <h3>UpMenu</h3>
+          <h3>
+            Up<span className="icon-span">Menu</span>
+          </h3>
           <button className="login-btn" onClick={() => history.push("/")}>
             Home Page
           </button>

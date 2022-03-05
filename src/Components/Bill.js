@@ -89,19 +89,21 @@ function Bill() {
     doc.text("Thank you for using our system", 150, 620);
     doc.save(`bill/${token}.pdf`);
   };
-
+  
   return (
     <>
       <div className="admin-nav">
         <nav>
-          <h3>UpMenu</h3>
+          <h3>
+            Up<span>Menu</span>
+          </h3>
           <button className="login-btn" onClick={handleClick}>
             Home Page
           </button>
         </nav>
       </div>
-      <div className="whole-bill">
-        <div className="bill">
+      <div className="whole-bill ">
+        <div className="bill col">
           <h1 className="bill-title">Billing</h1>
           <hr />
           <h1 className="token-num" style={{ color: "red" }}>

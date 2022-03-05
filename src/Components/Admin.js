@@ -87,7 +87,6 @@ function Admin({ user, handleDelete, income }) {
               Complete
             </button>
           </div>
-
         </div>
 
       </div>

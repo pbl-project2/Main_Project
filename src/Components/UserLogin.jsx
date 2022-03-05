@@ -30,18 +30,17 @@ const Login = () => {
     <div className="login">
       <div className="main_login">
         <nav>
-          <h3>UpMenu</h3>
-          <button
-            className="login-btn"
-            onClick={signInWithGoogle}
-          >
+          <h3>
+            Up<span className="icon-span">Menu</span>
+          </h3>
+          <button className="login-btn" onClick={signInWithGoogle}>
             Login as Admin
           </button>
         </nav>
 
         <header>
           <h1 className="heading">
-            Let's Order Some <span>Food...</span>
+            Let's Order Some <span className="food-span">Food...</span>
           </h1>
         </header>
         <div className="input_fields">
