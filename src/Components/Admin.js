@@ -42,11 +42,41 @@ function Admin({ user, handleDelete, income }) {
 
   return (
     <>
+<<<<<<< HEAD
       <div className="order">
         {/* <div className="admin-user">
           
           <h1></h1>
           <p></p>
+=======
+      <div className="container">
+        <div className="adminuser">
+          {user ? (
+            <>
+              <h1>{user.token}</h1>
+              <p>{user.name}</p>
+              <p>{user.mobile}</p>
+              {food.map((item) => (
+                <div className="food-items">
+                  <p>{item.name}</p>
+                  <p> x {item.quantity}</p>
+                  <p>₹{item.price}</p>
+                </div>
+              ))}
+              <p>Total: ₹{user.total}</p>
+              <button
+                className="delete-btn"
+                onClick={() => handleDelete(user.id)}
+              >
+                Delete
+              </button>
+            </>
+          ) : (
+            "No orders right now"
+          )}
+          {/* <h1>{user.token}</h1>
+          <p>{user.name}</p>
+>>>>>>> 899191ecd8149f4a74466b587529760c02f35dac
           <p>{user.mobile}</p>
           {food.map((item) => (
             <div className="food-items">
@@ -58,6 +88,7 @@ function Admin({ user, handleDelete, income }) {
           <p>Total: ₹{user.total}</p>
           <button className="delete-btn" onClick={() => handleDelete(user.id)}>
             Delete
+<<<<<<< HEAD
           </button>
         </div> */}
         <div class="card">
@@ -81,6 +112,9 @@ function Admin({ user, handleDelete, income }) {
               Complete
             </button>
           </div>
+=======
+          </button> */}
+>>>>>>> 899191ecd8149f4a74466b587529760c02f35dac
         </div>
       </div>
     </>
