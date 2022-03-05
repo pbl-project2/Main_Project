@@ -11,18 +11,17 @@ function Bill() {
   const [token, setToken] = useState("");
   const [total, setTotal] = useState(0);
   const [food, setFood] = useState([]);
-  
+
   const handleClick = () => {
     history.push("/");
   };
- 
+
   useEffect(async () => {
     await db // user details
       .collection("users")
       .doc(`${localStorage.getItem("userId")}`)
       .get()
       .then((doc) => {
-        //   console.log(doc.data());
         setName(doc.data().name);
         setToken(doc.data().token);
         setTotal(doc.data().total);
@@ -36,21 +35,58 @@ function Bill() {
         snapshot.forEach((doc) => {
           billArr.push({ ...doc.data(), id: doc.id });
         });
-        // console.log(billArr);
         setFood(billArr);
-        // console.log("BILLARR: ", food);
       });
   }, [db]);
 
   const generatePdf = () => {
-    var doc = new jsPDF('p', "pt", "a4");
-    doc.text(275,90, "BILL");
-    doc.text(100,120, `Name: ${name}`);
-    doc.text(100,140, `Token: #${token}`);
-    doc.text(100,160, `Total: Rs.${total}`);
-    doc.text(100,200, `Food items:\n${food.map((food) => {
-      return `Name: ${food.name}\nQuantity: ${food.quantity}\nPrice: Rs.${food.price}\n\n`
-    })}`);
+    var doc = new jsPDF("portrait", "px", "a4");
+
+    doc.setFontSize(22);
+    doc.setTextColor("#a03989");
+
+    doc.text("CANTEEN TOKEN SYSTEM", 120, 30);
+    doc.text(
+      "__________________________________________________________________",
+      0,
+      40
+    );
+
+    doc.setFontSize(10);
+    doc.setTextColor("white");
+    // doc.text(`Date & Time: ${new Date().toLocaleString()}`, 290, 60);
+    doc.text(`Date & Time: ${new Date().toLocaleString()}`, 290, 60);
+
+    doc.setFontSize(14);
+    doc.setTextColor("black");
+    doc.text(50, 120, `Name: ${name}`);
+
+    doc.text(50, 140, `Token: #${token}`);
+    doc.text(50, 160, `Total: Rs.${total}`);
+
+    doc.setFontSize(16);
+    doc.setTextColor("#a03989");
+    doc.text(50, 200, "Food Items");
+    doc.text(
+      50,
+      220,
+      `${food.map((food) => {
+        return `Name: ${food.name}\nQuantity: ${food.quantity}\nPrice: Rs.${food.price}\n\n`;
+      })}`
+    );
+
+    doc.setTextColor("gray");
+    doc.setFontSize(18);
+    doc.text(`Please pay Rs.${total} at the canteen`, 50, 590);
+
+    doc.setFontSize(14);
+    doc.setTextColor("black");
+    doc.text(
+      "______________________________________________________________________________",
+      0,
+      600
+    );
+    doc.text("Thank you for using our system", 150, 620);
     doc.save(`bill/${token}.pdf`);
   };
 
@@ -83,7 +119,9 @@ function Bill() {
           ))}
           <h1 className="total">Total: ₹{total}</h1>
           <p className="messege">**PAY AT THE CANTEEN**</p>
-          <button className="login-btn" onClick={generatePdf}>Generate PDF</button>
+          <button className="login-btn" onClick={generatePdf}>
+            Generate PDF
+          </button>
         </div>
       </div>
     </>
