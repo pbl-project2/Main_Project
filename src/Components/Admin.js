@@ -42,13 +42,6 @@ function Admin({ user, handleDelete, income }) {
 
   return (
     <>
-<<<<<<< HEAD
-      <div className="order">
-        {/* <div className="admin-user">
-          
-          <h1></h1>
-          <p></p>
-=======
       <div className="container">
         <div className="adminuser">
           {user ? (
@@ -76,7 +69,6 @@ function Admin({ user, handleDelete, income }) {
           )}
           {/* <h1>{user.token}</h1>
           <p>{user.name}</p>
->>>>>>> 899191ecd8149f4a74466b587529760c02f35dac
           <p>{user.mobile}</p>
           {food.map((item) => (
             <div className="food-items">
@@ -88,33 +80,7 @@ function Admin({ user, handleDelete, income }) {
           <p>Total: ₹{user.total}</p>
           <button className="delete-btn" onClick={() => handleDelete(user.id)}>
             Delete
-<<<<<<< HEAD
-          </button>
-        </div> */}
-        <div class="card">
-          <div class="card-header order-title">Featured</div>
-          <div class="card-body">
-            <h2 class="card-token">{user.token}</h2>
-            <h5 class="card-title">{user.name}</h5>
-            {food.map((item) => (
-              <div className="food-items">
-                <p className="admin-food-name">{item.name}</p>
-                <p className="food-quantity"> x{item.quantity}</p>
-                <p className="food-price">₹{item.price}</p>
-              </div>
-            ))}
-            <h5>Total: ₹{user.total}</h5>
-            <button
-              href="#"
-              class="btn btn-primary complete"
-              onClick={() => handleDelete(user.id)}
-            >
-              Complete
-            </button>
-          </div>
-=======
           </button> */}
->>>>>>> 899191ecd8149f4a74466b587529760c02f35dac
         </div>
       </div>
     </>
