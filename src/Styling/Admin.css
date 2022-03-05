@@ -1,49 +1,45 @@
-h1 {
-    display: flex;
-    text-align: center;
-    justify-content: center;
+/* .order{
+  display:flex;
+  flex-direction:row;
 }
+.admin-user{
+  border-bottom:1px solid white;
+  width:40%;
+  display:flex;
+  height:10vh;
+  justify-content:space-between;
+  padding-top:10px; 
 
-.container {
-    display: flex;
 }
+.admin-user-name{
+  width:30px;
+}
+.delete-btn{
+  height:fit-content;
+} */
 
-.adminuser {
-    display: flex;
-    flex-direction: column;
-    width:140px;
-    border: 1px solid #fff;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
-    align-items: center;
+.complete {
+  width: fit-content;
 }
-.login-btn {
-  height: 45px;
-  border: 0px;
-  border-radius: 7px;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    90deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(158, 57, 138, 1) 0%,
-    rgba(255, 0, 33, 1) 100%
-  );
-  width: 9rem;
-  margin-right: 20px;
+.order-title {
+  color: black;
 }
-
-.delete-btn {
-    height: 45px;
-    border: 0px;
-    border-radius: 7px;
-    background: rgb(2, 0, 36);
-    background: linear-gradient(
-      90deg,
-      rgba(2, 0, 36, 1) 0%,
-      rgba(158, 57, 138, 1) 0%,
-      rgba(255, 0, 33, 1) 100%
-    );
-    width: 6rem;
-    margin-top: 5px
+.card {
+  margin-top: 2rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  width: 50%;
+  
+}
+.card-body {
+  /* padding-left: 100px; */
+}
+.food-items {
+  display: flex;
+}
+.food-quantity {
+  padding-left: 10px;
+  padding-left: 20px;
+}
+.food-price {
+  padding-left: 10px;
 }

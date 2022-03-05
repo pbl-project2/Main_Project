@@ -116,16 +116,16 @@ span {
   height: 45px;
   border: 0px;
   border-radius: 7px;
-  /* background: rgb(2, 0, 36);
+  background: rgb(2, 0, 36);
   background: linear-gradient(
     90deg,
     rgba(2, 0, 36, 1) 0%,
     rgba(158, 57, 138, 1) 0%,
     rgba(255, 0, 33, 1) 100%
-  ); */
-  background: linear-gradient(-45deg, red, green, blue, yellow);
+  );
+  /* background: linear-gradient(-45deg, red, green, blue, yellow);
   background-size: 400% 400%;
-  animation: animate 15s ease infinite;
+  animation: animate 15s ease infinite; */
   width: 9rem;
   margin-right: 20px;
   cursor: pointer;
