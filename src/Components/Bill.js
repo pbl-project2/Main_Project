@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useDebugValue, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../Styling/Login.css";
 import "../Styling/Bill.css";
 import { db } from "../firebase/firebase";
 import jsPDF from "jspdf";
+import ReactStars from "react-rating-stars-component";
 
 function Bill() {
   const history = useHistory();
@@ -11,6 +12,7 @@ function Bill() {
   const [token, setToken] = useState("");
   const [total, setTotal] = useState(0);
   const [food, setFood] = useState([]);
+  const [rating, setRating] = useState(null);
 
   const handleClick = () => {
     history.push("/");
@@ -38,6 +40,12 @@ function Bill() {
         setFood(billArr);
       });
   }, [db]);
+
+  useEffect(() => {
+    db.collection('users').doc(`${localStorage.getItem("userId")}`).update({
+      rating: rating
+    });
+  }, [rating]);
 
   const generatePdf = () => {
     var doc = new jsPDF("portrait", "px", "a4");
@@ -132,10 +140,10 @@ function Bill() {
               <h5>Wanna rate it?</h5>
             </div>
 
-            <div class="row">
-              <div class="col-lg-12">
-                <div class="star-rating">
-                  <span class="fa fa-star-o" data-rating="1"></span>
+            <div className="row">
+              <div className="col-lg-12">
+                <div className="star-rating">
+                  {/* <span class="fa fa-star-o" data-rating="1"></span>
                   <span class="fa fa-star-o" data-rating="2"></span>
                   <span class="fa fa-star-o" data-rating="3"></span>
                   <span class="fa fa-star-o" data-rating="4"></span>
@@ -145,6 +153,13 @@ function Bill() {
                     name="whatever1"
                     class="rating-value"
                     value="2.56"
+                  /> */}
+                  {/* <StarRating /> */}
+                  <ReactStars 
+                    count={5}
+                    onChange={(value) => setRating(value)}
+                    size={100}
+                    activeColor={'#0072b1'}
                   />
                 </div>
               </div>
