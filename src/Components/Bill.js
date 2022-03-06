@@ -161,6 +161,7 @@ function Bill() {
                     size={100}
                     activeColor={'#0072b1'}
                   />
+                  { rating ? (<h3>Thank you for rating us</h3>) : null }
                 </div>
               </div>
             </div>
