@@ -35,9 +35,7 @@ function App() {
     await db.collection("users").doc(`${id}`).get().then(
       (doc) => {
         setIncome(income + doc.data().total);
-        console.log("INCOME: ", income);
         setOrder(order + 1);
-        console.log("ORDER: ", order);
       }
     );
     await db.collection("users").doc(`${id}`).delete();
