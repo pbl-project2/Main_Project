@@ -26,20 +26,25 @@ function Customer() {
       let random = uniqueRandom(1000, 9999);
       let token = random();
       localStorage.setItem("userId", userId);
-      await db.collection("users").doc(`${userId}`).set({
-        id: userId,
-        name: name,
-        mobile: mobile,
-        timestamp: timestamp,
-        token: token,
-      });
-      history.push(`/foodmenu/${userId}`);
-      setName("");
-      setMobile(0);
+      if (mobile.toString().length === 10) {
+        await db.collection("users").doc(`${userId}`).set({
+          id: userId,
+          name: name,
+          mobile: mobile,
+          timestamp: timestamp,
+          token: token,
+        });
+        history.push(`/foodmenu/${userId}`);
+        setName("");
+        setMobile(0);
+      } else {
+        alert("Please enter valid 10 digit mobile number");
+      }
     } else {
       alert("Name or mobile number is missing");
     }
   };
+
   return (
     <div className="login">
       <div className="main_login">
