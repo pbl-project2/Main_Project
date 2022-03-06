@@ -13,7 +13,8 @@ const Login = () => {
       .then((result) => {
         if (
           result.user.email === "mrudulpatel04@gmail.com" ||
-          result.user.email === "atharvakurumbhatte47@gmail.com"
+          result.user.email === "atharvakurumbhatte47@gmail.com" ||
+          result.user.email === "limbhoremayu7@gmail.com"
         ) {
           history.push(`/admin/${localStorage.getItem("o")}`);
         }
