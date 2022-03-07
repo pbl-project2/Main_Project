@@ -43,3 +43,13 @@
 .food-price {
   padding-left: 10px;
 }
+
+::-webkit-scrollbar{
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb{
+  /* background: linear-gradient(transparent, #30ff00);  */
+  background: #0072b1;
+  border-radius: 6px;
+}
