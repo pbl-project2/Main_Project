@@ -27,7 +27,7 @@ function Admin({ user, handleDelete, income }) {
         </div>
         </div>
       <div className="container">
-        <div className="adminuser">
+        {/* <div className="adminuser">
           {user ? (
             <>
               <h1>{user.token}</h1>
@@ -50,8 +50,8 @@ function Admin({ user, handleDelete, income }) {
             </>
           ) : (
             "No orders right now"
-          )}
-          <h1>{user.token}</h1>
+          )} */}
+          {/* <h1>{user.token}</h1>
           <p>{user.name}</p>
           <p>{user.mobile}</p>
           {food.map((item) => (
@@ -64,8 +64,8 @@ function Admin({ user, handleDelete, income }) {
           <p>Total: ₹{user.total}</p>
           <button className="delete-btn" onClick={() => handleDelete(user.id)}>
             Delete
-          </button>
-        </div>
+          </button> */}
+        {/* </div> */}
         <div class="card">
           <div class="card-header order-title">Featured</div>
           <div class="card-body">
