@@ -61,9 +61,8 @@ function Bill() {
     );
 
     doc.setFontSize(10);
-    doc.setTextColor("white");
-    // doc.text(`Date & Time: ${new Date().toLocaleString()}`, 290, 60);
-    doc.text(`Date & Time: ${new Date().toLocaleString()}`, 290, 60);
+    doc.setTextColor("black");
+    doc.text(50, 60, `Date & Time: ${new Date().toLocaleString()}`);
 
     doc.setFontSize(14);
     doc.setTextColor("black");
