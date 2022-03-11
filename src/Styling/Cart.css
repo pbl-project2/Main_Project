@@ -4,11 +4,14 @@
   border: none;
 
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  height: fit-content;
+  /* height: fit-content; */
+  height: 30rem;
   padding: 2rem;
 
   position: fixed;
-  width:fit-content
+  width:fit-content;
+
+  overflow-y: scroll;
   
   /* 888 */
 }
