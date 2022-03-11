@@ -1,5 +1,5 @@
 * {
-  background: #161616;
+  /* background: #161616; */
 }
 
 .admin-nav {
@@ -11,6 +11,7 @@
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  background: #161616;
 }
 
 .bill {
@@ -103,3 +104,7 @@ hr {
   /* color: #a03989; */
   /* transition: color 200ms !important; 
 }  */
+
+.MuiSvgIcon-root {
+  background: none !important;
+}

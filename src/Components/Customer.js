@@ -3,13 +3,17 @@ import { db } from "../firebase/firebase";
 import firebase from "firebase";
 import { v4 as uuid } from "uuid";
 import uniqueRandom from "unique-random";
+import { useHistory } from "react-router-dom";
+import { Snackbar } from "@material-ui/core";
 
 //Styling
 import "../Styling/Login.css";
-import { useHistory } from "react-router-dom";
 
 function Customer() {
   const [userId, setUserId] = useState("");
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+
   useEffect(() => {
     let id = uuid();
     setUserId(id);
@@ -17,6 +21,10 @@ function Customer() {
   const history = useHistory();
   const [name, setName] = useState("");
   const [mobile, setMobile] = useState(0);
+
+  const handleSnackbarClose = () => {
+    setShowSnackbar(false);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,10 +46,16 @@ function Customer() {
         setName("");
         setMobile(0);
       } else {
-        alert("Please enter valid 10 digit mobile number");
+        // alert("Please enter valid 10 digit mobile number");
+        setSnackbarMessage("Please enter valid 10 digit mobile number");
+        setShowSnackbar(true);
       }
     } else {
-      alert("Name or mobile number is missing");
+      setShowSnackbar(true);
+      setSnackbarMessage("Name or mobile number is missing");
+      // alert("Name or mobile number is missing");
+      {
+      }
     }
   };
 
@@ -56,6 +70,14 @@ function Customer() {
             Home Page
           </button>
         </nav>
+        {
+          <Snackbar
+            anchorOrigin={{ vertical: "center", horizontal: "center" }}
+            open={showSnackbar}
+            autoHideDuration={3000}
+            onClose={handleSnackbarClose}
+            message={snackbarMessage}
+          />}
         <header>
           <h1 className="heading">Login to Order food</h1>
         </header>
