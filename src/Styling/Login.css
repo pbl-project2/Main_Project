@@ -129,7 +129,7 @@ h3 {
   /* background: linear-gradient(-45deg, red, green, blue, yellow);
   background-size: 400% 400%;
   animation: animate 15s ease infinite; */
-  width: 9rem;
+  width: 9.5rem;
   margin-right: 20px;
   cursor: pointer;
 }
@@ -137,4 +137,26 @@ nav {
   display: flex;
   justify-content: space-between;
   padding-top: 2rem;
+}
+
+.snackbar {
+  background: red;
+  color: white;
+  border-radius: 5px;
+  top: 5px;
+  transform: translate(-50%, -50%);
+}
+
+.snackbar_message {
+  background: red;
+}
+
+@media(prefers-color-scheme: light) {
+  *{
+    /* background-color: #f8edeb !important; */
+    /* best background color which suits on light mode*/
+    background-color: #f8edeb !important;
+    /* background-color:  !important; */
+    color: black;
+  }
 }

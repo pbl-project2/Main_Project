@@ -2,6 +2,7 @@ import { Cancel } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
+import firebase from "firebase";
 import "../Styling/Cart.css";
 
 const Cart = () => {
@@ -10,7 +11,7 @@ const Cart = () => {
   const [sum, setSum] = useState(total);
   const history = useHistory();
   const userId = localStorage.getItem("userId");
-  
+
   useEffect(() => {
     db.collection("users")
       .doc(`${localStorage.getItem("userId")}`)
@@ -32,10 +33,12 @@ const Cart = () => {
           // console.log("SUM: ", sumPrice);
         }
         setSum(sumPrice);
-        db.collection("users").doc(`${localStorage.getItem("userId")}`).update({
-          total: sumPrice,
-          completed: false,
-        });
+        db.collection("users")
+          .doc(`${localStorage.getItem("userId")}`)
+          .update({
+            total: sumPrice,
+            completed: false,
+          });
         // console.log("SUM1: ", sumPrice);
       });
   }, [db]);
@@ -52,15 +55,15 @@ const Cart = () => {
 
   const handleCheckout = async () => {
     await db.collection("users").doc(`${userId}`).set({
-      name: localStorage.getItem("name"),
-      mobile: localStorage.getItem("mobile"),
+      name: sessionStorage.getItem("name"),
+      mobile: sessionStorage.getItem("mobile"),
       total: sum,
-      token: localStorage.getItem("token"),
-      timestamp: localStorage.getItem("timestamp"),
-      id: localStorage.getItem("id"), 
+      token: sessionStorage.getItem("token"),
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      id: userId,
     });
     history.push(`/bill/${userId}`);
-  }; 
+  };
 
   return (
     <div className="main-cart">
@@ -87,10 +90,7 @@ const Cart = () => {
         {sum > 0 ? (
           <>
             <h3>Total: ₹{sum}</h3>
-            <button
-              className="checkout-btn"
-              onClick={handleCheckout}
-            >
+            <button className="checkout-btn" onClick={handleCheckout}>
               CHECKOUT
             </button>
           </>

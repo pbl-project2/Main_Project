@@ -5,6 +5,7 @@ import "../Styling/Bill.css";
 import { db } from "../firebase/firebase";
 import jsPDF from "jspdf";
 import ReactStars from "react-rating-stars-component";
+import { Download } from "@mui/icons-material";
 
 function Bill() {
   const history = useHistory();
@@ -13,7 +14,11 @@ function Bill() {
   const [total, setTotal] = useState(0);
   const [food, setFood] = useState([]);
   const [rating, setRating] = useState(null);
-
+  const [fivestars, setFivestars] = useState(0);
+  const [fourstars, setFourstars] = useState(0);
+  const [threestars, setThreestars] = useState(0);
+  const [twostars, setTwostars] = useState(0);
+  const [onestars, setOnestars] = useState(0);
   const handleClick = () => {
     history.push("/");
   };
@@ -45,6 +50,36 @@ function Bill() {
     db.collection('users').doc(`${localStorage.getItem("userId")}`).update({
       rating: rating
     });
+    if(rating === 5) {
+      let rating = fivestars + 1;
+      db.collection('admin').doc("5 stars").set({
+        rating: rating
+      })
+    }
+    else if(rating === 4) {
+      let rating = fourstars + 1;
+      db.collection('admin').doc("4 stars").set({
+        rating: rating
+      })
+    }
+    else if(rating === 3) {
+      let rating = threestars + 1;
+      db.collection('admin').doc("3 stars").set({
+        rating: rating
+      })
+    }
+    else if(rating === 2) {
+      let rating = twostars + 1;
+      db.collection('admin').doc("2 stars").set({
+        rating: rating
+      })
+    }
+    else if(rating === 1) {
+      let rating = onestars + 1;
+      db.collection('admin').doc("1 stars").set({
+        rating: rating
+      })
+    }
   }, [rating]);
 
   const generatePdf = () => {
@@ -129,7 +164,7 @@ function Bill() {
           <h1 className="total">Total: ₹{total}</h1>
           <p className="messege">**PAY AT THE CANTEEN**</p>
           <button className="login-btn pdf-btn" onClick={generatePdf}>
-            Generate PDF
+            Download PDF <Download />
           </button>
         </div>
         <div className="rating-div col">
@@ -154,13 +189,13 @@ function Bill() {
                     value="2.56"
                   /> */}
                   {/* <StarRating /> */}
-                  <ReactStars 
+                  <ReactStars
                     count={5}
                     onChange={(value) => setRating(value)}
                     size={100}
-                    activeColor={'#0072b1'}
+                    activeColor={"#0072b1"}
                   />
-                  { rating ? (<h3>Thank you for rating us</h3>) : null }
+                  {rating ? <h3>Thank you for rating us</h3> : null}
                 </div>
               </div>
             </div>

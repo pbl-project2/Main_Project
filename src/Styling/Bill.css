@@ -12,6 +12,7 @@
   justify-content: center;
   margin-top: 20px;
   background: #161616;
+  height: 87vh;
 }
 
 .bill {
@@ -89,6 +90,7 @@ hr {
   /* margin-top: 5rem;
     text-align: left; */
   width: fit-content;
+  height: 70vh;
 }
 
 .star-rating {
