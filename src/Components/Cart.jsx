@@ -49,6 +49,19 @@ const Cart = () => {
       .delete();
     // alert("Item Deleted");
   };
+
+  const handleCheckout = async () => {
+    await db.collection("users").doc(`${userId}`).set({
+      name: localStorage.getItem("name"),
+      mobile: localStorage.getItem("mobile"),
+      total: sum,
+      token: localStorage.getItem("token"),
+      timestamp: localStorage.getItem("timestamp"),
+      id: localStorage.getItem("id"), 
+    });
+    history.push(`/bill/${userId}`);
+  }; 
+
   return (
     <div className="main-cart">
       <h3 className="title">Your Cart</h3>
@@ -76,7 +89,7 @@ const Cart = () => {
             <h3>Total: ₹{sum}</h3>
             <button
               className="checkout-btn"
-              onClick={() => history.push(`/bill/${userId}`)}
+              onClick={handleCheckout}
             >
               CHECKOUT
             </button>

@@ -35,13 +35,18 @@ function Customer() {
       let token = random();
       localStorage.setItem("userId", userId);
       if (mobile.toString().length === 10) {
-        await db.collection("users").doc(`${userId}`).set({
-          id: userId,
-          name: name,
-          mobile: mobile,
-          timestamp: timestamp,
-          token: token,
-        });
+        localStorage.setItem("name", name);
+        localStorage.setItem("mobile", mobile);
+        localStorage.setItem("token", token);
+        localStorage.setItem("timestamp", timestamp);
+        localStorage.setItem("id", userId);
+        // await db.collection("users").doc(`${userId}`).set({
+        //   id: userId,
+        //   name: name,
+        //   mobile: mobile,
+        //   timestamp: timestamp,
+        //   token: token,
+        // });
         history.push(`/foodmenu/${userId}`);
         setName("");
         setMobile(0);

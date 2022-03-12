@@ -1,6 +1,6 @@
 {
-  "name": "my-ap",
-  "version": "0.1.0",
+  "name": "my-app",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.8.1",
@@ -14,7 +14,9 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.3",
     "@testing-library/user-event": "^13.5.0",
+    "annyang": "^2.6.1",
     "bootstrap": "^5.1.3",
+    "darkmode-js": "^1.5.7",
     "firebase": "^8.10.0",
     "jspdf": "^2.5.1",
     "react": "^17.0.2",
