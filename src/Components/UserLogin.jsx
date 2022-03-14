@@ -63,9 +63,6 @@ const Login = () => {
           <h3>
             Up<span className="icon-span">Menu</span>
           </h3>
-          <button onClick={handleVoice}>
-            <Mic />
-          </button>
           <button className="login-btn" onClick={signInWithGoogle}>
             Login as Admin
           </button>

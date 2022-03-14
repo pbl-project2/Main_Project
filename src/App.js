@@ -7,15 +7,15 @@ import Admin from "./Components/Admin";
 import { db } from "./firebase/firebase";
 import Customer from "./Components/Customer";
 import Bill from "./Components/Bill";
-import { v4 as uuid } from 'uuid';
+import { v4 as uuid } from "uuid";
 import AdminDetails from "./Components/AdminDetails";
 import AdminMenu from "./Components/AdminMenu";
 import MenuNew from "./Components/MenuNew";
-import AdminNav from "./Components/AdminNav"
+import AdminNav from "./Components/AdminNav";
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [income, setIncome] = useState(0);
+  const [sales, setSales] = useState(0);
   const [order, setOrder] = useState(0);
 
   useEffect(() => {
@@ -29,17 +29,29 @@ function App() {
         // console.log(userArr);
         setUsers(userArr);
       });
-  }, [db]);  
+  }, [db]);
 
   const handleDelete = async (id) => {
-    await db.collection("users").doc(`${id}`).get().then(
-      (doc) => {
-        setIncome(income + doc.data().total);
+    var finalOrder = 0;
+    var finalSales = 0;
+    await db
+      .collection("users")
+      .doc(`${id}`)
+      .get()
+      .then((doc) => {
+        setSales(sales + doc.data().total);
         setOrder(order + 1);
-      }
-    );
+        finalSales = sales + doc.data().total;
+        finalOrder = order + 1;
+      });
+      console.log(finalSales,", ", finalOrder);
+
+    await db.collection("admin").doc("details").update({
+      sales: finalSales,
+      orders: finalOrder,
+    });
     await db.collection("users").doc(`${id}`).delete();
-  };
+  };  
 
   let id = uuid();
   localStorage.setItem("o", id);
@@ -57,7 +69,12 @@ function App() {
             <FoodMenu />
           </Route>
           <Route path={`/admin`}>
-            <Admin user={users} handleDelete={handleDelete}></Admin>
+            <Admin
+              user={users}
+              sales={sales}
+              orders={order}
+              handleDelete={handleDelete}
+            ></Admin>
             <div className="container">
               {/* <h2>Income: ₹{income} </h2>
               <h2>Orders: {order}</h2>
@@ -71,9 +88,9 @@ function App() {
               ))} */}
             </div>
           </Route>
-          <Route path="/details">
+          {/* <Route path="/details">
             <AdminDetails income={income} order={order} />
-          </Route>
+          </Route> */}
           <Route path="/menu">
             <AdminMenu />
           </Route>

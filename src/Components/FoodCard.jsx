@@ -3,21 +3,9 @@ import { db } from "../firebase/firebase";
 import "../Styling/FoodMenu.css";
 
 const FoodCard = (props) => {
-  // const foodItem = {
-  //   name: "",
-  //   price: "",
-  //   type: "",
-  //   id: "",
-  // };
   const [quantity, setQuantity] = useState(1);
 
   const handleClick = async () => {
-    // let foodItem = {
-    //   name: props.name,
-    //   price: props.price,
-    //   type: props.type,
-    //   id: props.id,
-    // };
     const id = localStorage.getItem("userId");
     if(quantity > 0){
     await db
