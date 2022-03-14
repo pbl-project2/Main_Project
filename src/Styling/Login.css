@@ -135,8 +135,9 @@ h3 {
 }
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
   padding-top: 2rem;
+  
 }
 
 .snackbar {

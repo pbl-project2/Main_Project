@@ -18,38 +18,37 @@
   height:fit-content;
 } */
 
-.complete {
+/* .complete {
   width: fit-content;
-}
-.order-title {
+} */
+/* .order-title {
   color: black;
-}
-.card {
+} */
+/* .card {
   margin-top: 2rem;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   width: 50%;
-  
-}
-.card-body {
+} */
+/* .card-body {
   /* padding-left: 100px; */
-}
-.food-items {
+ /*  */
+/* .food-items {
   display: flex;
-}
-.food-quantity {
+} */
+/* .food-quantity {
   padding-left: 10px;
   padding-left: 20px;
-}
-.food-price {
+} */
+/* .food-price {
   padding-left: 10px;
-}
-
-::-webkit-scrollbar{
+} */
+/* 
+::-webkit-scrollbar {
   width: 8px;
-}
+} */
 
-::-webkit-scrollbar-thumb{
+/* ::-webkit-scrollbar-thumb {
   /* background: linear-gradient(transparent, #30ff00);  */
-  background: #0072b1;
-  border-radius: 6px;
-}
+  /* background: #0072b1;
+  border-radius: 6px; */
+

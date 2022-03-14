@@ -6,12 +6,12 @@ import FoodMenu from "./Components/FoodMenu";
 import Admin from "./Components/Admin";
 import { db } from "./firebase/firebase";
 import Customer from "./Components/Customer";
-import AdminNav from "./Components/AdminNav";
 import Bill from "./Components/Bill";
 import { v4 as uuid } from 'uuid';
 import AdminDetails from "./Components/AdminDetails";
 import AdminMenu from "./Components/AdminMenu";
 import MenuNew from "./Components/MenuNew";
+import AdminNav from "./Components/AdminNav"
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -57,18 +57,18 @@ function App() {
             <FoodMenu />
           </Route>
           <Route path={`/admin`}>
-            <AdminNav />
+            <Admin user={users} handleDelete={handleDelete}></Admin>
             <div className="container">
               {/* <h2>Income: ₹{income} </h2>
-              <h2>Orders: {order}</h2> */}
-              {/* <h2>Orders Served: {order}</h2> */}
-              {users.map((user) => (
+              <h2>Orders: {order}</h2>
+              <h2>Orders Served: {order}</h2> */}
+              {/* {users.map((user) => (
                 <Admin
                   key={user.id}
                   user={user}
-                  handleDelete={handleDelete}
+                  
                 />
-              ))}
+              ))} */}
             </div>
           </Route>
           <Route path="/details">
