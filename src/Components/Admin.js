@@ -47,7 +47,6 @@ function Admin({ user, handleDelete }) {
         <h1>Admin Details</h1>
         <h1>Sales: ₹{sales}</h1>
         <h1>Orders Served: {orders}</h1>
-        <h1>hello world 11111</h1>
       </div>
       <div>
         {/* For customer data */}
