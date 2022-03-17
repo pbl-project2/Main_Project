@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import "../Styling/AdminMenu.css";
+import EditFood from "./EditFood";
 
 function AdminMenu() {
   const history = useHistory();
@@ -20,6 +21,11 @@ function AdminMenu() {
 
   const handleDelete = async (id) => {
     await db.collection("foodMenu").doc(`${id}`).delete();
+  };
+
+  const handleEdit = (food) => {
+    localStorage.setItem("food", JSON.stringify(food));
+    history.push(`/edit/${food.id}`);
   };
 
   return (
@@ -59,6 +65,14 @@ function AdminMenu() {
                       className="btn btn-delete"
                     >
                       Delete
+                    </button>
+                  </td>
+                  <td>
+                    <button
+                      onClick={() => handleEdit(food)}
+                      className="btn btn-delete"
+                    >
+                      Edit
                     </button>
                   </td>
                 </tr>

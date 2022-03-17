@@ -6,6 +6,7 @@ import { db } from "../firebase/firebase";
 import jsPDF from "jspdf";
 import ReactStars from "react-rating-stars-component";
 import { Download } from "@mui/icons-material";
+import firebase from "firebase";
 
 function Bill() {
   const history = useHistory();
@@ -51,32 +52,32 @@ function Bill() {
       rating: rating
     });
     if(rating === 5) {
-      let rating = fivestars + 1;
-      db.collection('admin').doc("5 stars").set({
+      let rating = firebase.firestore.FieldValue.increment(1);
+      db.collection('admin').doc("5 stars").update({
         rating: rating
       })
     }
     else if(rating === 4) {
-      let rating = fourstars + 1;
-      db.collection('admin').doc("4 stars").set({
+      let rating = firebase.firestore.FieldValue.increment(1);
+      db.collection('admin').doc("4 stars").update({
         rating: rating
       })
     }
     else if(rating === 3) {
-      let rating = threestars + 1;
-      db.collection('admin').doc("3 stars").set({
+      let rating = firebase.firestore.FieldValue.increment(1);
+      db.collection('admin').doc("3 stars").update({
         rating: rating
       })
     }
     else if(rating === 2) {
-      let rating = twostars + 1;
-      db.collection('admin').doc("2 stars").set({
+      let rating = firebase.firestore.FieldValue.increment(1);
+      db.collection('admin').doc("2 stars").update({
         rating: rating
       })
     }
     else if(rating === 1) {
-      let rating = onestars + 1;
-      db.collection('admin').doc("1 stars").set({
+      let rating = firebase.firestore.FieldValue.increment(1);
+      db.collection('admin').doc("1 stars").update({
         rating: rating
       })
     }

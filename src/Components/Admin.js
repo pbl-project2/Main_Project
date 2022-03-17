@@ -5,10 +5,16 @@ import "bootstrap/dist/css/bootstrap.css";
 import AdminNav from "../Components/AdminNav";
 import CustomerData from "./CustomerData";
 
-function Admin({ user, handleDelete }) {
+function Admin({ user, handleDelete, sales, orders }) {
   const [food, setFood] = useState([]);
-  const [sales, setSales] = useState(0);
-  const [orders, setOrders] = useState(0);
+  const [finalSales, setFinalSales] = useState(0);
+  const [finalOrders, setFinalOrders] = useState(0);
+  const [finalArr, setFinalArr] = useState([]);
+  const [one, setOne] = useState(0);
+  const [two, setTwo] = useState(0);
+  const [three, setThree] = useState(0);
+  const [four, setFour] = useState(0);
+  const [five, setFive] = useState(0);
 
   useEffect(() => {
     db.collection("users")
@@ -24,29 +30,49 @@ function Admin({ user, handleDelete }) {
       });
   }, [db]);
 
-  useEffect(() => {
-    db.collection("admin")
-      .doc("details")
-      .get()
-      .then((doc) => {
-        console.log("Doc: ", doc.data());
-        var sales = doc.data().sales;
-        var orders = doc.data().orders;
-        if (doc.exists) {
-          setSales(sales);
-          setOrders(orders);
-        }
-      });
-  }, [sales, orders]);
+  useEffect(()=> {
+    db.collection("admin").doc("1 stars").get().then((doc) => {
+      setOne(doc.data().rating);
+    });
+    db.collection("admin").doc("2 stars").get().then((doc) => {
+      setTwo(doc.data().rating);
+    });
+    db.collection("admin").doc("3 stars").get().then((doc) => {
+      setThree(doc.data().rating);
+    });
+    db.collection("admin").doc("4 stars").get().then((doc) => {
+      setFour(doc.data().rating);
+    });
+    db.collection("admin").doc("5 stars").get().then((doc) => {
+      setFive(doc.data().rating);
+    });
+  }, [db]);
 
+  useEffect(() => {
+    db.collection("admin").doc("details").get().then((doc) => {
+      let arr = [];
+      arr.push(doc.data());
+      setFinalArr(arr);
+      console.log("ARR: ", arr);
+    });
+  }, []);
   return (
     <>
       <AdminNav />
       <div>
         {/* For income and orders served */}
         <h1>Admin Details</h1>
-        <h1>Sales: ₹{sales}</h1>
-        <h1>Orders Served: {orders}</h1>
+        <h1>Sales: ₹{sessionStorage.getItem(`sales/1`)}</h1>
+        <h1>Orders Served: {sessionStorage.getItem(`order/1`)}</h1>
+      </div>
+      <div className="ratings">
+        <h1>Ratings</h1>
+        <h5>⭐⭐⭐⭐⭐: {five}</h5>
+        <h5>⭐⭐⭐⭐: {four}</h5>
+        <h5>⭐⭐⭐: {three}</h5>
+        <h5>⭐⭐: {two}</h5>
+        <h5>⭐: {one}</h5>
+        <hr />
       </div>
       <div>
         {/* For customer data */}

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { db } from "../firebase/firebase";
 import firebase from "firebase";
 import { v4 as uuid } from "uuid";
@@ -44,14 +44,12 @@ function Customer() {
         setName("");
         setMobile(0);
       } else {
-        // alert("Please enter valid 10 digit mobile number");
         setSnackbarMessage("Please enter valid 10 digit mobile number");
         setShowSnackbar(true);
       }
     } else {
       setShowSnackbar(true);
       setSnackbarMessage("Name or mobile number is missing");
-      // alert("Name or mobile number is missing");
       {
       }
     }
