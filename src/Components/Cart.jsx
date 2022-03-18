@@ -9,6 +9,9 @@ const Cart = () => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [sum, setSum] = useState(total);
+  const [sales, setSales] = useState(sum);
+  const [orders, setOrders] = useState(0);
+
   const history = useHistory();
   const userId = localStorage.getItem("userId");
 
@@ -22,24 +25,18 @@ const Cart = () => {
         snapshot.forEach((doc) => {
           cartArr.push({ ...doc.data(), id: doc.id });
         });
-        // console.log("ARRAY: ", cartArr);
         setCart(cartArr);
-        // console.log("CART: ", cartArr);
-        // console.log("Length: ", cartArr.length);
         let sumPrice = 0;
         for (let i = 0; i < cartArr.length; i++) {
           sumPrice += cartArr[i].price;
           setTotal(sumPrice);
-          // console.log("SUM: ", sumPrice);
         }
         setSum(sumPrice);
         db.collection("users")
           .doc(`${localStorage.getItem("userId")}`)
           .update({
             total: sumPrice,
-            completed: false,
           });
-        // console.log("SUM1: ", sumPrice);
       });
   }, [db]);
 
@@ -50,7 +47,6 @@ const Cart = () => {
       .collection("food")
       .doc(`${id}`)
       .delete();
-    // alert("Item Deleted");
   };
 
   const handleCheckout = async () => {
@@ -61,6 +57,12 @@ const Cart = () => {
       token: sessionStorage.getItem("token"),
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       id: userId,
+    });
+    setSales(firebase.firestore.FieldValue.increment(sum));
+    setOrders(firebase.firestore.FieldValue.increment(1));
+    await db.collection("admin").doc("details").update({
+      orders: firebase.firestore.FieldValue.increment(1),
+      sales: firebase.firestore.FieldValue.increment(sum),
     });
     history.push(`/bill/${userId}`);
   };
