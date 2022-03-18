@@ -21,17 +21,19 @@ function CustomerData({ user, handleDelete }) {
 
   return (
     <>
+      
       <div className="customer-data">
+        
         <h3>#{user.token}</h3>
         <h3>{user.name}</h3>
         {food.map((fooditem) => (
-          <div>
-            <h3>{fooditem.name}</h3>
+          <div className="admin-food-items">
+            <h3>{fooditem.name}</h3> 
             <h3> x {fooditem.quantity}</h3>
             <h3>₹{fooditem.price}</h3>
           </div>
         ))}
-        <h3>Total: ₹{user.total}</h3>
+        <h3 className="payment">Total: ₹{user.total}</h3>
         <button className="login-btn" onClick={() => handleDelete(user.id)}>Complete</button>
       </div>
     </>

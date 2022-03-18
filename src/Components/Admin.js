@@ -42,12 +42,22 @@ function Admin({ user, handleDelete }) {
   return (
     <>
       <AdminNav />
-      <div>
+      <div className="upper-body container">
         {/* For income and orders served */}
-        <h1>Admin Details</h1>
-        <h1>Sales: ₹{sales}</h1>
-        <h1>Orders Served: {orders}</h1>
+        <div className=" divs-combine row">
+          <div className="income col">
+            <h1>You've Earned</h1>
+            <h3>Sales: ₹{sales}</h3>
+            {/* <h1>Orders Served: {orders}</h1> */}
+          </div>
+          <div className="served-orders col">
+            <h1>You've Served</h1>
+            {/* <h1>Sales: ₹{sales}</h1> */}
+            <h3>{orders} orders</h3>
+          </div>
+        </div>
       </div>
+      <p className="orders-title">You need to serve these orders...Hurry Up!</p>
       <div>
         {/* For customer data */}
         {user.map((user) => (

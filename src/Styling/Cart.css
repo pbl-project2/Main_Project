@@ -9,10 +9,10 @@
   padding: 2rem;
 
   position: fixed;
-  width:fit-content;
+  width: fit-content;
 
   overflow-y: scroll;
-  
+
   /* 888 */
 }
 
@@ -35,7 +35,7 @@
   cursor: pointer;
 }
 
-.checkout-btn{
+.checkout-btn {
   height: 45px;
   border: 0;
   border-radius: 7px;
@@ -46,9 +46,10 @@
     rgba(158, 57, 138, 1) 0%,
     rgba(255, 0, 33, 1) 100%
   ); */
-  background: linear-gradient(-45deg, red, green, blue, yellow);
+  /* background: linear-gradient(-45deg, red, green, blue, yellow);
   background-size: 400% 400%;
-  animation: animate 15s ease infinite;
+  animation: animate 15s ease infinite; */
+  background: -webkit-linear-gradient(#a03989, orange);
   width: 9rem;
   cursor: pointer;
 }

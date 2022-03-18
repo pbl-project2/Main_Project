@@ -31,7 +31,7 @@
 } */
 /* .card-body {
   /* padding-left: 100px; */
- /*  */
+/*  */
 /* .food-items {
   display: flex;
 } */
@@ -49,6 +49,38 @@
 
 /* ::-webkit-scrollbar-thumb {
   /* background: linear-gradient(transparent, #30ff00);  */
-  /* background: #0072b1;
+/* background: #0072b1;
   border-radius: 6px; */
 
+.upper-body {
+  
+  margin-top: 3rem;
+  
+  
+}
+.income {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 20px;
+  margin:5rem;
+  text-align: center;
+  padding: 20px 20px;
+  
+  
+}
+.served-orders {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 20px;
+  margin:5rem;
+  text-align: center;
+  padding: 20px 20px;
+  
+}
+.divs-combine{
+  display:flex;
+  
+}
+.orders-title{
+  color:gray;
+  font-size:20px;
+  margin-top:-2rem;
+}

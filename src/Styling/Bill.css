@@ -1,5 +1,6 @@
 * {
   /* background: #161616; */
+  /* overflow-y:hidden; */
 }
 
 .admin-nav {
@@ -90,11 +91,12 @@ hr {
   /* margin-top: 5rem;
     text-align: left; */
   width: fit-content;
-  height: 70vh;
+  height: 78vh;
 }
 
 .star-rating {
   font-size: 50px;
+  height:fit-content;
 }
 
 /* input[type="radio"] {
