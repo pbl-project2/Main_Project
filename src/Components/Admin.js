@@ -7,14 +7,7 @@ import CustomerData from "./CustomerData";
 
 function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
   const [food, setFood] = useState([]);
-  const [finalSales, setFinalSales] = useState(0);
-  const [finalOrders, setFinalOrders] = useState(0);
   const [finalArr, setFinalArr] = useState([]);
-  const [one, setOne] = useState(0);
-  const [two, setTwo] = useState(0);
-  const [three, setThree] = useState(0);
-  const [four, setFour] = useState(0);
-  const [five, setFive] = useState(0);
 
   useEffect(() => {
     db.collection("users")
@@ -29,40 +22,7 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
         // console.log("FOOD ARR: ", foodArr);
       });
   }, [db]);
-
-  useEffect(() => {
-    db.collection("admin")
-      .doc("1 stars")
-      .get()
-      .then((doc) => {
-        setOne(doc.data().rating);
-      });
-    db.collection("admin")
-      .doc("2 stars")
-      .get()
-      .then((doc) => {
-        setTwo(doc.data().rating);
-      });
-    db.collection("admin")
-      .doc("3 stars")
-      .get()
-      .then((doc) => {
-        setThree(doc.data().rating);
-      });
-    db.collection("admin")
-      .doc("4 stars")
-      .get()
-      .then((doc) => {
-        setFour(doc.data().rating);
-      });
-    db.collection("admin")
-      .doc("5 stars")
-      .get()
-      .then((doc) => {
-        setFive(doc.data().rating);
-      });
-  }, [db]);
-
+  
   useEffect(() => {
     db.collection("admin")
       .doc("details")
@@ -94,10 +54,7 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
       <AdminNav admin={admin} adminName={adminName} />
       <div className="upper-body container">
         {/* For income and orders served */}
-<<<<<<< HEAD
 
-=======
->>>>>>> 9f72314a3b57416989793cdff0fdb44271141860
         <div className=" divs-combine row">
           <div className="income col">
             <h1>You've Earned</h1>
@@ -110,34 +67,16 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
             <h3>{orders} orders</h3>
           </div>
         </div>
-<<<<<<< HEAD
-=======
         {/* <h1>Admin Details</h1> */}
       </div>
-      <div className="ratings">
-        <h1>Ratings</h1>
-        <h5>⭐⭐⭐⭐⭐: {five}</h5>
-        <h5>⭐⭐⭐⭐: {four}</h5>
-        <h5>⭐⭐⭐: {three}</h5>
-        <h5>⭐⭐: {two}</h5>
-        <h5>⭐: {one}</h5>
-        <hr />
->>>>>>> 9f72314a3b57416989793cdff0fdb44271141860
-      </div>
-
+  
       <p className="orders-title">You need to serve these orders...Hurry Up!</p>
       <div className="all-orders">
         {/* For customer data */}
-        {user?.map((item) => (
+        {user?.map((user) => (
           <CustomerData
-<<<<<<< HEAD
             key={user.id}
-            q
             user={user}
-=======
-            key={item.id}
-            user={item}
->>>>>>> 9f72314a3b57416989793cdff0fdb44271141860
             handleDelete={handleDelete}
             food={food}
           />

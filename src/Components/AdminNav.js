@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from "react";
 import { useHistory } from "react-router-dom";
 import { auth } from "../firebase/firebase";
@@ -23,28 +22,6 @@ function AdminNav() {
           <LogoutIcon />
           Logout
         </button>
-=======
-import React, { useEffect, useState } from 'react'
-import { useHistory } from 'react-router-dom';
-import { auth, db } from '../firebase/firebase';
-import "../Styling/Login.css";
-
-function AdminNav({ admin, adminName }) {
-  
-
-    const history = useHistory();
-    const handleClick = () => {
-      auth.signOut();
-      history.push("/");
-    };
-  return (
-    <div className="admin-nav">
-        <nav>
-            <h3>UpMenu</h3>
-            {/* <button className='login-btn' onClick={() => history.push("/details")}>View Details</button> */}
-            <button className='login-btn' onClick={() => history.push("/menu")}>Menu</button>
-            <button className='login-btn' onClick={handleClick}>Logout</button>
->>>>>>> 9f72314a3b57416989793cdff0fdb44271141860
       </nav>
     </div>
   );
