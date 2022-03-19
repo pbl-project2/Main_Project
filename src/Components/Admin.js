@@ -4,6 +4,8 @@ import "../Styling/Admin.css";
 import "bootstrap/dist/css/bootstrap.css";
 import AdminNav from "../Components/AdminNav";
 import CustomerData from "./CustomerData";
+import QRCode from "qrcode";
+import { QrCode } from "@mui/icons-material";
 
 function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
   const [food, setFood] = useState([]);
@@ -22,7 +24,15 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
         // console.log("FOOD ARR: ", foodArr);
       });
   }, [db]);
-  
+
+  useEffect(() => {
+    QRCode.toDataURL(`http://localhost:3000/foodmenu/${admin.email}`).then(
+      (data) => {
+        localStorage.setItem("src", data);
+      }
+    );
+  }, []);
+
   useEffect(() => {
     db.collection("admin")
       .doc("details")
@@ -39,7 +49,7 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
 
   useEffect(() => {
     console.log("ADMIN: ", admin);
-    let name="";
+    let name = "";
     console.log(admin.email);
     db.collection("admin")
       .doc(`${admin.email}`)
@@ -69,7 +79,6 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
         </div>
         {/* <h1>Admin Details</h1> */}
       </div>
-  
       <p className="orders-title">You need to serve these orders...Hurry Up!</p>
       <div className="all-orders">
         {/* For customer data */}

@@ -32,7 +32,7 @@ function AdminMenu() {
     <div>
       <nav>
         <h3>UpMenu</h3>
-        <button className="login-btn" onClick={() => history.push("/admin")}>
+        <button className="login-btn" onClick={() => history.push("/admin-login")}>
           Back
         </button>
         <button className="login-btn" onClick={() => history.push("/new")}>

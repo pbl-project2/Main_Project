@@ -4,11 +4,17 @@ import { auth } from "../firebase/firebase";
 import "../Styling/Login.css";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
+import { QrCode2 } from "@mui/icons-material";
+import QRCode from 'qrcode';
+
 function AdminNav() {
   const history = useHistory();
   const handleClick = () => {
     history.push("/");
     auth.signOut();
+  };
+  const handleDownload = () => {
+
   };
   return (
     <div className="admin-nav">
@@ -17,6 +23,11 @@ function AdminNav() {
         {/* <button className='login-btn' onClick={() => history.push("/details")}>View Details</button> */}
         <button className="settings-btn" onClick={() => history.push("/menu")}>
           <SettingsIcon />
+        </button>
+        <button style={{border: "none"}}>
+          <a href={localStorage.getItem("src")} download style={{textDecoration: "none"}}>
+            <QrCode2 />
+          </a>
         </button>
         <button className="logout-btn" onClick={handleClick}>
           <LogoutIcon />
