@@ -94,10 +94,6 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
       <AdminNav admin={admin} adminName={adminName} />
       <div className="upper-body container">
         {/* For income and orders served */}
-<<<<<<< HEAD
-
-=======
->>>>>>> 9f72314a3b57416989793cdff0fdb44271141860
         <div className=" divs-combine row">
           <div className="income col">
             <h1>You've Earned</h1>
@@ -110,19 +106,6 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
             <h3>{orders} orders</h3>
           </div>
         </div>
-<<<<<<< HEAD
-=======
-        {/* <h1>Admin Details</h1> */}
-      </div>
-      <div className="ratings">
-        <h1>Ratings</h1>
-        <h5>⭐⭐⭐⭐⭐: {five}</h5>
-        <h5>⭐⭐⭐⭐: {four}</h5>
-        <h5>⭐⭐⭐: {three}</h5>
-        <h5>⭐⭐: {two}</h5>
-        <h5>⭐: {one}</h5>
-        <hr />
->>>>>>> 9f72314a3b57416989793cdff0fdb44271141860
       </div>
 
       <p className="orders-title">You need to serve these orders...Hurry Up!</p>
@@ -130,14 +113,9 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
         {/* For customer data */}
         {user?.map((item) => (
           <CustomerData
-<<<<<<< HEAD
             key={user.id}
             q
             user={user}
-=======
-            key={item.id}
-            user={item}
->>>>>>> 9f72314a3b57416989793cdff0fdb44271141860
             handleDelete={handleDelete}
             food={food}
           />
