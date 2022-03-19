@@ -12,7 +12,7 @@ import AdminDetails from "./Components/AdminDetails";
 import AdminMenu from "./Components/AdminMenu";
 import MenuNew from "./Components/MenuNew";
 import AdminNav from "./Components/AdminNav";
-import useDarkMode from "use-dark-mode";
+
 import EditFood from "./Components/EditFood";
 import AdminLogin from "./Components/AdminLogin";
 
