@@ -1,18 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
-import { auth } from '../firebase/firebase';
+import { auth, db } from '../firebase/firebase';
 import "../Styling/Login.css";
 
-function AdminNav() {
+function AdminNav({ admin, adminName }) {
+  
+
     const history = useHistory();
     const handleClick = () => {
-        history.push("/");
-        auth.signOut();
+      auth.signOut();
+      history.push("/");
     };
   return (
     <div className="admin-nav">
         <nav>
-            <h3>UpMenu</h3>
+            {/* <h3>UpMenu</h3> */}
+            <h3>{adminName}</h3>
             {/* <button className='login-btn' onClick={() => history.push("/details")}>View Details</button> */}
             <button className='login-btn' onClick={() => history.push("/menu")}>Menu</button>
             <button className='login-btn' onClick={handleClick}>Logout</button>

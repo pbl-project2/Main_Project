@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../firebase/firebase";
+import { app, db } from "../firebase/firebase";
 import "../Styling/Admin.css";
 import "bootstrap/dist/css/bootstrap.css";
 import AdminNav from "../Components/AdminNav";
 import CustomerData from "./CustomerData";
 
-function Admin({ user, handleDelete, sales, orders }) {
+function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
   const [food, setFood] = useState([]);
   const [finalSales, setFinalSales] = useState(0);
   const [finalOrders, setFinalOrders] = useState(0);
@@ -30,38 +30,70 @@ function Admin({ user, handleDelete, sales, orders }) {
       });
   }, [db]);
 
-  useEffect(()=> {
-    db.collection("admin").doc("1 stars").get().then((doc) => {
-      setOne(doc.data().rating);
-    });
-    db.collection("admin").doc("2 stars").get().then((doc) => {
-      setTwo(doc.data().rating);
-    });
-    db.collection("admin").doc("3 stars").get().then((doc) => {
-      setThree(doc.data().rating);
-    });
-    db.collection("admin").doc("4 stars").get().then((doc) => {
-      setFour(doc.data().rating);
-    });
-    db.collection("admin").doc("5 stars").get().then((doc) => {
-      setFive(doc.data().rating);
-    });
+  useEffect(() => {
+    db.collection("admin")
+      .doc("1 stars")
+      .get()
+      .then((doc) => {
+        setOne(doc.data().rating);
+      });
+    db.collection("admin")
+      .doc("2 stars")
+      .get()
+      .then((doc) => {
+        setTwo(doc.data().rating);
+      });
+    db.collection("admin")
+      .doc("3 stars")
+      .get()
+      .then((doc) => {
+        setThree(doc.data().rating);
+      });
+    db.collection("admin")
+      .doc("4 stars")
+      .get()
+      .then((doc) => {
+        setFour(doc.data().rating);
+      });
+    db.collection("admin")
+      .doc("5 stars")
+      .get()
+      .then((doc) => {
+        setFive(doc.data().rating);
+      });
   }, [db]);
 
   useEffect(() => {
-    db.collection("admin").doc("details").get().then((doc) => {
-      let arr = [];
-      arr.push(doc.data());
-      setFinalArr(arr);
-      console.log("ARR: ", arr);
-    });
+    db.collection("admin")
+      .doc("details")
+      .get()
+      .then((doc) => {
+        let arr = [];
+        arr.push(doc.data());
+        setFinalArr(arr);
+        console.log("ARR: ", arr);
+      });
   }, []);
+
+  const [adminName, setAdminName] = useState("");
+
+  useEffect(() => {
+    console.log("ADMIN: ", admin);
+    let name="";
+    console.log(admin.email);
+    db.collection("admin")
+      .doc(`${admin.email}`)
+      .onSnapshot((doc) => {
+        name = doc.data().name;
+        setAdminName(name);
+      });
+  }, [db]);
+
   return (
     <>
-      <AdminNav />
+      <AdminNav admin={admin} adminName={adminName} />
       <div className="upper-body container">
         {/* For income and orders served */}
-<<<<<<< HEAD
         <div className=" divs-combine row">
           <div className="income col">
             <h1>You've Earned</h1>
@@ -74,10 +106,7 @@ function Admin({ user, handleDelete, sales, orders }) {
             <h3>{orders} orders</h3>
           </div>
         </div>
-=======
-        <h1>Admin Details</h1>
-        <h1>Sales: ₹{sessionStorage.getItem(`sales/1`)}</h1>
-        <h1>Orders Served: {sessionStorage.getItem(`order/1`)}</h1>
+        {/* <h1>Admin Details</h1> */}
       </div>
       <div className="ratings">
         <h1>Ratings</h1>
@@ -87,15 +116,14 @@ function Admin({ user, handleDelete, sales, orders }) {
         <h5>⭐⭐: {two}</h5>
         <h5>⭐: {one}</h5>
         <hr />
->>>>>>> d7a49012ebc3e9eeb98a737ae89a9aca66bc24a1
       </div>
       <p className="orders-title">You need to serve these orders...Hurry Up!</p>
       <div>
         {/* For customer data */}
-        {user.map((user) => (
+        {user?.map((item) => (
           <CustomerData
-            key={user.id}
-            user={user}
+            key={item.id}
+            user={item}
             handleDelete={handleDelete}
             food={food}
           />

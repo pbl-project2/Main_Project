@@ -1,0 +1,71 @@
+.form1 {
+    width: 400px;
+    padding: 40px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: black !important;
+    text-align: center;
+}
+
+.form1 h1 {
+    width: 300px;
+    background: black !important;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.form1 input[type="text"],
+.form1 input[type="password"],
+.form1 input[type="tel"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    width: 200px;
+    padding: 14px 10px;   
+    border: 2px solid #3498db;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+.form1 input[type="text"]:focus,
+.form1 input[type="password"]:focus,
+.form1 input[type="tel"]:focus {
+    width: 280px;
+    border-color: #2ecc71;
+}
+
+.login_btn {
+    background: black !important;
+}
+
+.login_btn .btn {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    padding: 14px 40px;   
+    border: 2px solid #2ecc71;
+    outline: none;
+    color: white;
+    font-size: 14px;
+    width: 150px;
+    border-radius: 24px;
+    transition: 0.25s;  
+    cursor: pointer;
+}
+
+.login_btn .btn:hover {
+    background: #2ecc71;
+}
+
+.login_btn span, .login_btn p {
+    background: #000 !important;
+}
