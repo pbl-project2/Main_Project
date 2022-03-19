@@ -1,0 +1,54 @@
+.customer-data{
+    display:flex;
+    justify-content: space-between;
+    margin-top:3rem;
+    width:80%;
+    margin-left:120px;
+    
+    
+    
+}
+.order-content{
+    display:none;
+    position:absolute;
+    background-color: #f1f1f1;
+    min-width:  15rem;
+    
+    z-index:1;
+    
+
+}   
+
+.orders-admin{
+    position:relative;
+    display:inline-block;
+}
+
+.orders-admin:hover .order-content{
+    display:block;
+    
+    
+}
+.admin-food-items{
+    display:flex;
+}
+table th{
+    padding:10px;
+    
+    width:100px;
+    background-color: #f1f1f1;
+    border: 1px solid black ;
+    
+    color:black;
+    
+}
+table {
+    width:300px;
+    
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius:20px;
+    
+}
+.user-name-order{
+    text-transform: capitalize;
+}

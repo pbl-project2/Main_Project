@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { db } from "../firebase/firebase";
 import "../Styling/Login.css";
+import "../Styling/CustomerData.css";
+import ArrowDropIcon from "@mui/icons-material/ArrowDropDown";
+
 
 function CustomerData({ user, handleDelete }) {
   const [food, setFood] = useState([]);
@@ -21,20 +24,33 @@ function CustomerData({ user, handleDelete }) {
 
   return (
     <>
-      
       <div className="customer-data">
-        
-        <h3>#{user.token}</h3>
-        <h3>{user.name}</h3>
-        {food.map((fooditem) => (
-          <div className="admin-food-items">
-            <h3>{fooditem.name}</h3> 
-            <h3> x {fooditem.quantity}</h3>
-            <h3>₹{fooditem.price}</h3>
+        <h5>#{user.token}</h5>
+        <h5 className="user-name-order">{user.name}</h5>
+        <div className="orders-admin">
+          <div className="arrow-icon">
+            <ArrowDropIcon />
           </div>
-        ))}
-        <h3 className="payment">Total: ₹{user.total}</h3>
-        <button className="login-btn" onClick={() => handleDelete(user.id)}>Complete</button>
+          <div className="order-content">
+            {food.map((fooditem) => (
+              <div className="admin-food-items">
+                <table>
+                  <tr>
+                    <th className="name-order">{fooditem.name}</th>
+                    <th className="quantity-order"> x {fooditem.quantity}</th>
+                    <th className="price-order">₹{fooditem.price}</th>
+                  </tr>
+                </table>
+                
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <h5 className="payment">Total: ₹{user.total}</h5>
+        <button className="login-btn" onClick={() => handleDelete(user.id)}>
+          Complete
+        </button>
       </div>
     </>
   );

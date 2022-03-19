@@ -54,8 +54,8 @@
     background-position: 0% 50%;
   }
 }
-span{
-  color:#0e76a8;
+span {
+  color: #0e76a8;
 }
 header {
   text-align: center;
@@ -135,9 +135,8 @@ h3 {
 }
 nav {
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   padding-top: 2rem;
-  
 }
 
 .snackbar {
@@ -152,12 +151,34 @@ nav {
   background: red;
 }
 
-@media(prefers-color-scheme: light) {
-  *{
+@media (prefers-color-scheme: light) {
+  * {
     /* background-color: #f8edeb !important; */
     /* best background color which suits on light mode*/
     background-color: #f8edeb !important;
     /* background-color:  !important; */
     color: black;
   }
+}
+.settings-btn {
+  border: none;
+  margin-left: 60rem;
+}
+.settings-btn:hover {
+  transform: rotate(50deg);
+  transition: 0.3s;
+}
+.logout-btn {
+  border: 1px solid white;
+  padding: 10px;
+  border-radius: 10px;
+}
+.logout-btn:hover {
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(158, 57, 138, 1) 0%,
+    rgba(255, 0, 33, 1) 100%
+  );
+  transition: 0.5s;
 }
