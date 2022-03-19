@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../firebase/firebase";
+import { app, db } from "../firebase/firebase";
 import "../Styling/Admin.css";
 import "bootstrap/dist/css/bootstrap.css";
 import AdminNav from "../Components/AdminNav";
 import CustomerData from "./CustomerData";
 
-function Admin({ user, handleDelete, sales, orders }) {
+function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
   const [food, setFood] = useState([]);
   const [finalSales, setFinalSales] = useState(0);
   const [finalOrders, setFinalOrders] = useState(0);
@@ -74,12 +74,30 @@ function Admin({ user, handleDelete, sales, orders }) {
         console.log("ARR: ", arr);
       });
   }, []);
+
+  const [adminName, setAdminName] = useState("");
+
+  useEffect(() => {
+    console.log("ADMIN: ", admin);
+    let name="";
+    console.log(admin.email);
+    db.collection("admin")
+      .doc(`${admin.email}`)
+      .onSnapshot((doc) => {
+        name = doc.data().name;
+        setAdminName(name);
+      });
+  }, [db]);
+
   return (
     <>
-      <AdminNav />
+      <AdminNav admin={admin} adminName={adminName} />
       <div className="upper-body container">
         {/* For income and orders served */}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9f72314a3b57416989793cdff0fdb44271141860
         <div className=" divs-combine row">
           <div className="income col">
             <h1>You've Earned</h1>
@@ -92,16 +110,34 @@ function Admin({ user, handleDelete, sales, orders }) {
             <h3>{orders} orders</h3>
           </div>
         </div>
+<<<<<<< HEAD
+=======
+        {/* <h1>Admin Details</h1> */}
+      </div>
+      <div className="ratings">
+        <h1>Ratings</h1>
+        <h5>⭐⭐⭐⭐⭐: {five}</h5>
+        <h5>⭐⭐⭐⭐: {four}</h5>
+        <h5>⭐⭐⭐: {three}</h5>
+        <h5>⭐⭐: {two}</h5>
+        <h5>⭐: {one}</h5>
+        <hr />
+>>>>>>> 9f72314a3b57416989793cdff0fdb44271141860
       </div>
 
       <p className="orders-title">You need to serve these orders...Hurry Up!</p>
       <div className="all-orders">
         {/* For customer data */}
-        {user.map((user) => (
+        {user?.map((item) => (
           <CustomerData
+<<<<<<< HEAD
             key={user.id}
             q
             user={user}
+=======
+            key={item.id}
+            user={item}
+>>>>>>> 9f72314a3b57416989793cdff0fdb44271141860
             handleDelete={handleDelete}
             food={food}
           />

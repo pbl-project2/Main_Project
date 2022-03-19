@@ -14,6 +14,7 @@ import MenuNew from "./Components/MenuNew";
 import AdminNav from "./Components/AdminNav";
 
 import EditFood from "./Components/EditFood";
+import AdminLogin from "./Components/AdminLogin";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -42,6 +43,7 @@ function App() {
         });
         // console.log(userArr);
         setUsers(userArr);
+        localStorage.setItem("usersID", users.id);
       });
   }, [db]);
 
@@ -77,7 +79,7 @@ function App() {
           </Route>
           <Route path={`/admin`}>
             <Admin
-              user={users}
+              // user={users}
               sales={sales}
               orders={order}
               handleDelete={handleDelete}
@@ -106,6 +108,9 @@ function App() {
           </Route>
           <Route path="/edit">
             <EditFood />
+          </Route>
+          <Route path="/admin-login">
+            <AdminLogin users={users} />
           </Route>
           <Route path="/bill">
             <Bill />

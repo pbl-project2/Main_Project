@@ -63,7 +63,7 @@ const Login = () => {
           <h3>
             Up<span className="icon-span">Menu</span>
           </h3>
-          <button className="login-btn" onClick={signInWithGoogle}>
+          <button className="login-btn" onClick={() => history.push("/admin-login")}>
             Login as Admin
           </button>
         </nav>
