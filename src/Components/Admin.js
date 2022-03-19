@@ -4,17 +4,12 @@ import "../Styling/Admin.css";
 import "bootstrap/dist/css/bootstrap.css";
 import AdminNav from "../Components/AdminNav";
 import CustomerData from "./CustomerData";
+import QRCode from "qrcode";
+import { QrCode } from "@mui/icons-material";
 
 function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
   const [food, setFood] = useState([]);
-  const [finalSales, setFinalSales] = useState(0);
-  const [finalOrders, setFinalOrders] = useState(0);
   const [finalArr, setFinalArr] = useState([]);
-  const [one, setOne] = useState(0);
-  const [two, setTwo] = useState(0);
-  const [three, setThree] = useState(0);
-  const [four, setFour] = useState(0);
-  const [five, setFive] = useState(0);
 
   useEffect(() => {
     db.collection("users")
@@ -31,37 +26,12 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
   }, [db]);
 
   useEffect(() => {
-    db.collection("admin")
-      .doc("1 stars")
-      .get()
-      .then((doc) => {
-        setOne(doc.data().rating);
-      });
-    db.collection("admin")
-      .doc("2 stars")
-      .get()
-      .then((doc) => {
-        setTwo(doc.data().rating);
-      });
-    db.collection("admin")
-      .doc("3 stars")
-      .get()
-      .then((doc) => {
-        setThree(doc.data().rating);
-      });
-    db.collection("admin")
-      .doc("4 stars")
-      .get()
-      .then((doc) => {
-        setFour(doc.data().rating);
-      });
-    db.collection("admin")
-      .doc("5 stars")
-      .get()
-      .then((doc) => {
-        setFive(doc.data().rating);
-      });
-  }, [db]);
+    QRCode.toDataURL(`http://localhost:3000/foodmenu/${admin.email}`).then(
+      (data) => {
+        localStorage.setItem("src", data);
+      }
+    );
+  }, []);
 
   useEffect(() => {
     db.collection("admin")
@@ -79,7 +49,7 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
 
   useEffect(() => {
     console.log("ADMIN: ", admin);
-    let name="";
+    let name = "";
     console.log(admin.email);
     db.collection("admin")
       .doc(`${admin.email}`)
@@ -106,15 +76,14 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
             <h3>{orders} orders</h3>
           </div>
         </div>
+        {/* <h1>Admin Details</h1> */}
       </div>
-
       <p className="orders-title">You need to serve these orders...Hurry Up!</p>
       <div className="all-orders">
         {/* For customer data */}
-        {user?.map((item) => (
+        {user?.map((user) => (
           <CustomerData
             key={user.id}
-            q
             user={user}
             handleDelete={handleDelete}
             food={food}

@@ -19,6 +19,7 @@
     "darkmode-js": "^1.5.7",
     "firebase": "^8.10.0",
     "jspdf": "^2.5.1",
+    "qrcode": "^1.5.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",
     "react-dark-mode-toggle": "^0.2.0",

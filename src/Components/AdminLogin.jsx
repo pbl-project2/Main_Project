@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { app, db } from "../firebase/firebase";
 import Login from "./Login";
 import { v4 as uuid } from "uuid";
-import QRCode from "qrcode";
 import { useHistory } from "react-router-dom";
 import Admin from "./Admin";
 
@@ -13,18 +12,21 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
+  const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
+  
   const history = useHistory();
 
   //qrcode
   const [src, setSrc] = useState("");
 
   useEffect(() => {
-    var text = "https://www.google.com";
-    QRCode.toDataURL(text).then((data) => {
-      // setSrc(data);
-      localStorage.setItem("qrcode", data);
-    });
-  }, []);
+    db.collection("admin").doc(`${user.email}`).get().then((doc) => {
+      if (doc.exists) {
+        setSrc(doc.data().qrCode);
+      }
+    })
+  }, [db]);
 
   const clearInputs = () => {
     setPassword("");
@@ -72,25 +74,23 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
             email: user.email,
             name: localStorage.getItem("name"),
             contact: localStorage.getItem("contact"),
-            qrCode: localStorage.getItem("qrcode"),
+            // qrCode: localStorage.getItem("qrcode"),
+            qrcode: src,
           });
         console.log("db fired");
-        localStorage.removeItem("qrcode");
-        // localStorage.removeItem("name");
-        // localStorage.removeItem("contact");
-        // localStorage.removeItem("adminId");
       } else {
         setUser("");
-        localStorage.removeItem("qrcode");
-        localStorage.removeItem("name");
-        localStorage.removeItem("contact");
-        localStorage.removeItem("adminId");
       }
     });
   };
 
   const handleSignUp = () => {
     clearErrors();
+    var text = `http://localhost:3000/foodmenu/${localStorage.getItem("adminId")}`;
+    // QRCode.toDataURL(text).then((data) => {
+    //   // setSrc(data);
+    //   localStorage.setItem("qrcode", data);
+    // });
     app
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -122,6 +122,7 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
           handleDelete={handleDelete}
           user={users}
           email={email}
+          src={src}
           logout={handleLogout}
           text="http://localhost:3000/admin"
         />

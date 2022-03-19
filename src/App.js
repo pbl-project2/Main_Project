@@ -110,7 +110,7 @@ function App() {
             <EditFood />
           </Route>
           <Route path="/admin-login">
-            <AdminLogin users={users} />
+            <AdminLogin users={users} handleDelete={handleDelete} />
           </Route>
           <Route path="/bill">
             <Bill />
