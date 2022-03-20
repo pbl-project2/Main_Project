@@ -162,7 +162,7 @@ nav {
 }
 .settings-btn {
   border: none;
-  padding-right: 20px;
+  margin-right: 20px;
 }
 .settings-btn:hover {
   transform: rotate(50deg);
