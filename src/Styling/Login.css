@@ -162,7 +162,7 @@ nav {
 }
 .settings-btn {
   border: none;
-  margin-left: 60rem;
+  padding-right: 20px;
 }
 .settings-btn:hover {
   transform: rotate(50deg);
@@ -180,5 +180,12 @@ nav {
     rgba(158, 57, 138, 1) 0%,
     rgba(255, 0, 33, 1) 100%
   );
-  transition: 0.5s;
+  transition: 0.5s; 
+}
+.admin-nav-whole{
+  display:flex;
+  justify-content:last baseline;
+}
+.qr-code-download{
+  padding-right:20px;
 }

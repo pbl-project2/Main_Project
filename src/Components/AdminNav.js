@@ -5,7 +5,7 @@ import "../Styling/Login.css";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { QrCode2 } from "@mui/icons-material";
-import QRCode from 'qrcode';
+import QRCode from "qrcode";
 
 function AdminNav() {
   const history = useHistory();
@@ -13,26 +13,33 @@ function AdminNav() {
     history.push("/");
     auth.signOut();
   };
-  const handleDownload = () => {
-
-  };
+  const handleDownload = () => {};
   return (
     <div className="admin-nav">
-      <nav>
+      <nav className="admin-nav-whole">
         <h3>UpMenu</h3>
         {/* <button className='login-btn' onClick={() => history.push("/details")}>View Details</button> */}
-        <button className="settings-btn" onClick={() => history.push("/menu")}>
-          <SettingsIcon />
-        </button>
-        <button style={{border: "none"}}>
-          <a href={localStorage.getItem("src")} download style={{textDecoration: "none"}}>
-            <QrCode2 />
-          </a>
-        </button>
-        <button className="logout-btn" onClick={handleClick}>
-          <LogoutIcon />
-          Logout
-        </button>
+        <div className="admin-nav-right">
+          <button
+            className="settings-btn"
+            onClick={() => history.push("/menu")}
+          >
+            <SettingsIcon />
+          </button>
+          <button style={{ border: "none" }} className="qr-code-download">
+            <a
+              href={localStorage.getItem("src")}
+              download
+              style={{ textDecoration: "none" }}
+            >
+              <QrCode2 />
+            </a>
+          </button>
+          <button className="logout-btn" onClick={handleClick}>
+            <LogoutIcon />
+            Logout
+          </button>
+        </div>
       </nav>
     </div>
   );
