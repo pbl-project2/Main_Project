@@ -2,25 +2,35 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import "../Styling/AdminMenu.css";
-import EditFood from "./EditFood";
 
-function AdminMenu() {
+function AdminMenuSeparate() {
   const history = useHistory();
   const [food, setFood] = useState([]);
-  const [foodId, setFoodId] = useState("");
   useEffect(() => {
-    db.collection("foodMenu").onSnapshot((snapshot) => {
-      let foodArr = [];
-      snapshot.forEach((doc) => {
-        foodArr.push({ ...doc.data(), id: doc.id });
+    // db.collection("foodMenu").onSnapshot((snapshot) => {
+    //   let foodArr = [];
+    //   snapshot.forEach((doc) => {
+    //     foodArr.push({ ...doc.data(), id: doc.id });
+    //   });
+    //   setFood(foodArr);
+    //   // console.log(foodArr);
+    // });
+    db.collection("admin")
+      .doc(`${email}`)
+      .collection("foodMenu")
+      .onSnapshot((snapshot) => {
+        let foodArr = [];
+        snapshot.forEach((doc) => {
+          foodArr.push({ ...doc.data(), id: doc.id });
+        });
+        setFood(foodArr);
+        // console.log(foodArr);
       });
-      setFood(foodArr);
-      // console.log(foodArr);
-    });
   }, [db]);
 
   const handleDelete = async (id) => {
-    await db.collection("foodMenu").doc(`${id}`).delete();
+    // await db.collection("foodMenu").doc(`${id}`).delete();
+    await db.collection("admin").doc(`${email}`).collection("foodMenu").doc(`${id}`).delete();
   };
 
   const handleEdit = (food) => {
@@ -34,10 +44,16 @@ function AdminMenu() {
     <div>
       <nav>
         <h3>UpMenu</h3>
-        <button className="login-btn" onClick={() => history.push("/admin-login")}>
+        <button
+          className="login-btn"
+          onClick={() => history.push(`/admin-login/${email}`)} 
+        >
           Back
         </button>
-        <button className="login-btn" onClick={() => history.push(`/new/${email}`)}>
+        <button
+          className="login-btn"
+          onClick={() => history.push(`/separate-new/${email}`)}
+        >
           Add New Food Item
         </button>
       </nav>
@@ -89,4 +105,4 @@ function AdminMenu() {
   );
 }
 
-export default AdminMenu;
+export default AdminMenuSeparate;

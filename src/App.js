@@ -15,6 +15,8 @@ import AdminNav from "./Components/AdminNav";
 
 import EditFood from "./Components/EditFood";
 import AdminLogin from "./Components/AdminLogin";
+import SeparateFoodMenuNew from "./Components/SeparateFoodMenuNew";
+import AdminMenuSeparate from "./Components/AdminMenuSeparate";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -114,6 +116,12 @@ function App() {
           </Route>
           <Route path="/bill">
             <Bill />
+          </Route>
+          <Route path="/separate-menu">
+            <AdminMenuSeparate />
+          </Route>
+          <Route path="/separate-new">
+            <SeparateFoodMenuNew />
           </Route>
         </Switch>
       </Router>

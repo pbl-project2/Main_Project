@@ -10,6 +10,8 @@ import { QrCode } from "@mui/icons-material";
 function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
   const [food, setFood] = useState([]);
   const [finalArr, setFinalArr] = useState([]);
+  const [adminDetails, setAdminDetails] = useState([]);
+  const [adminEmail, setAdminEmail] = useState("");
 
   useEffect(() => {
     db.collection("users")
@@ -26,12 +28,36 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
   }, [db]);
 
   useEffect(() => {
-    QRCode.toDataURL(`http://localhost:3000/foodmenu/${admin.email}`).then(
-      (data) => {
-        localStorage.setItem("src", data);
-      }
-    );
-  }, []);
+    db.collection("admin")
+      .doc(`${admin.email}`)
+      .get()
+      .then((docs) => {
+        let arr = [docs.data()];
+        setAdminDetails(arr);
+        setAdminEmail(arr[0].email);
+        console.log("ADMIN DETAILS: ", arr);
+        console.log("ADMIN Name: ", arr[0].email);
+      });
+  }, [db]);
+
+  useEffect(async () => {
+    await QRCode.toDataURL(
+      `http://localhost:3000/foodmenu/${adminDetails[0].email}`
+    ).then((data) => {
+      localStorage.setItem("src", data);
+      db.collection("admin").doc(`${admin.email}`).update({
+        qrcode: data,
+      });
+    });
+  }, [adminDetails]);
+
+  // useEffect(() => {
+  //   QRCode.toDataURL(`http://localhost:3000/foodmenu/${admin.email}`).then(
+  //     (data) => {
+  //       localStorage.setItem("src", data);
+  //     }
+  //   );
+  // }, []);
 
   useEffect(() => {
     db.collection("admin")
@@ -61,7 +87,7 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
 
   return (
     <>
-      <AdminNav admin={admin} adminName={adminName} />
+      <AdminNav admin={admin} adminEmail={adminEmail} />
       <div className="upper-body container">
         {/* For income and orders served */}
         <div className=" divs-combine row">
@@ -90,10 +116,6 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
           />
         ))}
       </div>
-      {/* <AdminNav />
-      {user.map((user) => (
-        < key={user.id} user={user} />
-      ))} */}
     </>
   );
 }

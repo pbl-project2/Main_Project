@@ -5,15 +5,13 @@ import "../Styling/Login.css";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { QrCode2 } from "@mui/icons-material";
-import QRCode from "qrcode";
 
-function AdminNav() {
+function AdminNav({adminEmail}) {
   const history = useHistory();
   const handleClick = () => {
     history.push("/");
     auth.signOut();
   };
-  const handleDownload = () => {};
   return (
     <div className="admin-nav">
       <nav className="admin-nav-whole">
@@ -22,7 +20,7 @@ function AdminNav() {
         <div className="admin-nav-right">
           <button
             className="settings-btn"
-            onClick={() => history.push("/menu")}
+            onClick={() => history.push(`/separate-menu/${adminEmail}`)}
           >
             <SettingsIcon />
           </button>
