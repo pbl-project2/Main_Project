@@ -40,7 +40,7 @@ function Customer() {
         sessionStorage.setItem("token", token);
         sessionStorage.setItem("timestamp", timestamp);
         sessionStorage.setItem("id", userId);
-        history.push(`/foodmenu/${userId}`);
+        history.push(`/foodmenu/${window.location.pathname.split("/")[2]}`);
         setName("");
         setMobile(0);
       } else {

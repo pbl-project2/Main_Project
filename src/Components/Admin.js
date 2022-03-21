@@ -5,13 +5,44 @@ import "bootstrap/dist/css/bootstrap.css";
 import AdminNav from "../Components/AdminNav";
 import CustomerData from "./CustomerData";
 import QRCode from "qrcode";
-import { QrCode } from "@mui/icons-material";
 
 function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
   const [food, setFood] = useState([]);
   const [finalArr, setFinalArr] = useState([]);
   const [adminDetails, setAdminDetails] = useState([]);
   const [adminEmail, setAdminEmail] = useState("");
+  const [users, setUsers] = useState([]);
+
+  // useEffect(async () => {
+  //   await db
+  //     .collection("users")
+  //     .where("email", "==", window.location.pathname.split("/")[2])
+  //     .orderBy("timestamp", "asc")
+  //     .onSnapshot((snapshot) => {
+  //       let userArr = [];
+  //       snapshot.forEach((doc) => {
+  //         userArr.push({ ...doc.data(), id: doc.id });
+  //       });
+  //       setUsers(userArr);
+  //       console.log(userArr);
+  //       localStorage.setItem("userId", users.id);
+  //     });
+  // }, [db]);
+  useEffect(async () => {
+    await db
+      .collection("users")
+      .where("email", "==", window.location.pathname.split("/")[2])
+      .orderBy("timestamp", "asc")
+      .onSnapshot((snapshot) => {
+        let userArr = [];
+        snapshot.forEach((doc) => {
+          userArr.push({ ...doc.data(), id: doc.id });
+        });
+        setUsers(userArr);
+        console.log(userArr);
+        localStorage.setItem("userId", users.id);
+      });
+  }, [db, users]);
 
   useEffect(() => {
     db.collection("users")
@@ -42,7 +73,8 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
 
   useEffect(async () => {
     await QRCode.toDataURL(
-      `http://localhost:3000/foodmenu/${adminDetails[0].email}`
+      // `http://localhost:3000/foodmenu/${adminDetails[0].email}`
+      `http://localhost:3000/customer-login/${adminDetails[0].email}`
     ).then((data) => {
       localStorage.setItem("src", data);
       db.collection("admin").doc(`${admin.email}`).update({
@@ -104,10 +136,14 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
         </div>
         {/* <h1>Admin Details</h1> */}
       </div>
+      {/* {users.length === 0 ? (
+        <p className="orders-title">It's calm for right now!!</p>
+      ) : (
+        <> */}
       <p className="orders-title">You need to serve these orders...Hurry Up!</p>
       <div className="all-orders">
         {/* For customer data */}
-        {user?.map((user) => (
+        {users?.map((user) => (
           <CustomerData
             key={user.id}
             user={user}
@@ -116,6 +152,8 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
           />
         ))}
       </div>
+      {/* </>
+      )} */}
     </>
   );
 }

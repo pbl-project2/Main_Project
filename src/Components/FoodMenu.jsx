@@ -9,9 +9,18 @@ import { db } from "../firebase/firebase";
 const FoodMenu = ({ props }) => {
   const history = useHistory();
   const [food, setFood] = useState([]);
+  var email = window.location.pathname.split("/")[2];
 
   useEffect(() => {
-    db.collection("foodMenu").onSnapshot((snapshot) => {
+    // db.collection("foodMenu").onSnapshot((snapshot) => {
+    //   let foodArr = [];
+    //   snapshot.forEach((doc) => {
+    //     foodArr.push({ ...doc.data(), id: doc.id });
+    //   });
+    //   setFood(foodArr);
+    //   // console.log(foodArr);
+    // });
+    db.collection("admin").doc(`${email}`).collection("foodMenu").onSnapshot((snapshot) => {
       let foodArr = [];
       snapshot.forEach((doc) => {
         foodArr.push({ ...doc.data(), id: doc.id });
@@ -22,7 +31,18 @@ const FoodMenu = ({ props }) => {
   }, [db]);
 
   const handleSnacks = () => {
-    db.collection("foodMenu")
+    // db.collection("foodMenu")
+    //   .where("type", "==", "Snacks")
+    //   .get()
+    //   .then((snapshot) => {
+    //     let snacksArr = [];
+    //     snapshot.forEach((doc) => {
+    //       snacksArr.push({ ...doc.data(), id: doc.id });
+    //     });
+    //     setFood(snacksArr);
+    //     // console.log(snacksArr);
+    //   });
+    db.collection("admin").doc(`${email}`).collection("foodMenu")
       .where("type", "==", "Snacks")
       .get()
       .then((snapshot) => {
@@ -36,7 +56,18 @@ const FoodMenu = ({ props }) => {
   };
 
   const handleLunch = async () => {
-    db.collection("foodMenu")
+    // db.collection("foodMenu")
+    //   .where("type", "==", "Lunch")
+    //   .get()
+    //   .then((snapshot) => {
+    //     let snacksArr = [];
+    //     snapshot.forEach((doc) => {
+    //       snacksArr.push({ ...doc.data(), id: doc.id });
+    //     });
+    //     setFood(snacksArr);
+    //     // console.log(snacksArr);
+    //   });
+    db.collection("admin").doc(`${email}`).collection("foodMenu")
       .where("type", "==", "Lunch")
       .get()
       .then((snapshot) => {
@@ -50,7 +81,18 @@ const FoodMenu = ({ props }) => {
   };
 
   const handleBeverages = async () => {
-    db.collection("foodMenu")
+    // db.collection("foodMenu")
+    //   .where("type", "==", "Beverages")
+    //   .get()
+    //   .then((snapshot) => {
+    //     let snacksArr = [];
+    //     snapshot.forEach((doc) => {
+    //       snacksArr.push({ ...doc.data(), id: doc.id });
+    //     });
+    //     setFood(snacksArr);
+    //     // console.log(snacksArr);
+    //   });
+    db.collection("admin").doc(`${email}`).collection("foodMenu")
       .where("type", "==", "Beverages")
       .get()
       .then((snapshot) => {

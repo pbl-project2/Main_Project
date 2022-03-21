@@ -35,19 +35,35 @@ function App() {
     });
   }, []);
 
-  useEffect(() => {
-    db.collection("users")
+  useEffect(async () => {
+    await db.collection("users")
       .orderBy("timestamp", "asc")
+      .where("email", "==", window.location.pathname.split("/")[2])
       .onSnapshot((snapshot) => {
         let userArr = [];
         snapshot.forEach((doc) => {
           userArr.push({ ...doc.data(), id: doc.id });
         });
-        // console.log(userArr);
         setUsers(userArr);
-        localStorage.setItem("usersID", users.id);
+        console.log(userArr);
+        localStorage.setItem("userId", users.id);
       });
   }, [db]);
+
+  // useEffect(() => {
+  //   db.collection("users")
+  //     .orderBy("timestamp", "asc")
+  //     .where("email", "==", window.location.pathname.split("/")[2])
+  //     .onSnapshot((snapshot) => {
+  //       let userArr = [];
+  //       snapshot.forEach((doc) => {
+  //         userArr.push({ ...doc.data(), id: doc.id });
+  //       });
+  //       // console.log(userArr);
+  //       setUsers(userArr);
+  //       localStorage.setItem("usersID", users.id);
+  //     });
+  // }, [db]);
 
   const handleDelete = async (id) => {
     await db

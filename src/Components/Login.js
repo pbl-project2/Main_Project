@@ -16,35 +16,11 @@ function Login(props) {
     hasAccount,
     setHasAccount,
   } = props;
-  const [name, setName] = useState("");
-  const [contact, setContact] = useState("");
 
   return !hasAccount ? (
     <div className="loginContainer">
       <div className="form1">
         <h1 className="h1">Registration</h1>
-        {/* <label className="details">Canteen Name</label> */}
-        <input
-          type="text"
-          placeholder="Canteen Name"
-          required
-          value={name}
-          onChange={(e) => {
-            setName(e.target.value);
-            localStorage.setItem("name", e.target.value);
-          }}
-        />
-        {/* <label className="details">Contact No.</label> */}
-        <input
-          type="tel"
-          placeholder="Contact No."
-          required
-          value={contact}
-          onChange={(e) => {
-            setContact(e.target.value);
-            localStorage.setItem("contact", e.target.value);
-          }}
-        />
         {/* <label className="details">Email</label> */}
         <input
           type="text"

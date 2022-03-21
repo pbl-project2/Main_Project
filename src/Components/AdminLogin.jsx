@@ -12,8 +12,6 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
-  const [name, setName] = useState("");
-  const [contact, setContact] = useState("");
   
   const history = useHistory();
 

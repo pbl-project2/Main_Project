@@ -11,7 +11,11 @@ function EditFood() {
   const food = JSON.parse(localStorage.getItem("food"));
 
   const handleSubmit = async () => {
-    await db.collection("foodMenu").doc(`${food.name}`).update({
+    // await db.collection("foodMenu").doc(`${food.name}`).update({
+    //   price: price,
+    //   description: desc,
+    // });
+    await db.collection("admin").doc(`${window.location.pathname.split("/")[2]}`).collection("foodMenu").doc(`${food.name}`).update({
       price: price,
       description: desc,
     });
@@ -23,7 +27,7 @@ function EditFood() {
     <div>
       <nav>
         <h3>UpMenu</h3>
-        <button onClick={() => history.push("/menu")} className="button">
+        <button onClick={() => history.push(`/menu/${window.location.pathname.split("/")[2]}`)} className="button">
           Back to Menu
         </button>
       </nav>
