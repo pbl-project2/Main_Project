@@ -4,14 +4,22 @@ import Login from "./Login";
 import { v4 as uuid } from "uuid";
 import { useHistory } from "react-router-dom";
 import Admin from "./Admin";
+import { Snackbar } from "@material-ui/core";
 
 function AdminLogin({ sales, orders, handleDelete, users }) {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
+  const [error, setError] = useState("");
+  // const [emailError, setEmailError] = useState("");
+  // const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
+  const [showSnackbar, setShowSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+
+  const handleSnackbarClose = () => {
+    setShowSnackbar(false);
+  };
 
   const history = useHistory();
 
@@ -34,24 +42,32 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
     setEmail("");
   };
 
-  const clearErrors = () => {
-    setEmailError("");
-    setPasswordError("");
-  };
+  // const clearErrors = () => {
+  //   setEmailError("");
+  //   setPasswordError("");
+  // };
 
   const handleLogin = () => {
-    clearErrors();
+    // clearErrors();
     app
       .auth()
       .signInWithEmailAndPassword(email, password)
       .catch((error) => {
         switch (error.code) {
           case "auth/email-already-in-use":
+            setError(true);
+            setShowSnackbar(true);
+            setSnackbarMessage("Email already in use");
+            break;
           case "auth/invalid-email":
-            setEmailError(error.message);
+            setError(true);
+            setSnackbarMessage("Invalid email");
+            setShowSnackbar(true);
             break;
           case "auth/weak-password":
-            setPasswordError(error.message);
+            setError(true);
+            setSnackbarMessage("Password is too weak");
+            setShowSnackbar(true);
             break;
         }
       });
@@ -86,7 +102,7 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   };
 
   const handleSignUp = () => {
-    clearErrors();
+    // clearErrors();
     var text = `http://localhost:3000/foodmenu/${localStorage.getItem(
       "adminId"
     )}`;
@@ -98,14 +114,24 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .catch((error) => {
+        setError(error.code);
+        setShowSnackbar(true);
         switch (error.code) {
           case "auth/invalid-email":
+            setError(true);
+            setSnackbarMessage("Invalid email");
+            break;
           case "auth/user-disabled":
+            setError(true);
+            setSnackbarMessage("User disabled");
+            break;
           case "auth/user-not-found":
-            setEmailError(error.message);
+            setError(true);
+            setSnackbarMessage("User not found");
             break;
           case "auth/wrong-password":
-            setPasswordError(error.message);
+            setError(true);
+            setSnackbarMessage("Wrong password");
             break;
         }
       });
@@ -139,8 +165,12 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
           handleSignUp={handleSignUp}
           hasAccount={hasAccount}
           setHasAccount={setHasAccount}
-          emailError={emailError}
-          passwordError={passwordError}
+          // emailError={emailError}
+          // passwordError={passwordError}
+          error={error}
+          snackbarMessage={snackbarMessage}
+          showSnackbar={showSnackbar}
+          handleSnackbarClose={handleSnackbarClose}
         />
       )}
     </div>

@@ -69,3 +69,7 @@
 .login_btn span, .login_btn p {
     background: #000 !important;
 }
+
+.error {
+    background: none;
+}
