@@ -31,13 +31,13 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
   useEffect(async () => {
     await db
       .collection("users")
-      .where("email", "==", window.location.pathname.split("/")[2])
       .orderBy("timestamp", "asc")
       .onSnapshot((snapshot) => {
         let userArr = [];
         snapshot.forEach((doc) => {
+          if(admin.email === doc.data().email) {
           userArr.push({ ...doc.data(), id: doc.id });
-        });
+        }});
         setUsers(userArr);
         console.log(userArr);
         localStorage.setItem("userId", users.id);
