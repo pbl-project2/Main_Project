@@ -15,10 +15,15 @@ function EditFood() {
     //   price: price,
     //   description: desc,
     // });
-    await db.collection("admin").doc(`${window.location.pathname.split("/")[2]}`).collection("foodMenu").doc(`${food.name}`).update({
-      price: price,
-      description: desc,
-    });
+    await db
+      .collection("admin")
+      .doc(`${window.location.pathname.split("/")[2]}`)
+      .collection("foodMenu")
+      .doc(`${food.name}`)
+      .update({
+        price: price,
+        description: desc,
+      });
     setPrice(0);
     setDesc("");
     document.getElementById("form").reset();
@@ -27,7 +32,12 @@ function EditFood() {
     <div>
       <nav>
         <h3>UpMenu</h3>
-        <button onClick={() => history.push(`/menu/${window.location.pathname.split("/")[2]}`)} className="button">
+        <button
+          onClick={() =>
+            history.push(`/menu/${window.location.pathname.split("/")[2]}`)
+          }
+          className="button"
+        >
           Back to Menu
         </button>
       </nav>

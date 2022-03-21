@@ -73,7 +73,8 @@ function Customer() {
             autoHideDuration={3000}
             onClose={handleSnackbarClose}
             message={snackbarMessage}
-          />}
+          />
+        }
         <header>
           <h1 className="heading">Login to Order food</h1>
         </header>

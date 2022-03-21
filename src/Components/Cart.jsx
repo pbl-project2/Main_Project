@@ -50,21 +50,27 @@ const Cart = () => {
   };
 
   const handleCheckout = async () => {
-    await db.collection("users").doc(`${userId}`).set({
-      name: sessionStorage.getItem("name"),
-      mobile: sessionStorage.getItem("mobile"),
-      total: sum,
-      token: sessionStorage.getItem("token"),
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      id: userId,
-      email: window.location.pathname.split("/")[2],
-    });
+    await db
+      .collection("users")
+      .doc(`${userId}`)
+      .set({
+        name: sessionStorage.getItem("name"),
+        mobile: sessionStorage.getItem("mobile"),
+        total: sum,
+        token: sessionStorage.getItem("token"),
+        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        id: userId,
+        email: window.location.pathname.split("/")[2],
+      });
     setSales(firebase.firestore.FieldValue.increment(sum));
     setOrders(firebase.firestore.FieldValue.increment(1));
-    await db.collection("admin").doc("details").update({
-      orders: firebase.firestore.FieldValue.increment(1),
-      sales: firebase.firestore.FieldValue.increment(sum),
-    });
+    await db
+      .collection("admin")
+      .doc("details")
+      .update({
+        orders: firebase.firestore.FieldValue.increment(1),
+        sales: firebase.firestore.FieldValue.increment(sum),
+      });
     history.push(`/bill/${window.location.pathname.split("/")[2]}/${userId}`);
   };
 

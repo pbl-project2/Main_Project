@@ -12,18 +12,21 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
-  
+
   const history = useHistory();
 
   //qrcode
   const [src, setSrc] = useState("");
 
   useEffect(() => {
-    db.collection("admin").doc(`${user.email}`).get().then((doc) => {
-      if (doc.exists) {
-        setSrc(doc.data().qrCode);
-      }
-    })
+    db.collection("admin")
+      .doc(`${user.email}`)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setSrc(doc.data().qrCode);
+        }
+      });
   }, [db]);
 
   const clearInputs = () => {
@@ -84,7 +87,9 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
 
   const handleSignUp = () => {
     clearErrors();
-    var text = `http://localhost:3000/foodmenu/${localStorage.getItem("adminId")}`;
+    var text = `http://localhost:3000/foodmenu/${localStorage.getItem(
+      "adminId"
+    )}`;
     // QRCode.toDataURL(text).then((data) => {
     //   // setSrc(data);
     //   localStorage.setItem("qrcode", data);

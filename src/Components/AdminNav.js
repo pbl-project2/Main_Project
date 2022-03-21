@@ -6,7 +6,7 @@ import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { QrCode2 } from "@mui/icons-material";
 
-function AdminNav({adminEmail}) {
+function AdminNav({ adminEmail }) {
   const history = useHistory();
   const handleClick = () => {
     history.push("/");

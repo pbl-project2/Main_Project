@@ -20,14 +20,17 @@ const FoodMenu = ({ props }) => {
     //   setFood(foodArr);
     //   // console.log(foodArr);
     // });
-    db.collection("admin").doc(`${email}`).collection("foodMenu").onSnapshot((snapshot) => {
-      let foodArr = [];
-      snapshot.forEach((doc) => {
-        foodArr.push({ ...doc.data(), id: doc.id });
+    db.collection("admin")
+      .doc(`${email}`)
+      .collection("foodMenu")
+      .onSnapshot((snapshot) => {
+        let foodArr = [];
+        snapshot.forEach((doc) => {
+          foodArr.push({ ...doc.data(), id: doc.id });
+        });
+        setFood(foodArr);
+        // console.log(foodArr);
       });
-      setFood(foodArr);
-      // console.log(foodArr);
-    });
   }, [db]);
 
   const handleSnacks = () => {
@@ -42,7 +45,9 @@ const FoodMenu = ({ props }) => {
     //     setFood(snacksArr);
     //     // console.log(snacksArr);
     //   });
-    db.collection("admin").doc(`${email}`).collection("foodMenu")
+    db.collection("admin")
+      .doc(`${email}`)
+      .collection("foodMenu")
       .where("type", "==", "Snacks")
       .get()
       .then((snapshot) => {
@@ -67,7 +72,9 @@ const FoodMenu = ({ props }) => {
     //     setFood(snacksArr);
     //     // console.log(snacksArr);
     //   });
-    db.collection("admin").doc(`${email}`).collection("foodMenu")
+    db.collection("admin")
+      .doc(`${email}`)
+      .collection("foodMenu")
       .where("type", "==", "Lunch")
       .get()
       .then((snapshot) => {
@@ -92,7 +99,9 @@ const FoodMenu = ({ props }) => {
     //     setFood(snacksArr);
     //     // console.log(snacksArr);
     //   });
-    db.collection("admin").doc(`${email}`).collection("foodMenu")
+    db.collection("admin")
+      .doc(`${email}`)
+      .collection("foodMenu")
       .where("type", "==", "Beverages")
       .get()
       .then((snapshot) => {

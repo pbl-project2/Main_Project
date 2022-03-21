@@ -27,7 +27,7 @@ function Bill() {
   useEffect(async () => {
     await db // user details
       .collection("users")
-      .doc(`${localStorage.getItem("userId")}`)
+      .doc(`${window.location.pathname.split("/")[3]}`)
       .get()
       .then((doc) => {
         setName(doc.data().name);
@@ -36,7 +36,7 @@ function Bill() {
       });
 
     db.collection("users")
-      .doc(`${localStorage.getItem("userId")}`)
+      .doc(`${window.location.pathname.split("/")[3]}`)
       .collection("food")
       .onSnapshot((snapshot) => {
         let billArr = [];
@@ -48,36 +48,36 @@ function Bill() {
   }, [db]);
 
   useEffect(() => {
-    db.collection('users').doc(`${localStorage.getItem("userId")}`).update({
+    db.collection('users').doc(`${window.location.pathname.split("/")[3]}`).update({
       rating: rating
     });
     if(rating === 5) {
       let rating = firebase.firestore.FieldValue.increment(1);
-      db.collection('admin').doc("5 stars").update({
+      db.collection('ratings').doc("5 stars").update({
         rating: rating
       })
     }
     else if(rating === 4) {
       let rating = firebase.firestore.FieldValue.increment(1);
-      db.collection('admin').doc("4 stars").update({
+      db.collection('ratings').doc("4 stars").update({
         rating: rating
       })
     }
     else if(rating === 3) {
       let rating = firebase.firestore.FieldValue.increment(1);
-      db.collection('admin').doc("3 stars").update({
+      db.collection('ratings').doc("3 stars").update({
         rating: rating
       })
     }
     else if(rating === 2) {
       let rating = firebase.firestore.FieldValue.increment(1);
-      db.collection('admin').doc("2 stars").update({
+      db.collection('ratings').doc("2 stars").update({
         rating: rating
       })
     }
     else if(rating === 1) {
       let rating = firebase.firestore.FieldValue.increment(1);
-      db.collection('admin').doc("1 stars").update({
+      db.collection('ratings').doc("1 stars").update({
         rating: rating
       })
     }

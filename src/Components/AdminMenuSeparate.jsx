@@ -30,7 +30,12 @@ function AdminMenuSeparate() {
 
   const handleDelete = async (id) => {
     // await db.collection("foodMenu").doc(`${id}`).delete();
-    await db.collection("admin").doc(`${email}`).collection("foodMenu").doc(`${id}`).delete();
+    await db
+      .collection("admin")
+      .doc(`${email}`)
+      .collection("foodMenu")
+      .doc(`${id}`)
+      .delete();
   };
 
   const handleEdit = (food) => {
@@ -46,7 +51,7 @@ function AdminMenuSeparate() {
         <h3>UpMenu</h3>
         <button
           className="login-btn"
-          onClick={() => history.push(`/admin-login/${email}`)} 
+          onClick={() => history.push(`/admin-login/${email}`)}
         >
           Back
         </button>

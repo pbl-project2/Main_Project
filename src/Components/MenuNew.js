@@ -11,25 +11,31 @@ function MenuNew() {
   const [description, setDescription] = useState("");
 
   const handleSubmit = async (e) => {
-      e.preventDefault();
-      await db.collection("foodMenu").doc(`${name}`).set({
-        name: name,
-        type: type,
-        price: price,
-        description: description,
-        });
-        setName("");
-        setType("");
-        setPrice(0);
-        setDescription("");
-        document.getElementById("form").reset();
-
-    };
+    e.preventDefault();
+    await db.collection("foodMenu").doc(`${name}`).set({
+      name: name,
+      type: type,
+      price: price,
+      description: description,
+    });
+    setName("");
+    setType("");
+    setPrice(0);
+    setDescription("");
+    document.getElementById("form").reset();
+  };
   return (
     <div>
       <nav>
         <h3>UpMenu</h3>
-        <button onClick={() => history.push(`/menu/${window.location.pathname.split("/")[2]}`)} className="button">Back to Menu</button>
+        <button
+          onClick={() =>
+            history.push(`/menu/${window.location.pathname.split("/")[2]}`)
+          }
+          className="button"
+        >
+          Back to Menu
+        </button>
       </nav>
       <form onSubmit={handleSubmit} id="form" className="form">
         <div className="food_name">

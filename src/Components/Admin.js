@@ -42,7 +42,7 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
         console.log(userArr);
         localStorage.setItem("userId", users.id);
       });
-  }, [db, users]);
+  }, [db]);
 
   useEffect(() => {
     db.collection("users")
