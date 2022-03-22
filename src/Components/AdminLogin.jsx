@@ -89,9 +89,6 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
           .set({
             adminId: localStorage.getItem("adminId"),
             email: user.email,
-            name: localStorage.getItem("name"),
-            contact: localStorage.getItem("contact"),
-            // qrCode: localStorage.getItem("qrcode"),
             qrcode: src,
           });
         console.log("db fired");
