@@ -20,7 +20,7 @@ function AdminNav({ adminEmail }) {
         <div className="admin-nav-right">
           <button
             className="settings-btn"
-            onClick={() => history.push(`/separate-menu/${adminEmail}`)}
+            onClick={() => history.push(`/admin-menu/${adminEmail}`)}
           >
             <SettingsIcon />
           </button>

@@ -140,6 +140,7 @@ function Bill() {
           <h3>
             Up<span>Menu</span>
           </h3>
+          <button className="login-btn" onClick={() => history.push("/contact-us")}>Contact Us</button>
           <button className="login-btn" onClick={handleClick}>
             Home Page
           </button>

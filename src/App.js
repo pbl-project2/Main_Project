@@ -17,6 +17,7 @@ import EditFood from "./Components/EditFood";
 import AdminLogin from "./Components/AdminLogin";
 import SeparateFoodMenuNew from "./Components/SeparateFoodMenuNew";
 import AdminMenuSeparate from "./Components/AdminMenuSeparate";
+import ContactUs from "./Components/ContactUs";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -133,11 +134,14 @@ function App() {
           <Route path="/bill">
             <Bill />
           </Route>
-          <Route path="/separate-menu">
+          <Route path="/admin-menu">
             <AdminMenuSeparate />
           </Route>
-          <Route path="/separate-new">
+          <Route path="/food-menu">
             <SeparateFoodMenuNew />
+          </Route>
+          <Route path="/contact-us">
+            <ContactUs />
           </Route>
         </Switch>
       </Router>

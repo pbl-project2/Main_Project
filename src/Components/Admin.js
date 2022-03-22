@@ -35,9 +35,10 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
       .onSnapshot((snapshot) => {
         let userArr = [];
         snapshot.forEach((doc) => {
-          if(admin.email === doc.data().email) {
-          userArr.push({ ...doc.data(), id: doc.id });
-        }});
+          if (admin.email === doc.data().email) {
+            userArr.push({ ...doc.data(), id: doc.id });
+          }
+        });
         setUsers(userArr);
         console.log(userArr);
         localStorage.setItem("userId", users.id);
@@ -140,18 +141,26 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
         <p className="orders-title">It's calm for right now!!</p>
       ) : (
         <> */}
-      <p className="orders-title">You need to serve these orders...Hurry Up!</p>
-      <div className="all-orders">
-        {/* For customer data */}
-        {users?.map((user) => (
-          <CustomerData
-            key={user.id}
-            user={user}
-            handleDelete={handleDelete}
-            food={food}
-          />
-        ))}
-      </div>
+      {users.length === 0 ? (
+        <p className="orders-title">It's calm for right now!!</p>
+      ) : (
+        <>
+          <p className="orders-title">
+            You need to serve these orders...Hurry Up!
+          </p>
+          <div className="all-orders">
+            {/* For customer data */}
+            {users?.map((user) => (
+              <CustomerData
+                key={user.id}
+                user={user}
+                handleDelete={handleDelete}
+                food={food}
+              />
+            ))}
+          </div>
+        </>
+      )}
       {/* </>
       )} */}
     </>
