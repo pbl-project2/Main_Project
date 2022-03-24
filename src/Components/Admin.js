@@ -79,8 +79,7 @@ function Admin({ user, handleDelete, admin }) {
       // `https://eloquent-arithmetic-03288f.netlify.app/customer-login/${localStorage.getItem(
       //   "adminEmail"
         `${window.location.pathname}/customer-login/${localStorage.getItem(
-          "adminEmail")`
-      )}`
+          "adminEmail")}`
     ).then((data) => {
       localStorage.setItem("src", data);
       db.collection("admin").doc(`${admin.email}`).update({
