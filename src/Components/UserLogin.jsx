@@ -2,51 +2,14 @@ import React, { useState } from "react";
 
 import "../Styling/Login.css";
 import { useHistory } from "react-router-dom";
-<<<<<<< HEAD
 import { Mic } from "@mui/icons-material";
 
-=======
->>>>>>> c81bb6b643c08c65cf763db3ca5e33a8c5dae132
 import { Snackbar } from "@mui/material";
 
 const Login = () => {
   const history = useHistory();
   const [showSnackbar, setShowSnackbar] = useState(false);
 
-<<<<<<< HEAD
-
-
-  const signInWithGoogle = () => {
-    auth
-      .signInWithPopup(provider)
-      .then((result) => {
-        if (
-          result.user.email === "mrudulpatel04@gmail.com" ||
-          result.user.email === "atharvakurumbhatte47@gmail.com" ||
-          result.user.email === "limbhoremayu7@gmail.com"
-        ) {
-          history.push(`/admin/${localStorage.getItem("o")}`);
-        } else {
-          // alert("Sorry you are not an admin!!");
-          setShowSnackbar(true);
-        }
-      })
-      .catch((error) => {
-        alert(error.message);
-      });
-  };
-
-  // const handleVoice = () => {
-  //   if (annyang) {
-  //     var commands = {
-  //       "Redirect me to food menu": function () {
-  //         history.push("/customer-login");
-  //       },
-  //     };
-  //     annyang.addCommands(commands);
-  //     annyang.start({ autoRestart: true, continuous: false });
-  //   }
-=======
   // const signInWithGoogle = () => {
   //   auth
   //     .signInWithPopup(provider)
@@ -65,7 +28,6 @@ const Login = () => {
   //     .catch((error) => {
   //       alert(error.message);
   //     });
->>>>>>> c81bb6b643c08c65cf763db3ca5e33a8c5dae132
   // };
 
   return (
