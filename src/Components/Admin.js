@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { app, db } from "../firebase/firebase";
+import { db } from "../firebase/firebase";
 import "../Styling/Admin.css";
 import "bootstrap/dist/css/bootstrap.css";
 import AdminNav from "../Components/AdminNav";
 import CustomerData from "./CustomerData";
 import QRCode from "qrcode";
 
-function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
+function Admin({ user, handleDelete, admin }) {
   const [food, setFood] = useState([]);
-  const [finalArr, setFinalArr] = useState([]);
+  // const [finalArr, setFinalArr] = useState([]);
   const [adminDetails, setAdminDetails] = useState([]);
   const [adminEmail, setAdminEmail] = useState("");
   const [users, setUsers] = useState([]);
@@ -28,9 +28,8 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
   //       localStorage.setItem("userId", users.id);
   //     });
   // }, [db]);
-  useEffect(async () => {
-    await db
-      .collection("users")
+  useEffect(() => {
+    db.collection("users")
       .orderBy("timestamp", "asc")
       .onSnapshot((snapshot) => {
         let userArr = [];
@@ -40,7 +39,8 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
           }
         });
         setUsers(userArr);
-        console.log(userArr);
+        // console.log(uscerArr);
+        // localStorage.setItem("userId", users.id);
         localStorage.setItem("userId", users.id);
       });
   }, [db]);
@@ -67,15 +67,16 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
         let arr = [docs.data()];
         setAdminDetails(arr);
         setAdminEmail(arr[0].email);
-        console.log("ADMIN DETAILS: ", arr);
-        console.log("ADMIN Name: ", arr[0].email);
+        localStorage.setItem("adminEmail", arr[0].email);
+        // console.log("ADMIN DETAILS: ", arr);
+        // console.log("ADMIN Name: ", arr[0].email);
       });
   }, [db]);
 
   useEffect(async () => {
     await QRCode.toDataURL(
       // `http://localhost:3000/foodmenu/${adminDetails[0].email}`
-      `http://localhost:3000/customer-login/${adminDetails[0].email}`
+      `https://canteen-token-system.web.app/customer-login/${localStorage.getItem("adminEmail")}`
     ).then((data) => {
       localStorage.setItem("src", data);
       db.collection("admin").doc(`${admin.email}`).update({
@@ -92,31 +93,31 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
   //   );
   // }, []);
 
-  useEffect(() => {
-    db.collection("admin")
-      .doc("details")
-      .get()
-      .then((doc) => {
-        let arr = [];
-        arr.push(doc.data());
-        setFinalArr(arr);
-        console.log("ARR: ", arr);
-      });
-  }, []);
+  // useEffect(() => {
+  //   db.collection("admin")
+  //     .doc("details")
+  //     .get()
+  //     .then((doc) => {
+  //       let arr = [];
+  //       arr.push(doc.data());
+  //       setFinalArr(arr);
+  //       // console.log("ARR: ", arr);
+  //     });
+  // }, []);
 
-  const [adminName, setAdminName] = useState("");
+  // const [adminName, setAdminName] = useState("");
 
-  useEffect(() => {
-    console.log("ADMIN: ", admin);
-    let name = "";
-    console.log(admin.email);
-    db.collection("admin")
-      .doc(`${admin.email}`)
-      .onSnapshot((doc) => {
-        name = doc.data().name;
-        setAdminName(name);
-      });
-  }, [db]);
+  // useEffect(() => {
+  //   console.log("ADMIN: ", admin);
+  //   let name = "";
+  //   console.log(admin.email);
+  //   db.collection("admin")
+  //     .doc(`${admin.email}`)
+  //     .onSnapshot((doc) => {
+  //       name = doc.data().name;
+  //       setAdminName(name);
+  //     });
+  // }, [db]);
 
   return (
     <>
@@ -126,13 +127,13 @@ function Admin({ user, handleDelete, admin, sales, orders, email, password }) {
         <div className=" divs-combine row">
           <div className="income col">
             <h1>You've Earned</h1>
-            <h3>Sales: ₹{sales}</h3>
+            <h3>Sales: ₹0.00</h3>
             {/* <h1>Orders Served: {orders}</h1> */}
           </div>
           <div className="served-orders col">
             <h1>You've Served</h1>
             {/* <h1>Sales: ₹{sales}</h1> */}
-            <h3>{orders} orders</h3>
+            <h3>0 orders</h3>
           </div>
         </div>
         {/* <h1>Admin Details</h1> */}

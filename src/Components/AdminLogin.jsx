@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { app, db } from "../firebase/firebase";
+import { db } from "../firebase/firebase";
+import app from "../firebase/firebase";
 import Login from "./Login";
 import { v4 as uuid } from "uuid";
-import { useHistory } from "react-router-dom";
+import QRCode from 'qrcode';
 import Admin from "./Admin";
-import { Snackbar } from "@material-ui/core";
 
 function AdminLogin({ sales, orders, handleDelete, users }) {
+
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -20,8 +21,6 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   const handleSnackbarClose = () => {
     setShowSnackbar(false);
   };
-
-  const history = useHistory();
 
   //qrcode
   const [src, setSrc] = useState("");
@@ -43,8 +42,8 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   };
 
   // const clearErrors = () => {
-  //   setEmailError("");
-  //   setPasswordError("");
+  //   // setEmailError("");
+  //   // setPasswordError("");
   // };
 
   const handleLogin = () => {
@@ -69,6 +68,8 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
             setSnackbarMessage("Password is too weak");
             setShowSnackbar(true);
             break;
+          default:
+            console.log("");
         }
       });
   };
@@ -78,6 +79,7 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   };
   const authListener = () => {
     let id = uuid();
+    // localStorage.setItem("adminId", id);
     localStorage.setItem("adminId", id);
     app.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -87,6 +89,7 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
         db.collection("admin")
           .doc(`${user.email}`)
           .set({
+            // adminId: localStorage.getItem("adminId"),
             adminId: localStorage.getItem("adminId"),
             email: user.email,
             qrcode: src,
@@ -99,14 +102,12 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   };
 
   const handleSignUp = () => {
+    var text = "https://canteen-token-system.web.app"
     // clearErrors();
-    var text = `http://localhost:3000/foodmenu/${localStorage.getItem(
-      "adminId"
-    )}`;
-    // QRCode.toDataURL(text).then((data) => {
-    //   // setSrc(data);
-    //   localStorage.setItem("qrcode", data);
-    // });
+    QRCode.toDataURL(text).then((data) => {
+      // setSrc(data);
+      localStorage.setItem("qrcode", data);
+    });
     app
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -130,6 +131,8 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
             setError(true);
             setSnackbarMessage("Wrong password");
             break;
+          default:
+            console.log("");
         }
       });
   };
@@ -150,7 +153,6 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
           email={email}
           src={src}
           logout={handleLogout}
-          text="http://localhost:3000/admin"
         />
       ) : (
         <Login

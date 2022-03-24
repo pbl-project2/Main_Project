@@ -2,12 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import "../Styling/AdminMenu.css";
-import EditFood from "./EditFood";
 
 function AdminMenu() {
   const history = useHistory();
   const [food, setFood] = useState([]);
-  const [foodId, setFoodId] = useState("");
   useEffect(() => {
     db.collection("foodMenu").onSnapshot((snapshot) => {
       let foodArr = [];

@@ -7,7 +7,7 @@ function AdminDetails({ order, income }) {
     <div>
       <nav>
         <h3>UpMenu</h3>
-        <button className="login-btn" onClick={() => history.push(`/admin/`)}>
+        <button className="login-btn" onClick={() => history.push(`/admin`)}>
           Back
         </button>
       </nav>

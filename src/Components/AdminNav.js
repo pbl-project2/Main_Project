@@ -26,7 +26,7 @@ function AdminNav({ adminEmail }) {
           </button>
           <button style={{ border: "none" }} className="qr-code-download">
             <a
-              href={localStorage.getItem("src")}
+              href={global.localStorage.getItem("src")}
               download
               style={{ textDecoration: "none" }}
             >
