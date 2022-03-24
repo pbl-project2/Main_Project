@@ -131,7 +131,7 @@ function App() {
           <Route path="/admin-menu">
             <AdminMenuSeparate />
           </Route>
-          <Route path="/food-menu">
+          <Route path="/food-new">
             <SeparateFoodMenuNew />
           </Route>
           <Route path="/contact-us">
