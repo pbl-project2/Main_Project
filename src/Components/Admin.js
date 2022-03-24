@@ -77,7 +77,7 @@ function Admin({ user, handleDelete, admin }) {
     await QRCode.toDataURL(
       // `http://localhost:3000/foodmenu/${adminDetails[0].email}`
       `https://623c67eb31cecd0008803ff2--eloquent-arithmetic-03288f.netlify.app/customer-login/${localStorage.getItem(
-        "adminEmail"
+        "adminEmail")}`
         // `http://${window.location.hostname}:${window.location.port}/customer-login/${localStorage.getItem(
         //   "adminEmail")}`
     ).then((data) => {
