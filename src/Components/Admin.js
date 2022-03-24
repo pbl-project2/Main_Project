@@ -76,7 +76,9 @@ function Admin({ user, handleDelete, admin }) {
   useEffect(async () => {
     await QRCode.toDataURL(
       // `http://localhost:3000/foodmenu/${adminDetails[0].email}`
-      `https://canteen-token-system.web.app/customer-login/${localStorage.getItem("adminEmail")}`
+      `https://eloquent-arithmetic-03288f.netlify.app//customer-login/${localStorage.getItem(
+        "adminEmail"
+      )}`
     ).then((data) => {
       localStorage.setItem("src", data);
       db.collection("admin").doc(`${admin.email}`).update({
