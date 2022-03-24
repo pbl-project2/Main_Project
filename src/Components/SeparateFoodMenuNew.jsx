@@ -35,7 +35,7 @@ function SeparateFoodMenuNew() {
         <h3>UpMenu</h3>
         <button
           onClick={() =>
-            history.push(`/separate-menu/${window.location.pathname.split("/")[2]}`)
+            history.push(`/admin-menu/${window.location.pathname.split("/")[2]}`)
           }
           className="button"
         >

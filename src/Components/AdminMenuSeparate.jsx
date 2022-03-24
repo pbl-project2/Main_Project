@@ -57,7 +57,7 @@ function AdminMenuSeparate() {
         </button>
         <button
           className="login-btn"
-          onClick={() => history.push(`/separate-new/${email}`)}
+          onClick={() => history.push(`/food-new/${email}`)}
         >
           Add New Food Item
         </button>

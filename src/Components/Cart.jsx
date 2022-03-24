@@ -9,15 +9,15 @@ const Cart = () => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [sum, setSum] = useState(total);
-  const [sales, setSales] = useState(sum);
-  const [orders, setOrders] = useState(0);
+  // const [sales, setSales] = useState(sum);
+  // const [orders, setOrders] = useState(0);
 
   const history = useHistory();
-  const userId = localStorage.getItem("userId");
+  const userId = global.localStorage.getItem("userId");
 
   useEffect(() => {
     db.collection("users")
-      .doc(`${localStorage.getItem("userId")}`)
+      .doc(`${global.localStorage.getItem("userId")}`)
       .collection("food")
       .orderBy("id", "asc")
       .onSnapshot((snapshot) => {
@@ -33,7 +33,7 @@ const Cart = () => {
         }
         setSum(sumPrice);
         db.collection("users")
-          .doc(`${localStorage.getItem("userId")}`)
+          .doc(`${global.localStorage.getItem("userId")}`)
           .update({
             total: sumPrice,
           });
@@ -54,16 +54,16 @@ const Cart = () => {
       .collection("users")
       .doc(`${userId}`)
       .set({
-        name: sessionStorage.getItem("name"),
-        mobile: sessionStorage.getItem("mobile"),
+        name: localStorage.getItem("name"),
+        mobile: localStorage.getItem("mobile"),
         total: sum,
-        token: sessionStorage.getItem("token"),
+        token: localStorage.getItem("token"),
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         id: userId,
         email: window.location.pathname.split("/")[2],
       });
-    setSales(firebase.firestore.FieldValue.increment(sum));
-    setOrders(firebase.firestore.FieldValue.increment(1));
+    // setSales(firebase.firestore.FieldValue.increment(sum));
+    // setOrders(firebase.firestore.FieldValue.increment(1));
     await db
       .collection("admin")
       .doc("details")
@@ -71,7 +71,7 @@ const Cart = () => {
         orders: firebase.firestore.FieldValue.increment(1),
         sales: firebase.firestore.FieldValue.increment(sum),
       });
-    history.push(`/bill/${window.location.pathname.split("/")[2]}/${userId}`);
+    history.push(`/bill/${localStorage.getItem("adminEmail")}/${userId}`);
   };
 
   return (

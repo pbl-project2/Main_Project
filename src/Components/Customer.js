@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
-import { db } from "../firebase/firebase";
+import React, { useEffect, useState } from "react";
 import firebase from "firebase";
 import { v4 as uuid } from "uuid";
 import uniqueRandom from "unique-random";
@@ -35,11 +34,11 @@ function Customer() {
       let token = random();
       localStorage.setItem("userId", userId);
       if (mobile.toString().length === 10) {
-        sessionStorage.setItem("name", name);
-        sessionStorage.setItem("mobile", mobile);
-        sessionStorage.setItem("token", token);
-        sessionStorage.setItem("timestamp", timestamp);
-        sessionStorage.setItem("id", userId);
+        localStorage.setItem("name", name);
+        localStorage.setItem("mobile", mobile);
+        localStorage.setItem("token", token);
+        localStorage.setItem("timestamp", timestamp);
+        localStorage.setItem("id", userId);
         history.push(`/foodmenu/${window.location.pathname.split("/")[2]}`);
         setName("");
         setMobile(0);

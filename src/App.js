@@ -8,22 +8,17 @@ import { db } from "./firebase/firebase";
 import Customer from "./Components/Customer";
 import Bill from "./Components/Bill";
 import { v4 as uuid } from "uuid";
-import AdminDetails from "./Components/AdminDetails";
 import AdminMenu from "./Components/AdminMenu";
 import MenuNew from "./Components/MenuNew";
-import AdminNav from "./Components/AdminNav";
 
 import EditFood from "./Components/EditFood";
 import AdminLogin from "./Components/AdminLogin";
 import SeparateFoodMenuNew from "./Components/SeparateFoodMenuNew";
 import AdminMenuSeparate from "./Components/AdminMenuSeparate";
+import ContactUs from "./Components/ContactUs";
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [sales, setSales] = useState(0);
-  const [order, setOrder] = useState(0);
-  const [finalSales, setFinalSales] = useState(sales);
-  const [finalOrder, setFinalOrder] = useState(order);
 
   //On page refresh...
   useEffect(() => {
@@ -45,7 +40,7 @@ function App() {
           userArr.push({ ...doc.data(), id: doc.id });
         });
         setUsers(userArr);
-        console.log(userArr);
+        // console.log(userArr);
         localStorage.setItem("userId", users.id);
       });
   }, [db]);
@@ -66,16 +61,16 @@ function App() {
   // }, [db]);
 
   const handleDelete = async (id) => {
-    await db
-      .collection("users")
-      .doc(`${id}`)
-      .get()
-      .then((doc) => {
-        sessionStorage.setItem("sales/1", sales + doc.data().total);
-        sessionStorage.setItem("order/1", order + 1);
-        setSales(sales + doc.data().total);
-        setOrder(order + 1);
-      });
+    // await db
+    //   .collection("users")
+    //   .doc(`${id}`)
+    //   .get()
+    //   .then((doc) => {
+    //     sessionStorage.setItem("sales/1", sales + doc.data().total);
+    //     sessionStorage.setItem("order/1", order + 1);
+    //     setSales(sales + doc.data().total);
+    //     setOrder(order + 1);
+    //   });
 
     await db.collection("users").doc(`${id}`).delete();
   };
@@ -98,8 +93,8 @@ function App() {
           <Route path={`/admin`}>
             <Admin
               // user={users}
-              sales={sales}
-              orders={order}
+              // sales={sales}
+              // orders={order}
               handleDelete={handleDelete}
             />
             <div className="container">
@@ -133,11 +128,14 @@ function App() {
           <Route path="/bill">
             <Bill />
           </Route>
-          <Route path="/separate-menu">
+          <Route path="/admin-menu">
             <AdminMenuSeparate />
           </Route>
-          <Route path="/separate-new">
+          <Route path="/food-new">
             <SeparateFoodMenuNew />
+          </Route>
+          <Route path="/contact-us">
+            <ContactUs />
           </Route>
         </Switch>
       </Router>

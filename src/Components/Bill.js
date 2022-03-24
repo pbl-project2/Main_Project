@@ -1,4 +1,4 @@
-import React, { useDebugValue, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import "../Styling/Login.css";
 import "../Styling/Bill.css";
@@ -15,14 +15,6 @@ function Bill() {
   const [total, setTotal] = useState(0);
   const [food, setFood] = useState([]);
   const [rating, setRating] = useState(null);
-  const [fivestars, setFivestars] = useState(0);
-  const [fourstars, setFourstars] = useState(0);
-  const [threestars, setThreestars] = useState(0);
-  const [twostars, setTwostars] = useState(0);
-  const [onestars, setOnestars] = useState(0);
-  const handleClick = () => {
-    history.push("/");
-  };
 
   useEffect(async () => {
     await db // user details
@@ -140,9 +132,10 @@ function Bill() {
           <h3>
             Up<span>Menu</span>
           </h3>
-          <button className="login-btn" onClick={handleClick}>
+          <button className="login-btn" onClick={() => history.push("/contact-us")}>Contact Us</button>
+          {/* <button className="login-btn" onClick={handleClick}>
             Home Page
-          </button>
+          </button> */}
         </nav>
       </div>
       <div className="whole-bill ">
