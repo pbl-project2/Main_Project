@@ -76,7 +76,7 @@ function Admin({ user, handleDelete, admin }) {
   useEffect(async () => {
     await QRCode.toDataURL(
       // `http://localhost:3000/foodmenu/${adminDetails[0].email}`
-      `https://623c67eb31cecd0008803ff2--eloquent-arithmetic-03288f.netlify.app/customer-login/${localStorage.getItem(
+      `http://${window.location.host}/customer-login/${localStorage.getItem(
         "adminEmail")}`
         // `http://${window.location.hostname}:${window.location.port}/customer-login/${localStorage.getItem(
         //   "adminEmail")}`
