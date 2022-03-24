@@ -78,7 +78,7 @@ function Admin({ user, handleDelete, admin }) {
       // `http://localhost:3000/foodmenu/${adminDetails[0].email}`
       // `https://eloquent-arithmetic-03288f.netlify.app/customer-login/${localStorage.getItem(
       //   "adminEmail"
-        `${window.location}/customer-login/${localStorage.getItem(
+        `${window.location.href}/customer-login/${localStorage.getItem(
           "adminEmail")}`
     ).then((data) => {
       localStorage.setItem("src", data);
