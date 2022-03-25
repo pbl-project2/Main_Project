@@ -35,7 +35,9 @@ function SeparateFoodMenuNew() {
         <h3>UpMenu</h3>
         <button
           onClick={() =>
-            history.push(`/admin-menu/${window.location.pathname.split("/")[2]}`)
+            history.push(
+              `/admin-menu/${window.location.pathname.split("/")[2]}`
+            )
           }
           className="button"
         >
@@ -43,25 +45,25 @@ function SeparateFoodMenuNew() {
         </button>
       </nav>
       <form onSubmit={handleSubmit} id="form" className="form">
-        <div className="food_name">
-          <label>Name: </label>
-          <input
-            type="text"
-            placeholder="Enter food name..."
-            onChange={(e) => setName(e.target.value)}
-          />
-          <br />
+        <div className="row">
+          <div className="food_name col">
+            <input
+              type="text"
+              placeholder="Enter food name..."
+              onChange={(e) => setName(e.target.value)}
+            />
+            <br />
+          </div>
+          <div className="price col">
+            <input
+              type="tel"
+              placeholder="Enter food price..."
+              onChange={(e) => setPrice(e.target.value)}
+            />
+          </div>
         </div>
-        <div className="price">
-          <label>Price: </label>
-          <input
-            type="tel"
-            placeholder="Enter food price..."
-            onChange={(e) => setPrice(e.target.value)}
-          />
-        </div>
+
         <div className="type">
-          <label>Type: </label>
           <input
             type="text"
             placeholder="Enter food type..."
@@ -69,7 +71,6 @@ function SeparateFoodMenuNew() {
           />
         </div>
         <div className="desc">
-          <label>Description: </label>
           <input
             type="text"
             placeholder="Enter food description..."

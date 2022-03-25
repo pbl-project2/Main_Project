@@ -39,7 +39,6 @@ function MenuNew() {
       </nav>
       <form onSubmit={handleSubmit} id="form" className="form">
         <div className="food_name">
-          <label>Name: </label>
           <input
             type="text"
             placeholder="Enter food name..."
@@ -48,7 +47,6 @@ function MenuNew() {
           <br />
         </div>
         <div className="price">
-          <label>Price: </label>
           <input
             type="tel"
             placeholder="Enter food price..."
@@ -56,7 +54,6 @@ function MenuNew() {
           />
         </div>
         <div className="type">
-          <label>Type: </label>
           <input
             type="text"
             placeholder="Enter food type..."
@@ -64,7 +61,6 @@ function MenuNew() {
           />
         </div>
         <div className="desc">
-          <label>Description: </label>
           <input
             type="text"
             placeholder="Enter food description..."

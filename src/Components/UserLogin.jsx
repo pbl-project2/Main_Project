@@ -2,6 +2,8 @@ import React, { useState } from "react";
 
 import "../Styling/Login.css";
 import { useHistory } from "react-router-dom";
+import { Mic } from "@mui/icons-material";
+
 import { Snackbar } from "@mui/material";
 
 const Login = () => {
@@ -35,7 +37,10 @@ const Login = () => {
           <h3>
             Up<span className="icon-span">Menu</span>
           </h3>
-          <button className="login-btn" onClick={() => history.push("/admin-login")}>
+          <button
+            className="login-btn"
+            onClick={() => history.push("/admin-login")}
+          >
             Login as Admin
           </button>
           {/* <button onClick={}>Login Admin</button> */}

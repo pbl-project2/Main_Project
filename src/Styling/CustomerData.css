@@ -32,7 +32,7 @@
 .admin-food-items{
     display:flex;
 }
-table th{
+.users-orders th{
     padding:10px;
     
     width:100px;
@@ -42,7 +42,7 @@ table th{
     color:black;
     
 }
-table {
+.users-orders {
     width:300px;
     
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);

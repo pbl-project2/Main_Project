@@ -34,7 +34,7 @@ function CustomerData({ user, handleDelete }) {
           <div className="order-content">
             {food.map((fooditem) => (
               <div className="admin-food-items">
-                <table>
+                <table className="users-orders">
                   <tr>
                     <th className="name-order">{fooditem.name}</th>
                     <th className="quantity-order"> x {fooditem.quantity}</th>
