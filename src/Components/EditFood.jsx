@@ -34,7 +34,7 @@ function EditFood() {
         <h3>UpMenu</h3>
         <button
           onClick={() =>
-            history.push(`/menu/${window.location.pathname.split("/")[2]}`)
+            history.push(`/admin-menu/${window.location.pathname.split("/")[2]}`)
           }
           className="button"
         >

@@ -40,7 +40,7 @@ function AdminMenuSeparate() {
 
   const handleEdit = (food) => {
     localStorage.setItem("food", JSON.stringify(food));
-    history.push(`/edit/${food.id}`);
+    history.push(`/edit/${window.location.pathname.split('/')[2]}/${food.id}`);
   };
 
   var email = window.location.pathname.split("/")[2];
