@@ -7,6 +7,7 @@ import jsPDF from "jspdf";
 import ReactStars from "react-rating-stars-component";
 import { Download } from "@mui/icons-material";
 import firebase from "firebase";
+import Footer from "./Footer";
 
 function Bill() {
   const history = useHistory();
@@ -196,6 +197,7 @@ function Bill() {
           </div>
         </div>
       </div>
+      <Footer />
     </>
   );
 }

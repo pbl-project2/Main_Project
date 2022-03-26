@@ -5,6 +5,7 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Cart from "./Cart";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
+import Footer from "./Footer";
 
 const FoodMenu = ({ props }) => {
   const history = useHistory();
@@ -165,6 +166,7 @@ const FoodMenu = ({ props }) => {
         </div>
         <Cart />
       </div>
+      <Footer />
     </div>
   );
 };

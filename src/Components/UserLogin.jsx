@@ -5,6 +5,7 @@ import { useHistory } from "react-router-dom";
 import { Mic } from "@mui/icons-material";
 
 import { Snackbar } from "@mui/material";
+import Footer from "./Footer";
 
 const Login = () => {
   const history = useHistory();
@@ -71,6 +72,7 @@ const Login = () => {
             </button>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import AdminNav from "../Components/AdminNav";
 import CustomerData from "./CustomerData";
 import QRCode from "qrcode";
+import Footer from "./Footer";
 
 function Admin({ user, handleDelete, admin }) {
   const [food, setFood] = useState([]);
@@ -165,8 +166,7 @@ function Admin({ user, handleDelete, admin }) {
           </div>
         </>
       )}
-      {/* </>
-      )} */}
+      <Footer />
     </>
   );
 }

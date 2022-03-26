@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
+import Footer from "./Footer";
 
 function SeparateFoodMenuNew() {
   const history = useHistory();
@@ -79,6 +80,7 @@ function SeparateFoodMenuNew() {
         </div>
         <button className="button">Add</button>
       </form>
+      <Footer />
     </div>
   );
 }

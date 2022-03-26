@@ -7,6 +7,7 @@ import { Snackbar } from "@material-ui/core";
 
 //Styling
 import "../Styling/Login.css";
+import Footer from "./Footer";
 
 function Customer() {
   const [userId, setUserId] = useState("");
@@ -95,6 +96,7 @@ function Customer() {
           </form>
         </div>
       </div>
+        <Footer />
     </div>
   );
 }

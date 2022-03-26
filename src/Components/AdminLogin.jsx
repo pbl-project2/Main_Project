@@ -5,6 +5,7 @@ import Login from "./Login";
 import { v4 as uuid } from "uuid";
 import QRCode from 'qrcode';
 import Admin from "./Admin";
+import Footer from "./Footer";
 
 function AdminLogin({ sales, orders, handleDelete, users }) {
 
@@ -172,6 +173,7 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
           handleSnackbarClose={handleSnackbarClose}
         />
       )}
+      <Footer />
     </div>
   );
 }
