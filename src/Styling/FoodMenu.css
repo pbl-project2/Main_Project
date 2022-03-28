@@ -130,7 +130,6 @@ hr {
 }
 .home-btn {
   background-color: #161616;
-  margin-left: 100px;
   height: 45px;
   border: 1px solid;
   border-radius: 10px;
@@ -181,6 +180,7 @@ hr {
 .Cart-link {
   border: none;
   background-color: #161616;
+  margin-right: 50px !important;
 }
 .header {
   position: fixed;

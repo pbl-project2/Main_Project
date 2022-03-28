@@ -4,7 +4,7 @@ import "../Styling/Login.css";
 import "../Styling/CustomerData.css";
 import ArrowDropDownCircleOutlinedIcon from "@mui/icons-material/ArrowDropDownCircleOutlined";
 
-function CustomerData({ user, handleDelete }) {
+function CustomerData({ user, handleDelete, handleDeleteNew }) {
   const [food, setFood] = useState([]);
   // const [sales, setSales] = useState(0);
   // const [orders, setOrders] = useState(0);
@@ -35,7 +35,7 @@ function CustomerData({ user, handleDelete }) {
         <h5 className="user-name-order">{user.name}</h5>
         <div className="orders-admin">
           <div className="arrow-icon">
-            <ArrowDropDownCircleOutlinedIcon />
+            <ArrowDropDownCircleOutlinedIcon className="icon" />
           </div>
           <div className="order-content">
             {food.map((fooditem) => (
@@ -64,7 +64,8 @@ function CustomerData({ user, handleDelete }) {
             //   sales: firebase.firestore.FieldValue.increment(sale),
             //   orders: firebase.firestore.FieldValue.increment(1),
             // });
-            handleDelete(user.id);
+            // handleDelete(user.id);
+            handleDeleteNew(user.id);
           }}
         >
           Complete

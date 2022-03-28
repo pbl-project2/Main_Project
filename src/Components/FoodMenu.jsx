@@ -10,6 +10,7 @@ import Footer from "./Footer";
 const FoodMenu = ({ props }) => {
   const history = useHistory();
   const [food, setFood] = useState([]);
+  const [search, setSearch] = useState("");
   var email = window.location.pathname.split("/")[2];
 
   useEffect(() => {
@@ -120,6 +121,15 @@ const FoodMenu = ({ props }) => {
       <div className="nav">
         <h3>UpMenu</h3>
         <div>
+          <input
+          style={{marginRight: "50px", border: "none", outline:"none", borderRadius: "50px", width: "250px"}}
+            type="search"
+            placeholder="Search food here..."
+            onChange={(e) => {
+              setSearch(e.target.value);
+              console.log(e.target.value);
+            }}
+          />
           <button className="Cart-link">
             <AddShoppingCartIcon />
           </button>
@@ -153,16 +163,35 @@ const FoodMenu = ({ props }) => {
           </a>
         </div>
         <div className="food-card-list">
-          {food.map((item) => (
-            <FoodCard
-              key={item.id}
-              id={item.id}
-              name={item.name}
-              type={item.type}
-              price={item.price}
-              description={item.description}
-            />
-          ))}
+          {search !== "" ? (
+            <>
+              {food
+                .filter((item) => item.name.includes(search[0].toUpperCase()))
+                .map((item) => (
+                  <FoodCard
+                    key={item.id}
+                    id={item.id}
+                    name={item.name}
+                    type={item.type}
+                    price={item.price}
+                    description={item.description}
+                  />
+                ))}
+            </>
+          ) : (
+            <>
+              {food.map((item) => (
+                <FoodCard
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  type={item.type}
+                  price={item.price}
+                  description={item.description}
+                />
+              ))}
+            </>
+          )}
         </div>
         <Cart />
       </div>

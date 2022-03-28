@@ -173,7 +173,7 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
           handleSnackbarClose={handleSnackbarClose}
         />
       )}
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

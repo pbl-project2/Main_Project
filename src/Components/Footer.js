@@ -5,9 +5,11 @@ import { LinkedIn } from "@mui/icons-material";
 import "../Styling/Footer.css";
 
 function Footer() {
+  let year = new Date().getFullYear();
   return (
     <footer>
       <div className="main">
+        <hr style={{height: "2px", color: "#99A9C1" }} />
         <div className="footer-content">
           <ul className="socials">
             <li>
@@ -29,7 +31,8 @@ function Footer() {
         </div>
         <div className="footer-bottom">
           <p>
-            Copyright &copy;2022 <span>UpMenu</span>
+            &copy; Copyrights Reserved {year} - {year + 1}
+            <span> UpMenu</span>
           </p>
         </div>
       </div>

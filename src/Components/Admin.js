@@ -6,6 +6,7 @@ import AdminNav from "../Components/AdminNav";
 import CustomerData from "./CustomerData";
 import QRCode from "qrcode";
 import Footer from "./Footer";
+import firebase from "firebase";
 
 function Admin({ user, handleDelete, admin }) {
   const [food, setFood] = useState([]);
@@ -13,7 +14,11 @@ function Admin({ user, handleDelete, admin }) {
   const [adminDetails, setAdminDetails] = useState([]);
   const [adminEmail, setAdminEmail] = useState("");
   const [users, setUsers] = useState([]);
-
+  const [sales, setSales] = useState(0);
+  const [orders, setOrders] = useState(0);
+  const [finalSales, setFinalSales] = useState(0);
+  const [finalOrders, setFinalOrders] = useState(0);
+  const [total, setTotal] = useState(0);
   // useEffect(async () => {
   //   await db
   //     .collection("users")
@@ -37,6 +42,7 @@ function Admin({ user, handleDelete, admin }) {
         snapshot.forEach((doc) => {
           if (admin.email === doc.data().email) {
             userArr.push({ ...doc.data(), id: doc.id });
+            setTotal(doc.data().total);
           }
         });
         setUsers(userArr);
@@ -68,6 +74,10 @@ function Admin({ user, handleDelete, admin }) {
         let arr = [docs.data()];
         setAdminDetails(arr);
         setAdminEmail(arr[0].email);
+        localStorage.setItem("finalSales", arr[0].sales);
+        localStorage.setItem("finalOrders", arr[0].orders);
+        setFinalSales(arr[0].sales);
+        setFinalOrders(arr[0].orders);
         localStorage.setItem("adminEmail", arr[0].email);
         // console.log("ADMIN DETAILS: ", arr);
         // console.log("ADMIN Name: ", arr[0].email);
@@ -78,9 +88,10 @@ function Admin({ user, handleDelete, admin }) {
     await QRCode.toDataURL(
       // `http://localhost:3000/foodmenu/${adminDetails[0].email}`
       `http://${window.location.host}/customer-login/${localStorage.getItem(
-        "adminEmail")}`
-        // `http://${window.location.hostname}:${window.location.port}/customer-login/${localStorage.getItem(
-        //   "adminEmail")}`
+        "adminEmail"
+      )}`
+      // `http://${window.location.hostname}:${window.location.port}/customer-login/${localStorage.getItem(
+      //   "adminEmail")}`
     ).then((data) => {
       localStorage.setItem("src", data);
       db.collection("admin").doc(`${admin.email}`).update({
@@ -88,6 +99,37 @@ function Admin({ user, handleDelete, admin }) {
       });
     });
   }, [adminDetails]);
+
+  const handleDeleteNew = async (id) => {
+    await db.collection("users")
+      .doc(`${id}`)
+      .get()
+      .then((doc) => {
+        localStorage.setItem("total", doc.data().total);
+        localStorage.setItem("orders1", orders+1);
+      });
+    await db.collection("users").doc(`${id}`).delete();
+  };
+
+  useEffect(() => {
+    db.collection("admin")
+      .doc(`${admin.email}`)
+      .update({
+        sales: finalSales,
+        orders: finalOrders,
+      });
+  }, [localStorage.getItem("finalSales")]);
+
+  useEffect(() => {
+    db.collection("admin")
+      .doc(`${admin.email}`)
+      .get()
+      .then((doc) => {
+        let arr = [doc.data()];
+        localStorage.setItem("Sales", arr[0].sales);
+        localStorage.setItem("Orders", arr[0].orders);
+      });
+  }, [db]);
 
   // useEffect(() => {
   //   QRCode.toDataURL(`http://localhost:3000/foodmenu/${admin.email}`).then(
@@ -125,19 +167,19 @@ function Admin({ user, handleDelete, admin }) {
 
   return (
     <>
-      <AdminNav admin={admin} adminEmail={adminEmail} />
+      <AdminNav admin={admin} adminEmail={adminEmail} user={user} />
       <div className="upper-body container">
         {/* For income and orders served */}
         <div className=" divs-combine row">
           <div className="income col">
             <h1>You've Earned</h1>
-            <h3>Sales: ₹0.00</h3>
+            <h3>Sales: ₹{localStorage.getItem("total")}.00</h3>
             {/* <h1>Orders Served: {orders}</h1> */}
           </div>
           <div className="served-orders col">
             <h1>You've Served</h1>
             {/* <h1>Sales: ₹{sales}</h1> */}
-            <h3>0 orders</h3>
+            <h3>{localStorage.getItem("orders1")} orders</h3>
           </div>
         </div>
         {/* <h1>Admin Details</h1> */}
@@ -160,6 +202,7 @@ function Admin({ user, handleDelete, admin }) {
                 key={user.id}
                 user={user}
                 handleDelete={handleDelete}
+                handleDeleteNew={handleDeleteNew}
                 food={food}
               />
             ))}

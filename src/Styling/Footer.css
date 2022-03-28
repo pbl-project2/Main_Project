@@ -4,8 +4,12 @@
   /* box-sizing: border-box; */
 }
 
+.main hr {
+  color: gray !important;
+}
+
 footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   height: auto;
   width: 89vw;
@@ -19,6 +23,7 @@ footer {
   justify-content: center;
   flex-direction: column;
   text-align: center;
+  overflow-x:hidden;z-index: -1;
 }
 
 /* .footer-content h3 {
@@ -66,7 +71,6 @@ footer {
 
 .footer-bottom span {
   text-transform: uppercase;
-  opacity: 0.4;
-  color: #fff !important;
-  font-weight: 200;
+  color: #4c8fbd !important;
+  font-weight: 600;
 }
