@@ -9,7 +9,6 @@ function Footer() {
   return (
     <footer>
       <div className="main">
-        <hr style={{height: "2px", color: "#99A9C1" }} />
         <div className="footer-content">
           <ul className="socials">
             <li>
