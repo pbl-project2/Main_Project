@@ -23,6 +23,10 @@ function QRCodeScanner() {
       <a href={scan}>{scan}</a>
       <QrReader
       className="qr-reader"
+        delay={300}
+        onError={handleError}
+        onScan={handleScan}
+        facingMode="user"
         // ref={(node) => {
         //     this.node = node;
         // }}
