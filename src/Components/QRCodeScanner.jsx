@@ -26,7 +26,7 @@ function QRCodeScanner() {
         delay={300}
         onError={handleError}
         onScan={handleScan}
-        facingMode="user"
+        facingMode="environment"
         // ref={(node) => {
         //     this.node = node;
         // }}
