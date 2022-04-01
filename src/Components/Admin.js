@@ -6,7 +6,6 @@ import AdminNav from "../Components/AdminNav";
 import CustomerData from "./CustomerData";
 import QRCode from "qrcode";
 import Footer from "./Footer";
-import firebase from "firebase";
 
 function Admin({ user, handleDelete, admin }) {
   const [food, setFood] = useState([]);
@@ -74,10 +73,6 @@ function Admin({ user, handleDelete, admin }) {
         let arr = [docs.data()];
         setAdminDetails(arr);
         setAdminEmail(arr[0].email);
-        localStorage.setItem("finalSales", arr[0].sales);
-        localStorage.setItem("finalOrders", arr[0].orders);
-        setFinalSales(arr[0].sales);
-        setFinalOrders(arr[0].orders);
         localStorage.setItem("adminEmail", arr[0].email);
         // console.log("ADMIN DETAILS: ", arr);
         // console.log("ADMIN Name: ", arr[0].email);
@@ -101,13 +96,15 @@ function Admin({ user, handleDelete, admin }) {
   }, [adminDetails]);
 
   const handleDeleteNew = async (id) => {
-    await db.collection("users")
-      .doc(`${id}`)
-      .get()
-      .then((doc) => {
-        localStorage.setItem("total", doc.data().total);
-        localStorage.setItem("orders1", orders+1);
-      });
+    await db.collection("users").doc(`${user.id}`)
+    .get().then((doc) => {
+      let arr = [doc.data()];
+      console.log("ARR: ", arr);
+      setSales(sales + arr[0].total);
+      localStorage.setItem("salesnew", sales);
+      setOrders(orders + 1);
+      localStorage.setItem("ordersnew", orders);
+    });
     await db.collection("users").doc(`${id}`).delete();
   };
 
@@ -119,17 +116,6 @@ function Admin({ user, handleDelete, admin }) {
         orders: finalOrders,
       });
   }, [localStorage.getItem("finalSales")]);
-
-  useEffect(() => {
-    db.collection("admin")
-      .doc(`${admin.email}`)
-      .get()
-      .then((doc) => {
-        let arr = [doc.data()];
-        localStorage.setItem("Sales", arr[0].sales);
-        localStorage.setItem("Orders", arr[0].orders);
-      });
-  }, [db]);
 
   // useEffect(() => {
   //   QRCode.toDataURL(`http://localhost:3000/foodmenu/${admin.email}`).then(
@@ -166,20 +152,20 @@ function Admin({ user, handleDelete, admin }) {
   // }, [db]);
 
   return (
-    <>
+    <div className="admin">
       <AdminNav admin={admin} adminEmail={adminEmail} user={user} />
       <div className="upper-body container">
         {/* For income and orders served */}
         <div className=" divs-combine row">
           <div className="income col">
             <h1>You've Earned</h1>
-            <h3>Sales: ₹{localStorage.getItem("total")}.00</h3>
+            <h3>Sales: ₹{localStorage.getItem("salesnew")}.00</h3>
             {/* <h1>Orders Served: {orders}</h1> */}
           </div>
           <div className="served-orders col">
             <h1>You've Served</h1>
             {/* <h1>Sales: ₹{sales}</h1> */}
-            <h3>{localStorage.getItem("orders1")} orders</h3>
+            <h3>{localStorage.getItem("ordersnew")} orders</h3>
           </div>
         </div>
         {/* <h1>Admin Details</h1> */}
@@ -189,7 +175,10 @@ function Admin({ user, handleDelete, admin }) {
       ) : (
         <> */}
       {users.length === 0 ? (
+        <div style={{background:"#161616", height:"350px"}}>
         <p className="orders-title">It's calm for right now!!</p>
+
+        </div>
       ) : (
         <>
           <p className="orders-title">
@@ -210,7 +199,7 @@ function Admin({ user, handleDelete, admin }) {
         </>
       )}
       <Footer />
-    </>
+    </div>
   );
 }
 

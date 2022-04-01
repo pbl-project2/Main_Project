@@ -63,10 +63,17 @@ const Login = () => {
         <div className="input_fields">
           {/* <p>Lets get you to our canteen menu</p> */}
           <div className="creds">
-            <button
+            {/* <button
               className="lesgo-btn"
               type="submit"
               onClick={() => history.push("/customer-login")}
+            >
+              Lesgo
+            </button> */}
+            <button
+              className="lesgo-btn"
+              type="submit"
+              onClick={() => history.push(`/qrcode-scan`)}
             >
               Lesgo
             </button>
