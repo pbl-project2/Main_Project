@@ -16,7 +16,7 @@ function QRCodeScanner() {
   };
   return (
     <div>
-      <a href={scan}>{scan}</a>
+      {/* <a href={scan}>{scan}</a> */}
       {/* <QrReader
         className="qr-reader"
         delay={300}
@@ -52,6 +52,7 @@ function QRCodeScanner() {
           facingMode="environment"
           style={{ width: "100%" }}
         />
+        <h3>Scan Qr Code</h3>
       </div>
     </div>
   );

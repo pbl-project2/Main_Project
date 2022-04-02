@@ -7,6 +7,7 @@ video {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     left: 50%;
     height: 700px;
     width: 100%;
@@ -15,13 +16,30 @@ video {
 
 @media screen and (max-width: 768px) {
     video {
-        width: 164px;
-        height: 164px;
+        width: 200px;
+        height: 200px;
     }
     .qrcode {
         height: 700px;
         width: 100%;
         top: 50% !important;
         left: 50% !important;   
+    }
+}
+
+@media screen and (max-width: 480px) {
+    video {
+        width: 210px;
+        height: 210px;
+    }
+    .qrcode {
+        height: 500px;  
+        width: 100%;
+        top: 0 !important;
+        left: 50% !important; 
+    }
+    .qrcode h3 {
+        width: 100% !important;
+        text-align: center;
     }
 }
