@@ -100,7 +100,7 @@ function Admin({ user, handleDelete, admin }) {
     .get().then((doc) => {
       let arr = [doc.data()];
       console.log("ARR: ", arr);
-      setSales(sales + arr[0].total);
+      // setSales(sales + arr[0].total);
       localStorage.setItem("salesnew", sales);
       setOrders(orders + 1);
       localStorage.setItem("ordersnew", orders);
