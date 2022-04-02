@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { QrReader } from "react-qr-reader";
+import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 import "../Styling/QRCodeScanner.css";
 
@@ -18,7 +19,7 @@ function QRCodeScanner() {
       <h1>QR code scanner coming up</h1>
       <button>Scan QRCODE</button>
       <a href={scan}>{scan}</a>
-      <QrReader
+      {/* <QrReader
         className="qr-reader"
         delay={300}
         onError={handleError}
@@ -38,6 +39,18 @@ function QRCodeScanner() {
             console.log(error);
           }
         }}
+      /> */}
+      <BarcodeScannerComponent
+        height={500}
+        width={500}
+        onUpdate={
+          (err, res) => {
+            if(res) setScan(res.text);
+            else console.log(err);
+          }
+        }
+        facingMode="environment"
+        style={{ width: "100%" }}
       />
     </div>
   );
