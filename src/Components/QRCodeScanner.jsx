@@ -16,8 +16,6 @@ function QRCodeScanner() {
   };
   return (
     <div>
-      <h1>QR code scanner coming up</h1>
-      <button>Scan QRCODE</button>
       <a href={scan}>{scan}</a>
       {/* <QrReader
         className="qr-reader"
@@ -40,18 +38,21 @@ function QRCodeScanner() {
           }
         }}
       /> */}
-      <BarcodeScannerComponent
-        height={500}
-        width={500}
-        onUpdate={
-          (err, res) => {
-            if(res) setScan(res.text);
-            else console.log(err);
-          }
-        }
-        facingMode="environment"
-        style={{ width: "100%" }}
-      />
+      <div className="qrcode">
+        <BarcodeScannerComponent
+          height={700}
+          width={700}
+
+          onUpdate={(err, res) => {
+            if (res) {
+              setScan(res.text);
+              window.location.href = res.text;
+            } else console.log(err);
+          }}
+          facingMode="environment"
+          style={{ width: "100%" }}
+        />
+      </div>
     </div>
   );
 }
