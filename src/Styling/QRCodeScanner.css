@@ -1,2 +1,27 @@
-.qrcode{
+video {
+    height: 500px;
+    width: 500px;
+}
+
+.qrcode {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: 50%;
+    height: 700px;
+    width: 100%;
+    top: 50% !important;
+}
+
+@media screen and (max-width: 768px) {
+    video {
+        width: 164px;
+        height: 164px;
+    }
+    .qrcode {
+        height: 700px;
+        width: 100%;
+        top: 50% !important;
+        left: 50% !important;   
+    }
 }

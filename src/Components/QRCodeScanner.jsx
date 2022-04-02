@@ -40,8 +40,8 @@ function QRCodeScanner() {
       /> */}
       <div className="qrcode">
         <BarcodeScannerComponent
-          height={700}
-          width={700}
+          height={76}
+          width={76}
 
           onUpdate={(err, res) => {
             if (res) {
