@@ -45,8 +45,14 @@ function QRCodeScanner() {
             width={76}
             onUpdate={(err, res) => {
               if (res) {
-                setScan(res.text);
-                window.location.href = res.text;
+                let result = res.toString();
+                // setScan(res.text);
+                if (result.includes("upmenu")) {
+                  window.location.href = res.text;
+                  setScan("");
+                } else {
+                  setScan("Invalid QR Code");
+                }
               } else console.log(err);
             }}
             facingMode="environment"
@@ -54,6 +60,7 @@ function QRCodeScanner() {
           />
         </div>
         <h3>SCAN QR CODE</h3>
+        <h3>{scan}</h3>
       </div>
       {/* <h3>Scan Qr Code</h3> */}
     </div>
