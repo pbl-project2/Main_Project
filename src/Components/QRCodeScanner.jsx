@@ -39,21 +39,23 @@ function QRCodeScanner() {
         }}
       /> */}
       <div className="qrcode">
-        <BarcodeScannerComponent
-          height={76}
-          width={76}
-
-          onUpdate={(err, res) => {
-            if (res) {
-              setScan(res.text);
-              window.location.href = res.text;
-            } else console.log(err);
-          }}
-          facingMode="environment"
-          style={{ width: "100%" }}
-        />
-        <h3>Scan Qr Code</h3>
+        <div className="box">
+          <BarcodeScannerComponent
+            height={76}
+            width={76}
+            onUpdate={(err, res) => {
+              if (res) {
+                setScan(res.text);
+                window.location.href = res.text;
+              } else console.log(err);
+            }}
+            facingMode="environment"
+            style={{ width: "100%" }}
+          />
+        </div>
+        <h3>SCAN QR CODE</h3>
       </div>
+      {/* <h3>Scan Qr Code</h3> */}
     </div>
   );
 }
