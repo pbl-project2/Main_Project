@@ -78,6 +78,7 @@ video {
         width: 100%;
         top: 50% !important;
         left: 50% !important;
+        border-radius: 20px;
     }
     .row11::before {
         content: "";
@@ -133,6 +134,7 @@ video {
         width: 100%;
         top: 0% !important;
         left: 50% !important;
+        border-radius: 20px;
     }
     
     .row11::before {
