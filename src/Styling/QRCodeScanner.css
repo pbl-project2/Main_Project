@@ -71,6 +71,7 @@ video {
     .row11 {
         width: 400px;
         height: 400px;
+        border-radius: 20px;
     }
     .qrcode {
         height: 700px;
@@ -124,6 +125,7 @@ video {
     .row11 {
         width: 300px;
         height: 300px;
+        border-radius: 20px;
     }
     
     .qrcode {
@@ -167,6 +169,7 @@ video {
     
     .qrcode h3 {
         margin-top: 10px;
+        font-size: 1.1em;
         width: 100% !important;
         text-align: center;
     }
