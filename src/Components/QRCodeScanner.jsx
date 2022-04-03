@@ -39,7 +39,7 @@ function QRCodeScanner() {
         }}
       /> */}
       <div className="qrcode">
-        <div className="box">
+        <div className="row11">
           <BarcodeScannerComponent
             height={76}
             width={76}

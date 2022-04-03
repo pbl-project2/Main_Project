@@ -61,7 +61,7 @@ header {
   text-align: center;
   margin-top: 12rem;
 
-  animation: animate 15s ease infinite;
+  /* animation: animate 15s ease infinite; */
 }
 
 .input_field {
