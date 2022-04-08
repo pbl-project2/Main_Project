@@ -222,3 +222,17 @@ hr {
   background: linear-gradient(transparent, #0072b1);
   background: grey
 }   */
+
+.loading .MuiSvgIcon-root{
+  width: 60px;
+  height: 60px;
+  animation: spin 1s linear infinite;
+  margin-left: 20px;
+  margin-top: 20vh;
+}
+
+@keyframes spin {
+  100%{ 
+    transform: rotate(360deg);
+  }
+}

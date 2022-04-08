@@ -3,15 +3,15 @@ import { db } from "../firebase/firebase";
 import app from "../firebase/firebase";
 import Login from "./Login";
 import { v4 as uuid } from "uuid";
-import QRCode from 'qrcode';
+import QRCode from "qrcode";
 import Admin from "./Admin";
-import Footer from "./Footer";
+import Loading from "./Loading";
 
 function AdminLogin({ sales, orders, handleDelete, users }) {
-
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   // const [emailError, setEmailError] = useState("");
   // const [passwordError, setPasswordError] = useState("");
@@ -87,6 +87,7 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
         clearInputs();
         setUser(user);
         console.log(user);
+        setLoading(true);
         db.collection("admin")
           .doc(`${user.email}`)
           .set({
@@ -94,6 +95,8 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
             adminId: localStorage.getItem("adminId"),
             email: user.email,
             qrcode: src,
+            sales: 0,
+            orders: 0,
           });
         console.log("db fired");
       } else {
@@ -103,7 +106,7 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   };
 
   const handleSignUp = () => {
-    var text = "https://canteen-token-system.web.app"
+    var text = "https://canteen-token-system.web.app";
     // clearErrors();
     QRCode.toDataURL(text).then((data) => {
       // setSrc(data);

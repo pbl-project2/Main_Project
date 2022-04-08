@@ -9,7 +9,7 @@
   padding: 2rem;
 
   position: fixed;
-  width: fit-content;
+  width:22rem;
 
   overflow-y: scroll;
 
@@ -52,4 +52,37 @@
   background: -webkit-linear-gradient(#a03989, orange);
   width: 9rem;
   cursor: pointer;
+}
+
+.loading {
+  width: 100%;
+  height: 120px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: beige;
+}
+.circle-cart {
+  width:22rem;
+  /* margin-left: 20px;
+  margin-top: 120px; */
+  /* width: 40px;
+  height: 40px; */
+  border: 5px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading .MuiSvgIcon-root {
+  height: 60px;
+  width: 60px;
+  animation: spin 1s linear infinite;
 }

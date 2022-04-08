@@ -17,6 +17,7 @@ import SeparateFoodMenuNew from "./Components/SeparateFoodMenuNew";
 import AdminMenuSeparate from "./Components/AdminMenuSeparate";
 import ContactUs from "./Components/ContactUs";
 import QRCodeScanner from "./Components/QRCodeScanner";
+import Loading from "./Components/Loading";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -45,6 +46,8 @@ function App() {
         let userArr = [];
         snapshot.forEach((doc) => {
           userArr.push({ ...doc.data(), id: doc.id });
+          setSales(sales+doc.data().total);
+          setOrders(orders + 1);
         });
         setUsers(userArr);
         // console.log(userArr);
@@ -68,25 +71,26 @@ function App() {
   // }, [db]);
 
   const handleDelete = async (id) => {
-    await db
-      .collection("users")
-      .doc(`${id}`)
-      .get()
-      .then((doc) => {
-        setSales(sales + doc.data().total);
-        localStorage.setItem("salesnew", sales + doc.data().total);
-        setOrders(orders + 1);
-        localStorage.setItem("ordersnew", orders + 1);
-      });
-    if (sales > 0) {
-      await db
-        .collection("admin")
-        .doc(`${localStorage.getItem("adminEmail")}`)
-        .update({
-          sales: localStorage.getItem("salesnew"),
-          orders: localStorage.getItem("ordersnew"),
-        });
-    }
+    // await db
+    //   .collection("users")
+    //   .doc(`${id}`)
+    //   .get()
+    //   .then((doc) => {
+    //     setSales(sales + doc.data().total);
+    //     localStorage.setItem("salesnew", sales + doc.data().total);
+    //     setOrders(orders + 1);
+    //     localStorage.setItem("ordersnew", orders + 1);
+    //   });
+    // if (sales > 0) {
+    //   await db
+    //     .collection("admin")
+    //     .doc(`${localStorage.getItem("adminEmail")}`)
+    //     .update({
+    //       sales: localStorage.getItem("salesnew"),
+    //       orders: localStorage.getItem("ordersnew"),
+    //     });
+    // }
+
     await db.collection("users").doc(`${id}`).delete();
   };
 
@@ -111,8 +115,8 @@ function App() {
           <Route path={`/admin`}>
             <Admin
               // user={users}
-              // sales={sales}
-              // orders={order}
+              sales={sales}
+              orders={orders}
               handleDelete={handleDelete}
             />
             <div className="container">
