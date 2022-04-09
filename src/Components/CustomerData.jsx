@@ -4,7 +4,7 @@ import "../Styling/Login.css";
 import "../Styling/CustomerData.css";
 import ArrowDropDownCircleOutlinedIcon from "@mui/icons-material/ArrowDropDownCircleOutlined";
 
-function CustomerData({ user, handleDelete, handleDeleteNew }) {
+function CustomerData({ user, handleDelete }) {
   const [food, setFood] = useState([]);
   // const [sales, setSales] = useState(0);
   // const [orders, setOrders] = useState(0);
@@ -64,8 +64,8 @@ function CustomerData({ user, handleDelete, handleDeleteNew }) {
             //   sales: firebase.firestore.FieldValue.increment(sale),
             //   orders: firebase.firestore.FieldValue.increment(1),
             // });
-            // handleDelete(user.id);
-            handleDeleteNew(user.id);
+            handleDelete(user.id);
+            // handleDeleteNew(user.id);
           }}
         >
           Complete

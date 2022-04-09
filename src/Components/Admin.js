@@ -52,6 +52,10 @@ function Admin({ user, handleDelete, admin }) {
   }, [db]);
 
   useEffect(() => {
+    setOrders(users.length);
+  }, [users]);
+
+  useEffect(() => {
     db.collection("users")
       .doc(`${user.id}`)
       .collection("food")
@@ -94,28 +98,6 @@ function Admin({ user, handleDelete, admin }) {
       });
     });
   }, [adminDetails]);
-
-  const handleDeleteNew = async (id) => {
-    await db.collection("users").doc(`${user.id}`)
-    .get().then((doc) => {
-      let arr = [doc.data()];
-      console.log("ARR: ", arr);
-      // setSales(sales + arr[0].total);
-      localStorage.setItem("salesnew", sales);
-      setOrders(orders + 1);
-      localStorage.setItem("ordersnew", orders);
-    });
-    await db.collection("users").doc(`${id}`).delete();
-  };
-
-  useEffect(() => {
-    db.collection("admin")
-      .doc(`${admin.email}`)
-      .update({
-        sales: finalSales,
-        orders: finalOrders,
-      });
-  }, [localStorage.getItem("finalSales")]);
 
   // useEffect(() => {
   //   QRCode.toDataURL(`http://localhost:3000/foodmenu/${admin.email}`).then(
@@ -165,7 +147,7 @@ function Admin({ user, handleDelete, admin }) {
           <div className="served-orders col">
             <h1>You've Served</h1>
             {/* <h1>Sales: ₹{sales}</h1> */}
-            <h3>{localStorage.getItem("ordersnew")} orders</h3>
+            <h3>{orders} orders</h3>
           </div>
         </div>
         {/* <h1>Admin Details</h1> */}
@@ -191,7 +173,6 @@ function Admin({ user, handleDelete, admin }) {
                 key={user.id}
                 user={user}
                 handleDelete={handleDelete}
-                handleDeleteNew={handleDeleteNew}
                 food={food}
               />
             ))}
