@@ -3,15 +3,9 @@ import { QrReader } from "react-qr-reader";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 import "../Styling/QRCodeScanner.css";
-// import Toast from "./Toast";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import Snackbar from "@mui/material/Snackbar";
 
 function QRCodeScanner() {
   const [scan, setScan] = useState("");
-  const [open, setOpen] = useState(false);
-
   const handleError = (err) => {
     console.error(err);
   };
@@ -58,31 +52,14 @@ function QRCodeScanner() {
                   setScan("");
                 } else {
                   setScan("Invalid QR Code");
-                  <Snackbar
-                    anchorOrigin={{ vertical: "top", horizontal: "center" }}
-                    open={open}
-                    onClose={() => setOpen(false)}
-                    message="Invalid QR Code"
-                  />;
-                  setOpen(true);
                 }
-                // } else console.log(err);
-              }
+              } else console.log(err);
             }}
             facingMode="environment"
             style={{ width: "100%" }}
           />
         </div>
         <h3>SCAN QR CODE</h3>
-        {scan.includes("Invalid QR Code") ? (
-          <Snackbar
-            anchorOrigin={{ vertical: "top", horizontal: "center" }}
-            open={open}
-            message={scan}
-            autoHideDuration={3000}
-            color="secondary"
-          />
-        ) : null}
         <h3>{scan}</h3>
       </div>
       {/* <h3>Scan Qr Code</h3> */}

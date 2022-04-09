@@ -6,13 +6,11 @@ import Cart from "./Cart";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import Footer from "./Footer";
-import { Refresh } from "@mui/icons-material";
 
 const FoodMenu = ({ props }) => {
   const history = useHistory();
   const [food, setFood] = useState([]);
   const [search, setSearch] = useState("");
-  const [loading, setLoading] = useState(false);
   var email = window.location.pathname.split("/")[2];
 
   useEffect(() => {
@@ -34,7 +32,6 @@ const FoodMenu = ({ props }) => {
         });
         setFood(foodArr);
         // console.log(foodArr);
-        setLoading(true);
       });
   }, [db]);
 
@@ -125,18 +122,12 @@ const FoodMenu = ({ props }) => {
         <h3>UpMenu</h3>
         <div>
           <input
-            style={{
-              marginRight: "50px",
-              border: "none",
-              outline: "none",
-              borderRadius: "50px",
-              width: "250px",
-            }}
-            type="text"
+          style={{marginRight: "50px", border: "none", outline:"none", borderRadius: "50px", width: "250px"}}
+            type="search"
             placeholder="Search food here..."
             onChange={(e) => {
               setSearch(e.target.value);
-              // console.log(e.target.value);
+              console.log(e.target.value);
             }}
           />
           <button className="Cart-link">
@@ -172,10 +163,9 @@ const FoodMenu = ({ props }) => {
           </a>
         </div>
         <div className="food-card-list">
-          {loading ? (
-            search !== "" ? (
-              <>
-                {/* {food
+          {search !== "" ? (
+            <>
+              {food
                 .filter((item) => item.name.includes(search[0].toUpperCase()))
                 .map((item) => (
                   <FoodCard
@@ -186,42 +176,21 @@ const FoodMenu = ({ props }) => {
                     price={item.price}
                     description={item.description}
                   />
-                ))} */}
-
-                {food
-                  .filter((item) =>
-                    item.name.includes(
-                      search[0].toUpperCase() + search.slice(1)
-                    )
-                  )
-                  .map((items) => (
-                    <FoodCard
-                      ket={items.id}
-                      name={items.name}
-                      type={items.type}
-                      price={items.price}
-                      description={items.description}
-                    />
-                  ))}
-              </>
-            ) : (
-              <>
-                {food.map((item) => (
-                  <FoodCard
-                    key={item.id}
-                    id={item.id}
-                    name={item.name}
-                    type={item.type}
-                    price={item.price}
-                    description={item.description}
-                  />
                 ))}
-              </>
-            )
+            </>
           ) : (
-            <div className="loading">
-              <Refresh style={{marginLeft: "250px", alignItems:"center"}} />
-            </div>
+            <>
+              {food.map((item) => (
+                <FoodCard
+                  key={item.id}
+                  id={item.id}
+                  name={item.name}
+                  type={item.type}
+                  price={item.price}
+                  description={item.description}
+                />
+              ))}
+            </>
           )}
         </div>
         <Cart />

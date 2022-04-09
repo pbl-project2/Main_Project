@@ -112,17 +112,3 @@ hr {
 .MuiSvgIcon-root {
   background: none !important;
 }
-
-.loop {
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  100%{
-    transform: rotate(360deg);
-  }
-}
-
-.loop-main {
-  animation: spin 1s linear infinite;
-}

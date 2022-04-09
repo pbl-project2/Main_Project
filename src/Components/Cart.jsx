@@ -1,12 +1,9 @@
-import { Cancel, Refresh } from "@mui/icons-material";
+import { Cancel } from "@mui/icons-material";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import firebase from "firebase";
 import "../Styling/Cart.css";
-import Loading from "./Loading";
-import LoopIcon from "@mui/icons-material/Loop";
-// import "../Styling/Loading.css";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
@@ -14,7 +11,6 @@ const Cart = () => {
   const [sum, setSum] = useState(total);
   // const [sales, setSales] = useState(sum);
   // const [orders, setOrders] = useState(0);
-  const [loading, setLoading] = useState(false);
 
   const history = useHistory();
   const userId = global.localStorage.getItem("userId");
@@ -30,7 +26,6 @@ const Cart = () => {
           cartArr.push({ ...doc.data(), id: doc.id });
         });
         setCart(cartArr);
-        setLoading(true);
         let sumPrice = 0;
         for (let i = 0; i < cartArr.length; i++) {
           sumPrice += cartArr[i].price;
@@ -82,9 +77,8 @@ const Cart = () => {
   return (
     <div className="main-cart">
       <h3 className="title">Your Cart</h3>
-      {loading ? (
-        cart.length > 0 ? (
-          cart.map((item) => (
+      {cart.length > 0
+        ? cart.map((item) => (
             <>
               <div className="cart_items">
                 <div className="name">
@@ -100,14 +94,7 @@ const Cart = () => {
               </div>
             </>
           ))
-        ) : (
-          "Your Cart is empty right now..."
-        )
-      ) : (
-          <p className="loading">
-            <Refresh />
-          </p>
-      )}
+        : "Your Cart is empty right now..."}
       <div>
         {sum > 0 ? (
           <>

@@ -64,8 +64,8 @@ function CustomerData({ user, handleDelete, handleDeleteNew }) {
             //   sales: firebase.firestore.FieldValue.increment(sale),
             //   orders: firebase.firestore.FieldValue.increment(1),
             // });
-            handleDelete(user.id);
-            // handleDeleteNew(user.id);
+            // handleDelete(user.id);
+            handleDeleteNew(user.id);
           }}
         >
           Complete

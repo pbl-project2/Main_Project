@@ -15,12 +15,9 @@ function Admin({ user, handleDelete, admin }) {
   const [users, setUsers] = useState([]);
   const [sales, setSales] = useState(0);
   const [orders, setOrders] = useState(0);
-  const [finalUsers, setFinalUsers] = useState([]);
   const [finalSales, setFinalSales] = useState(0);
   const [finalOrders, setFinalOrders] = useState(0);
-  let sale, order;
-
-  useEffect(() => {}, []);
+  const [total, setTotal] = useState(0);
   // useEffect(async () => {
   //   await db
   //     .collection("users")
@@ -36,27 +33,6 @@ function Admin({ user, handleDelete, admin }) {
   //       localStorage.setItem("userId", users.id);
   //     });
   // }, [db]);
-
-  useEffect(() => {
-    db.collection("users")
-      .orderBy("timestamp", "asc")
-      .onSnapshot((snapshot) => {
-        snapshot.forEach((doc) => {
-          let arr = [doc.data()];
-          setFinalUsers(arr);
-          console.log(arr);
-          for (let i = 0; i < arr.length; i++) {
-            setSales(sales + arr[i].total);
-            sale += arr[i].total;
-            order += 1;
-            localStorage.setItem("sales", sale);
-            setOrders(orders + 1);
-            localStorage.setItem("orders", order);
-          }
-        });
-      });
-  }, [db]);
-
   useEffect(() => {
     db.collection("users")
       .orderBy("timestamp", "asc")
@@ -65,7 +41,7 @@ function Admin({ user, handleDelete, admin }) {
         snapshot.forEach((doc) => {
           if (admin.email === doc.data().email) {
             userArr.push({ ...doc.data(), id: doc.id });
-            // setTotal(doc.data().total);
+            setTotal(doc.data().total);
           }
         });
         setUsers(userArr);
@@ -119,25 +95,27 @@ function Admin({ user, handleDelete, admin }) {
     });
   }, [adminDetails]);
 
-  // const handleDeleteNew = async (id) => {
-  //   await db.collection("users").doc(`${user.id}`)
-  //   .get().then((doc) => {
-  //     let arr = [doc.data()];
-  //     console.log("ARR: ", arr);
-  //     // setSales(sales + arr[0].total);
-  //     localStorage.setItem("salesnew", sales);
-  //     setOrders(orders + 1);
-  //     localStorage.setItem("ordersnew", orders);
-  //   });
-  //   await db.collection("users").doc(`${id}`).delete();
-  // };
+  const handleDeleteNew = async (id) => {
+    await db.collection("users").doc(`${user.id}`)
+    .get().then((doc) => {
+      let arr = [doc.data()];
+      console.log("ARR: ", arr);
+      // setSales(sales + arr[0].total);
+      localStorage.setItem("salesnew", sales);
+      setOrders(orders + 1);
+      localStorage.setItem("ordersnew", orders);
+    });
+    await db.collection("users").doc(`${id}`).delete();
+  };
 
-  // useEffect(() => {
-  //   db.collection("admin").doc(`${admin.email}`).update({
-  //     sales: finalSales,
-  //     orders: finalOrders,
-  //   });
-  // }, [localStorage.getItem("finalSales")]);
+  useEffect(() => {
+    db.collection("admin")
+      .doc(`${admin.email}`)
+      .update({
+        sales: finalSales,
+        orders: finalOrders,
+      });
+  }, [localStorage.getItem("finalSales")]);
 
   // useEffect(() => {
   //   QRCode.toDataURL(`http://localhost:3000/foodmenu/${admin.email}`).then(
@@ -173,25 +151,6 @@ function Admin({ user, handleDelete, admin }) {
   //     });
   // }, [db]);
 
-  useEffect(() => {
-    db.collection("admin").doc(`${admin.email}`).get().then((doc) => {
-      setSales(doc.data().sales);
-      setOrders(doc.data().orders);
-    });
-  }, [db]);
-
-  useEffect(() => {
-    db.collection("users").onSnapshot((snapshot)=> {
-      // let sum = finalSales;
-      // snapshot.forEach((doc) => {
-      //   sum += doc.data().total;
-      //   console.log("SUM: ", sum);
-      // });
-      // setFinalSales(sum);
-      setOrders(snapshot.docs.length);
-    });
-  }, [db]);
-
   return (
     <div className="admin">
       <AdminNav admin={admin} adminEmail={adminEmail} user={user} />
@@ -200,15 +159,13 @@ function Admin({ user, handleDelete, admin }) {
         <div className=" divs-combine row">
           <div className="income col">
             <h1>You've Earned</h1>
-            {/* <h3>Sales: ₹{localStorage.getItem("salesnew")}.00</h3> */}
-            <h3>Sales: ₹{finalSales}.00</h3>
+            <h3>Sales: ₹{localStorage.getItem("salesnew")}.00</h3>
             {/* <h1>Orders Served: {orders}</h1> */}
           </div>
           <div className="served-orders col">
             <h1>You've Served</h1>
             {/* <h1>Sales: ₹{sales}</h1> */}
-            <h3>{orders} orders</h3>
-            {/* <h3>{localStorage.getItem("ordersnew")} orders</h3> */}
+            <h3>{localStorage.getItem("ordersnew")} orders</h3>
           </div>
         </div>
         {/* <h1>Admin Details</h1> */}
@@ -218,8 +175,9 @@ function Admin({ user, handleDelete, admin }) {
       ) : (
         <> */}
       {users.length === 0 ? (
-        <div style={{ background: "#161616", height: "350px" }}>
-          <p className="orders-title">It's calm for right now!!</p>
+        <div style={{background:"#161616", height:"350px"}}>
+        <p className="orders-title">It's calm for right now!!</p>
+
         </div>
       ) : (
         <>
@@ -233,7 +191,7 @@ function Admin({ user, handleDelete, admin }) {
                 key={user.id}
                 user={user}
                 handleDelete={handleDelete}
-                // handleDeleteNew={handleDeleteNew}
+                handleDeleteNew={handleDeleteNew}
                 food={food}
               />
             ))}

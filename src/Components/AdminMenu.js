@@ -29,7 +29,7 @@ function AdminMenu() {
   var email = window.location.pathname.split("/")[2];
 
   return (
-    <div className="admin-menu">
+    <div>
       <nav>
         <h3>UpMenu</h3>
         <button className="login-btn" onClick={() => history.push("/admin-login")}>
