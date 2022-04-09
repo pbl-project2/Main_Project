@@ -8,6 +8,7 @@ import ReactStars from "react-rating-stars-component";
 import { Download } from "@mui/icons-material";
 import firebase from "firebase";
 import Footer from "./Footer";
+import { Cached } from "@mui/icons-material";
 
 function Bill() {
   const history = useHistory();
@@ -16,6 +17,8 @@ function Bill() {
   const [total, setTotal] = useState(0);
   const [food, setFood] = useState([]);
   const [rating, setRating] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [foodLoading, setFoodLoading] = useState(false);
 
   useEffect(async () => {
     await db // user details
@@ -26,6 +29,7 @@ function Bill() {
         setName(doc.data().name);
         setToken(doc.data().token);
         setTotal(doc.data().total);
+        setLoading(true);
       });
 
     db.collection("users")
@@ -37,42 +41,41 @@ function Bill() {
           billArr.push({ ...doc.data(), id: doc.id });
         });
         setFood(billArr);
+        setFoodLoading(true);
       });
   }, [db]);
 
   useEffect(() => {
-    db.collection('users').doc(`${window.location.pathname.split("/")[3]}`).update({
-      rating: rating
-    });
-    if(rating === 5) {
+    db.collection("users")
+      .doc(`${window.location.pathname.split("/")[3]}`)
+      .update({
+        rating: rating,
+      });
+    if (rating === 5) {
       let rating = firebase.firestore.FieldValue.increment(1);
-      db.collection('ratings').doc("5 stars").update({
-        rating: rating
-      })
-    }
-    else if(rating === 4) {
+      db.collection("ratings").doc("5 stars").update({
+        rating: rating,
+      });
+    } else if (rating === 4) {
       let rating = firebase.firestore.FieldValue.increment(1);
-      db.collection('ratings').doc("4 stars").update({
-        rating: rating
-      })
-    }
-    else if(rating === 3) {
+      db.collection("ratings").doc("4 stars").update({
+        rating: rating,
+      });
+    } else if (rating === 3) {
       let rating = firebase.firestore.FieldValue.increment(1);
-      db.collection('ratings').doc("3 stars").update({
-        rating: rating
-      })
-    }
-    else if(rating === 2) {
+      db.collection("ratings").doc("3 stars").update({
+        rating: rating,
+      });
+    } else if (rating === 2) {
       let rating = firebase.firestore.FieldValue.increment(1);
-      db.collection('ratings').doc("2 stars").update({
-        rating: rating
-      })
-    }
-    else if(rating === 1) {
+      db.collection("ratings").doc("2 stars").update({
+        rating: rating,
+      });
+    } else if (rating === 1) {
       let rating = firebase.firestore.FieldValue.increment(1);
-      db.collection('ratings').doc("1 stars").update({
-        rating: rating
-      })
+      db.collection("ratings").doc("1 stars").update({
+        rating: rating,
+      });
     }
   }, [rating]);
 
@@ -133,7 +136,12 @@ function Bill() {
           <h3>
             Up<span>Menu</span>
           </h3>
-          <button className="login-btn" onClick={() => history.push("/contact-us")}>Contact Us</button>
+          <button
+            className="login-btn"
+            onClick={() => history.push("/contact-us")}
+          >
+            Contact Us
+          </button>
           {/* <button className="login-btn" onClick={handleClick}>
             Home Page
           </button> */}
@@ -143,24 +151,40 @@ function Bill() {
         <div className="bill col">
           <h1 className="bill-title">Billing</h1>
           <hr />
-          <h1 className="token-num" style={{ color: "red" }}>
-            #{token}
-          </h1>
-          <h1>Name: {name}</h1>
-          {food.map((item) => (
+          {loading ? (
             <>
-              <div className="bill-food-items">
-                <p className="food-items">{item.name}</p>
-                <p className="food-items"> x {item.quantity}</p>
-                <p className="food-items">₹{item.price}</p>
-              </div>
+              <h1 className="token-num" style={{ color: "red" }}>
+                #{token}
+              </h1>
+              <h1>Name: {name}</h1>
+              {foodLoading ? (
+                <>
+                  {food.map((item) => (
+                    <>
+                      <div className="bill-food-items">
+                        <p className="food-items">{item.name}</p>
+                        <p className="food-items"> x {item.quantity}</p>
+                        <p className="food-items">₹{item.price}</p>
+                      </div>
+                    </>
+                  ))}
+                </>
+              ) : (
+                <div className="food-loader-loop">
+                  <Cached />
+                </div>
+              )}
+              <h1 className="total">Total: ₹{total}</h1>
+              <p className="messege">**PAY AT THE CANTEEN**</p>
+              <button className="login-btn pdf-btn" onClick={generatePdf}>
+                Download PDF <Download />
+              </button>
             </>
-          ))}
-          <h1 className="total">Total: ₹{total}</h1>
-          <p className="messege">**PAY AT THE CANTEEN**</p>
-          <button className="login-btn pdf-btn" onClick={generatePdf}>
-            Download PDF <Download />
-          </button>
+          ) : (
+            <div className="loading">
+              <Cached />
+            </div>
+          )}
         </div>
         <div className="rating-div col">
           <div className="rate-us">

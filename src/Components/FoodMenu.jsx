@@ -6,11 +6,13 @@ import Cart from "./Cart";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import Footer from "./Footer";
+import { Cached } from "@mui/icons-material";
 
 const FoodMenu = ({ props }) => {
   const history = useHistory();
   const [food, setFood] = useState([]);
   const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
   var email = window.location.pathname.split("/")[2];
 
   useEffect(() => {
@@ -31,6 +33,7 @@ const FoodMenu = ({ props }) => {
           foodArr.push({ ...doc.data(), id: doc.id });
         });
         setFood(foodArr);
+        setLoading(true);
         // console.log(foodArr);
       });
   }, [db]);
@@ -122,7 +125,13 @@ const FoodMenu = ({ props }) => {
         <h3>UpMenu</h3>
         <div>
           <input
-          style={{marginRight: "50px", border: "none", outline:"none", borderRadius: "50px", width: "250px"}}
+            style={{
+              marginRight: "50px",
+              border: "none",
+              outline: "none",
+              borderRadius: "50px",
+              width: "250px",
+            }}
             type="search"
             placeholder="Search food here..."
             onChange={(e) => {
@@ -163,11 +172,25 @@ const FoodMenu = ({ props }) => {
           </a>
         </div>
         <div className="food-card-list">
-          {search !== "" ? (
-            <>
-              {food
-                .filter((item) => item.name.includes(search[0].toUpperCase()))
-                .map((item) => (
+          {loading ? (
+            search !== "" ? (
+              <>
+                {food
+                  .filter((item) => item.name.includes(search[0].toUpperCase()))
+                  .map((item) => (
+                    <FoodCard
+                      key={item.id}
+                      id={item.id}
+                      name={item.name}
+                      type={item.type}
+                      price={item.price}
+                      description={item.description}
+                    />
+                  ))}
+              </>
+            ) : (
+              <>
+                {food.map((item) => (
                   <FoodCard
                     key={item.id}
                     id={item.id}
@@ -177,20 +200,12 @@ const FoodMenu = ({ props }) => {
                     description={item.description}
                   />
                 ))}
-            </>
+              </>
+            )
           ) : (
-            <>
-              {food.map((item) => (
-                <FoodCard
-                  key={item.id}
-                  id={item.id}
-                  name={item.name}
-                  type={item.type}
-                  price={item.price}
-                  description={item.description}
-                />
-              ))}
-            </>
+            <div className="loading">
+              <Cached />
+            </div>
           )}
         </div>
         <Cart />

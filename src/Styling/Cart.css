@@ -9,7 +9,7 @@
   padding: 2rem;
 
   position: fixed;
-  width: fit-content;
+  width: 22rem;
 
   overflow-y: scroll;
 
@@ -22,6 +22,7 @@
   align-items: center;
   justify-content: space-between;
 }
+
 .name {
   width: 120px;
 }
@@ -30,6 +31,7 @@
   margin: 0px;
   margin-right: 20px;
 }
+
 .cancel-btn {
   margin-bottom: 10px;
   cursor: pointer;
@@ -52,4 +54,24 @@
   background: -webkit-linear-gradient(#a03989, orange);
   width: 9rem;
   cursor: pointer;
+}
+
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 100px;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loader .MuiSvgIcon-root {
+  height: 40px;
+  width: 40px;
+  animation: spin 1s linear infinite;
 }

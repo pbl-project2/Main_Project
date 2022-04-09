@@ -8,6 +8,7 @@
   background-color: #161616;
   width: 100%;
 }
+
 .whole-bill {
   display: flex;
   justify-content: center;
@@ -26,7 +27,7 @@
   text-align: left;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   border-radius: 20px;
-  height: fit-content;
+  height: 75vh;
   /* width:50%; */
   /* margin-left: 20rem; */
   /* margin-top: 5rem;
@@ -34,10 +35,12 @@
   width: fit-content;
   /* margin: 0px 20rem; */
 }
+
 .token-num {
   padding-top: 30px;
   color: #0e76a8 !important;
 }
+
 .bill-title {
   margin-top: 30px;
   text-align: left;
@@ -48,6 +51,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 hr {
   /* margin-left: 43px;
   margin-top: 5px; */
@@ -63,6 +67,7 @@ hr {
   /* padding-bottom: 20px; */
   padding-right: 20px;
 }
+
 .food-items {
   padding-right: 20px;
 }
@@ -70,9 +75,11 @@ hr {
 .container {
   padding: 45px;
 }
-.pdf-btn{
-  margin-bottom:50px;
+
+.pdf-btn {
+  margin-bottom: 50px;
 }
+
 .rating-div {
   display: flex;
   flex: 1;
@@ -91,12 +98,12 @@ hr {
   /* margin-top: 5rem;
     text-align: left; */
   width: fit-content;
-  height: 78vh;
+  height: 75vh;
 }
 
 .star-rating {
   font-size: 50px;
-  height:fit-content;
+  height: fit-content;
 }
 
 /* input[type="radio"] {
@@ -106,9 +113,45 @@ hr {
 .star {
   cursor: pointer;
   /* color: #a03989; */
-  /* transition: color 200ms !important; 
+/* transition: color 200ms !important; 
 }  */
 
 .MuiSvgIcon-root {
   background: none !important;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  margin-top: 100px;
+}
+
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading .MuiSvgIcon-root {
+  animation: spin 1s linear infinite;
+  height: 40px;
+  width: 40px;
+  color: #0072b1 !important;
+}
+
+.food-loader-loop {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  /* margin-top: 100px; */
+}
+
+.food-loader-loop .MuiSvgIcon-root {
+  animation: spin 1s linear infinite;
+  height: 40px;
+  width: 40px;
+  color: #0072b1 !important;
 }
