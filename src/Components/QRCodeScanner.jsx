@@ -3,6 +3,7 @@ import { QrReader } from "react-qr-reader";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 import "../Styling/QRCodeScanner.css";
+import Snackbar from "@mui/material/Snackbar";
 
 function QRCodeScanner() {
   const [scan, setScan] = useState("");
