@@ -7,6 +7,8 @@
     transform: translate(-50%, -50%);
     background: black !important;
     text-align: center;
+    border: #2ecc71 solid 4px;
+    border-radius: 20px;
 }
 
 .form1 h1 {
