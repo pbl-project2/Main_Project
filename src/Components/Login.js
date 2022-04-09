@@ -34,7 +34,11 @@ function Login(props) {
           onClose={handleSnackbarClose}
           className="error"
         >
-          <Alert icon={<Error fontSize="inherit" />} severity="error" style={{color: "white"}}>
+          <Alert
+            icon={<Error fontSize="inherit" />}
+            severity="error"
+            style={{ color: "white" }}
+          >
             {snackbarMessage}
           </Alert>
         </Snackbar>
@@ -82,7 +86,7 @@ function Login(props) {
                   Sign Up
                 </button>
                 <p>
-                  Have an account ?
+                  Have an account ?{" "}
                   <span
                     style={{ cursor: "pointer" }}
                     onClick={() => setHasAccount(!hasAccount)}
@@ -106,7 +110,9 @@ function Login(props) {
           onClose={handleSnackbarClose}
           className="error"
         >
-          <Alert icon={<Error fontSize="inherit" />} severity="error">{snackbarMessage}</Alert>
+          <Alert icon={<Error fontSize="inherit" />} severity="error">
+            {snackbarMessage}
+          </Alert>
         </Snackbar>
       )}
       <div className="loginContainer">

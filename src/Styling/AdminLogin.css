@@ -12,10 +12,12 @@
 }
 
 .form1 h1 {
-    width: 300px;
+    /* width: 320px; */
+    width: 100%;
     background: black !important;
     color: white;
     text-transform: uppercase;
+    text-align: center;
     font-weight: 500;
 }
 
