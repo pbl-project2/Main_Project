@@ -42,7 +42,7 @@ function AdminNav({ adminEmail, user }) {
           </button>
           <button style={{ border: "none" }} className="qr-code-download">
             <a
-              href={global.localStorage.getItem("src")}
+              href={localStorage.getItem("src")}
               download
               style={{ textDecoration: "none" }}
             >

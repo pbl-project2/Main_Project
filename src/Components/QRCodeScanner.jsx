@@ -3,9 +3,6 @@ import { QrReader } from "react-qr-reader";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
 import "../Styling/QRCodeScanner.css";
-// import Toast from "./Toast";
-import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import Snackbar from "@mui/material/Snackbar";
 
 function QRCodeScanner() {
