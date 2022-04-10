@@ -127,7 +127,7 @@ function Bill() {
     doc.autoTable({
       head: [["Name", "Quantity","Price", "Total"]],
       body: finalFood.map((food) => {
-        return [food[0], x,food[1], `%${food[2]/food[1]}` ,food[2]];
+        return [food[0], food[1], `%${food[2]/food[1]}` ,food[2]];
       }),
       // body: [
       //   finalFood.map((food) => {
