@@ -7,6 +7,7 @@ import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import Footer from "./Footer";
 import { Cached } from "@mui/icons-material";
+import FadeLoader from 'react-spinners/FadeLoader';
 
 const FoodMenu = ({ props }) => {
   const history = useHistory();
@@ -203,9 +204,12 @@ const FoodMenu = ({ props }) => {
               </>
             )
           ) : (
-            <div className="loading">
+            /* <div className="loading">
               <Cached />
-            </div>
+            </div> */
+            <div className="loading">
+              <FadeLoader size={30} color="#ffffff" />
+            </div> 
           )}
         </div>
         <Cart />

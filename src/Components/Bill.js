@@ -9,6 +9,7 @@ import { Download } from "@mui/icons-material";
 import firebase from "firebase";
 import Footer from "./Footer";
 import { Cached } from "@mui/icons-material";
+import FadeLoader from "react-spinners/FadeLoader";
 
 function Bill() {
   const history = useHistory();
@@ -171,7 +172,8 @@ function Bill() {
                 </>
               ) : (
                 <div className="food-loader-loop">
-                  <Cached />
+                  {/* <Cached /> */}
+                  <FadeLoader size={2} speedMultiplier={2} color="#ffffff" />
                 </div>
               )}
               <h1 className="total">Total: ₹{total}</h1>
@@ -181,9 +183,12 @@ function Bill() {
               </button>
             </>
           ) : (
-            <div className="loading">
-              <Cached />
-            </div>
+            //<div className="loading">
+            //<Cached />
+            //</div>
+            /* <div className="loading"> */
+            <FadeLoader size={15} color="#ffffff" speedMultiplier={2} />
+            /* </div> */
           )}
         </div>
         <div className="rating-div col">

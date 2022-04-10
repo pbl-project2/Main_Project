@@ -18,12 +18,17 @@ function SeparateFoodMenuNew() {
     //   price: price,
     //   description: description,
     // });
-    await db.collection("admin").doc(`${window.location.pathname.split("/")[2]}`).collection("foodMenu").doc(`${name}`).set({
+    await db
+      .collection("admin")
+      .doc(`${window.location.pathname.split("/")[2]}`)
+      .collection("foodMenu")
+      .doc(`${name}`)
+      .set({
         name: name,
         type: type,
         price: price,
         description: description,
-    });
+      });
     setName("");
     setType("");
     setPrice(0);
@@ -65,11 +70,24 @@ function SeparateFoodMenuNew() {
         </div>
 
         <div className="type">
-          <input
+          {/* <input
             type="text"
             placeholder="Enter food type..."
             onChange={(e) => setType(e.target.value)}
-          />
+          /> */}
+          <select
+            placeholder="Select food type..."
+            name="type"
+            id="type"
+            onChange={(e) => {
+              let value = e.target.value;
+              setType(value);
+            }}
+          >
+            <option value="Snacks">Snacks</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Beverages">Beverages</option>
+          </select>
         </div>
         <div className="desc">
           <input

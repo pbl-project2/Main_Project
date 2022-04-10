@@ -5,6 +5,8 @@ import { db } from "../firebase/firebase";
 import firebase from "firebase";
 import "../Styling/Cart.css";
 
+import FadeLoader from 'react-spinners/FadeLoader';
+
 const Cart = () => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
@@ -101,8 +103,11 @@ const Cart = () => {
           "Your Cart is empty right now..."
         )
       ) : (
-        <div className="loader">
+        /* <div className="loader">
           <Cached />
+        </div> */
+        <div className="loader">
+          <FadeLoader size={15} color="#ffffff" />
         </div>
       )}
       <div>
