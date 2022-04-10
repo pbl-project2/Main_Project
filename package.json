@@ -19,6 +19,7 @@
     "firebase": "^8.10.0",
     "html5-qrcode": "^2.2.0",
     "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.23",
     "qrcode": "^1.5.0",
     "react": "^17.0.2",
     "react-bootstrap": "^2.1.2",

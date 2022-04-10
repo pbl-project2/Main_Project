@@ -4,6 +4,7 @@ import "../Styling/Login.css";
 import "../Styling/Bill.css";
 import { db } from "../firebase/firebase";
 import jsPDF from "jspdf";
+import "jspdf-autotable";
 import ReactStars from "react-rating-stars-component";
 import { Download } from "@mui/icons-material";
 import firebase from "firebase";
@@ -20,6 +21,7 @@ function Bill() {
   const [rating, setRating] = useState(null);
   const [loading, setLoading] = useState(false);
   const [foodLoading, setFoodLoading] = useState(false);
+  const [finalFood, setFinalFood] = useState([[]]);
 
   useEffect(async () => {
     await db // user details
@@ -43,6 +45,13 @@ function Bill() {
         });
         setFood(billArr);
         setFoodLoading(true);
+        for (let i = 0; i < billArr.length; i++) {
+          let arr = [];
+          arr.push(billArr[i].name);
+          arr.push(billArr[i].quantity);
+          arr.push(billArr[i].price);
+          finalFood.push(arr);
+        }
       });
   }, [db]);
 
@@ -104,16 +113,28 @@ function Bill() {
     doc.text(50, 140, `Token: #${token}`);
     doc.text(50, 160, `Total: Rs.${total}`);
 
-    doc.setFontSize(16);
-    doc.setTextColor("#a03989");
-    doc.text(50, 200, "Food Items");
-    doc.text(
-      50,
-      220,
-      `${food.map((food) => {
-        return `Name: ${food.name}\nQuantity: ${food.quantity}\nPrice: Rs.${food.price}\n\n`;
-      })}`
-    );
+    // doc.setFontSize(16);
+    // doc.setTextColor("#a03989");
+    // doc.text(50, 200, "Food Items");
+    // doc.text(
+    //   50,
+    //   220,
+    //   `${food.map((food) => {
+    //     return `Name: ${food.name}\nQuantity: ${food.quantity}\nPrice: Rs.${food.price}\n\n`;
+    //   })}`
+    // );
+    doc.autoTable({ html: "#table", margin: { top: 170 } });
+    doc.autoTable({
+      head: [["Name", "Quantity", "Total"]],
+      body: finalFood.map((food) => {
+        return [food[0], food[1], food[2]];
+      }),
+      // body: [
+      //   finalFood.map((food) => {
+      //     return [food[0], food[1], food[2]];
+      //   }),
+      // ],
+    });
 
     doc.setTextColor("gray");
     doc.setFontSize(18);
