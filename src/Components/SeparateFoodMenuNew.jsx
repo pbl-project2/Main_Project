@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import { db } from "../firebase/firebase";
 import Footer from "./Footer";
+import "../Styling/SepFoodMenuNew.css";
 
 function SeparateFoodMenuNew() {
   const history = useHistory();
@@ -53,52 +54,66 @@ function SeparateFoodMenuNew() {
         </button>
       </nav>
       <form onSubmit={handleSubmit} id="form" className="form">
-        <div className="row">
-          <div className="food_name col">
-            <input
-              type="text"
-              placeholder="Enter food name..."
-              onChange={(e) => setName(e.target.value)}
-            />
-            <br />
-          </div>
-          <div className="price col">
-            <input
-              type="tel"
-              placeholder="Enter food price..."
-              onChange={(e) => setPrice(e.target.value)}
-            />
-          </div>
-        </div>
+        <div className="whole">
+          <div className="row">
+            <div className="name">
+              <input
+                type="text"
+                placeholder="Enter food name..."
+                onChange={(e) => setName(e.target.value)}
+              />
+              <br />
+            </div>
+            <div className="price">
+              <input
+                type="tel"
+                placeholder="Enter food price..."
+                onChange={(e) => setPrice(e.target.value)}
+              />
+            </div>
 
-        <div className="type">
-          {/* <input
+            <div className="type">
+              {/* <input
             type="text"
             placeholder="Enter food type..."
             onChange={(e) => setType(e.target.value)}
           /> */}
-          <select
-            placeholder="Select food type..."
-            name="type"
-            id="type"
-            onChange={(e) => {
-              let value = e.target.value;
-              setType(value);
-            }}
-          >
-            <option value="Snacks">Snacks</option>
-            <option value="Lunch">Lunch</option>
-            <option value="Beverages">Beverages</option>
-          </select>
+              <select
+                placeholder="Select food type..."
+                name="type"
+                id="type"
+                className="select"
+                onChange={(e) => {
+                  let value = e.target.value;
+                  setType(value);
+                }}
+              >
+                <option
+                  value="none"
+                  className="selected"
+                  disabled
+                  hidden
+                  selected
+                >
+                  Select a type...
+                </option>
+                <option value="Snacks">Snacks</option>
+                <option value="Lunch">Lunch</option>
+                <option value="Beverages">Beverages</option>
+              </select>
+            </div>
+            <div className="desc">
+              <input
+                type="text"
+                placeholder="Enter food description..."
+                onChange={(e) => setDescription(e.target.value)}
+              />
+            </div>
+          </div>
+          <div className="btn">
+            <button>Add</button>
+          </div>
         </div>
-        <div className="desc">
-          <input
-            type="text"
-            placeholder="Enter food description..."
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <button className="button">Add</button>
       </form>
       <Footer />
     </div>
