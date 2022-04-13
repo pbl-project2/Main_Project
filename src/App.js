@@ -20,6 +20,9 @@ import ContactUs from "./Components/ContactUs";
 import QRCodeScanner from "./Components/QRCodeScanner";
 import { Cached } from "@mui/icons-material";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 function App() {
   const [users, setUsers] = useState([]);
   const [sales, setSales] = useState(0);
@@ -98,6 +101,11 @@ function App() {
   return (
     <div className="app">
       <Router>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+        />
         <Switch>
           <Route exact path="/">
             <UserLogin />

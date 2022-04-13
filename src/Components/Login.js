@@ -1,7 +1,9 @@
 import { Snackbar } from "@material-ui/core";
 import { Error } from "@mui/icons-material";
 import { Alert } from "@mui/material";
+import { Slide } from '@mui/material';
 import React from "react";
+import { db } from "../firebase/firebase";
 
 //Styling
 import "../Styling/AdminLogin.css";
@@ -22,7 +24,11 @@ function Login(props) {
     handleSnackbarClose,
     showSnackbar,
     snackbarMessage,
+    rePassword,
+    setRePassword,
   } = props;
+
+  
 
   return !hasAccount ? (
     <>
@@ -37,7 +43,7 @@ function Login(props) {
           <Alert
             icon={<Error fontSize="inherit" />}
             severity="error"
-            style={{ color: "white" }}
+            style={{ color: "white", background: "red" }}
           >
             {snackbarMessage}
           </Alert>
@@ -62,6 +68,13 @@ function Login(props) {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+          />
+          <input
+            placeholder="Re-enter Password"
+            type="text"
+            required
+            value={rePassword}
+            onChange={(e) => setRePassword(e.target.value)}
           />
           {/* <p className="errorMsg">{passwordError}</p> */}
           <div className="btn-container">
@@ -97,6 +110,18 @@ function Login(props) {
               </div>
             )}
           </div>
+          <p className="password-validation">
+            <span>➡️ Password must contain at least 8 characters</span>
+            <br />
+            <span>➡️ Password's first letter must be uppercase</span>
+            <br />
+            <span>➡️ Password must contain at least one numeric character</span>
+            <br />
+            <span>
+              ➡️ Password must contain at least one special character like
+              $,!,@,#
+            </span>
+          </p>
         </div>
       </div>
     </>

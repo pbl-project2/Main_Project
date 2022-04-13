@@ -97,7 +97,7 @@ function Admin({ user, handleDelete, admin }) {
         qrcode: data,
       });
     });
-  }, [adminDetails]);
+  }, [adminDetails, []]);
 
   // useEffect(() => {
   //   QRCode.toDataURL(`http://localhost:3000/foodmenu/${admin.email}`).then(

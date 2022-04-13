@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import "../Styling/Login.css";
 import { useHistory } from "react-router-dom";
-import { Mic } from "@mui/icons-material";
 
 import { Snackbar } from "@mui/material";
 import Footer from "./Footer";
@@ -39,7 +38,7 @@ const Login = () => {
             Up<span className="icon-span">Menu</span>
           </h3>
           <button
-            className="login-btn"
+            className="homepage-btn"
             onClick={() => history.push("/admin-login")}
           >
             Login as Admin

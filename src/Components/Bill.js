@@ -44,14 +44,19 @@ function Bill() {
           billArr.push({ ...doc.data(), id: doc.id });
         });
         setFood(billArr);
+        console.log(billArr);
         setFoodLoading(true);
         for (let i = 0; i < billArr.length; i++) {
           let arr = [];
           arr.push(billArr[i].name);
           arr.push(billArr[i].quantity);
           arr.push(billArr[i].price);
+          arr.slice(1, arr.length - 1);
           finalFood.push(arr);
         }
+        finalFood.splice(0, 1);
+
+        console.log(finalFood);
       });
   }, [db]);
 
@@ -125,9 +130,15 @@ function Bill() {
     // );
     doc.autoTable({ html: "#table", margin: { top: 170 } });
     doc.autoTable({
-      head: [["Name", "Quantity","Price", "Total"]],
+      head: [["Sr.No.", "Food Name", "Quantity", "Price", "Total"]],
       body: finalFood.map((food) => {
-        return [food[0], food[1], `${food[2]/food[1]}` ,food[2]];
+        return [
+          finalFood.indexOf(food) + 1,
+          food[0],
+          food[1],
+          `${food[2] / food[1]}`,
+          food[2],
+        ];
       }),
       // body: [
       //   finalFood.map((food) => {

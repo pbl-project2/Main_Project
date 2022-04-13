@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import { db } from "../firebase/firebase";
 import Footer from "./Footer";
 
@@ -29,6 +30,7 @@ function SeparateFoodMenuNew() {
         price: price,
         description: description,
       });
+    toast.success(`${name} added to menu!`);
     setName("");
     setType("");
     setPrice(0);
