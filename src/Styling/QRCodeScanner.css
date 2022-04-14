@@ -49,7 +49,7 @@ video {
 .row11::after {
     content: '';
     position: absolute;
-    background: #0e1538;
+    background: #161616;
     inset: 4px;
     border-radius: 20px;
 }

@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import Footer from "./Footer";
 import { Cached } from "@mui/icons-material";
-import FadeLoader from 'react-spinners/FadeLoader';
+import FadeLoader from "react-spinners/FadeLoader";
 
 const FoodMenu = ({ props }) => {
   const history = useHistory();
@@ -163,7 +163,6 @@ const FoodMenu = ({ props }) => {
           <a href="#" className="category" onClick={handleBeverages}>
             Beverages
           </a> */}
-<<<<<<< HEAD
             <a href="#" className="category" onClick={handleSnacks}>
               Breakfast
             </a>
@@ -174,28 +173,6 @@ const FoodMenu = ({ props }) => {
               Beverages
             </a>
           </div>
-          <div className="food-card-list">
-            {food.map((item) => (
-              <FoodCard
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                type={item.type}
-                price={item.price}
-                description={item.description}
-              />
-            ))}
-          </div>
-=======
-          <a href="#" className="category" onClick={handleSnacks}>
-            Breakfast
-          </a>
-          <a href="#" className="category" onClick={handleLunch}>
-            Lunch
-          </a>
-          <a href="#" className="category" onClick={handleBeverages}>
-            Beverages
-          </a>
         </div>
         <div className="food-card-list">
           {loading ? (
@@ -234,9 +211,8 @@ const FoodMenu = ({ props }) => {
             </div> */
             <div className="loading">
               <FadeLoader size={30} color="#ffffff" />
-            </div> 
+            </div>
           )}
->>>>>>> c05abf3a8b9f7688edd6624b67148aafc4899fe1
         </div>
 
         <Cart />
