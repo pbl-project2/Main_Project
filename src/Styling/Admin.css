@@ -85,3 +85,6 @@
   margin-top:-2rem;
 }
 
+.all-orders {
+  overflow-y: visible;
+}

@@ -1,7 +1,9 @@
 import { Snackbar } from "@material-ui/core";
 import { Error } from "@mui/icons-material";
 import { Alert } from "@mui/material";
+import { Slide } from '@mui/material';
 import React from "react";
+import { db } from "../firebase/firebase";
 
 //Styling
 import "../Styling/AdminLogin.css";
@@ -22,7 +24,11 @@ function Login(props) {
     handleSnackbarClose,
     showSnackbar,
     snackbarMessage,
+    rePassword,
+    setRePassword,
   } = props;
+
+  
 
   return !hasAccount ? (
     <>
@@ -34,7 +40,11 @@ function Login(props) {
           onClose={handleSnackbarClose}
           className="error"
         >
-          <Alert icon={<Error fontSize="inherit" />} severity="error" style={{color: "white"}}>
+          <Alert
+            icon={<Error fontSize="inherit" />}
+            severity="error"
+            style={{ color: "white", background: "red" }}
+          >
             {snackbarMessage}
           </Alert>
         </Snackbar>
@@ -59,6 +69,13 @@ function Login(props) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <input
+            placeholder="Re-enter Password"
+            type="text"
+            required
+            value={rePassword}
+            onChange={(e) => setRePassword(e.target.value)}
+          />
           {/* <p className="errorMsg">{passwordError}</p> */}
           <div className="btn-container">
             {hasAccount ? ( //true
@@ -82,7 +99,7 @@ function Login(props) {
                   Sign Up
                 </button>
                 <p>
-                  Have an account ?
+                  Have an account ?{" "}
                   <span
                     style={{ cursor: "pointer" }}
                     onClick={() => setHasAccount(!hasAccount)}
@@ -93,6 +110,18 @@ function Login(props) {
               </div>
             )}
           </div>
+          <p className="password-validation">
+            <span>➡️ Password must contain at least 8 characters</span>
+            <br />
+            <span>➡️ Password's first letter must be uppercase</span>
+            <br />
+            <span>➡️ Password must contain at least one numeric character</span>
+            <br />
+            <span>
+              ➡️ Password must contain at least one special character like
+              $,!,@,#
+            </span>
+          </p>
         </div>
       </div>
     </>
@@ -106,7 +135,9 @@ function Login(props) {
           onClose={handleSnackbarClose}
           className="error"
         >
-          <Alert icon={<Error fontSize="inherit" />} severity="error">{snackbarMessage}</Alert>
+          <Alert icon={<Error fontSize="inherit" />} severity="error">
+            {snackbarMessage}
+          </Alert>
         </Snackbar>
       )}
       <div className="loginContainer">

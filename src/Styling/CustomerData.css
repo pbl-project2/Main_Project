@@ -1,54 +1,63 @@
-.customer-data{
-    display:flex;
-    justify-content: space-between;
-    margin-top:3rem;
-    width:80%;
-    margin-left:120px;
-    
-    
-    
+.customer-data {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3rem;
+  width: 80%;
+  margin-left: 120px;
 }
-.order-content{
-    display:none;
-    position:absolute;
-    background-color: #f1f1f1;
-    min-width:  15rem;
-    
-    z-index:1;
-    
+.order-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 15rem;
 
-}   
-
-.orders-admin{
-    position:relative;
-    display:inline-block;
+  z-index: 1;
 }
 
-.orders-admin:hover .order-content{
-    display:block;
-    
-    
+.orders-admin {
+  position: relative;
+  display: inline-block;
 }
-.admin-food-items{
-    display:flex;
+/* 
+.orders-admin:hover {
+    transform: rotate(180deg);
+} */
+
+.orders-admin .arrow-icon .MuiSvgIcon-root:hover {
+  transition: all 0.5s ease;
+  transform: rotate(180deg) !important;
 }
-.users-orders th{
-    padding:10px;
-    
-    width:100px;
-    background-color: #f1f1f1;
-    border: 1px solid black ;
-    
-    color:black;
-    
+.orders-admin .arrow-icon .MuiSvgIcon-root:not(:hover) {
+    transform: rotate(0deg) !important;
+    transition: all 0.5s ease;
+}
+
+.orders-admin:hover .order-content {
+  display: block;
+  /* transition: all 0.3s ease; */
+}
+.admin-food-items {
+  display: flex;
+}
+.users-orders th {
+  padding: 10px;
+
+  width: 100px;
+  background-color: #f1f1f1;
+  border: 1px solid black;
+
+  color: black;
 }
 .users-orders {
-    width:300px;
-    
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    border-radius:20px;
-    
+  width: 300px;
+
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 20px;
 }
-.user-name-order{
-    text-transform: capitalize;
+.user-name-order {
+  text-transform: capitalize;
+}
+
+.icon:hover {
+  transform: rotate(180deg) !important;
 }

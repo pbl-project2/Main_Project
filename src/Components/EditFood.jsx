@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import { db } from "../firebase/firebase";
 import "../Styling/MenuNew.css";
 
@@ -24,6 +25,7 @@ function EditFood() {
         price: price,
         description: desc,
       });
+    toast.success(`Item updated!`);
     setPrice(0);
     setDesc("");
     document.getElementById("form").reset();
@@ -34,33 +36,43 @@ function EditFood() {
         <h3>UpMenu</h3>
         <button
           onClick={() =>
-            history.push(`/menu/${window.location.pathname.split("/")[2]}`)
+            history.push(
+              `/admin-menu/${window.location.pathname.split("/")[2]}`
+            )
           }
           className="button"
         >
           Back to Menu
         </button>
       </nav>
-      <div className="current">
-        <h1>Current Data</h1>
-        <h3>Name: {food.name}</h3>
-        <h3>Price: ₹{food.price}</h3>
-        <h3>Type: {food.type}</h3>
-        <h3>Description: {food.description}</h3>
-      </div>
       <div className="new">
-        <h1>Edit details</h1>
         <form id="form" onSubmit={handleSubmit} className="form">
+          <h3>Edit details</h3>
           <div className="price">
             <label>Price: </label>
-            <input type="number" onChange={(e) => setPrice(e.target.value)} />
+            <input
+              type="number"
+              className="input"
+              onChange={(e) => setPrice(e.target.value)}
+            />
           </div>
           <div className="desc">
             <label>Description: </label>
-            <input type="text" onChange={(e) => setDesc(e.target.value)} />
+            <input
+              type="text"
+              className="input"
+              onChange={(e) => setDesc(e.target.value)}
+            />
           </div>
           <button className="button">Edit</button>
         </form>
+        {/* <div className="current">
+          <h1>Current Data</h1>
+          <h3>Name: {food.name}</h3>
+          <h3>Price: ₹{food.price}</h3>
+          <h3>Type: {food.type}</h3>
+          <h3>Description: {food.description}</h3>
+        </div> */}
       </div>
     </div>
   );

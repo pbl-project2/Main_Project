@@ -4,9 +4,11 @@ import { v4 as uuid } from "uuid";
 import uniqueRandom from "unique-random";
 import { useHistory } from "react-router-dom";
 import { Snackbar } from "@material-ui/core";
+import { toast } from "react-toastify";
 
 //Styling
 import "../Styling/Login.css";
+import Footer from "./Footer";
 
 function Customer() {
   const [userId, setUserId] = useState("");
@@ -43,14 +45,14 @@ function Customer() {
         setName("");
         setMobile(0);
       } else {
-        setSnackbarMessage("Please enter valid 10 digit mobile number");
-        setShowSnackbar(true);
+        // setSnackbarMessage("Please enter valid 10 digit mobile number");
+        // setShowSnackbar(true);
+        toast.error("Please enter valid 10 digit mobile number");
       }
     } else {
-      setShowSnackbar(true);
-      setSnackbarMessage("Name or mobile number is missing");
-      {
-      }
+      // setShowSnackbar(true);
+      // setSnackbarMessage("Name or mobile number is missing");
+      toast.error("Name or mobile number is missing");
     }
   };
 
@@ -95,6 +97,7 @@ function Customer() {
           </form>
         </div>
       </div>
+        <Footer />
     </div>
   );
 }

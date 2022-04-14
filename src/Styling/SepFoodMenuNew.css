@@ -1,0 +1,117 @@
+.form {
+    width: 500px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 435px !important;
+}
+
+.whole {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.whole .row {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.whole .row .name input,
+.whole .row .price input,
+.whole .row .desc input {
+    width: 100%;
+    height: 45px;
+    border: none;
+    padding: auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+}
+
+.whole .row .name,
+.whole .row .price,
+.whole .row .type,
+.whole .row .desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    margin: 5px 5px;
+}
+
+/* .form .whole .type select {
+    width: 100%;
+    height: 45px;
+    border: 1px solid #2ecc71;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    margin: 0;
+    padding:; */
+/* } */
+
+.form .whole .type select {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 10px !important;
+    padding-top: 10px !important;
+    width: 100%;
+    height: 45px;
+    border: 1px solid #161616;
+    border-radius: 7px;
+    margin: 0;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.form .whole .type select:hover {
+    border: 2px solid #2ecc71;
+}
+
+/* .form .whole .row .type .select option {
+    text-align: center;
+    width: 100%;
+    outline: 1px solid #2ecc71;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+} */
+
+.form .whole button {
+    height: 40px;
+    width: 5rem;
+    border-radius: 7px;
+    display: flex;
+    margin: 0 !important;
+    padding: 0;
+    margin-left: 0 !important;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+    border: 0;
+    background: linear-gradient(90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(158, 57, 138, 1) 0%,
+    rgba(255, 0, 33, 1) 100%);
+}
+
+.form .whole .btn,
+.form .whole .btn:hover {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}

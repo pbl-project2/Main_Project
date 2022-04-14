@@ -5,10 +5,15 @@ import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Cart from "./Cart";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
+import Footer from "./Footer";
+import { Cached } from "@mui/icons-material";
+import FadeLoader from 'react-spinners/FadeLoader';
 
 const FoodMenu = ({ props }) => {
   const history = useHistory();
   const [food, setFood] = useState([]);
+  const [search, setSearch] = useState("");
+  const [loading, setLoading] = useState(false);
   var email = window.location.pathname.split("/")[2];
 
   useEffect(() => {
@@ -29,6 +34,7 @@ const FoodMenu = ({ props }) => {
           foodArr.push({ ...doc.data(), id: doc.id });
         });
         setFood(foodArr);
+        setLoading(true);
         // console.log(foodArr);
       });
   }, [db]);
@@ -119,6 +125,21 @@ const FoodMenu = ({ props }) => {
       <div className="nav">
         <h3>UpMenu</h3>
         <div>
+          <input
+            style={{
+              marginRight: "50px",
+              border: "none",
+              outline: "none",
+              borderRadius: "50px",
+              width: "250px",
+            }}
+            type="search"
+            placeholder="Search food here..."
+            onChange={(e) => {
+              setSearch(e.target.value);
+              console.log(e.target.value);
+            }}
+          />
           <button className="Cart-link">
             <AddShoppingCartIcon />
           </button>
@@ -142,6 +163,7 @@ const FoodMenu = ({ props }) => {
           <a href="#" className="category" onClick={handleBeverages}>
             Beverages
           </a> */}
+<<<<<<< HEAD
             <a href="#" className="category" onClick={handleSnacks}>
               Breakfast
             </a>
@@ -164,10 +186,62 @@ const FoodMenu = ({ props }) => {
               />
             ))}
           </div>
+=======
+          <a href="#" className="category" onClick={handleSnacks}>
+            Breakfast
+          </a>
+          <a href="#" className="category" onClick={handleLunch}>
+            Lunch
+          </a>
+          <a href="#" className="category" onClick={handleBeverages}>
+            Beverages
+          </a>
+        </div>
+        <div className="food-card-list">
+          {loading ? (
+            search !== "" ? (
+              <>
+                {food
+                  .filter((item) => item.name.includes(search[0].toUpperCase()))
+                  .map((item) => (
+                    <FoodCard
+                      key={item.id}
+                      id={item.id}
+                      name={item.name}
+                      type={item.type}
+                      price={item.price}
+                      description={item.description}
+                    />
+                  ))}
+              </>
+            ) : (
+              <>
+                {food.map((item) => (
+                  <FoodCard
+                    key={item.id}
+                    id={item.id}
+                    name={item.name}
+                    type={item.type}
+                    price={item.price}
+                    description={item.description}
+                  />
+                ))}
+              </>
+            )
+          ) : (
+            /* <div className="loading">
+              <Cached />
+            </div> */
+            <div className="loading">
+              <FadeLoader size={30} color="#ffffff" />
+            </div> 
+          )}
+>>>>>>> c05abf3a8b9f7688edd6624b67148aafc4899fe1
         </div>
 
         <Cart />
       </div>
+      <Footer />
     </div>
   );
 };

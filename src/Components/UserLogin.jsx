@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 import "../Styling/Login.css";
 import { useHistory } from "react-router-dom";
-import { Mic } from "@mui/icons-material";
 
 import { Snackbar } from "@mui/material";
+import Footer from "./Footer";
 
 const Login = () => {
   const history = useHistory();
@@ -38,7 +38,7 @@ const Login = () => {
             Up<span className="icon-span">Menu</span>
           </h3>
           <button
-            className="login-btn"
+            className="homepage-btn"
             onClick={() => history.push("/admin-login")}
           >
             Login as Admin
@@ -62,15 +62,23 @@ const Login = () => {
         <div className="input_fields">
           {/* <p>Lets get you to our canteen menu</p> */}
           <div className="creds">
-            <button
+            {/* <button
               className="lesgo-btn"
               type="submit"
               onClick={() => history.push("/customer-login")}
             >
               Lesgo
+            </button> */}
+            <button
+              className="lesgo-btn"
+              type="submit"
+              onClick={() => history.push(`/qrcode-scan`)}
+            >
+              Lesgo
             </button>
           </div>
         </div>
+        <Footer />
       </div>
     </div>
   );

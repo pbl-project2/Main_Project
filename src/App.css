@@ -24,3 +24,15 @@
   }
 } */
 
+.Toastify__toast-container--top-center
+{
+  background: none !important;
+}
+
+.Toastify__toast-theme--light {
+  background: none !important;
+}
+
+.Toastify__toast {
+  background: #161616 !important;
+}

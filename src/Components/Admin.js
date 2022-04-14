@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import AdminNav from "../Components/AdminNav";
 import CustomerData from "./CustomerData";
 import QRCode from "qrcode";
+import Footer from "./Footer";
 
 function Admin({ user, handleDelete, admin }) {
   const [food, setFood] = useState([]);
@@ -12,7 +13,11 @@ function Admin({ user, handleDelete, admin }) {
   const [adminDetails, setAdminDetails] = useState([]);
   const [adminEmail, setAdminEmail] = useState("");
   const [users, setUsers] = useState([]);
-
+  const [sales, setSales] = useState(0);
+  const [orders, setOrders] = useState(0);
+  const [finalSales, setFinalSales] = useState(0);
+  const [finalOrders, setFinalOrders] = useState(0);
+  const [total, setTotal] = useState(0);
   // useEffect(async () => {
   //   await db
   //     .collection("users")
@@ -36,6 +41,7 @@ function Admin({ user, handleDelete, admin }) {
         snapshot.forEach((doc) => {
           if (admin.email === doc.data().email) {
             userArr.push({ ...doc.data(), id: doc.id });
+            setTotal(doc.data().total);
           }
         });
         setUsers(userArr);
@@ -44,6 +50,10 @@ function Admin({ user, handleDelete, admin }) {
         localStorage.setItem("userId", users.id);
       });
   }, [db]);
+
+  useEffect(() => {
+    setOrders(users.length);
+  }, [users]);
 
   useEffect(() => {
     db.collection("users")
@@ -77,16 +87,17 @@ function Admin({ user, handleDelete, admin }) {
     await QRCode.toDataURL(
       // `http://localhost:3000/foodmenu/${adminDetails[0].email}`
       `http://${window.location.host}/customer-login/${localStorage.getItem(
-        "adminEmail")}`
-        // `http://${window.location.hostname}:${window.location.port}/customer-login/${localStorage.getItem(
-        //   "adminEmail")}`
+        "adminEmail"
+      )}`
+      // `http://${window.location.hostname}:${window.location.port}/customer-login/${localStorage.getItem(
+      //   "adminEmail")}`
     ).then((data) => {
       localStorage.setItem("src", data);
       db.collection("admin").doc(`${admin.email}`).update({
         qrcode: data,
       });
     });
-  }, [adminDetails]);
+  }, [adminDetails, []]);
 
   // useEffect(() => {
   //   QRCode.toDataURL(`http://localhost:3000/foodmenu/${admin.email}`).then(
@@ -123,20 +134,20 @@ function Admin({ user, handleDelete, admin }) {
   // }, [db]);
 
   return (
-    <>
-      <AdminNav admin={admin} adminEmail={adminEmail} />
+    <div className="admin">
+      <AdminNav admin={admin} adminEmail={adminEmail} user={user} />
       <div className="upper-body container">
         {/* For income and orders served */}
         <div className=" divs-combine row">
           <div className="income col">
             <h1>You've Earned</h1>
-            <h3>Sales: ₹0.00</h3>
+            <h3>Sales: ₹{localStorage.getItem("salesnew")}.00</h3>
             {/* <h1>Orders Served: {orders}</h1> */}
           </div>
           <div className="served-orders col">
             <h1>You've Served</h1>
             {/* <h1>Sales: ₹{sales}</h1> */}
-            <h3>0 orders</h3>
+            <h3>{orders} orders</h3>
           </div>
         </div>
         {/* <h1>Admin Details</h1> */}
@@ -146,7 +157,10 @@ function Admin({ user, handleDelete, admin }) {
       ) : (
         <> */}
       {users.length === 0 ? (
+        <div style={{background:"#161616", height:"350px"}}>
         <p className="orders-title">It's calm for right now!!</p>
+
+        </div>
       ) : (
         <>
           <p className="orders-title">
@@ -165,9 +179,8 @@ function Admin({ user, handleDelete, admin }) {
           </div>
         </>
       )}
-      {/* </>
-      )} */}
-    </>
+      <Footer />
+    </div>
   );
 }
 
