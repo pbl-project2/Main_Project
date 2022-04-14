@@ -249,3 +249,46 @@ hr {
   width: 40px;
   color: #0072b1 !important;
 }
+@media only screen and (max-width: 500px) {
+  
+  .home-btn{
+    display:none;
+    
+  }
+  h3{
+    margin-left:20px;
+  }
+  main-cart{
+    display:none;
+  }
+  .food-cards{
+    width:fit-content;
+    
+  }
+  .categories{
+    margin-left:-5rem;
+  }
+  .Cart-link{
+    margin-right:3rem;
+  }
+  .food-card-list{
+    margin-left:-10rem;
+    
+  }
+  .add-btn{
+    margin-right:-45px;
+    margin-top:-3px;
+  }
+  
+  .all-bout-food{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    
+  }
+  .categories{
+    display:flex;
+    flex-direction:row;
+    width:fit-content;
+  }
+}
