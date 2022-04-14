@@ -48,7 +48,7 @@ function QRCodeScanner() {
               if (res) {
                 let result = res.toString();
                 // setScan(res.text);
-                if (result.includes("upmenu")) {
+                if (result.includes("upmenu") || result.includes("canteen-token-system")) {
                   window.location.href = res.text;
                   setScan("");
                 } else {

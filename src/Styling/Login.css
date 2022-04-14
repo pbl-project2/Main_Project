@@ -3,14 +3,15 @@
 
   color: white;
   box-sizing: border-box;
-
+  /* background: url("bg.jpg") !important; */
   /* animation: animate 15s ease infinite; */
 }
 
 .admin-nav {
   height: fit-content;
-  background-color: #161616;
+  /* background-color: #161616; */
   width: 100%;
+  background: none !important;
 }
 
 .adminuser {
@@ -187,6 +188,7 @@ nav {
 .settings-btn {
   border: none;
   margin-right: 20px;
+  background: none;
 }
 
 .settings-btn:hover {
@@ -198,21 +200,24 @@ nav {
   border: 1px solid white;
   padding: 10px;
   border-radius: 10px;
+  background: none;
 }
 
 .logout-btn:hover {
   background: linear-gradient(90deg,
       rgba(2, 0, 36, 1) 0%,
       rgba(158, 57, 138, 1) 0%,
-      rgba(255, 0, 33, 1) 100%);
+      rgba(255, 0, 33, 1) 100%) !important;
   transition: 0.5s;
 }
 
 .admin-nav-whole {
   display: flex;
   justify-content: last baseline;
+  background: none;
 }
 
 .qr-code-download {
   padding-right: 20px;
+  background: none;
 }

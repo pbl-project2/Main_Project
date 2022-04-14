@@ -1,0 +1,17 @@
+body {
+    /* background: url("https://www.resizepixel.com/Image/bhbtqq1t89/Preview/bg.jpg?v=d8d72478-67ff-4546-afb9-9fc4db5c9f2f") !important; */
+    /* width: 100%;
+    height: 100%; */
+    /* background: url("https://www.resizepixel.com/Image/bhbtqq1t89/Preview/bg.jpg?v=e452f4ca-13bf-415c-b5c1-263efcaaba83"); *
+    /* background-image: url("https://www.resizepixel.com/Image/bhbtqq1t89/Preview/bg.jpg?v=e452f4ca-13bf-415c-b5c1-263efcaaba83"); */
+    /* background: url("https://i.pinimg.com/564x/f9/c2/4e/f9c24e4ebe50fe5e309de72006d1a295.jpg") !important; */
+    /* background: url("https://i.pinimg.com/originals/a1/34/22/a13422ec6437ea3b036875cd7880c65c.jpg") !important; */
+    /* background: url("https://images.pexels.com/photos/2387793/pexels-photo-2387793.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") !important;
+    background-repeat: no-repeat; */
+    /* background: url("../public/darkbg4.jpg") !important; */
+    /* background-image: url("../public/istockphoto-1272587212-612x612.jpg") !important; */
+    /* background-image: url("../public/istockphoto1.jpg") !important; */
+    background-size: contain;
+    background-repeat: round;
+    background-color: #161616 !important;
+}

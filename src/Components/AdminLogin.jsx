@@ -6,7 +6,7 @@ import { v4 as uuid } from "uuid";
 import QRCode from "qrcode";
 import Admin from "./Admin";
 import Footer from "./Footer";
-import { toast } from 'react-toastify';
+import { toast } from "react-toastify";
 
 function AdminLogin({ sales, orders, handleDelete, users }) {
   const [user, setUser] = useState("");
@@ -14,16 +14,17 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   const [rePassword, setRePassword] = useState("");
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
-  // const [emailError, setEmailError] = useState("");
-  // const [passwordError, setPasswordError] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [hasAccount, setHasAccount] = useState(false);
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [name, setName] = useState("");
+  const devEmail = "upmenudevs@upmenu.com";
 
   const handleSnackbarClose = (Transition) => {
     setShowSnackbar(false);
   };
-  //qrcode
   const [src, setSrc] = useState("");
 
   useEffect(() => {
@@ -37,19 +38,18 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
       });
   }, [db]);
 
-
   const clearInputs = () => {
     setPassword("");
     setEmail("");
   };
 
-  // const clearErrors = () => {
-  //   // setEmailError("");
-  //   // setPasswordError("");
-  // };
+  const clearErrors = () => {
+    setEmailError("");
+    setPasswordError("");
+  };
 
   const handleLogin = () => {
-    // clearErrors();
+    clearErrors();
     app
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -59,16 +59,19 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
             setError(true);
             setShowSnackbar(true);
             setSnackbarMessage("Email already in use");
+            toast.error("Email already in use");
             break;
           case "auth/invalid-email":
             setError(true);
             setSnackbarMessage("Invalid email");
             setShowSnackbar(true);
+            toast.error("Invalid email");
             break;
           case "auth/weak-password":
             setError(true);
             setSnackbarMessage("Password is too weak");
             setShowSnackbar(true);
+            toast.error("Password is too weak");
             break;
           default:
             console.log("");
@@ -81,20 +84,22 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   };
   const authListener = () => {
     let id = uuid();
-    // localStorage.setItem("adminId", id);
+    localStorage.setItem("adminId", id);
     localStorage.setItem("adminId", id);
     app.auth().onAuthStateChanged((user) => {
       if (user) {
         clearInputs();
         setUser(user);
         // console.log(user);
+
         db.collection("admin")
           .doc(`${user.email}`)
           .set({
-            // adminId: localStorage.getItem("adminId"),
+            adminId: localStorage.getItem("adminId"),
             adminId: localStorage.getItem("adminId"),
             email: user.email,
             qrcode: src,
+            name: name,
           });
         console.log("db fired");
       } else {
@@ -104,10 +109,10 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   };
 
   const handleSignUp = () => {
-    var text = "https://canteen-token-system.web.app";
-    // clearErrors();
+    var text = "https:canteen-token-system.web.app";
+    clearErrors();
     QRCode.toDataURL(text).then((data) => {
-      // setSrc(data);
+      setSrc(data);
       localStorage.setItem("qrcode", data);
     });
     if (password.length < 8) {
@@ -120,7 +125,7 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
       // setSnackbarMessage(
       //   "Password must contain at least one uppercase character"
       // );
-      // setShowSnackbar(true);
+      setShowSnackbar(true);
       toast.error("Password must contain at least one uppercase character");
     } else if (password.search(/[0-9]/) === -1) {
       // setError(true);
@@ -143,23 +148,27 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
           setShowSnackbar(true);
           switch (error.code) {
             case "auth/invalid-email":
-              setError(true);
-              setSnackbarMessage("Invalid email");
+              // setError(true);
+              // setSnackbarMessage("Invalid email");
+              toast.error("Invalid email");
               break;
             case "auth/user-disabled":
-              setError(true);
-              setSnackbarMessage("User disabled");
+              // setError(true);
+              // setSnackbarMessage("User disabled");
+              toast.error("User disabled");
               break;
             case "auth/user-not-found":
-              setError(true);
-              setSnackbarMessage("User not found");
+              // setError(true);
+              // setSnackbarMessage("User not found");
+              toast.error("User not found");
               break;
             case "auth/wrong-password":
-              setError(true);
-              setSnackbarMessage("Wrong password");
+              // setError(true);
+              // setSnackbarMessage("Wrong password");
+              toast.error("Wrong password");
               break;
             default:
-              console.log("");
+              break;
           }
         });
     } else {
@@ -177,16 +186,109 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   return (
     <div>
       {user ? (
-        <Admin
-          admin={user}
-          sales={sales}
-          orders={orders}
-          handleDelete={handleDelete}
-          user={users}
-          email={email}
-          src={src}
-          logout={handleLogout}
-        />
+        user.email === devEmail ? (
+          <div className="loginContainer">
+            <div className="form1">
+              <h1 className="h1">Registration</h1>
+              {/* <label className="details">Email</label> */}
+              <input
+                type="text"
+                placeholder="Enter CANTEEN NAME"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <input
+                type="text"
+                placeholder="Email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              {/* <p className="errorMsg">{emailError}</p> */}
+              {/* <label className="details">Password</label> */}
+              <input
+                placeholder="Password"
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <input
+                placeholder="Re-enter Password"
+                type="text"
+                required
+                value={rePassword}
+                onChange={(e) => setRePassword(e.target.value)}
+              />
+              {/* <p className="errorMsg">{passwordError}</p> */}
+              <div className="btn-container">
+                <div className="login_btn">
+                  <button className="btn" onClick={handleSignUp}>Sign Up</button>
+                  <button className="btn" onClick={handleLogout}>Log Out</button>
+                </div>
+              </div>
+              {/* <div className="btn-container">
+                {hasAccount ? (
+                  <div className="login_btn">
+                    <button className="btn" onClick={handleLogin}>
+                      Login
+                    </button>
+                    <p>
+                      Don't have an Account?{" "}
+                      <span
+                        style={{ cursor: "pointer" }}
+                        onClick={() => setHasAccount(!hasAccount)}
+                      >
+                        Sign Up
+                      </span>
+                    </p>
+                  </div>
+                ) : (
+                  <div className="login_btn">
+                    <button className="btn" onClick={handleSignUp}>
+                      Sign Up
+                    </button>
+                    <p>
+                      Have an account ?{" "}
+                      <span
+                        style={{ cursor: "pointer" }}
+                        onClick={() => setHasAccount(!hasAccount)}
+                      >
+                        Sign In
+                      </span>
+                    </p>
+                  </div>
+                )} */}
+              {/* </div> */}
+              <p className="password-validation">
+                <span>➡️ Password must contain at least 8 characters</span>
+                <br />
+                <span>➡️ Password's first letter must be uppercase</span>
+                <br />
+                <span>
+                  ➡️ Password must contain at least one numeric character
+                </span>
+                <br />
+                <span>
+                  ➡️ Password must contain at least one special character like
+                  $,!,@,#
+                </span>
+              </p>
+            </div>
+          </div>
+        ) : (
+          <Admin
+            admin={user}
+            sales={sales}
+            orders={orders}
+            handleDelete={handleDelete}
+            user={users}
+            email={email}
+            src={src}
+            logout={handleLogout}
+          />
+        )
       ) : (
         <Login
           email={email}
@@ -199,8 +301,8 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
           handleSignUp={handleSignUp}
           hasAccount={hasAccount}
           setHasAccount={setHasAccount}
-          // emailError={emailError}
-          // passwordError={passwordError}
+          emailError={emailError}
+          passwordError={passwordError}
           error={error}
           snackbarMessage={snackbarMessage}
           showSnackbar={showSnackbar}
