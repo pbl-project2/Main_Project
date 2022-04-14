@@ -201,7 +201,6 @@ nav {
 }
 
 .logout-btn:hover {
-<<<<<<< HEAD
   background: linear-gradient(
     90deg,
     rgba(2, 0, 36, 1) 0%,
@@ -233,20 +232,3 @@ nav {
     background-color: white;
   }
 }
-=======
-  background: linear-gradient(90deg,
-      rgba(2, 0, 36, 1) 0%,
-      rgba(158, 57, 138, 1) 0%,
-      rgba(255, 0, 33, 1) 100%);
-  transition: 0.5s;
-}
-
-.admin-nav-whole {
-  display: flex;
-  justify-content: last baseline;
-}
-
-.qr-code-download {
-  padding-right: 20px;
-}
->>>>>>> c05abf3a8b9f7688edd6624b67148aafc4899fe1
