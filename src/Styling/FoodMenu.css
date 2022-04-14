@@ -167,7 +167,9 @@ hr {
     cursor: pointer;
 }
 .food-cards {
+  width:100%;
   display: flex;
+  flex-direction: row;
   margin-top: 10rem;
 }
 .food-card-list {
@@ -177,6 +179,11 @@ hr {
 .food-title {
   letter-spacing: 2px;
   width: fit-content;
+}
+.all-bout-food{
+  width:100%;
+  display:flex;
+  flex-direction:column;
 }
 .Cart-link {
   border: none;
@@ -222,3 +229,47 @@ hr {
   background: linear-gradient(transparent, #0072b1);
   background: grey
 }   */
+
+@media only screen and (max-width: 500px) {
+  
+  .home-btn{
+    display:none;
+    
+  }
+  h3{
+    margin-left:20px;
+  }
+  main-cart{
+    display:none;
+  }
+  .food-cards{
+    width:fit-content;
+    
+  }
+  .categories{
+    margin-left:-5rem;
+  }
+  .Cart-link{
+    margin-right:3rem;
+  }
+  .food-card-list{
+    margin-left:-10rem;
+    
+  }
+  .add-btn{
+    margin-right:-45px;
+    margin-top:-3px;
+  }
+  
+  .all-bout-food{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    
+  }
+  .categories{
+    display:flex;
+    flex-direction:row;
+    width:fit-content;
+  }
+}
