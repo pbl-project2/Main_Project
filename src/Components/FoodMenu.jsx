@@ -152,8 +152,9 @@ const FoodMenu = ({ props }) => {
 
       <hr />
       <div className="food-cards">
-        <div className="categories">
-          {/* <a href="#" className="category" onClick={handleSnacks}>
+        <div className="all-bout-food">
+          <div className="categories">
+            {/* <a href="#" className="category" onClick={handleSnacks}>
             Breakfast
           </a>
           <a href="#" className="category" onClick={handleLunch}>
@@ -162,6 +163,30 @@ const FoodMenu = ({ props }) => {
           <a href="#" className="category" onClick={handleBeverages}>
             Beverages
           </a> */}
+<<<<<<< HEAD
+            <a href="#" className="category" onClick={handleSnacks}>
+              Breakfast
+            </a>
+            <a href="#" className="category" onClick={handleLunch}>
+              Lunch
+            </a>
+            <a href="#" className="category" onClick={handleBeverages}>
+              Beverages
+            </a>
+          </div>
+          <div className="food-card-list">
+            {food.map((item) => (
+              <FoodCard
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                type={item.type}
+                price={item.price}
+                description={item.description}
+              />
+            ))}
+          </div>
+=======
           <a href="#" className="category" onClick={handleSnacks}>
             Breakfast
           </a>
@@ -211,7 +236,9 @@ const FoodMenu = ({ props }) => {
               <FadeLoader size={30} color="#ffffff" />
             </div> 
           )}
+>>>>>>> c05abf3a8b9f7688edd6624b67148aafc4899fe1
         </div>
+
         <Cart />
       </div>
       <Footer />

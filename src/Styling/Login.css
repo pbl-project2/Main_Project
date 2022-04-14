@@ -204,20 +204,35 @@ nav {
 }
 
 .logout-btn:hover {
-  background: linear-gradient(90deg,
-      rgba(2, 0, 36, 1) 0%,
-      rgba(158, 57, 138, 1) 0%,
-      rgba(255, 0, 33, 1) 100%) !important;
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(158, 57, 138, 1) 0%,
+    rgba(255, 0, 33, 1) 100%
+  );
   transition: 0.5s;
 }
-
 .admin-nav-whole {
   display: flex;
   justify-content: last baseline;
   background: none;
 }
-
 .qr-code-download {
   padding-right: 20px;
-  background: none;
+}
+@media only screen and (max-width: 500px) {
+  h3{
+    margin-left:-50px;
+  }
+  .login-btn{
+    margin-right:-50px;
+    background-color: #161616;
+  }
+  input{
+    width:100%;
+  }
+  .log-resp{
+    margin-left:-50px;
+    background-color: white;
+  }
 }

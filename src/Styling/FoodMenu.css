@@ -166,7 +166,9 @@ hr {
     cursor: pointer;
 }
 .food-cards {
+  width:100%;
   display: flex;
+  flex-direction: row;
   margin-top: 10rem;
 }
 .food-card-list {
@@ -176,6 +178,11 @@ hr {
 .food-title {
   letter-spacing: 2px;
   width: fit-content;
+}
+.all-bout-food{
+  width:100%;
+  display:flex;
+  flex-direction:column;
 }
 .Cart-link {
   border: none;

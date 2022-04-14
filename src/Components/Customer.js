@@ -92,7 +92,7 @@ function Customer() {
                 placeholder="Enter mobile number"
                 onChange={(e) => setMobile(e.target.value)}
               />
-              <button className="login-btn">Submit</button>
+              <button className="login-btn log-resp">Submit</button>
             </div>
           </form>
         </div>
