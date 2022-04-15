@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import Footer from "./Footer";
 import { Cached } from "@mui/icons-material";
-import FadeLoader from "react-spinners/FadeLoader";
+import FadeLoader from 'react-spinners/FadeLoader';
 
 const FoodMenu = ({ props }) => {
   const history = useHistory();
@@ -173,47 +173,29 @@ const FoodMenu = ({ props }) => {
               Beverages
             </a>
           </div>
+          <div className="food-card-list">
+            {food.map((item) => (
+              <FoodCard
+                key={item.id}
+                id={item.id}
+                name={item.name}
+                type={item.type}
+                price={item.price}
+                description={item.description}
+              />
+            ))}
+          </div>
+          {/* <a href="#" className="category" onClick={handleSnacks}>
+            Breakfast
+          </a>
+          <a href="#" className="category" onClick={handleLunch}>
+            Lunch
+          </a>
+          <a href="#" className="category" onClick={handleBeverages}>
+            Beverages
+          </a> */}
         </div>
-        <div className="food-card-list">
-          {loading ? (
-            search !== "" ? (
-              <>
-                {food
-                  .filter((item) => item.name.includes(search[0].toUpperCase()))
-                  .map((item) => (
-                    <FoodCard
-                      key={item.id}
-                      id={item.id}
-                      name={item.name}
-                      type={item.type}
-                      price={item.price}
-                      description={item.description}
-                    />
-                  ))}
-              </>
-            ) : (
-              <>
-                {food.map((item) => (
-                  <FoodCard
-                    key={item.id}
-                    id={item.id}
-                    name={item.name}
-                    type={item.type}
-                    price={item.price}
-                    description={item.description}
-                  />
-                ))}
-              </>
-            )
-          ) : (
-            /* <div className="loading">
-              <Cached />
-            </div> */
-            <div className="loading">
-              <FadeLoader size={30} color="#ffffff" />
-            </div>
-          )}
-        </div>
+        
 
         <Cart />
       </div>
