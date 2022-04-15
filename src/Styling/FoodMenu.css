@@ -249,46 +249,66 @@ hr {
   width: 40px;
   color: #0072b1 !important;
 }
-@media only screen and (max-width: 500px) {
+@media screen and (max-width: 480px) {
+
+  .home-btn {
+    display: none;
+
+  }
+
+  h3 {
+    margin-left: 20px;
+    align-items: center;
+  }
+
+  main-cart {
+    display: none;
+  }
+
+  .food-cards {
+    /* width: fit-content; */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10rem;
+  }
+
+  .categories {
+    /* margin-left: -5rem; */
+    /* margin: 0 0 0 -5rem; */
+    margin: 0 !important;
+  }
   
-  .home-btn{
-    display:none;
-    
-  }
-  h3{
-    margin-left:20px;
-  }
-  main-cart{
-    display:none;
-  }
-  .food-cards{
-    width:fit-content;
-    
-  }
-  .categories{
-    margin-left:-5rem;
-  }
-  .Cart-link{
-    margin-right:3rem;
-  }
-  .food-card-list{
-    margin-left:-10rem;
-    
-  }
-  .add-btn{
-    margin-right:-45px;
-    margin-top:-3px;
+  .Cart-link {
+    margin-right: 3rem;
   }
   
-  .all-bout-food{
-    width:100%;
-    display:flex;
-    flex-direction:column;
-    
+  .food-card-list {
+    /* margin-left: -10rem; */
+    margin: 5.5rem 0 0 0;
+    padding: 0 !important;
   }
-  .categories{
-    display:flex;
-    flex-direction:row;
-    width:fit-content;
+  
+  .add-btn {
+    margin-right: -45px;
+    margin-top: -3px;
+  }
+  
+  .all-bout-food {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .categories {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    margin-left: 5rem;
+    position: fixed;
+  }
+
+  .nav {
+    align-items: center;
   }
 }
