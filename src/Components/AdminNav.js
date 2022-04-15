@@ -31,14 +31,14 @@ function AdminNav({ adminEmail, user }) {
     <div className="admin-nav">
       <nav className="admin-nav-whole">
         <h3>UpMenu</h3>
-        <p>
+        {/* <p>
           You are logged in as{" "}
           <span>
             <u style={{ color: "#0E76A8" }}>
               <i style={{ color: "#0E76A8" }}>{adminEmail}</i>
             </u>
           </span>
-        </p>
+        </p> */}
         {/* <button className='login-btn' onClick={() => history.push("/details")}>View Details</button> */}
         <div className="admin-nav-right">
           <button

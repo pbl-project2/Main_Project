@@ -3,7 +3,8 @@
   justify-content: space-between;
   margin-top: 3rem;
   width: 80%;
-  margin-left: 120px;
+  margin-left: 7.5rem;
+  /* margin-left: 120px; */
 }
 .order-content {
   display: none;
@@ -40,19 +41,24 @@
   display: flex;
 }
 .users-orders th {
-  padding: 10px;
-
-  width: 100px;
+  padding: 0.625rem;
+  width: 6.25rem;
+  /* padding: 10px;
+  width: 100px; */
   background-color: #f1f1f1;
-  border: 1px solid black;
+  border: 0.063rem solid black;
+  /* border: 1px solid black; */
 
   color: black;
 }
 .users-orders {
-  width: 300px;
+  width: 18.75rem;
+  /* width: 300px; */
 
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  border-radius: 20px;
+  box-shadow: 0px 0.5rem 1rem 0px rgba(0, 0, 0, 0.2);
+  border-radius: 1.25rem;
+  /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 20px; */
 }
 .user-name-order {
   text-transform: capitalize;

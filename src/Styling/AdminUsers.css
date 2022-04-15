@@ -1,11 +1,15 @@
 .adminuser {
     display: flex;
     flex-direction: column;
-    width:140px;
-    
-    border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
+    width: 8.75rem;
+    /* width:140px; */
+
+    border-radius: 0.313rem;
+    /* border-radius: 5px; */
+    margin: 0.625rem;
+    /* margin: 10px; */
+    padding: 0.625rem;
+    /* padding: 10px; */
     align-items: center;
 }
 

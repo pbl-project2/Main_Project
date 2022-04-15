@@ -138,6 +138,14 @@ function Admin({ user, handleDelete, admin }) {
       <AdminNav admin={admin} adminEmail={adminEmail} user={user} />
       <div className="upper-body container">
         {/* For income and orders served */}
+        <p>
+          You are logged in as{" "}
+          <span>
+            <u style={{ color: "#0E76A8" }}>
+              <i style={{ color: "#0E76A8" }}>{adminEmail}</i>
+            </u>
+          </span>
+        </p>
         <div className=" divs-combine row">
           <div className="income col">
             <h1>You've Earned</h1>
@@ -157,9 +165,8 @@ function Admin({ user, handleDelete, admin }) {
       ) : (
         <> */}
       {users.length === 0 ? (
-        <div style={{background:"#161616", height:"350px"}}>
-        <p className="orders-title">It's calm for right now!!</p>
-
+        <div style={{ background: "#161616", height: "350px" }}>
+          <p className="orders-title">It's calm for right now!!</p>
         </div>
       ) : (
         <>

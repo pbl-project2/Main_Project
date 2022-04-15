@@ -95,7 +95,7 @@ const Cart = () => {
                 <div className="price">
                   <p>₹{item.price}</p>
                 </div>
-                <Cancel onClick={() => handleDelete(item.id)} />
+                <Cancel className="cancel-btn" onClick={() => handleDelete(item.id)} />
               </div>
             </>
           ))

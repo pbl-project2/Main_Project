@@ -1,8 +1,11 @@
 video {
-    height: 392px;
-    width: 392px;
+    height: 24.5rem;
+    width: 24.5rem;
+    /* height: 392px;
+    width: 392px; */
     padding: 0;
-    border-radius: 20px;
+    border-radius: 1.25rem;
+    /* border-radius: 20px; */
 }
 
 .qrcode {
@@ -11,27 +14,32 @@ video {
     justify-content: center;
     flex-direction: column;
     left: 50%;
-    height: 700px;
+    height: 43.75rem;
+    /* height: 700px; */
     width: 100%;
     top: 50% !important;
 }
 
 .row11 {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: 25rem;
+    height: 25rem;
+    /* width: 400px;
+    height: 400px; */
     display: flex;
     justify-content: center;
     align-items: center;
     background: rgba(0, 0, 0, 0.5);
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 1.25rem;
+    /* border-radius: 20px; */
 }
 
 .row11::before {
     content: "";
     position: absolute;
-    width: 150px;
+    width: 9.375rem;
+    /* width: 150px; */
     height: 140%;
     background: linear-gradient(#00ccff, #d400d4);
     animation: animate 4s linear infinite;
@@ -50,8 +58,10 @@ video {
     content: '';
     position: absolute;
     background: #161616;
-    inset: 4px;
-    border-radius: 20px;
+    inset: 0.25rem;
+    border-radius: 1.25rem;
+    /* inset: 4px;
+    border-radius: 20px; */
 }
 
 .row11 video {
@@ -60,30 +70,39 @@ video {
 }
 
 .qrcode h3 {
-    margin-top: 10px;
+    margin-top: 0.625rem;
+    /* margin-top: 10px; */
 }
 
 @media screen and (max-width: 768px) {
     video {
-        width: 392px;
-        height: 392px;
+        width: 24.5rem;
+        height: 24.5rem;
+        /* width: 392px;
+        height: 392px; */
     }
     .row11 {
-        width: 400px;
-        height: 400px;
-        border-radius: 20px;
+        width: 25rem;
+        height: 25rem;
+        /* width: 400px;
+        height: 400px; */
+        border-radius: 1.25rem;
+        /* border-radius: 20px; */
     }
     .qrcode {
-        height: 700px;
+        height: 43.75rem;
+        /* height: 700px; */
         width: 100%;
         top: 50% !important;
         left: 50% !important;
-        border-radius: 20px;
+        border-radius: 1.25rem;
+        /* border-radius: 20px; */
     }
     .row11::before {
         content: "";
         position: absolute;
-        width: 150px;
+        width: 9.375rem;
+        /* width: 150px; */
         height: 140%;
         background: linear-gradient(#00ccff, #d400d4);
         animation: animate 4s linear infinite;
@@ -103,8 +122,10 @@ video {
         content: '';
         position: absolute;
         background: #0e1538;
-        inset: 4px;
-        border-radius: 20px;
+        inset: 0.25rem;
+        border-radius: 1.25rem;
+        /* inset: 4px;
+        border-radius: 20px; */
     }
     
     .row11 video {
@@ -113,34 +134,43 @@ video {
     }
     
     .qrcode h3 {
-        margin-top: 10px;
+        margin-top: 0.625rem;
+        /* margin-top: 10px; */
     }
 }
 
 @media screen and (max-width: 480px) {
     video {
-        width: 292px;
-        height: 292px;
+        width: 18.25rem;
+        height: 18.25rem;
+        /* width: 292px;
+        height: 292px; */
     }
     
     .row11 {
-        width: 300px;
-        height: 300px;
-        border-radius: 20px;
+        width: 18.75rem;
+        height: 18.75rem;
+        /* width: 300px;
+        height: 300px; */
+        border-radius: 1.25rem;
+        /* border-radius: 20px; */
     }
     
     .qrcode {
-        height: 500px;
+        height: 31.25rem;
+        /* height: 500px; */
         width: 100%;
         top: 0% !important;
         left: 50% !important;
-        border-radius: 20px;
+        border-radius: 1.25rem;
+        /* border-radius: 20px; */
     }
     
     .row11::before {
         content: "";
         position: absolute;
-        width: 150px;
+        width: 9.375rem;
+        /* width: 150px; */
         height: 140%;
         background: linear-gradient(#00ccff, #d400d4);
         animation: animate 4s linear infinite;
@@ -160,8 +190,10 @@ video {
         content: '';
         position: absolute;
         background: #0e1538;
-        inset: 4px;
-        border-radius: 20px;
+        inset: 0.25rem;
+        border-radius: 1.25rem;
+        /* inset: 4px;
+        border-radius: 20px; */
     }
     
     .row11 video {
@@ -170,7 +202,8 @@ video {
     }
     
     .qrcode h3 {
-        margin-top: 10px;
+        margin-top: 0.625rem;
+        /* margin-top: 10px; */
         font-size: 1.1em;
         width: 100% !important;
         text-align: center;

@@ -1,14 +1,18 @@
 .form1 {
-    width: 450px;
-    padding: 40px;
+    width: 28.125rem;
+    /* width: 450px; */
+    padding: 2.5rem;
+    /* padding: 40px; */
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: black !important;
     text-align: center;
-    border: #2ecc71 solid 4px;
-    border-radius: 20px;
+    border: #2ecc71 solid 0.25rem;
+    /* border: #2ecc71 solid 4px; */
+    border-radius: 1.25rem;
+    /* border-radius: 20px; */
 }
 
 .form1 h1 {
@@ -27,21 +31,27 @@
     border: 0;
     background: none;
     display: block;
-    margin: 20px auto;
+    margin: 1.25rem auto;
+    /* margin: 20px auto; */
     text-align: center;
-    width: 250px;
-    padding: 14px 10px;   
-    border: 2px solid #3498db;
+    width: 15.625rem;
+    /* width: 250px; */
+    padding: 0.825rem 0.625rem;   
+    /* padding: 14px 10px;    */
+    /* border: 2px solid #3498db; */
+    border: 0.125rem solid #3498db;
     outline: none;
     color: white;
-    border-radius: 24px;
+    /* border-radius: 24px; */
+    border-radius: 1.5rem;
     transition: 0.25s;
 }
 
 .form1 input[type="text"]:focus,
 .form1 input[type="password"]:focus,
 .form1 input[type="tel"]:focus {
-    width: 300px;
+    width: 18.75rem;
+    /* width: 300px; */
     border-color: #2ecc71;
 }
 
@@ -54,15 +64,21 @@
     border: 0;
     background: none;
     display: block;
-    margin: 20px auto;
+    margin: 1.25rem auto;
+    /* margin: 20px auto; */
     text-align: center;
-    padding: 14px 45px;   
-    border: 2px solid #2ecc71;
+    padding: 0.875rem 2.813rem;   
+    /* padding: 14px 45px;    */
+    border: 0.125rem solid #2ecc71;
+    /* border: 2px solid #2ecc71; */
     outline: none;
     color: white;
-    font-size: 14px;
-    width: 150px;
-    border-radius: 24px;
+    font-size: 0.875rem;
+    /* font-size: 14px; */
+    width: 9.375rem;
+    /* width: 150px; */
+    border-radius: 1.5rem;
+    /* border-radius: 24px; */
     transition: 0.25s;  
     cursor: pointer;
 }
@@ -81,8 +97,10 @@
 
 .password-validation {
     color: #2ecc71;
-    font-size: 13px;
-    margin-top: 5px;
+    font-size: 0.813rem;
+    /* font-size: 13px; */
+    margin-top: 0.313rem;
+    /* margin-top: 5px; */
     background: none;
 }
 
@@ -91,10 +109,11 @@
     color: #DA6161; 
 }
 
-.MuiAlert-message {
-    background: none !important;
-}
+/* .MuiAlert-message {
+    background: none 28.125rem;
+    /* background: none !important;2.5rem}
+/* } */
 
-.MuiAlert-icon {
+/* .MuiAlert-icon {
     background: none !important;
-}
+}0.25rem1.25rem/ */
