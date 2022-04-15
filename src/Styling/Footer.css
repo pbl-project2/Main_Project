@@ -9,7 +9,7 @@
 }
 
 footer {
-  position: sticky;
+  position: fixed;
   bottom: 0 !important;
   height: auto;
   width: 89vw;
