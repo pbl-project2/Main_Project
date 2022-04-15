@@ -89,46 +89,50 @@ function CartSeparate() {
           Back
         </button>
       </div>
-      <div className="main-cart-sep">
-        <h3>YOUR CART</h3>
-        {loading ? (
-          cart.length > 0 ? (
-            cart.map((item) => (
-              <>
-                <div className="cart_items">
-                  <div className="name">
-                    <p>{item.name}</p>
+      <div className="cart-main1">
+        <div className="main-cart-sep">
+        <div className="container">
+          <h3>YOUR CART</h3>
+          {loading ? (
+            cart.length > 0 ? (
+              cart.map((item) => (
+                <>
+                  <div className="cart_items">
+                    <div className="name">
+                      <p>{item.name}</p>
+                    </div>
+                    <div className="quantity-cart">
+                      <p>x {item.quantity}</p>
+                    </div>
+                    <div className="price">
+                      <p>₹{item.price}</p>
+                    </div>
+                    <Cancel
+                      className="cancel-btn"
+                      onClick={() => handleDelete(item.id)}
+                    />
                   </div>
-                  <div className="quantity-cart">
-                    <p>x {item.quantity}</p>
-                  </div>
-                  <div className="price">
-                    <p>₹{item.price}</p>
-                  </div>
-                  <Cancel
-                    className="cancel-btn"
-                    onClick={() => handleDelete(item.id)}
-                  />
-                </div>
-              </>
-            ))
+                </>
+              ))
+            ) : (
+              "Your Cart is empty right now..."
+            )
           ) : (
-            "Your Cart is empty right now..."
-          )
-        ) : (
-          <div>
-            <FadeLoader size={150} color="#fff" />
+            <div>
+              <FadeLoader size={150} color="#fff" />
+            </div>
+          )}
+          <div className="sum">
+            {sum > 0 ? (
+              <>
+                <h3>Total: ₹{sum}</h3>
+                <button className="checkout-btn" onClick={handleCheckout}>
+                  CHECKOUT
+                </button>
+              </>
+            ) : null}
           </div>
-        )}
-        <div>
-          {sum > 0 ? (
-            <>
-              <h3>Total: ₹{sum}</h3>
-              <button className="checkout-btn" onClick={handleCheckout}>
-                CHECKOUT
-              </button>
-            </>
-          ) : null}
+        </div>
         </div>
       </div>
     </>

@@ -319,6 +319,7 @@ input[type="text"]:focus {
   border-radius: 3.125rem;
   /* border-radius: 50px; */
   width: 15.625rem;
+  height: 2.813rem;
   /* width: 250px; */
 }
 .food-menu .nav input:focus {
@@ -446,6 +447,7 @@ input[type="text"]:focus {
     border: none;
     padding: 0.625rem;
     font-size: 1.25rem;
+
   }
 
   .main-title {
@@ -463,11 +465,15 @@ input[type="text"]:focus {
 
   .food-card-list {
     padding-left: 0rem !important;
+    margin-top: 7rem !important;
   }
+
+
 
   .categories {
     display: flex;
     flex-direction: row;
+    margin-left: 8.5rem;
   }
 
   .card-diversion {
@@ -475,7 +481,7 @@ input[type="text"]:focus {
   }
 
   .category {
-    width: 3.4375rem !important;
+    width:  7.4375rem !important;
   }
 
   .main_card {
@@ -500,10 +506,15 @@ input[type="text"]:focus {
 
   .quantity .quantity-input {
     margin-right: 4.5rem;
+    height: 3.2rem !important;
   }
 
   .quantity .add-btn {
     margin-top: 0rem !important;
     height: 3.125rem;
+  }
+
+  .food-card .card-info .card-1 .food-title {
+    margin-left: 1.2rem !important;
   }
 }

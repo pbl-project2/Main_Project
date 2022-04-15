@@ -262,4 +262,8 @@ nav {
     align-items: center;
   }
   
+  .login-btn {
+    margin-right: -1.25rem;
+  }
+
 }

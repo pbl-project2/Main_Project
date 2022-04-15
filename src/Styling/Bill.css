@@ -172,3 +172,28 @@ hr {
   width: 40px;
   color: #0072b1 !important;
 }
+
+@media screen and (max-width: 768px) {
+  .whole-bill {
+    flex-direction: column !important;
+  }
+
+  .bill {
+    width: 45rem;
+    overflow-y: scroll !important;
+  }
+
+  .rating-div {
+    width: 45rem;
+    margin-left: 0px !important;
+    margin-top: 1.25rem !important;
+    height: 45rem !important;
+    margin-bottom: 20px;
+  }
+  .rating-div .row .col-lg-12 .star-rating span {
+    font-size: 6rem !important;
+  }
+  .whole-bill .bill .login-btn {
+    margin-right: 1.3125rem !important;
+  }
+}
