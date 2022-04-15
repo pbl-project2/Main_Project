@@ -30,7 +30,7 @@ function AdminNav({ adminEmail, user }) {
   return (
     <div className="admin-nav">
       <nav className="admin-nav-whole">
-        <h3>UpMenu</h3>
+        <h3 className="nav_h3">UpMenu</h3>
         {/* <p>
           You are logged in as{" "}
           <span>

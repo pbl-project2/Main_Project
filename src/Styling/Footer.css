@@ -9,7 +9,8 @@
 }
 
 footer {
-  position: fixed;
+  /* position: fixed; */
+  position: static;
   bottom: 0 !important;
   height: auto;
   width: 89vw;
@@ -82,7 +83,9 @@ footer {
 
 @media screen and (max-width: 768px) {
   footer {
-    width: 69vw;  
+    width: 80vw;
+    height: inherit;
+    margin-top: 0.5rem !important;
+    position: static !important;  
   }
-
 }

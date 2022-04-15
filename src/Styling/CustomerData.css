@@ -67,3 +67,18 @@
 .icon:hover {
   transform: rotate(180deg) !important;
 }
+
+@media screen and (max-width: 768px) {
+  .customer-data {
+    font-size: 50%;
+    margin-left: 2rem !important;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .login-btn {
+    height: 2rem;
+    width: 5rem;
+  }
+  
+}

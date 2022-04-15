@@ -92,6 +92,11 @@
 }
 
 .all-orders {
-  /* overflow-y: visible; */
-  overflow-y: scroll !important;
+  overflow-y: visible;
+}
+
+@media screen and (max-width: 768px) {
+  .all-orders {
+    width: 75vw !important;
+  }
 }

@@ -7,6 +7,8 @@
   /* animation: animate 15s ease infinite; */
 }
 
+
+
 .admin-nav {
   height: fit-content;
   /* background-color: #161616; */
@@ -221,9 +223,6 @@ nav {
   padding-right: 20px;
 }
 @media screen and (max-width: 480px) {
-  h3{
-    margin-left:-50px;
-  }
   .login-btn{
     margin-right:-50px;
     background-color: #161616;
@@ -234,5 +233,15 @@ nav {
   .log-resp{
     margin-left:-50px;
     background-color: white;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    align-items: center;
+  }
+  .nav_h3 {
+    margin-left: 2.25rem !important;
+    align-items: center;
   }
 }
