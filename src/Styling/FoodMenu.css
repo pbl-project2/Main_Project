@@ -258,15 +258,25 @@ hr {
   background: grey
 }   */
 
-input[type="text"] {
+/* input[type="text"] {
   margin-right: 50px;
-  /* border: 1px solid #ccc; */
+  border: 1px solid #ccc;
   outline: none;
   border-radius: 50px;
   width: 250px;
 }
 
 input[type="text"]:focus {
+  border: 1px solid #0072b1;
+} */
+
+.food-menu .nav input {
+  margin-right: 50px;
+  outline: none;
+  border-radius: 50px;
+  width: 250px;
+}
+.food-menu .nav input:focus {
   border: 1px solid #0072b1;
 }
 
