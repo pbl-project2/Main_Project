@@ -138,7 +138,7 @@ function Admin({ user, handleDelete, admin }) {
       <AdminNav admin={admin} adminEmail={adminEmail} user={user} />
       <div className="upper-body container">
         {/* For income and orders served */}
-        <p>
+        <p style={{marginBottom: "2rem"}}>
           You are logged in as{" "}
           <span>
             <u style={{ color: "#0E76A8" }}>

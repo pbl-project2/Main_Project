@@ -20,7 +20,7 @@ import ContactUs from "./Components/ContactUs";
 import QRCodeScanner from "./Components/QRCodeScanner";
 import { Cached } from "@mui/icons-material";
 
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Cart from "./Components/Cart";
 import CartSeparate from "./Components/CartSeparate";
@@ -85,6 +85,9 @@ function App() {
         localStorage.setItem("salesnew", sales + doc.data().total);
         setOrders(orders + 1);
         localStorage.setItem("ordersnew", orders + 1);
+      });
+      toast.success(`Order completed!!` ,{
+        autoClose: 2000,
       });
     if (sales > 0) {
       await db
