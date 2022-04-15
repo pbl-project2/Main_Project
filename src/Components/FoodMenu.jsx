@@ -204,4 +204,4 @@ const FoodMenu = ({ props }) => {
   );
 };
 
-
+export default FoodMenu;
