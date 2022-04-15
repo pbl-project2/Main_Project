@@ -99,4 +99,8 @@
   .all-orders {
     width: 75vw !important;
   }
+
+  .logout-btn {
+    padding: 5px !important;
+  }
 }
