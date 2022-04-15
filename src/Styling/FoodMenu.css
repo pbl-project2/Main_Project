@@ -20,10 +20,12 @@
   border: 0px;
   border-radius: 7px;
   background: rgb(2, 0, 36);
-  background: linear-gradient(90deg,
-      rgba(2, 0, 36, 1) 0%,
-      rgba(158, 57, 138, 1) 0%,
-      rgba(255, 0, 33, 1) 100%);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(158, 57, 138, 1) 0%,
+    rgba(255, 0, 33, 1) 100%
+  );
   width: 7rem;
   margin-left: -8rem;
   margin-top: 10px;
@@ -38,54 +40,49 @@
   font-size: 35px;
   position: fixed;
 }
-
 .card-menu {
   background-color: #222222;
   border-radius: 20px;
+
   padding: 15px;
+
   padding-left: 20px;
   font-size: 40px;
+
   margin-top: 10px;
   text-align: center;
   list-style-type: none;
   margin: 100px;
 }
-
 .price {
   font-size: 20px;
   padding: 10px;
   color: gray;
   padding-left: 20px;
 }
-
 .add-button {
   font-size: 30px;
   cursor: pointer;
 }
-
 .cards {
   display: flex;
   justify-content: space-between;
   margin-right: 10px;
 }
-
 i {
   color: white;
 }
-
 hr {
   color: gray;
   width: 30.5%;
   margin-left: 17px;
 }
-
 .vl {
   border-left: 2px solid gray;
   margin-left: 26.9rem;
   height: 20rem;
   width: 0%;
 }
-
 .food-card {
   display: flex;
   height: 15rem;
@@ -94,23 +91,23 @@ hr {
   /* border-left: 2px solid gray; */
 }
 
-.food-card:hover {}
+.food-card:hover {
+}
 
 .price {
   font-size: 17px;
   margin-left: 10px;
   margin-top: -20px;
 }
-
 .info {
   text-align: left;
   margin-left: 20px;
+
   max-width: 27rem;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
 /* .add-btn {
   position: absolute;
   right: 550px;
@@ -122,18 +119,15 @@ hr {
   display: flex;
   margin-left: 30px;
 }
-
 .card-diversion {
   margin: 1.2rem;
   width: 150%;
   margin-top: 2rem;
 }
-
 .card-1 {
   height: 100px;
   width: 20rem;
 }
-
 .home-btn {
   background-color: #161616;
   height: 45px;
@@ -144,7 +138,6 @@ hr {
   transition: 0s background-color;
   cursor: pointer;
 }
-
 .categories {
   display: flex;
   flex-direction: column;
@@ -152,13 +145,11 @@ hr {
   margin-left: 5rem;
   position: fixed;
 }
-
 .home-btn:hover {
   color: black;
   background-color: white;
   transition: 1s;
 }
-
 .category {
   text-decoration: none;
   margin-top: 20px;
@@ -166,48 +157,43 @@ hr {
   text-align: center;
   padding: 5px;
   border-radius: 10px;
+
   background-color: #222222;
   padding-top: 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-  cursor: pointer;
+    cursor: pointer;
 }
-
 .food-cards {
-  width: 100%;
+  width:100%;
   display: flex;
   flex-direction: row;
   margin-top: 10rem;
 }
-
 .food-card-list {
   overflow-y: visible;
   padding-left: 25rem;
 }
-
 .food-title {
   letter-spacing: 2px;
   width: fit-content;
 }
-
-.all-bout-food {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+.all-bout-food{
+  width:100%;
+  display:flex;
+  flex-direction:column;
 }
-
 .Cart-link {
   border: none;
   background-color: #161616;
   margin-right: 50px !important;
 }
-
 .header {
   position: fixed;
 }
 
-.quantity-input {
+.quantity-input{
   display: flex;
   border-radius: 100px;
 }
@@ -229,11 +215,11 @@ hr {
   height: fit-content;
 }
 
-::-webkit-scrollbar {
+::-webkit-scrollbar{
   width: 8px;
 }
 
-::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb{
   /* background: linear-gradient(transparent, #30ff00);  */
   background: #0072b1;
   border-radius: 6px;
@@ -243,6 +229,7 @@ hr {
   background: linear-gradient(transparent, #0072b1);
   background: grey
 }   */
+
 .loading {
   display: flex;
   justify-content: center;
@@ -250,7 +237,6 @@ hr {
   margin-left: 290px !important;
   margin-top: 100px;
 }
-
 @keyframes spin {
   100% {
     transform: rotate(360deg);
@@ -263,55 +249,47 @@ hr {
   width: 40px;
   color: #0072b1 !important;
 }
-
 @media only screen and (max-width: 500px) {
-
-  .home-btn {
-    display: none;
-
+  
+  .home-btn{
+    display:none;
+    
   }
-
-  h3 {
-    margin-left: 20px;
+  h3{
+    margin-left:20px;
   }
-
-  main-cart {
-    display: none;
+  main-cart{
+    display:none;
   }
-
-  .food-cards {
-    width: fit-content;
-
+  .food-cards{
+    width:fit-content;
+    
   }
-
-  .categories {
-    margin-left: -5rem;
+  .categories{
+    margin-left:-5rem;
   }
-
-  .Cart-link {
-    margin-right: 3rem;
+  .Cart-link{
+    margin-right:3rem;
   }
-
-  .food-card-list {
-    margin-left: -10rem;
-
+  .food-card-list{
+    margin-left:-10rem;
+    display:flex;
+    flex-direction:column;
+    
   }
-
-  .add-btn {
-    margin-right: -45px;
-    margin-top: -3px;
+  .add-btn{
+    margin-right:-45px;
+    margin-top:-3px;
   }
-
-  .all-bout-food {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-
+  .all-bout-food{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    
   }
-
-  .categories {
-    display: flex;
-    flex-direction: row;
-    width: fit-content;
+  .categories{
+    display:flex;
+    flex-direction:row;
+    width:fit-content;
   }
 }
