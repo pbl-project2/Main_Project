@@ -1,5 +1,5 @@
 .form1 {
-    width: 28.125rem;
+    width: 30.125rem;
     /* width: 450px; */
     padding: 2.5rem;
     /* padding: 40px; */
@@ -11,8 +11,8 @@
     text-align: center;
     border: #2ecc71 solid 0.25rem;
     /* border: #2ecc71 solid 4px; */
-    border-radius: 1.25rem;
-    /* border-radius: 20px; */
+    /* border-radius: 1.25rem; */
+    border-radius: 20px;
 }
 
 .form1 h1 {
@@ -42,8 +42,8 @@
     border: 0.125rem solid #3498db;
     outline: none;
     color: white;
-    /* border-radius: 24px; */
-    border-radius: 1.5rem;
+    border-radius: 24px;
+    /* border-radius: 1.5rem; */
     transition: 0.25s;
 }
 
@@ -117,3 +117,7 @@
 /* .MuiAlert-icon {
     background: none !important;
 }0.25rem1.25rem/ */
+
+@media screen and (max-width: 768px){
+    
+}

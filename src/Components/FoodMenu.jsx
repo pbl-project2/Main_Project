@@ -141,7 +141,12 @@ const FoodMenu = ({ props }) => {
               console.log(e.target.value);
             }}
           />
-          <button className="Cart-link">
+          <button
+            className="Cart-link"
+            onClick={() =>
+              history.replace(`/cart/${window.location.pathname.split("/")[2]}/${window.location.pathname.split("/")[3]}`)  
+            }
+          >
             <AddShoppingCartIcon />
           </button>
           <button onClick={() => history.replace("/")} className="home-btn">

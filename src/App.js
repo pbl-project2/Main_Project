@@ -22,6 +22,8 @@ import { Cached } from "@mui/icons-material";
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Cart from "./Components/Cart";
+import CartSeparate from "./Components/CartSeparate";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -165,6 +167,9 @@ function App() {
           </Route>
           <Route path="/contact-us">
             <ContactUs />
+          </Route>
+          <Route path="/cart">
+            <CartSeparate />
           </Route>
         </Switch>
       </Router>

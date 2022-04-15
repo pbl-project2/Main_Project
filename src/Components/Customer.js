@@ -41,7 +41,7 @@ function Customer() {
         localStorage.setItem("token", token);
         localStorage.setItem("timestamp", timestamp);
         localStorage.setItem("id", userId);
-        history.push(`/foodmenu/${window.location.pathname.split("/")[2]}`);
+        history.push(`/foodmenu/${window.location.pathname.split("/")[2]}/${userId}`);
         setName("");
         setMobile(0);
       } else {
