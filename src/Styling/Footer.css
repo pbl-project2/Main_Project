@@ -83,9 +83,9 @@ footer {
 @media screen and (max-width: 768px) {
   footer {
     width: 80vw;
-    height: inherit;
+    /* height: inherit; */
     margin-top: 0.5rem !important;
-    position: fixed !important; 
+    /* position: fixed !important;  */
     bottom: 0 !important; 
   }
 }
