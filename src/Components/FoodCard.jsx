@@ -7,20 +7,20 @@ const FoodCard = (props) => {
 
   const handleClick = async () => {
     const id = localStorage.getItem("userId");
-    if(quantity > 0){
-    await db
-      .collection("users")
-      .doc(`${id}`)
-      .collection("food")
-      .doc(`${props.id}`)
-      .set({
-        name: props.name,
-        price: props.price * quantity,
-        type: props.type,
-        id: props.id,
-        quantity: quantity,
-      });
-    setQuantity(1);
+    if (quantity > 0) {
+      await db
+        .collection("users")
+        .doc(`${id}`)
+        .collection("food")
+        .doc(`${props.id}`)
+        .set({
+          name: props.name,
+          price: props.price * quantity,
+          type: props.type,
+          id: props.id,
+          quantity: quantity,
+        });
+      setQuantity(1);
     } else {
       alert("Please enter a valid quantity");
     }
@@ -31,7 +31,7 @@ const FoodCard = (props) => {
       <div className="card-info">
         <div className="card-1">
           <h3 className="food-title">{props.name}</h3>
-          <div className="price">Price: ₹{props.price}</div>
+          <h6 /*className="price"*/>Price: ₹{props.price}</h6>
           {/* <p className="quantity">Quantity: 
             <input
             type="number"
@@ -42,7 +42,7 @@ const FoodCard = (props) => {
               setQuantity(e.target.value);
             }}
           /></p> */}
-          
+
           <p className="info">{props.description}</p>
           <hr className="card-diversion" />
         </div>

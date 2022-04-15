@@ -6,8 +6,7 @@ import Cart from "./Cart";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import Footer from "./Footer";
-import { Cached } from "@mui/icons-material";
-import FadeLoader from 'react-spinners/FadeLoader';
+import FadeLoader from "react-spinners/FadeLoader";
 
 const FoodMenu = ({ props }) => {
   const history = useHistory();
@@ -120,20 +119,22 @@ const FoodMenu = ({ props }) => {
       });
   };
 
+  var searchWord = search.charAt(0).toUpperCase() + search.slice(1);
+
   return (
     <div className="food-menu">
       <div className="nav">
         <h3>UpMenu</h3>
         <div>
           <input
-            style={{
-              marginRight: "50px",
-              border: "none",
-              outline: "none",
-              borderRadius: "50px",
-              width: "250px",
-            }}
-            type="search"
+            // style={{
+            //   marginRight: "50px",
+            //   border: "none",
+            //   outline: "none",
+            //   borderRadius: "50px",
+            //   width: "250px",
+            // }}
+            type="text"
             placeholder="Search food here..."
             onChange={(e) => {
               setSearch(e.target.value);
@@ -174,16 +175,48 @@ const FoodMenu = ({ props }) => {
             </a>
           </div>
           <div className="food-card-list">
-            {food.map((item) => (
-              <FoodCard
-                key={item.id}
-                id={item.id}
-                name={item.name}
-                type={item.type}
-                price={item.price}
-                description={item.description}
-              />
-            ))}
+            {loading ? (
+              search !== "" ? (
+                <>
+                  {food
+                    .filter((item) =>
+                      item.name.includes(searchWord) 
+                    )
+                    .map((item) => (
+                      <FoodCard
+                        key={item.id}
+                        id={item.id}
+                        name={item.name}
+                        type={item.type}
+                        price={item.price}
+                        description={item.description}
+                      />
+                    ))}
+                </>
+              ) : (
+                <>
+                  {food.map((item) => (
+                    <FoodCard
+                      key={item.id}
+                      id={item.id}
+                      name={item.name}
+                      type={item.type}
+                      price={item.price}
+                      description={item.description}
+                    />
+                  ))}
+                </>
+              )
+            ) : (
+              <div className="loader1">
+                <FadeLoader size={15} color="#fff" />
+              </div>
+              /* <div className="loading">
+              <Cached />
+            </div> */
+              /* <div className="loading"> */
+              /* </div> */
+            )}
           </div>
           {/* <a href="#" className="category" onClick={handleSnacks}>
             Breakfast
@@ -195,7 +228,6 @@ const FoodMenu = ({ props }) => {
             Beverages
           </a> */}
         </div>
-        
 
         <Cart />
       </div>

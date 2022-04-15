@@ -205,7 +205,7 @@ function Bill() {
               ) : (
                 <div className="food-loader-loop">
                   {/* <Cached /> */}
-                  <FadeLoader size={2} speedMultiplier={2} color="#ffffff" />
+                  <FadeLoader className="fade-loader" size={2} speedMultiplier={2} color="#ffffff" />
                 </div>
               )}
               <h1 className="total">Total: ₹{total}</h1>
