@@ -9,8 +9,7 @@
 }
 
 footer {
-  /* position: fixed; */
-  position: static;
+  position: fixed;
   bottom: 0 !important;
   height: auto;
   width: 89vw;
@@ -86,6 +85,7 @@ footer {
     width: 80vw;
     height: inherit;
     margin-top: 0.5rem !important;
-    position: static !important;  
+    position: fixed !important; 
+    bottom: 0 !important; 
   }
 }
