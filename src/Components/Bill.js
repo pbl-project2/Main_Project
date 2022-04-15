@@ -116,7 +116,7 @@ function Bill() {
     doc.text(50, 120, `Name: ${name}`);
 
     doc.text(50, 140, `Token: #${token}`);
-    doc.text(50, 160, `Total: Rs.${total}`);
+    doc.text(50, 160, `Grand Total: Rs.${total}`);
 
     // doc.setFontSize(16);
     // doc.setTextColor("#a03989");
