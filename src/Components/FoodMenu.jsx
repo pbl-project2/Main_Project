@@ -179,9 +179,7 @@ const FoodMenu = ({ props }) => {
               search !== "" ? (
                 <>
                   {food
-                    .filter((item) =>
-                      item.name.includes(searchWord) 
-                    )
+                    .filter((item) => item.name.includes(searchWord))
                     .map((item) => (
                       <FoodCard
                         key={item.id}
