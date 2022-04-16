@@ -473,7 +473,11 @@ input[type="text"]:focus {
   .categories {
     display: flex;
     flex-direction: row;
-    margin-left: 5rem;
+    margin-left: 1rem;
+    width:100%;
+    align-items:center;
+    padding-bottom:1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px ;
   }
 
   .card-diversion {
