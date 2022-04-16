@@ -10,7 +10,6 @@ import Bill from "./Components/Bill";
 import { v4 as uuid } from "uuid";
 import AdminMenu from "./Components/AdminMenu";
 import MenuNew from "./Components/MenuNew";
-import FadeLoader from "react-spinners/FadeLoader";
 
 import EditFood from "./Components/EditFood";
 import AdminLogin from "./Components/AdminLogin";
@@ -18,18 +17,16 @@ import SeparateFoodMenuNew from "./Components/SeparateFoodMenuNew";
 import AdminMenuSeparate from "./Components/AdminMenuSeparate";
 import ContactUs from "./Components/ContactUs";
 import QRCodeScanner from "./Components/QRCodeScanner";
-import { Cached } from "@mui/icons-material";
 
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Cart from "./Components/Cart";
 import CartSeparate from "./Components/CartSeparate";
 
 function App() {
   const [users, setUsers] = useState([]);
   const [sales, setSales] = useState(0);
   const [orders, setOrders] = useState(0);
-  const [loading, setLoading] = useState(false);
+
   //On page refresh...
   useEffect(() => {
     const sale = localStorage.getItem("salesnew");
@@ -109,7 +106,9 @@ function App() {
         <ToastContainer
           position="top-center"
           autoClose={5000}
+          closeButton={true}
           hideProgressBar={false}
+          className="toast-container"
         />
         <Switch>
           <Route exact path="/">

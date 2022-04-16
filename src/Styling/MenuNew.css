@@ -17,6 +17,25 @@
   /* margin-top: 25px; */
 }
 
+.edit-button {
+  height: 2.813rem;
+  border: 0rem;
+  /* height: 45px;
+  border: 0px; */
+  border-radius: 0.438rem;
+  /* border-radius: 7px; */
+  background: rgb(2, 0, 36);
+  background: linear-gradient(90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(158, 57, 138, 1) 0%,
+      rgba(255, 0, 33, 1) 100%);
+  width: 9rem;
+  cursor: pointer;
+  /* margin-bottom: 10px; */
+  margin-top: 1.563rem;
+  /* margin-top: 25px; */
+}
+
 .new {
   align-items: center;
   justify-content: center;
@@ -88,6 +107,7 @@ input[type=number] {
   margin-right: 0.625rem;
   /* margin-right: 10px; */
 }
+
 .desc label {
   min-width: 6.875rem;
   margin-bottom: 0.438rem;
@@ -97,7 +117,7 @@ input[type=number] {
   color: white;
   margin-right: 0.625rem;
   /* margin-right: 10px; */
-  
+
 }
 
 .desc {
@@ -106,7 +126,28 @@ input[type=number] {
   align-items: center;
   justify-content: center;
 }
+
 @media screen and (max-width: 768px) {
-    
-    
+  .form {
+    margin-left: 4.18rem !important;
+  }
+
+  .button {
+    margin-right: 5rem !important;
+  }
+  .edit-button {
+    margin-right: 0rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .form {
+    margin-left: 7rem !important;
+  }
+  .edit-button {
+    margin-right: 0rem;
+  }
+  .button {
+    margin-right: 5rem !important;
+  }
 }

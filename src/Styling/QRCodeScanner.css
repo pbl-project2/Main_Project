@@ -14,7 +14,7 @@ video {
     justify-content: center;
     flex-direction: column;
     left: 50%;
-    height: 43.75rem;
+    height: 41.75rem;
     /* height: 700px; */
     width: 100%;
     top: 50% !important;
@@ -90,7 +90,7 @@ video {
         /* border-radius: 20px; */
     }
     .qrcode {
-        height: 43.75rem;
+        height: 41.75rem;
         /* height: 700px; */
         width: 100%;
         top: 50% !important;

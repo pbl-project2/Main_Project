@@ -36,3 +36,12 @@
 .Toastify__toast {
   background: #161616 !important;
 }
+
+@media screen and (max-width: 768px) {
+  .toast-container {
+    margin-left: 16rem !important;
+    margin-top: 2rem !important;
+    height: 1rem !important;
+    width: 20rem !important;
+  }  
+}

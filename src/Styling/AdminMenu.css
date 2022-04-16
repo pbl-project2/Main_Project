@@ -71,3 +71,17 @@
 .td-desc {
     text-align: center;
 }
+
+@media screen and (max-width: 768px) {
+
+  nav h3 {
+    font-size: 1.5rem;
+    /* font-size: 24px; */
+    margin-top: 0.5rem;
+  }
+
+  .login-btn {
+    height: 2.7rem !important;
+    width: 9rem !important;
+  }
+}

@@ -77,7 +77,7 @@ function SeparateFoodMenuNew() {
             type="text"
             placeholder="Enter food type..."
             onChange={(e) => setType(e.target.value)}
-          /> */}
+            /> */}
               <select
                 placeholder="Select food type..."
                 name="type"

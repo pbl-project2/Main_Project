@@ -73,6 +73,18 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
             setShowSnackbar(true);
             toast.error("Password is too weak");
             break;
+          case "auth/wrong-password":
+            setError(true);
+            setSnackbarMessage("Wrong password");
+            setShowSnackbar(true);
+            toast.error("Wrong password");
+            break;
+          case "auth/user-not-found":
+            setError(true);
+            setSnackbarMessage("User not found");
+            setShowSnackbar(true);
+            toast.error("User not found");
+            break;
           default:
             console.log("");
         }

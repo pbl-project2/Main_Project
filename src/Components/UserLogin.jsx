@@ -31,6 +31,7 @@ const Login = () => {
   // };
 
   return (
+    <div className="main-div">
     <div className="login">
       <div className="main_login">
         <nav>
@@ -80,6 +81,7 @@ const Login = () => {
         </div>
         <Footer />
       </div>
+    </div>
     </div>
   );
 };

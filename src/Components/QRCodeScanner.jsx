@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { QrReader } from "react-qr-reader";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
-
+import { useHistory } from "react-router-dom";
 import "../Styling/QRCodeScanner.css";
 import Snackbar from "@mui/material/Snackbar";
 
 function QRCodeScanner() {
   const [scan, setScan] = useState("");
+  const history = useHistory();
   const handleError = (err) => {
     console.error(err);
   };
@@ -17,8 +18,13 @@ function QRCodeScanner() {
   };
   return (
     <div>
-      {/* <a href={scan}>{scan}</a> */}
-      {/* <QrReader
+      <nav>
+        <h3>UpMenu</h3>
+        <button className="login-btn" onClick={() => history.push("/")}>Back</button>
+      </nav>
+      <div className="qr-code-scanner">
+        {/* <a href={scan}>{scan}</a> */}
+        {/* <QrReader
         className="qr-reader"
         delay={300}
         onError={handleError}
@@ -39,31 +45,35 @@ function QRCodeScanner() {
           }
         }}
       /> */}
-      <div className="qrcode">
-        <div className="row11">
-          <BarcodeScannerComponent
-            height={76}
-            width={76}
-            onUpdate={(err, res) => {
-              if (res) {
-                let result = res.toString();
-                // setScan(res.text);
-                if (result.includes("upmenu") || result.includes("canteen-token-system")) {
-                  window.location.href = res.text;
-                  setScan("");
-                } else {
-                  setScan("Invalid QR Code");
-                }
-              } else console.log(err);
-            }}
-            facingMode="environment"
-            style={{ width: "100%" }}
-          />
+        <div className="qrcode">
+          <div className="row11">
+            <BarcodeScannerComponent
+              height={76}
+              width={76}
+              onUpdate={(err, res) => {
+                if (res) {
+                  let result = res.toString();
+                  // setScan(res.text);
+                  if (
+                    result.includes("upmenu") ||
+                    result.includes("canteen-token-system")
+                  ) {
+                    window.location.href = res.text;
+                    setScan("");
+                  } else {
+                    setScan("Invalid QR Code");
+                  }
+                } else console.log(err);
+              }}
+              facingMode="environment"
+              style={{ width: "100%" }}
+            />
+          </div>
+          <h3>SCAN QR CODE</h3>
+          <h3>{scan}</h3>
         </div>
-        <h3>SCAN QR CODE</h3>
-        <h3>{scan}</h3>
+        {/* <h3>Scan Qr Code</h3> */}
       </div>
-      {/* <h3>Scan Qr Code</h3> */}
     </div>
   );
 }

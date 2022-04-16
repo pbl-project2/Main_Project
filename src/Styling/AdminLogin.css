@@ -31,6 +31,7 @@
     border: 0;
     background: none;
     display: block;
+    height: fit-content !important;
     margin: 1.25rem auto;
     /* margin: 20px auto; */
     text-align: center;

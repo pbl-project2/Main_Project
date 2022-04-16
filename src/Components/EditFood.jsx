@@ -64,7 +64,7 @@ function EditFood() {
               onChange={(e) => setDesc(e.target.value)}
             />
           </div>
-          <button className="button">Edit</button>
+          <button className="edit-button">Edit</button>
         </form>
         {/* <div className="current">
           <h1>Current Data</h1>
