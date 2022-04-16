@@ -37,38 +37,40 @@ function MenuNew() {
           Back to Menu
         </button>
       </nav>
-      <form onSubmit={handleSubmit} id="form" className="form">
-        <div className="food_name">
-          <input
-            type="text"
-            placeholder="Enter food name..."
-            onChange={(e) => setName(e.target.value)}
-          />
-          <br />
-        </div>
-        <div className="price">
-          <input
-            type="tel"
-            placeholder="Enter food price..."
-            onChange={(e) => setPrice(e.target.value)}
-          />
-        </div>
-        <div className="type">
-          <input
-            type="text"
-            placeholder="Enter food type..."
-            onChange={(e) => setType(e.target.value)}
-          />
-        </div>
-        <div className="desc">
-          <input
-            type="text"
-            placeholder="Enter food description..."
-            onChange={(e) => setDescription(e.target.value)}
-          />
-        </div>
-        <button className="button">Add</button>
-      </form>
+      <div className="add-new-item">
+        <form onSubmit={handleSubmit} id="form" className="form">
+          <div className="food_name">
+            <input
+              type="text"
+              placeholder="Enter food name..."
+              onChange={(e) => setName(e.target.value)}
+            />
+            <br />
+          </div>
+          <div className="price">
+            <input
+              type="tel"
+              placeholder="Enter food price..."
+              onChange={(e) => setPrice(e.target.value)}
+            />
+          </div>
+          <div className="type">
+            <input
+              type="text"
+              placeholder="Enter food type..."
+              onChange={(e) => setType(e.target.value)}
+            />
+          </div>
+          <div className="desc">
+            <input
+              type="text"
+              placeholder="Enter food description..."
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+          <button className="button">Add</button>
+        </form>
+      </div>
     </div>
   );
 }
