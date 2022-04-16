@@ -473,7 +473,7 @@ input[type="text"]:focus {
   .categories {
     display: flex;
     flex-direction: row;
-    margin-left: 8.5rem;
+    margin-left: 5rem;
   }
 
   .card-diversion {
