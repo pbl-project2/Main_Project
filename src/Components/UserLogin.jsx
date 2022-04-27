@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-
-import "../Styling/Login.css";
 import { useHistory } from "react-router-dom";
-
 import { Snackbar } from "@mui/material";
 import Footer from "./Footer";
+import "../Styling/Login.css";
 
 const Login = () => {
   const history = useHistory();
@@ -32,56 +30,66 @@ const Login = () => {
 
   return (
     <div className="main-div">
-    <div className="login">
-      <div className="main_login">
-        <nav>
-          <h3>
-            Up<span className="icon-span">Menu</span>
-          </h3>
-          <button
-            className="homepage-btn"
-            onClick={() => history.push("/admin-login")}
-          >
-            Login as Admin
-          </button>
-          {/* <button onClick={}>Login Admin</button> */}
-        </nav>
-        {
-          <Snackbar
-            anchorOrigin={{ vertical: "top", horizontal: "center" }}
-            open={showSnackbar}
-            autoHideDuration={3000}
-            onClose={() => setShowSnackbar(false)}
-            message="Sorry you are not an admin!!"
-          />
-        }
-        <header>
-          <h1 className="heading">
-            Let's Order Some <span className="food-span">Food...</span>
-          </h1>
-        </header>
-        <div className="input_fields">
-          {/* <p>Lets get you to our canteen menu</p> */}
-          <div className="creds">
-            {/* <button
+      <div className="login">
+        <div className="main_login">
+          <nav>
+            <h3>
+              Up<span className="icon-span">Menu</span>
+            </h3>
+            <div>
+              <button
+                className="homepage-btn"
+                onClick={() => history.push("/about-us")}
+              >
+                About Us
+              </button>
+              <button
+                className="homepage-btn"
+                onClick={() => history.push("/admin-login")}
+              >
+                Login as Admin
+              </button>
+            </div>
+            {/* <button onClick={}>Login Admin</button> */}
+          </nav>
+          {
+            <Snackbar
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+              open={showSnackbar}
+              autoHideDuration={3000}
+              onClose={() => setShowSnackbar(false)}
+              message="Sorry you are not an admin!!"
+            />
+          }
+          <header>
+            <h1 className="heading">
+              Let's Order <span className="food-span">Some Food...</span>
+            </h1>
+          </header>
+          <div className="input_fields">
+            {/* <p>Lets get you to our canteen menu</p> */}
+            <div className="creds">
+              {/* <button
               className="lesgo-btn"
               type="submit"
               onClick={() => history.push("/customer-login")}
             >
               Lesgo
             </button> */}
-            <button
-              className="lesgo-btn"
-              type="submit"
-              onClick={() => history.push(`/qrcode-scan`)}
-            >
-              Lesgo
-            </button>
+              <button
+                className="lesgo-btn"
+                type="submit"
+                onClick={() => history.push(`/qrcode-scan`)}
+              >
+                Lesgo
+              </button>
+            </div>
+          </div>
+          <div className="user_login_footer">
+            <Footer />
           </div>
         </div>
-        <Footer />
       </div>
-    </div>
     </div>
   );
 };

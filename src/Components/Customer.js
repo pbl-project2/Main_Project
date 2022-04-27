@@ -17,6 +17,7 @@ function Customer() {
 
   useEffect(() => {
     let id = uuid();
+    console.log(id);
     setUserId(id);
   }, []);
   const history = useHistory();
@@ -63,9 +64,12 @@ function Customer() {
           <h3>
             Up<span className="icon-span">Menu</span>
           </h3>
+          <div className="right">
+          <button className="login-btn" style={{marginRight: "1rem"}} onClick={() => history.push("/about-us")}>About Us</button>
           <button className="login-btn" onClick={() => history.push("/")}>
             Home Page
           </button>
+          </div>
         </nav>
         {
           <Snackbar
