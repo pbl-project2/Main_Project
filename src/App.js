@@ -10,7 +10,7 @@ import Bill from "./Components/Bill";
 import { v4 as uuid } from "uuid";
 import AdminMenu from "./Components/AdminMenu";
 import MenuNew from "./Components/MenuNew";
-
+import firebase from "firebase";
 import EditFood from "./Components/EditFood";
 import AdminLogin from "./Components/AdminLogin";
 import SeparateFoodMenuNew from "./Components/SeparateFoodMenuNew";
@@ -21,12 +21,17 @@ import QRCodeScanner from "./Components/QRCodeScanner";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CartSeparate from "./Components/CartSeparate";
+import AboutUs from "./Components/AboutUs";
 
 function App() {
   const [users, setUsers] = useState([]);
-  const [sales, setSales] = useState(0);
+  const [usersArr, setUsersArr] = useState([]);
+  const [salesArr, setSalesArr] = useState([]);
+  const [emailUsers, setEmailUsers] = useState([]);
+  // const [sales, setSales] = useState(0);
+  var sales = 0;
   const [orders, setOrders] = useState(0);
-
+  var salesnew = 0;
   //On page refresh...
   useEffect(() => {
     const sale = localStorage.getItem("salesnew");
@@ -39,7 +44,9 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {}, [localStorage.getItem("salesnew")]);
+  // useEffect(() => {
+  //   salesnew = sessionStorage.getItem("salesnew");
+  // }, []);
 
   useEffect(async () => {
     await db
@@ -73,30 +80,65 @@ function App() {
   // }, [db]);
 
   const handleDelete = async (id) => {
-    await db
-      .collection("users")
-      .doc(`${id}`)
-      .get()
-      .then((doc) => {
-        setSales(sales + doc.data().total);
-        localStorage.setItem("salesnew", sales + doc.data().total);
-        setOrders(orders + 1);
-        localStorage.setItem("ordersnew", orders + 1);
-      });
-      toast.success(`Order completed!!` ,{
-        autoClose: 2000,
-      });
-    if (sales > 0) {
-      await db
-        .collection("admin")
-        .doc(`${localStorage.getItem("adminEmail")}`)
-        .update({
-          sales: localStorage.getItem("salesnew"),
-          orders: localStorage.getItem("ordersnew"),
-        });
-    }
+    // await db
+    //   .collection("users")
+    //   .doc(id)
+    //   .get()
+    //   .then((doc) => {
+    //     if (doc.exists) {
+    //       console.log(doc.data().total);
+    //       sales+= doc.data().total;
+    //       sessionStorage.setItem("salesnew", sales);
+    //       console.log(sales);
+    //       // console.log("Salesnew: ",sales);
+    //       // sessionStorage.setItem("salesnew", salesnew);
+    //       console.log(`${localStorage.getItem("adminEmail")}`);
+    //       db.collection("admin")
+    //         .doc(`${localStorage.getItem("adminEmail")}`)
+    //         .update({
+    //           sales: sessionStorage.getItem("salesnew"),
+    //         });
+    //     } else {
+    //       console.log("No such document!");
+    //     }
+    //   });
+    toast.success(`Order completed!!`, {
+      autoClose: 2000,
+    });
+    // await db.collection("users").doc(`${id}`).update({
+    //   completed: true,
+    // });
     await db.collection("users").doc(`${id}`).delete();
+    // await db
+    //   .collection("users")
+    //   .where("completed", "==", true)
+    //   .get()
+    //   .then((snapshot) => {
+    //     let userArr = [];
+    //     snapshot.forEach((doc) => {
+    //       if (doc.data().email === localStorage.getItem("adminEmail")) {
+    //         userArr.push({ ...doc.data(), id: doc.id });
+    //       }
+    //     });
+    //     setUsersArr(userArr);
+    //     console.log(userArr);
+    //     setSalesArr(userArr[0].total);
+    //     userArr.forEach((user) => {
+    //       sales += user.total;
+    //       localStorage.setItem("salesFinal", sales);
+    //     });
+    //     console.log(sales);
+    //   });
   };
+
+  useEffect(async () => {
+    await db
+      .collection("admin")
+      .doc(`${localStorage.getItem("adminEmail")}`)
+      .update({
+        sales: localStorage.getItem("salesFinal"),
+      });
+  }, [db]);
 
   let id = uuid();
   localStorage.setItem("o", id);
@@ -109,6 +151,7 @@ function App() {
           closeButton={true}
           hideProgressBar={false}
           className="toast-container"
+          closeOnClick={true}
         />
         <Switch>
           <Route exact path="/">
@@ -128,6 +171,8 @@ function App() {
               // user={users}
               // sales={sales}
               // orders={order}
+              usersArr={usersArr}
+              sales={sales}
               handleDelete={handleDelete}
             />
             <div className="container">
@@ -172,6 +217,9 @@ function App() {
           </Route>
           <Route path="/cart">
             <CartSeparate />
+          </Route>
+          <Route path="/about-us">
+            <AboutUs />
           </Route>
         </Switch>
       </Router>
