@@ -36,7 +36,7 @@ const Login = () => {
             <h3>
               Up<span className="icon-span">Menu</span>
             </h3>
-            <div>
+            <div className="btns">
               <button
                 className="homepage-btn"
                 onClick={() => history.push("/about-us")}
