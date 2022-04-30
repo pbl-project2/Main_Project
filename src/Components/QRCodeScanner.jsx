@@ -18,7 +18,7 @@ function QRCodeScanner() {
     }
   };
   return (
-    <div>
+    <div className="qrcode_main">
       <nav>
         <h3>UpMenu</h3>
         <button className="login-btn" onClick={() => history.push("/")}>

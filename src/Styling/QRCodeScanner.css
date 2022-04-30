@@ -8,6 +8,12 @@ video {
     /* border-radius: 20px; */
 }
 
+.qrcode_main {
+    background: url("../../public/Untitled-final.jpg") !important;
+    height: 100vh; 
+    /* width: 105.4vw; */
+}
+
 .qrcode {
     display: flex;
     align-items: center;
@@ -46,10 +52,11 @@ video {
 }
 
 @keyframes animate {
-    0%{
+    0% {
         transform: rotate(0deg);
     }
-    100%{
+
+    100% {
         transform: rotate(360deg);
     }
 }
@@ -75,12 +82,21 @@ video {
 }
 
 @media screen and (max-width: 768px) {
+    .qrcode_main nav .login-btn {
+        margin-right: 2rem !important;
+    }
+    .qrcode_main{
+        background: url(../../public/Untitled1.png) !important;
+        /* height: 100vh; 
+        width: 105.4vw; */
+    }
     video {
         width: 24.5rem;
         height: 24.5rem;
         /* width: 392px;
         height: 392px; */
     }
+
     .row11 {
         width: 25rem;
         height: 25rem;
@@ -89,6 +105,7 @@ video {
         border-radius: 1.25rem;
         /* border-radius: 20px; */
     }
+
     .qrcode {
         height: 41.75rem;
         /* height: 700px; */
@@ -98,6 +115,7 @@ video {
         border-radius: 1.25rem;
         /* border-radius: 20px; */
     }
+
     .row11::before {
         content: "";
         position: absolute;
@@ -107,17 +125,17 @@ video {
         background: linear-gradient(#00ccff, #d400d4);
         animation: animate 4s linear infinite;
     }
-    
+
     @keyframes animate {
         0% {
             transform: rotate(0deg);
         }
-    
+
         100% {
             transform: rotate(360deg);
         }
     }
-    
+
     .row11::after {
         content: '';
         position: absolute;
@@ -127,12 +145,12 @@ video {
         /* inset: 4px;
         border-radius: 20px; */
     }
-    
+
     .row11 video {
         position: relative;
         z-index: 10;
     }
-    
+
     .qrcode h3 {
         margin-top: 0.625rem;
         /* margin-top: 10px; */
@@ -146,7 +164,13 @@ video {
         /* width: 292px;
         height: 292px; */
     }
-    
+    .qrcode_main {
+        background: url(../../public/Untitled1.png) !important;
+        height: 111vh;
+        /* width: 111vw; */
+        width: 100%;
+    }
+
     .row11 {
         width: 18.75rem;
         height: 18.75rem;
@@ -155,17 +179,18 @@ video {
         border-radius: 1.25rem;
         /* border-radius: 20px; */
     }
-    
+
     .qrcode {
-        height: 31.25rem;
+        /* height: 31.25rem; */
+        height: 76.25rem;
         /* height: 500px; */
-        width: 100%;
+        /* width: 100%; */
         top: 0% !important;
         left: 50% !important;
         border-radius: 1.25rem;
         /* border-radius: 20px; */
     }
-    
+
     .row11::before {
         content: "";
         position: absolute;
@@ -175,17 +200,17 @@ video {
         background: linear-gradient(#00ccff, #d400d4);
         animation: animate 4s linear infinite;
     }
-    
+
     @keyframes animate {
         0% {
             transform: rotate(0deg);
         }
-    
+
         100% {
             transform: rotate(360deg);
         }
     }
-    
+
     .row11::after {
         content: '';
         position: absolute;
@@ -195,12 +220,12 @@ video {
         /* inset: 4px;
         border-radius: 20px; */
     }
-    
+
     .row11 video {
         position: relative;
         z-index: 10;
     }
-    
+
     .qrcode h3 {
         margin-top: 0.625rem;
         /* margin-top: 10px; */
@@ -208,6 +233,7 @@ video {
         width: 100% !important;
         text-align: center;
     }
+
     /* video {
         width: 210px;
         height: 210px;
