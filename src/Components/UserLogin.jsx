@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { Snackbar } from "@mui/material";
 import Footer from "./Footer";
@@ -7,6 +7,10 @@ import "../Styling/Login.css";
 const Login = () => {
   const history = useHistory();
   const [showSnackbar, setShowSnackbar] = useState(false);
+
+  useEffect(() => {
+    document.title = "UpMenu";
+  }, []);
 
   // const signInWithGoogle = () => {
   //   auth
