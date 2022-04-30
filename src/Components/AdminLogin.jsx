@@ -21,10 +21,14 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   const [name, setName] = useState("");
   const devEmail = "upmenudevs@upmenu.com";
 
-  const handleSnackbarClose = (Transition) => {
+  const handleSnackbarClose = () => {
     setShowSnackbar(false);
   };
   const [src, setSrc] = useState("");
+
+  useEffect(() => {
+    document.title = "UpMenu | Admin Login";
+  }, [])
 
   useEffect(() => {
     db.collection("admin")
