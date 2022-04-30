@@ -99,6 +99,10 @@ function Admin({ user, handleDelete, admin }) {
     });
   }, [adminDetails, []]);
 
+  useEffect(() => {
+    document.title = `Admin | ${admin.email}`;
+  }, []);
+
   // useEffect(() => {
   //   QRCode.toDataURL(`http://localhost:3000/foodmenu/${admin.email}`).then(
   //     (data) => {

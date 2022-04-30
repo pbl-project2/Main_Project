@@ -1,8 +1,11 @@
 import { FacebookOutlined, Instagram, LinkedIn } from "@mui/icons-material";
-import React from "react";
+import React, { useEffect } from "react";
 import "../Styling/AboutUs.css";
 
 function AboutUs() {
+  useEffect(() => {
+    document.title = "UpMenu | About Us";
+  }, []);
   return (
     <div className="main_about_us">
       <div className="about_us">
