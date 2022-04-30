@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { QrReader } from "react-qr-reader";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 import { useHistory } from "react-router-dom";
@@ -17,6 +17,9 @@ function QRCodeScanner() {
       setScan(data);
     }
   };
+  useEffect(() => {
+    document.title = "UpMenu | Scan QR Code";
+  }, []);
   return (
     <div className="qrcode_main">
       <nav>
