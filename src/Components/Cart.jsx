@@ -3,15 +3,17 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import firebase from "firebase";
+import { toast } from "react-toastify";
 import "../Styling/Cart.css";
 
-import FadeLoader from 'react-spinners/FadeLoader';
+import FadeLoader from "react-spinners/FadeLoader";
 
 const Cart = () => {
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [sum, setSum] = useState(total);
   const [loading, setLoading] = useState(false);
+  const [foodName, setFoodName] = useState("");
   // const [sales, setSales] = useState(sum);
   // const [orders, setOrders] = useState(0);
 
@@ -27,6 +29,7 @@ const Cart = () => {
         let cartArr = [];
         snapshot.forEach((doc) => {
           cartArr.push({ ...doc.data(), id: doc.id });
+          setFoodName(doc.data().name);
         });
         setCart(cartArr);
         setLoading(true);
@@ -51,6 +54,7 @@ const Cart = () => {
       .collection("food")
       .doc(`${id}`)
       .delete();
+    toast.error(`${id} has been deleted`);
   };
 
   const handleCheckout = async () => {
@@ -65,6 +69,7 @@ const Cart = () => {
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         id: userId,
         email: window.location.pathname.split("/")[2],
+        completed: false,
       });
     // setSales(firebase.firestore.FieldValue.increment(sum));
     // setOrders(firebase.firestore.FieldValue.increment(1));
@@ -95,7 +100,10 @@ const Cart = () => {
                 <div className="price">
                   <p>₹{item.price}</p>
                 </div>
-                <Cancel className="cancel-btn" onClick={() => handleDelete(item.id)} />
+                <Cancel
+                  className="cancel-btn"
+                  onClick={() => handleDelete(item.id)}
+                />
               </div>
             </>
           ))

@@ -4,6 +4,7 @@ import BarcodeScannerComponent from "react-qr-barcode-scanner";
 import { useHistory } from "react-router-dom";
 import "../Styling/QRCodeScanner.css";
 import Snackbar from "@mui/material/Snackbar";
+import Footer from "./Footer";
 
 function QRCodeScanner() {
   const [scan, setScan] = useState("");
@@ -20,7 +21,9 @@ function QRCodeScanner() {
     <div>
       <nav>
         <h3>UpMenu</h3>
-        <button className="login-btn" onClick={() => history.push("/")}>Back</button>
+        <button className="login-btn" onClick={() => history.push("/")}>
+          Back
+        </button>
       </nav>
       <div className="qr-code-scanner">
         {/* <a href={scan}>{scan}</a> */}
@@ -44,7 +47,7 @@ function QRCodeScanner() {
             console.log(error);
           }
         }}
-      /> */}
+        /> */}
         <div className="qrcode">
           <div className="row11">
             <BarcodeScannerComponent
@@ -74,6 +77,7 @@ function QRCodeScanner() {
         </div>
         {/* <h3>Scan Qr Code</h3> */}
       </div>
+      <Footer />
     </div>
   );
 }

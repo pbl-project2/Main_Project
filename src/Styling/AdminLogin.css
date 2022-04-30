@@ -15,6 +15,15 @@
     border-radius: 20px;
 }
 
+.loginContainer {
+    background: url("../../public/Untitled.png") no-repeat center center fixed;
+    height: 100vh !important;
+}
+
+::-ms-backdrop {
+    background-color: black !important;
+}
+
 .form1 h1 {
     /* width: 320px; */
     width: 100%;

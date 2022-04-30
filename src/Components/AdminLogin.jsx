@@ -5,7 +5,6 @@ import Login from "./Login";
 import { v4 as uuid } from "uuid";
 import QRCode from "qrcode";
 import Admin from "./Admin";
-import Footer from "./Footer";
 import { toast } from "react-toastify";
 
 function AdminLogin({ sales, orders, handleDelete, users }) {
@@ -111,7 +110,6 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
             adminId: localStorage.getItem("adminId"),
             email: user.email,
             qrcode: src,
-            name: name,
           });
         console.log("db fired");
       } else {
@@ -121,7 +119,7 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   };
 
   const handleSignUp = () => {
-    var text = "https:canteen-token-system.web.app";
+    var text = "https://canteen-token-system.web.app";
     clearErrors();
     QRCode.toDataURL(text).then((data) => {
       setSrc(data);
@@ -208,7 +206,9 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
                 placeholder="Enter CANTEEN NAME"
                 required
                 value={name}
-                onChange={(e) => setName(e.target.value)}
+                onChange={(e) => {
+                  setName(e.target.value);
+                }}
               />
               <input
                 type="text"
@@ -236,8 +236,12 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
               {/* <p className="errorMsg">{passwordError}</p> */}
               <div className="btn-container">
                 <div className="login_btn">
-                  <button className="btn" onClick={handleSignUp}>Sign Up</button>
-                  <button className="btn" onClick={handleLogout}>Log Out</button>
+                  <button className="btn" onClick={handleSignUp}>
+                    Sign Up
+                  </button>
+                  <button className="btn" onClick={handleLogout}>
+                    Log Out
+                  </button>
                 </div>
               </div>
               {/* <div className="btn-container">

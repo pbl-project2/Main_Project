@@ -15,7 +15,7 @@ function AboutUs() {
                 </div>
                 <div className="content">
                   <h3>
-                    The Canteen Token System is a web application that which focuses on digitalizing the current scenario
+                    The Canteen Token System is a web application which focuses on digitalizing the current scenario
                     of ordering food in the canteen. The customer will scan QR Code of the canteen and will be redirected
                     to the canteen’s website. The customer can add items to the cart and checkout. The order will be sent
                     to the canteen admin. After serving the customer, the admin can will remove the order. The website allows

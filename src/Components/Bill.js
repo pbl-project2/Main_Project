@@ -11,6 +11,8 @@ import firebase from "firebase";
 import Footer from "./Footer";
 import { Cached } from "@mui/icons-material";
 import FadeLoader from "react-spinners/FadeLoader";
+// import GooglePayButton from "@google-pay/button-react";
+// import { toast } from "react-toastify";
 
 function Bill() {
   const history = useHistory();
@@ -205,7 +207,12 @@ function Bill() {
               ) : (
                 <div className="food-loader-loop">
                   {/* <Cached /> */}
-                  <FadeLoader className="fade-loader" size={2} speedMultiplier={2} color="#ffffff" />
+                  <FadeLoader
+                    className="fade-loader"
+                    size={2}
+                    speedMultiplier={2}
+                    color="#ffffff"
+                  />
                 </div>
               )}
               <h1 className="total">Total: ₹{total}</h1>
@@ -213,6 +220,48 @@ function Bill() {
               <button className="login-btn pdf-btn" onClick={generatePdf}>
                 Download PDF <Download />
               </button>
+              {/* <GooglePayButton
+                environment="TEST"
+                paymentRequest={{
+                  apiVersion: 2,
+                  apiVersionMinor: 0,
+                  allowedPaymentMethods: [
+                    {
+                      type: "CARD",
+                      parameters: {
+                        allowedAuthMethods: ["PAN_ONLY", "CRYPTOGRAM_3DS"],
+                        allowedCardNetworks: ["MASTERCARD", "VISA"],
+                      },
+                      tokenizationSpecification: {
+                        type: "PAYMENT_GATEWAY",
+                        parameters: {
+                          gateway: "example",
+                          gatewayMerchantId: "exampleGatewayMerchantId",
+                        },
+                      },
+                    },
+                  ],
+                  merchantInfo: {
+                    merchantId: "12345678901234567890",
+                    merchantName: "Example Merchant",
+                  },
+                  transactionInfo: {
+                    totalPriceStatus: "FINAL",
+                    totalPrice: `${total}`,
+                    currencyCode: "INR",
+                    countryCode: "IN",
+                    totalPriceLabel: "Total",
+                    
+                  },
+                   
+                }}
+                onPaymentSuccess={(paymentData) => {
+                  console.log("Payment Successful: ",paymentData);
+                }}
+                onPaymentError={(paymentData) => {
+                  console.log("Payment Error: ",paymentData);
+                }}
+              /> */}
             </>
           ) : (
             //<div className="loading">

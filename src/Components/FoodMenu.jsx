@@ -119,48 +119,69 @@ const FoodMenu = ({ props }) => {
       });
   };
 
+  const handleShowAll = async () => {
+    db.collection("admin")
+      .doc(`${email}`)
+      .collection("foodMenu")
+      .get()
+      .then((snapshot) => {
+        let snacksArr = [];
+        snapshot.forEach((doc) => {
+          snacksArr.push({ ...doc.data(), id: doc.id });
+        });
+        setFood(snacksArr);
+        // console.log(snacksArr);
+      });
+  };
+
   var searchWord = search.charAt(0).toUpperCase() + search.slice(1);
 
   return (
-    <div className="food-menu">
-      <div className="nav">
-        <h3>UpMenu</h3>
-        <div>
-          <input
-            // style={{
-            //   marginRight: "50px",
-            //   border: "none",
-            //   outline: "none",
-            //   borderRadius: "50px",
-            //   width: "250px",
-            // }}
-            type="text"
-            placeholder="Search food here..."
-            onChange={(e) => {
-              setSearch(e.target.value);
-              console.log(e.target.value);
-            }}
-          />
-          <button
-            className="Cart-link"
-            onClick={() =>
-              history.replace(`/cart/${window.location.pathname.split("/")[2]}/${window.location.pathname.split("/")[3]}`)  
-            }
-          >
-            <AddShoppingCartIcon />
-          </button>
-          <button onClick={() => history.replace("/")} className="home-btn">
-            Home Page
-          </button>
+    <div className="food_menu_main">
+      <div className="food-menu">
+        <div className="nav">
+          <h3>UpMenu</h3>
+          <div>
+            <input
+              // style={{
+              //   marginRight: "50px",
+              //   border: "none",
+              //   outline: "none",
+              //   borderRadius: "50px",
+              //   width: "250px",
+              // }}
+              type="text"
+              placeholder="Search food here..."
+              onChange={(e) => {
+                setSearch(e.target.value);
+                // console.log(e.target.value);
+              }}
+            />
+            <button
+              className="Cart-link"
+              onClick={() =>
+                history.replace(
+                  `/cart/${window.location.pathname.split("/")[2]}/${
+                    window.location.pathname.split("/")[3]
+                  }`
+                )
+              }
+            >
+              <AddShoppingCartIcon />
+            </button>
+            <button onClick={() => history.replace("/")} className="home-btn">
+              Home Page
+            </button>
+          </div>
         </div>
-      </div>
-      <h3 className="main-title">Food Menu</h3>
+        <h3 className="main-title">Food Menu</h3>
 
-      <hr />
-      <div className="food-cards">
-        <div className="all-bout-food">
-          <div className="categories">
-            {/* <a href="#" className="category" onClick={handleSnacks}>
+        <hr />
+        <div className="food_list">
+          <div className="food-cards">
+            <div className="all-bout-food">
+              <div className="categories">
+                {/* <a href="#" className="category" onClick={handleSnacks}>
             Breakfast
           </a>
           <a href="#" className="category" onClick={handleLunch}>
@@ -169,59 +190,67 @@ const FoodMenu = ({ props }) => {
           <a href="#" className="category" onClick={handleBeverages}>
             Beverages
           </a> */}
-            <a href="#" className="category" onClick={handleSnacks}>
-              Breakfast
-            </a>
-            <a href="#" className="category" onClick={handleLunch}>
-              Lunch
-            </a>
-            <a href="#" className="category" onClick={handleBeverages}>
-              Beverages
-            </a>
-          </div>
-          <div className="food-card-list">
-            {loading ? (
-              search !== "" ? (
-                <>
-                  {food
-                    .filter((item) => item.name.includes(searchWord))
-                    .map((item) => (
-                      <FoodCard
-                        key={item.id}
-                        id={item.id}
-                        name={item.name}
-                        type={item.type}
-                        price={item.price}
-                        description={item.description}
-                      />
-                    ))}
-                </>
-              ) : (
-                <>
-                  {food.map((item) => (
-                    <FoodCard
-                      key={item.id}
-                      id={item.id}
-                      name={item.name}
-                      type={item.type}
-                      price={item.price}
-                      description={item.description}
-                    />
-                  ))}
-                </>
-              )
-            ) : (
-              <div className="loader1">
-                <FadeLoader size={15} color="#fff" />
+                {/* {search !== "" ? (
+              <a href="#" className="category" onClick={handleShowAll}>
+                All
+              </a>
+            ) : null} */}
+                <a href="#" className="category" onClick={handleShowAll}>
+                  All
+                </a>
+                <a href="#" className="category" onClick={handleSnacks}>
+                  Breakfast
+                </a>
+                <a href="#" className="category" onClick={handleLunch}>
+                  Lunch
+                </a>
+                <a href="#" className="category" onClick={handleBeverages}>
+                  Beverages
+                </a>
               </div>
-              /* <div className="loading">
+              <div className="food-card-list">
+                {loading ? (
+                  search !== "" ? (
+                    <>
+                      {food
+                        .filter((item) => item.name.includes(searchWord))
+                        .map((item) => (
+                          <FoodCard
+                            key={item.id}
+                            id={item.id}
+                            name={item.name}
+                            type={item.type}
+                            price={item.price}
+                            description={item.description}
+                          />
+                        ))}
+                    </>
+                  ) : (
+                    <>
+                      {food.map((item) => (
+                        <FoodCard
+                          key={item.id}
+                          id={item.id}
+                          name={item.name}
+                          type={item.type}
+                          price={item.price}
+                          description={item.description}
+                        />
+                      ))}
+                    </>
+                  )
+                ) : (
+                  <div className="loader1">
+                    <FadeLoader size={15} color="#fff" />
+                  </div>
+                  /* <div className="loading">
               <Cached />
             </div> */
-              /* <div className="loading"> */
-              /* </div> */
-            )}
-          </div>
-          {/* <a href="#" className="category" onClick={handleSnacks}>
+                  /* <div className="loading"> */
+                  /* </div> */
+                )}
+              </div>
+              {/* <a href="#" className="category" onClick={handleSnacks}>
             Breakfast
           </a>
           <a href="#" className="category" onClick={handleLunch}>
@@ -230,11 +259,13 @@ const FoodMenu = ({ props }) => {
           <a href="#" className="category" onClick={handleBeverages}>
             Beverages
           </a> */}
-        </div>
+            </div>
 
-        <Cart />
+            <Cart />
+          </div>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };

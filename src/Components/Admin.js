@@ -134,59 +134,61 @@ function Admin({ user, handleDelete, admin }) {
   // }, [db]);
 
   return (
-    <div className="admin">
-      <AdminNav admin={admin} adminEmail={adminEmail} user={user} />
-      <div className="upper-body container">
-        {/* For income and orders served */}
-        <p style={{marginBottom: "2rem"}}>
-          You are logged in as{" "}
-          <span>
-            <u style={{ color: "#0E76A8" }}>
-              <i style={{ color: "#0E76A8" }}>{adminEmail}</i>
-            </u>
-          </span>
-        </p>
-        <div className=" divs-combine row">
-          <div className="income col">
-            <h1>You've Earned</h1>
-            <h3>Sales: ₹{localStorage.getItem("salesnew")}.00</h3>
-            {/* <h1>Orders Served: {orders}</h1> */}
+    <div className="admin_main">
+      <div className="admin">
+        <AdminNav admin={admin} adminEmail={adminEmail} user={user} />
+        <div className="upper-body container">
+          {/* For income and orders served */}
+          <p style={{ marginBottom: "2rem" }}>
+            You are logged in as{" "}
+            <span>
+              <u style={{ color: "#0E76A8" }}>
+                <i style={{ color: "#0E76A8" }}>{adminEmail}</i>
+              </u>
+            </span>
+          </p>
+          <div className=" divs-combine row">
+            <div className="income col">
+              <h1>You've Earned</h1>
+              <h3>Sales: ₹{localStorage.getItem("salesnew")}.00</h3>
+              {/* <h1>Orders Served: {orders}</h1> */}
+            </div>
+            <div className="served-orders col">
+              <h1>You've Served</h1>
+              {/* <h1>Sales: ₹{sales}</h1> */}
+              <h3>{orders} orders</h3>
+            </div>
           </div>
-          <div className="served-orders col">
-            <h1>You've Served</h1>
-            {/* <h1>Sales: ₹{sales}</h1> */}
-            <h3>{orders} orders</h3>
-          </div>
+          {/* <h1>Admin Details</h1> */}
         </div>
-        {/* <h1>Admin Details</h1> */}
-      </div>
-      {/* {users.length === 0 ? (
+        {/* {users.length === 0 ? (
         <p className="orders-title">It's calm for right now!!</p>
       ) : (
         <> */}
-      {users.length === 0 ? (
-        <div style={{ background: "#161616", height: "350px" }}>
-          <p className="orders-title">It's calm for right now!!</p>
-        </div>
-      ) : (
-        <>
-          <p className="orders-title">
-            You need to serve these orders...Hurry Up!
-          </p>
-          <div className="all-orders">
-            {/* For customer data */}
-            {users?.map((user) => (
-              <CustomerData
-                key={user.id}
-                user={user}
-                handleDelete={handleDelete}
-                food={food}
-              />
-            ))}
+        {users.length === 0 ? (
+          <div style={{ background: "#161616", height: "350px" }}>
+            <p className="orders-title">It's calm for right now!!</p>
           </div>
-        </>
-      )}
-      <Footer />
+        ) : (
+          <>
+            <p className="orders-title">
+              You need to serve these orders...Hurry Up!
+            </p>
+            <div className="all-orders">
+              {/* For customer data */}
+              {users?.map((user) => (
+                <CustomerData
+                  key={user.id}
+                  user={user}
+                  handleDelete={handleDelete}
+                  food={food}
+                />
+              ))}
+            </div>
+          </>
+        )}
+        <Footer />
+      </div>
     </div>
   );
 }

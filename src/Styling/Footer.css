@@ -1,6 +1,9 @@
 .main {
   margin: 0;
   padding: 0;
+  /* background: url("../../public/Untitled-final.jpg") !important; */
+  backdrop-filter: blur(3rem);
+  width: 100vw !important;
   /* box-sizing: border-box; */
 }
 
@@ -12,7 +15,8 @@ footer {
   position: fixed;
   bottom: 0 !important;
   height: auto;
-  width: 89vw;
+  /* width: 89vw; */
+  width: 100vw;
   /* padding-top: 40px; */
   color: #fff !important;
 }

@@ -1,3 +1,8 @@
+.sep_admin_menu_new {
+    height: 100vh;
+    background: url("../../public/Untitled-final.jpg") !important;
+}
+
 .form {
     /* width:100%; */
     width: 31.25rem;
@@ -8,6 +13,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-left: 32rem;
     /* margin-left: 27.188rem !important; */
     /* margin-left: 435px !important; */
 }
@@ -84,6 +90,7 @@
     margin: 0;
     padding: 0;
     transition: all 0.3s ease-in-out;
+    background-color: #161616;
 }
 
 .form .whole .type select:hover {
@@ -99,6 +106,10 @@
     align-items: center;
     justify-content: center;
 } */
+
+.sep_admin_menu_new nav .button {
+    margin-right: 2rem;
+}
 
 .form .whole button {
     height: 2.5rem;

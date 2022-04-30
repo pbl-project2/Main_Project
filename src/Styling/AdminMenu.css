@@ -1,3 +1,10 @@
+.admin_menu_sep {
+  /* height: 100vh; */
+  height: 100vh !important;
+  background: url("../../public/Untitled-final.jpg") !important;
+}
+
+
 .styled-table {
   border-collapse: collapse;
   border: 0.063rem solid #fff;
@@ -29,7 +36,8 @@
 }
 
 .styled-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+  /* background-color: #f3f3f3; */
+  background-color: #161616;
 }
 
 .styled-table tbody tr:last-of-type {

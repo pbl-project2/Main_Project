@@ -1,3 +1,8 @@
+.edit_food {
+  background: url("../../public/Untitled-final.jpg") !important;
+  height: 100vh;
+}
+
 .button {
   height: 2.813rem;
   border: 0rem;
@@ -11,9 +16,10 @@
       rgba(158, 57, 138, 1) 0%,
       rgba(255, 0, 33, 1) 100%);
   width: 9rem;
+  margin-right: 2rem;
   cursor: pointer;
   /* margin-bottom: 10px; */
-  margin-top: 1.563rem;
+  /* margin-top: 1.563rem; */
   /* margin-top: 25px; */
 }
 
@@ -95,6 +101,14 @@ input[type=number] {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.edit_food .new .form .price {
+  margin-top: 0.625rem;
+}
+
+.edit_food .new .form h1 {
+  margin-bottom: 2rem;
 }
 
 .price label {

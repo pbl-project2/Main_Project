@@ -39,7 +39,7 @@ function SeparateFoodMenuNew() {
     document.getElementById("form").reset();
   };
   return (
-    <div>
+    <div className="sep_admin_menu_new">
       <nav>
         <h3>UpMenu</h3>
         <button

@@ -13,7 +13,7 @@ body {
     /* background-image: url("../public/istockphoto1.jpg") !important; */
     background-size: contain;
     background-repeat: round;
-    background-color: #161616 !important;
+    /* background-color: #161616 !important; */
 }
 @media screen and (max-width: 768px) {
     html {

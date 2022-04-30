@@ -51,69 +51,73 @@ function AdminMenuSeparate() {
   var email = window.location.pathname.split("/")[2];
 
   return (
-    <div>
-      <nav>
-        <h3>UpMenu</h3>
-        <button
-          className="login-btn"
-          onClick={() => history.push(`/admin-login/${email}`)}
-        >
-          Back
-        </button>
-        <button
-          className="login-btn"
-          onClick={() => history.push(`/food-new/${email}`)}
-        >
-          Add New Food Item
-        </button>
-      </nav>
-      <div className="adminmenu" style={{ marginTop: "100px" }}>
-        {loading ? (
-          food.length > 0 ? (
-            <table className="styled-table">
-              <thead>
-                <tr>
-                  <th style={{ textAlign: "center" }}>No.</th>
-                  <th style={{ textAlign: "center" }}>Name</th>
-                  <th style={{ textAlign: "center" }}>Price</th>
-                  <th style={{ textAlign: "center" }}>Type</th>
-                  <th style={{ textAlign: "center" }}>Description</th>
-                </tr>
-              </thead>
-              <tbody>
-                {food.map((food, index) => (
-                  <tr key={index}>
-                    <th scope="row">{index + 1}</th>
-                    <td>{food.name}</td>
-                    <td>₹{food.price}</td>
-                    <td className="td-desc">{food.type}</td>
-                    <td className="td-desc">{food.description}</td>
-                    <td>
-                      <button
-                        onClick={() => handleDelete(food.name)}
-                        className="btn btn-delete"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        onClick={() => handleEdit(food)}
-                        className="btn btn-delete"
-                      >
-                        Edit
-                      </button>
-                    </td>
+    <div className="admin_menu_sep">
+      <div className="sep_admin_menu">
+        <nav>
+          <h3>UpMenu</h3>
+          <button
+            className="login-btn"
+            onClick={() => history.push(`/admin-login/${email}`)}
+          >
+            Back
+          </button>
+          <button
+            className="login-btn"
+            onClick={() => history.push(`/food-new/${email}`)}
+          >
+            Add New Food Item
+          </button>
+        </nav>
+        <div className="adminmenu" style={{ marginTop: "100px" }}>
+          {loading ? (
+            food.length > 0 ? (
+              <table className="styled-table">
+                <thead>
+                  <tr>
+                    <th style={{ textAlign: "center" }}>No.</th>
+                    <th style={{ textAlign: "center" }}>Name</th>
+                    <th style={{ textAlign: "center" }}>Price</th>
+                    <th style={{ textAlign: "center" }}>Type</th>
+                    <th style={{ textAlign: "center" }}>Description</th>
+                    <th style={{ textAlign: "center" }}></th>
+                    <th style={{ textAlign: "center" }}></th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {food.map((food, index) => (
+                    <tr key={index}>
+                      <th scope="row">{index + 1}</th>
+                      <td>{food.name}</td>
+                      <td>₹{food.price}</td>
+                      <td className="td-desc">{food.type}</td>
+                      <td className="td-desc">{food.description}</td>
+                      <td>
+                        <button
+                          onClick={() => handleDelete(food.name)}
+                          className="btn btn-delete"
+                        >
+                          Delete
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => handleEdit(food)}
+                          className="btn btn-delete"
+                        >
+                          Edit
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <h3 style={{ textAlign: "center" }}>No Food Items</h3>
+            )
           ) : (
-            <h3 style={{ textAlign: "center" }}>No Food Items</h3>
-          )
-        ) : (
-          <FadeLoader color={"#fff"} loading={loading} speedMultiplier={2} />
-        )}
+            <FadeLoader color={"#fff"} loading={loading} speedMultiplier={2} />
+          )}
+        </div>
       </div>
     </div>
   );

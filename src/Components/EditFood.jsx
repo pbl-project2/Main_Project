@@ -31,7 +31,7 @@ function EditFood() {
     document.getElementById("form").reset();
   };
   return (
-    <div>
+    <div className="edit_food">
       <nav>
         <h3>UpMenu</h3>
         <button
@@ -47,7 +47,7 @@ function EditFood() {
       </nav>
       <div className="new">
         <form id="form" onSubmit={handleSubmit} className="form">
-          <h3>Edit details</h3>
+          <h1>Edit details</h1>
           <div className="price">
             <label>Price: </label>
             <input

@@ -1,5 +1,12 @@
+.food_menu_main {
+  background: url("../../public/Untitled-final.jpg") !important;
+  height: 98vh;
+}
+
 .food-menu {
   width: 100%;
+  height: 100%;
+  background: url("../../public/Untitled-final.jpg") !important;
 }
 
 .nav {
@@ -124,8 +131,6 @@ hr {
   /* border-left: 2px solid gray; */
 }
 
-.food-card:hover {}
-
 .price {
   font-size: 1.063rem;
   margin-left: .0625rem;
@@ -228,6 +233,11 @@ hr {
   display: flex;
   flex-direction: row;
   margin-top: 10rem;
+}
+
+.food_list {
+  background: url("../../public/Untitled-final.jpg") !important;
+  height: fit-content;
 }
 
 .food-card-list {
@@ -406,8 +416,8 @@ input[type="text"]:focus {
 
   .add-btn {
     margin-right: -45px; */
-    /* margin-top: -3px; */
-    /* height: 50px !important;
+/* margin-top: -3px; */
+/* height: 50px !important;
 
   }
 
@@ -474,10 +484,10 @@ input[type="text"]:focus {
     display: flex;
     flex-direction: row;
     margin-left: 1rem;
-    width:100%;
-    align-items:center;
-    padding-bottom:1rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px ;
+    width: 100%;
+    align-items: center;
+    padding-bottom: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 
   .card-diversion {
@@ -485,7 +495,7 @@ input[type="text"]:focus {
   }
 
   .category {
-    width:  7.4375rem !important;
+    width: 7.4375rem !important;
   }
 
   .main_card {
