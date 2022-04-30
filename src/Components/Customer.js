@@ -16,6 +16,10 @@ function Customer() {
   const [snackbarMessage, setSnackbarMessage] = useState("");
 
   useEffect(() => {
+    document.title = `Customer | ${window.location.pathname.split("/")[2]}`;
+  }, []);
+
+  useEffect(() => {
     let id = uuid();
     console.log(id);
     setUserId(id);
