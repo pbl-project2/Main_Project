@@ -1,10 +1,8 @@
 .main {
   margin: 0;
   padding: 0;
-  /* background: url("../../public/Untitled-final.jpg") !important; */
   backdrop-filter: blur(3rem);
   width: 100vw !important;
-  /* box-sizing: border-box; */
 }
 
 .main hr {

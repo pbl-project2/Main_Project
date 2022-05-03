@@ -18,7 +18,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #161616;
+  background: url("../../public/Untitled-final.jpg") !important;
   width: 100%;
   z-index: 1;
 }
@@ -45,6 +45,7 @@
   background: -webkit-linear-gradient(#a03989, orange);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  -webkit-backdrop-filter: blur(2px);
   margin-top: 6rem;
   font-size: 2.188rem;
   /* font-size: 35px; */
@@ -242,7 +243,7 @@ hr {
 
 .food-card-list {
   overflow-y: visible;
-  padding-left: 25rem;
+  padding-left: 28rem;
 }
 
 .food-title {
@@ -277,6 +278,8 @@ hr {
   border-radius: 6.25rem;
   /* border-radius: 100px; */
 }
+
+
 
 .btn {
   outline: none;
@@ -445,6 +448,9 @@ input[type="text"]:focus {
   .home-btn {
     display: none;
   }
+  .title {
+    background: #161616;
+  }
 
   .nav {
     display: flex !important;
@@ -470,6 +476,9 @@ input[type="text"]:focus {
     text-align: center !important;
     /* align-items: center; */
     width: 70%;
+    margin-left: 15%;
+    position: absolute;
+
   }
 
   .food-cards {
@@ -484,16 +493,15 @@ input[type="text"]:focus {
     margin-top: 7rem !important;
   }
 
-
-
   .categories {
+    position: relative;
     display: flex;
     flex-direction: row;
-    margin-left: 1rem;
+    margin-left: 0rem;
     width: 100%;
     align-items: center;
     padding-bottom: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
   }
 
   .card-diversion {

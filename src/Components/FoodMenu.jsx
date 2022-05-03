@@ -130,7 +130,6 @@ const FoodMenu = ({ props }) => {
           snacksArr.push({ ...doc.data(), id: doc.id });
         });
         setFood(snacksArr);
-        // console.log(snacksArr);
       });
   };
 
@@ -145,7 +144,6 @@ const FoodMenu = ({ props }) => {
           snacksArr.push({ ...doc.data(), id: doc.id });
         });
         setFood(snacksArr);
-        // console.log(snacksArr);
       });
   };
 
@@ -158,32 +156,12 @@ const FoodMenu = ({ props }) => {
           <h3>UpMenu</h3>
           <div>
             <input
-              // style={{
-              //   marginRight: "50px",
-              //   border: "none",
-              //   outline: "none",
-              //   borderRadius: "50px",
-              //   width: "250px",
-              // }}
               type="text"
               placeholder="Search food here..."
               onChange={(e) => {
                 setSearch(e.target.value);
-                // console.log(e.target.value);
               }}
             />
-            {/* <button
-              className="Cart-link"
-              onClick={() =>
-                history.replace(
-                  `/cart/${window.location.pathname.split("/")[2]}/${
-                    window.location.pathname.split("/")[3]
-                  }`
-                )
-              }
-            >
-              <AddShoppingCartIcon />
-            </button> */}
             <Tooltip title="Cart">
               <Badge badgeContent={cartCount} color="info" className="Cart-link">
                 <Link to={`/cart/${window.location.pathname.split("/")[2]}/${window.location.pathname.split("/")[3]
@@ -197,8 +175,9 @@ const FoodMenu = ({ props }) => {
             </button>
           </div>
         </div>
-        <h3 className="main-title">Food Menu</h3>
-
+        <div className="title">
+          <h3 className="main-title">Food Menu</h3>
+        </div>
         <hr />
         <div className="food_list">
           <div className="food-cards">
