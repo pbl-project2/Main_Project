@@ -5,8 +5,8 @@ import "../Styling/Login.css";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { QrCode2 } from "@mui/icons-material";
-import AssessmentIcon from '@mui/icons-material/Assessment';
 import AnalyticsRoundedIcon from '@mui/icons-material/AnalyticsRounded';
+import { Tooltip } from "@mui/material";
 
 function AdminNav({ adminEmail, user }) {
   const history = useHistory();
@@ -43,24 +43,30 @@ function AdminNav({ adminEmail, user }) {
         </p> */}
         {/* <button className='login-btn' onClick={() => history.push("/details")}>View Details</button> */}
         <div className="admin-nav-right">
-        <button className="qr-code-download" onClick={() => history.push(`/analytics/${adminEmail}`)}>
-          <AnalyticsRoundedIcon />
-        </button>
-          <button
-            className="settings-btn"
-            onClick={() => history.push(`/admin-menu/${adminEmail}`)}
-          >
-            <SettingsIcon />
-          </button>
-          <button style={{ border: "none" }} className="qr-code-download">
-            <a
-              href={sessionStorage.getItem("src")}
-              download
-              style={{ textDecoration: "none" }}
+          <Tooltip title="View Sales" arrow>
+            <button className="qr-code-download" onClick={() => history.push(`/analytics/${adminEmail}`)}>
+              <AnalyticsRoundedIcon />
+            </button>
+          </Tooltip>
+          <Tooltip title="Adjust Settings" arrow>
+            <button
+              className="settings-btn"
+              onClick={() => history.push(`/admin-menu/${adminEmail}`)}
             >
-              <QrCode2 />
-            </a>
-          </button>
+              <SettingsIcon />
+            </button>
+          </Tooltip>
+          <Tooltip title="Download QR Code" arrow>
+            <button style={{ border: "none" }} className="qr-code-download">
+              <a
+                href={sessionStorage.getItem("src")}
+                download
+                style={{ textDecoration: "none" }}
+              >
+                <QrCode2 />
+              </a>
+            </button>
+          </Tooltip>
           <button className="logout-btn" onClick={handleClick}>
             <LogoutIcon />
             Logout

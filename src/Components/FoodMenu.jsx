@@ -6,7 +6,7 @@ import Cart from "./Cart";
 import { Link, useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import Footer from "./Footer";
-import { Badge } from "@mui/material";
+import { Badge, Tooltip } from "@mui/material";
 import FadeLoader from "react-spinners/FadeLoader";
 
 const FoodMenu = ({ props }) => {
@@ -42,15 +42,15 @@ const FoodMenu = ({ props }) => {
 
   useEffect(() => {
     db.collection("users")
-    .doc(`${sessionStorage.getItem("userId")}`)
-    .collection("food")
-    .onSnapshot((snapshot) => {
-      let cartCount = 0;
-      snapshot.forEach((doc) => {
-        cartCount++;
+      .doc(`${sessionStorage.getItem("userId")}`)
+      .collection("food")
+      .onSnapshot((snapshot) => {
+        let cartCount = 0;
+        snapshot.forEach((doc) => {
+          cartCount++;
+        });
+        setCartCount(cartCount);
       });
-      setCartCount(cartCount);
-    });
   }, [db]);
 
   const handleSnacks = () => {
@@ -184,13 +184,14 @@ const FoodMenu = ({ props }) => {
             >
               <AddShoppingCartIcon />
             </button> */}
-            <Badge className="Cart-link" badgeContent={cartCount} color="info">
-              <Link to={`/cart/${window.location.pathname.split("/")[2]}/${
-                window.location.pathname.split("/")[3]
-              }`}>
-                <AddShoppingCartIcon />
-              </Link>
-            </Badge>
+            <Tooltip title="Cart">
+              <Badge badgeContent={cartCount} color="info" className="Cart-link">
+                <Link to={`/cart/${window.location.pathname.split("/")[2]}/${window.location.pathname.split("/")[3]
+                  }`}>
+                  <AddShoppingCartIcon />
+                </Link>
+              </Badge>
+            </Tooltip>
             <button onClick={() => history.replace("/")} className="home-btn">
               Home Page
             </button>
@@ -287,8 +288,8 @@ const FoodMenu = ({ props }) => {
           </div>
         </div>
         <Footer />
-      </div>
-    </div>
+      </div >
+    </div >
   );
 };
 

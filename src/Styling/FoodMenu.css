@@ -264,6 +264,10 @@ hr {
   margin-right: 3.125rem !important;
 }
 
+.Cart-link .MuiSvgIcon-root {
+  display: none;
+}
+
 .header {
   position: fixed;
 }
@@ -276,7 +280,8 @@ hr {
 
 .btn {
   outline: none;
-  width: 2.5rem;
+  width: fit-content;
+  /* width: 2.5rem; */
   border-radius: 0.125rem;
   /* width: 40px;
   border-radius: 2px; */
@@ -332,6 +337,7 @@ input[type="text"]:focus {
   height: 2.813rem;
   /* width: 250px; */
 }
+
 .food-menu .nav input:focus {
   border: 0.063rem solid #0072b1;
   /* border: 1px solid #0072b1; */
@@ -530,5 +536,9 @@ input[type="text"]:focus {
 
   .food-card .card-info .card-1 .food-title {
     margin-left: 1.2rem !important;
+  }
+
+  .Cart-link .MuiSvgIcon-root {
+    display: flex;
   }
 }
