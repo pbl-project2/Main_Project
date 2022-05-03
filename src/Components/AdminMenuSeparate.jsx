@@ -45,7 +45,7 @@ function AdminMenuSeparate() {
   };
 
   const handleEdit = (food) => {
-    localStorage.setItem("food", JSON.stringify(food));
+    sessionStorage.setItem("food", JSON.stringify(food));
     history.push(`/edit/${window.location.pathname.split("/")[2]}/${food.id}`);
   };
 

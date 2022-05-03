@@ -3,9 +3,10 @@ import "../Styling/FoodMenu.css";
 import FoodCard from "./FoodCard";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import Cart from "./Cart";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
 import Footer from "./Footer";
+import { Badge } from "@mui/material";
 import FadeLoader from "react-spinners/FadeLoader";
 
 const FoodMenu = ({ props }) => {
@@ -13,6 +14,7 @@ const FoodMenu = ({ props }) => {
   const [food, setFood] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
   var email = window.location.pathname.split("/")[2];
 
   useEffect(() => {
@@ -36,6 +38,19 @@ const FoodMenu = ({ props }) => {
         setLoading(true);
         // console.log(foodArr);
       });
+  }, [db]);
+
+  useEffect(() => {
+    db.collection("users")
+    .doc(`${sessionStorage.getItem("userId")}`)
+    .collection("food")
+    .onSnapshot((snapshot) => {
+      let cartCount = 0;
+      snapshot.forEach((doc) => {
+        cartCount++;
+      });
+      setCartCount(cartCount);
+    });
   }, [db]);
 
   const handleSnacks = () => {
@@ -157,7 +172,7 @@ const FoodMenu = ({ props }) => {
                 // console.log(e.target.value);
               }}
             />
-            <button
+            {/* <button
               className="Cart-link"
               onClick={() =>
                 history.replace(
@@ -168,7 +183,14 @@ const FoodMenu = ({ props }) => {
               }
             >
               <AddShoppingCartIcon />
-            </button>
+            </button> */}
+            <Badge className="Cart-link" badgeContent={cartCount} color="info">
+              <Link to={`/cart/${window.location.pathname.split("/")[2]}/${
+                window.location.pathname.split("/")[3]
+              }`}>
+                <AddShoppingCartIcon />
+              </Link>
+            </Badge>
             <button onClick={() => history.replace("/")} className="home-btn">
               Home Page
             </button>

@@ -22,6 +22,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import CartSeparate from "./Components/CartSeparate";
 import AboutUs from "./Components/AboutUs";
+import Analytics from "./Components/Analytics";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -105,10 +106,26 @@ function App() {
     toast.success(`Order completed!!`, {
       autoClose: 2000,
     });
-    // await db.collection("users").doc(`${id}`).update({
-    //   completed: true,
-    // });
-    await db.collection("users").doc(`${id}`).delete();
+    // await db.collection("users").doc(`${id}`).delete();
+    await db.collection("users").doc(`${id}`).update({
+      completed: true,
+    });
+    await db.collection("users").where("completed", "==", true).get().then((snapshot) => {
+      let usersArr = [];
+      snapshot.forEach((doc) => {
+        usersArr.push({ ...doc.data(), id: doc.id });
+      });
+      setUsersArr(usersArr);
+      setSalesArr(usersArr[0].total);
+      usersArr.forEach(user => {
+        sales += user.total;
+        db.collection("admin").doc(`${localStorage.getItem("adminEmail")}`).update({
+          sales: sales,
+        });
+        sessionStorage.setItem("sales", sales);
+      });
+      console.log(sales);
+    });
     // await db
     //   .collection("users")
     //   .where("completed", "==", true)
@@ -130,7 +147,6 @@ function App() {
     //     console.log(sales);
     //   });
   };
-
   useEffect(async () => {
     await db
       .collection("admin")
@@ -148,14 +164,20 @@ function App() {
         <ToastContainer
           position="top-center"
           autoClose={5000}
-          closeButton={true}
           hideProgressBar={false}
-          className="toast-container"
-          closeOnClick={true}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
         />
         <Switch>
           <Route exact path="/">
             <UserLogin />
+          </Route>
+          <Route path="/analytics">
+            <Analytics />
           </Route>
           <Route path="/qrcode-scan">
             <QRCodeScanner />

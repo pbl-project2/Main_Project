@@ -7,7 +7,7 @@ import { Cancel } from "@mui/icons-material";
 import "../Styling/CartSeparate.css";
 
 function CartSeparate() {
-  var userId = localStorage.getItem("userId");
+  var userId = sessionStorage.getItem("userId");
   const [cart, setCart] = useState([]);
   const [total, setTotal] = useState(0);
   const [sum, setSum] = useState(total);
@@ -33,7 +33,7 @@ function CartSeparate() {
         }
         setSum(sumPrice);
         db.collection("users")
-          .doc(`${global.localStorage.getItem("userId")}`)
+          .doc(`${global.sessionStorage.getItem("userId")}`)
           .update({
             total: sumPrice,
           });
@@ -54,10 +54,10 @@ function CartSeparate() {
       .collection("users")
       .doc(`${userId}`)
       .set({
-        name: localStorage.getItem("name"),
-        mobile: localStorage.getItem("mobile"),
+        name: sessionStorage.getItem("name"),
+        mobile: sessionStorage.getItem("mobile"),
         total: sum,
-        token: localStorage.getItem("token"),
+        token: sessionStorage.getItem("token"),
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         id: userId,
         email: window.location.pathname.split("/")[2],
@@ -71,7 +71,7 @@ function CartSeparate() {
         orders: firebase.firestore.FieldValue.increment(1),
         sales: firebase.firestore.FieldValue.increment(sum),
       });
-    history.push(`/bill/${localStorage.getItem("adminEmail")}/${userId}`);
+    history.push(`/bill/${sessionStorage.getItem("adminEmail")}/${userId}`);
   };
 
   return (

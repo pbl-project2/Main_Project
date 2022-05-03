@@ -7,7 +7,7 @@ const FoodCard = (props) => {
   const [quantity, setQuantity] = useState(1);
 
   const handleClick = async () => {
-    const id = localStorage.getItem("userId");
+    const id = sessionStorage.getItem("userId");
     if (quantity > 0) {
       await db
         .collection("users")

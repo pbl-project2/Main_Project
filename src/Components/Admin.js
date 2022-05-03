@@ -15,9 +15,8 @@ function Admin({ user, handleDelete, admin }) {
   const [users, setUsers] = useState([]);
   const [sales, setSales] = useState(0);
   const [orders, setOrders] = useState(0);
-  const [finalSales, setFinalSales] = useState(0);
-  const [finalOrders, setFinalOrders] = useState(0);
   const [total, setTotal] = useState(0);
+  
   // useEffect(async () => {
   //   await db
   //     .collection("users")
@@ -39,15 +38,13 @@ function Admin({ user, handleDelete, admin }) {
       .onSnapshot((snapshot) => {
         let userArr = [];
         snapshot.forEach((doc) => {
-          if (admin.email === doc.data().email) {
+          if (admin.email === doc.data().email && doc.data().completed === false) {
             userArr.push({ ...doc.data(), id: doc.id });
             setTotal(doc.data().total);
           }
         });
         setUsers(userArr);
-        // console.log(uscerArr);
-        // localStorage.setItem("userId", users.id);
-        localStorage.setItem("userId", users.id);
+        sessionStorage.setItem("userId", users.id);
       });
   }, [db]);
 
@@ -65,7 +62,6 @@ function Admin({ user, handleDelete, admin }) {
           foodArr.push({ ...doc.data(), id: doc.id });
         });
         setFood(foodArr);
-        // console.log("FOOD ARR: ", foodArr);
       });
   }, [db]);
 
@@ -77,22 +73,21 @@ function Admin({ user, handleDelete, admin }) {
         let arr = [docs.data()];
         setAdminDetails(arr);
         setAdminEmail(arr[0].email);
-        localStorage.setItem("adminEmail", arr[0].email);
-        // console.log("ADMIN DETAILS: ", arr);
-        // console.log("ADMIN Name: ", arr[0].email);
+        setSales(arr[0].sales);
+        sessionStorage.setItem("adminEmail", arr[0].email);
       });
   }, [db]);
 
   useEffect(async () => {
     await QRCode.toDataURL(
       // `http://localhost:3000/foodmenu/${adminDetails[0].email}`
-      `http://${window.location.host}/customer-login/${localStorage.getItem(
+      `http://${window.location.host}/customer-login/${sessionStorage.getItem(
         "adminEmail"
       )}`
       // `http://${window.location.hostname}:${window.location.port}/customer-login/${localStorage.getItem(
       //   "adminEmail")}`
     ).then((data) => {
-      localStorage.setItem("src", data);
+      sessionStorage.setItem("src", data);
       db.collection("admin").doc(`${admin.email}`).update({
         qrcode: data,
       });
@@ -154,7 +149,7 @@ function Admin({ user, handleDelete, admin }) {
           <div className=" divs-combine row">
             <div className="income col">
               <h1>You've Earned</h1>
-              <h3>Sales: ₹{localStorage.getItem("salesnew")}.00</h3>
+              <h3>Sales: ₹{sales}.00</h3>
               {/* <h1>Orders Served: {orders}</h1> */}
             </div>
             <div className="served-orders col">

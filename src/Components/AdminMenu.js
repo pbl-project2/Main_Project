@@ -22,7 +22,7 @@ function AdminMenu() {
   };
 
   const handleEdit = (food) => {
-    localStorage.setItem("food", JSON.stringify(food));
+    sessionStorage.setItem("food", JSON.stringify(food));
     history.push(`/edit/${food.id}`);
   };
 

@@ -6,13 +6,6 @@ import ArrowDropDownCircleOutlinedIcon from "@mui/icons-material/ArrowDropDownCi
 
 function CustomerData({ user, handleDelete }) {
   const [food, setFood] = useState([]);
-  // const [sales, setSales] = useState(0);
-  // const [orders, setOrders] = useState(0);
-
-  useEffect(() => {
-    const sale = localStorage.getItem("sales");
-    const order = localStorage.getItem("orders");
-  }, []);
 
   useEffect(() => {
     db.collection("users")
@@ -58,9 +51,9 @@ function CustomerData({ user, handleDelete }) {
           onClick={() => {
             // var sale = sales + user.total;
             // var order = orders + 1;
-            // localStorage.setItem("finalSales", sale + user.total);
-            // localStorage.setItem("finalOrders", orders + 1);
-            // db.collection("admin").doc(`${localStorage.getItem("adminEmail")}`).update({
+            // sessionStorage.setItem("finalSales", sale + user.total);
+            // sessionStorage.setItem("finalOrders", orders + 1);
+            // db.collection("admin").doc(`${sessionStorage.getItem("adminEmail")}`).update({
             //   sales: firebase.firestore.FieldValue.increment(sale),
             //   orders: firebase.firestore.FieldValue.increment(1),
             // });

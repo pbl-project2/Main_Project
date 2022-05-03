@@ -99,8 +99,8 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   };
   const authListener = () => {
     let id = uuid();
-    localStorage.setItem("adminId", id);
-    localStorage.setItem("adminId", id);
+    sessionStorage.setItem("adminId", id);
+    sessionStorage.setItem("adminId", id);
     app.auth().onAuthStateChanged((user) => {
       if (user) {
         clearInputs();
@@ -110,8 +110,8 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
         db.collection("admin")
           .doc(`${user.email}`)
           .set({
-            adminId: localStorage.getItem("adminId"),
-            adminId: localStorage.getItem("adminId"),
+            adminId: sessionStorage.getItem("adminId"),
+            adminId: sessionStorage.getItem("adminId"),
             email: user.email,
             qrcode: src,
           });
@@ -127,7 +127,7 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
     clearErrors();
     QRCode.toDataURL(text).then((data) => {
       setSrc(data);
-      localStorage.setItem("qrcode", data);
+      sessionStorage.setItem("qrcode", data);
     });
     if (password.length < 8) {
       toast.error("Password too short");

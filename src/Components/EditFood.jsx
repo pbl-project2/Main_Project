@@ -9,7 +9,7 @@ function EditFood() {
   const [price, setPrice] = useState(0);
   const [desc, setDesc] = useState("");
 
-  const food = JSON.parse(localStorage.getItem("food"));
+  const food = JSON.parse(sessionStorage.getItem("food"));
 
   const handleSubmit = async () => {
     // await db.collection("foodMenu").doc(`${food.name}`).update({

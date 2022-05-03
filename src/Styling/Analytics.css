@@ -1,0 +1,22 @@
+.main_analytics {
+    background: url("../../public/Untitled-final.jpg");
+    height: 100vh;
+    
+}
+
+.orders {
+    height: 60vh;
+    width: 78vw;
+    overflow-x: scroll;
+
+}
+
+.main_orders {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.analytics {
+    overflow: hidden;
+}

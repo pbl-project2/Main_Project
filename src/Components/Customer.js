@@ -5,10 +5,10 @@ import uniqueRandom from "unique-random";
 import { useHistory } from "react-router-dom";
 import { Snackbar } from "@material-ui/core";
 import { toast } from "react-toastify";
+import Footer from "./Footer";
 
 //Styling
 import "../Styling/Login.css";
-import Footer from "./Footer";
 
 function Customer() {
   const [userId, setUserId] = useState("");
@@ -39,13 +39,13 @@ function Customer() {
       // let token = Math.floor(Math.random() * 100 + 1);
       let random = uniqueRandom(1000, 9999);
       let token = random();
-      localStorage.setItem("userId", userId);
+      sessionStorage.setItem("userId", userId);
       if (mobile.toString().length === 10) {
-        localStorage.setItem("name", name);
-        localStorage.setItem("mobile", mobile);
-        localStorage.setItem("token", token);
-        localStorage.setItem("timestamp", timestamp);
-        localStorage.setItem("id", userId);
+        sessionStorage.setItem("name", name);
+        sessionStorage.setItem("mobile", mobile);
+        sessionStorage.setItem("token", token);
+        sessionStorage.setItem("timestamp", timestamp);
+        sessionStorage.setItem("id", userId);
         history.push(`/foodmenu/${window.location.pathname.split("/")[2]}/${userId}`);
         setName("");
         setMobile(0);

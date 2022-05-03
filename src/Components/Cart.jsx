@@ -18,11 +18,11 @@ const Cart = () => {
   // const [orders, setOrders] = useState(0);
 
   const history = useHistory();
-  const userId = global.localStorage.getItem("userId");
+  const userId = global.sessionStorage.getItem("userId");
 
   useEffect(() => {
     db.collection("users")
-      .doc(`${global.localStorage.getItem("userId")}`)
+      .doc(`${global.sessionStorage.getItem("userId")}`)
       .collection("food")
       .orderBy("id", "asc")
       .onSnapshot((snapshot) => {
@@ -40,7 +40,7 @@ const Cart = () => {
         }
         setSum(sumPrice);
         db.collection("users")
-          .doc(`${global.localStorage.getItem("userId")}`)
+          .doc(`${global.sessionStorage.getItem("userId")}`)
           .update({
             total: sumPrice,
           });
@@ -54,7 +54,10 @@ const Cart = () => {
       .collection("food")
       .doc(`${id}`)
       .delete();
-    toast.error(`${id} has been deleted`);
+    toast.error(`${id} has been deleted`, {
+      closeOnClick: true,
+      
+    });
   };
 
   const handleCheckout = async () => {
@@ -62,10 +65,10 @@ const Cart = () => {
       .collection("users")
       .doc(`${userId}`)
       .set({
-        name: localStorage.getItem("name"),
-        mobile: localStorage.getItem("mobile"),
+        name: sessionStorage.getItem("name"),
+        mobile: sessionStorage.getItem("mobile"),
         total: sum,
-        token: localStorage.getItem("token"),
+        token: sessionStorage.getItem("token"),
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         id: userId,
         email: window.location.pathname.split("/")[2],
@@ -80,7 +83,7 @@ const Cart = () => {
         orders: firebase.firestore.FieldValue.increment(1),
         sales: firebase.firestore.FieldValue.increment(sum),
       });
-    history.push(`/bill/${localStorage.getItem("adminEmail")}/${userId}`);
+    history.push(`/bill/${sessionStorage.getItem("adminEmail")}/${userId}`);
   };
 
   return (

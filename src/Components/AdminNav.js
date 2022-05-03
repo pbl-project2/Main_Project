@@ -5,6 +5,8 @@ import "../Styling/Login.css";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { QrCode2 } from "@mui/icons-material";
+import AssessmentIcon from '@mui/icons-material/Assessment';
+import AnalyticsRoundedIcon from '@mui/icons-material/AnalyticsRounded';
 
 function AdminNav({ adminEmail, user }) {
   const history = useHistory();
@@ -41,6 +43,9 @@ function AdminNav({ adminEmail, user }) {
         </p> */}
         {/* <button className='login-btn' onClick={() => history.push("/details")}>View Details</button> */}
         <div className="admin-nav-right">
+        <button className="qr-code-download" onClick={() => history.push(`/analytics/${adminEmail}`)}>
+          <AnalyticsRoundedIcon />
+        </button>
           <button
             className="settings-btn"
             onClick={() => history.push(`/admin-menu/${adminEmail}`)}
@@ -49,7 +54,7 @@ function AdminNav({ adminEmail, user }) {
           </button>
           <button style={{ border: "none" }} className="qr-code-download">
             <a
-              href={localStorage.getItem("src")}
+              href={sessionStorage.getItem("src")}
               download
               style={{ textDecoration: "none" }}
             >

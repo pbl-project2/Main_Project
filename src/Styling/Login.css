@@ -323,6 +323,8 @@ nav {
   padding-right: 1.25rem;
   /* padding-right: 20px; */
   background: none;
+  border: none;
+  outline: none;
 }
 
 .admin footer {

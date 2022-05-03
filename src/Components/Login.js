@@ -148,7 +148,7 @@ function Login(props) {
             value={email}
             onChange={(e) => {
               setEmail(e.target.value);
-              localStorage.setItem("email", e.target.value);
+              sessionStorage.setItem("email", e.target.value);
             }}
           />
           {/* <p className="errorMsg">{emailError}</p> */}
