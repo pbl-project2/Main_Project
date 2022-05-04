@@ -1,3 +1,4 @@
+import { Dvr } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { db } from '../firebase/firebase';
@@ -8,6 +9,10 @@ function Analytics() {
 	const history = useHistory();
 	const [users, setUsers] = useState([]);
 	const [orders, setOrders] = useState(0);
+	const [date, setDate] = useState('');
+	const [timestampDate, setTimestampDate] = useState("");
+	const [timestampUsers, setTimestampUsers] = useState([]);
+	const [timestampOrders, setTimestampOrders] = useState(0);
 	var sales = 0;
 	const [adminSales, setAdminSales] = useState(sales);
 
@@ -17,7 +22,8 @@ function Analytics() {
 			snapshot.forEach((doc) => {
 				if (doc.data().completed === true && doc.data().email === window.location.pathname.split("/")[2]) {
 					usersArr.push({ ...doc.data(), id: doc.id });
-					console.log(doc.data().total);
+					// console.log(doc.data().total);
+					// console.log(doc.data().timestamp.toDate().toISOString().split("T")[0]);
 					sales += doc.data().total;
 				}
 				setUsers(usersArr);
@@ -30,6 +36,23 @@ function Analytics() {
 			});
 		});
 	}, []);
+
+	useEffect(() => {
+		db.collection("users").orderBy("timestamp", "desc").onSnapshot((snapshot) => {
+			let usersArr = [];
+			snapshot.forEach((doc) => {
+				setTimestampDate(doc.data().timestamp.toDate().toISOString().split("T")[0]);
+				console.log(doc.data().timestamp.toDate().toISOString().split("T")[0]);
+				if (timestampDate === date) {
+					usersArr.push({ ...doc.data(), id: doc.id });
+					sales += doc.data().total;
+				}
+				setTimestampUsers(usersArr);
+				setTimestampOrders(usersArr.length);
+				console.log(usersArr);
+			});
+		});
+	}, [date]);
 
 	useEffect(() => {
 		db.collection("admin").doc(`${window.location.pathname.split("/")[2]}`).onSnapshot((snapshot) => {
@@ -65,18 +88,38 @@ function Analytics() {
 						<h1>Orders Served</h1>
 						<h3>{orders}</h3>
 					</div>
-				</div>
+					<div className="input_Date div-combine col">
+						<input type="date" onChange={(e) => {
+							setDate(e.target.value);
+							console.log(e.target.value);
+						}} />
 
+					</div>
+				</div>
 				<div className="main_orders">
 					<div className='orders'>
-						{users?.map((user) => (
+						{date ? (
+							timestampUsers.map((user) => (
+								<AnalyticsUserData
+									key={user.id}
+									user={user}
+								/>
+							))) : (
+							users?.map((user) => (
+								<AnalyticsUserData
+									key={user.id}
+									user={user}
+								/>
+							))
+						)}
+						{/* {users?.map((user) => (
 							<AnalyticsUserData
 								key={user.id}
 								user={user}
 							// handleDelete={handleDelete}
 							// food={food}
 							/>
-						))}
+						))} */}
 					</div>
 				</div>
 			</div>
