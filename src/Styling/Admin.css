@@ -56,12 +56,13 @@
   
   margin-top: 3rem;
   
-  
+  /* height:98vh; */
+  /* overflow-y:hidden; */
 }
 
 .admin_main {
   background: url("../../public/Untitled-final.jpg") !important;
-  height: 109vh !important;
+  height: 100vh !important;
 }
 .income {
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
