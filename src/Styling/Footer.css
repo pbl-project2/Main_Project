@@ -9,6 +9,10 @@
   color: gray !important;
 }
 
+footer .main .footer-bottom p{
+  color: gray;
+}
+
 footer {
   position: fixed;
   bottom: 0 !important;
