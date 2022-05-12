@@ -98,28 +98,11 @@ function Analytics() {
 				</div>
 				<div className="main_orders">
 					<div className='orders'>
-						{date ? (
-							timestampUsers.map((user) => (
-								<AnalyticsUserData
-									key={user.id}
-									user={user}
-								/>
-							))) : (
-							users?.map((user) => (
-								<AnalyticsUserData
-									key={user.id}
-									user={user}
-								/>
-							))
-						)}
-						{/* {users?.map((user) => (
-							<AnalyticsUserData
-								key={user.id}
-								user={user}
-							// handleDelete={handleDelete}
-							// food={food}
-							/>
-						))} */}
+						{date ? users.filter((user) => (user.timestamp.toDate().toISOString()).map((user) =>(
+                                               <AnalyticsUserData key={user.id} user={user} />   
+                                                       )) : (users.map((user) =>(
+                                                       <AnalyticsUserData key={user.id} user={user} />
+                                                  ))}
 					</div>
 				</div>
 			</div>
