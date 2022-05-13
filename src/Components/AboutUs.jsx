@@ -124,7 +124,8 @@ function AboutUs() {
                 <p>
                   SE Comp. Engg. student in JSPM NTC, Pune
                   <br />
-                  Skills: Marketing, Networking and Accounting
+                  Skills: UX designer , 
+                  Good in Marketing, Networking and Accounting
                 </p>
               </div>
             </div>
