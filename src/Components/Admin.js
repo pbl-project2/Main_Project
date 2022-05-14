@@ -153,7 +153,7 @@ function Admin({ user, handleDelete, admin }) {
               {/* <h1>Orders Served: {orders}</h1> */}
             </div>
             <div className="served-orders col">
-              <h1>You've Served</h1>
+              <h1>Pending Orders</h1>
               {/* <h1>Sales: ₹{sales}</h1> */}
               <h3>{orders} orders</h3>
             </div>

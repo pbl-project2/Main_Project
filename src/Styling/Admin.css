@@ -55,9 +55,17 @@
 .upper-body {
   
   margin-top: 3rem;
-  
   /* height:98vh; */
   /* overflow-y:hidden; */
+}
+
+.container {
+  background-color: #161616 !important;
+  width: 100%;
+}
+
+.admin {
+  background-color: #161616 !important;
 }
 
 .admin_main {
