@@ -1,4 +1,5 @@
 import { AddAlarm, Dvr } from "@mui/icons-material";
+import { ShadingPattern } from "jspdf";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
@@ -44,28 +45,28 @@ function Analytics() {
       });
   }, []);
 
-  useEffect(() => {
-    db.collection("users")
-      .orderBy("timestamp", "desc")
-      .onSnapshot((snapshot) => {
-        let usersArr = [];
-        snapshot.forEach((doc) => {
-          setTimestampDate(
-            doc.data().timestamp.toDate().toISOString().split("T")[0]
-          );
-          console.log(
-            doc.data().timestamp.toDate().toISOString().split("T")[0]
-          );
-          if (timestampDate === date) {
-            usersArr.push({ ...doc.data(), id: doc.id });
-            sales += doc.data().total;
-          }
-          setTimestampUsers(usersArr);
-          setTimestampOrders(usersArr.length);
-          console.log(usersArr);
-        });
-      });
-  }, [date]);
+  // useEffect(() => {
+  //   db.collection("users")
+  //     .orderBy("timestamp", "desc")
+  //     .onSnapshot((snapshot) => {
+  //       let usersArr = [];
+  //       snapshot.forEach((doc) => {
+  //         setTimestampDate(
+  //           doc.data().timestamp.toDate().toISOString().split("T")[0]
+  //         );
+  //         console.log(
+  //           doc.data().timestamp.toDate().toISOString().split("T")[0]
+  //         );
+  //         if (timestampDate === date) {
+  //           usersArr.push({ ...doc.data(), id: doc.id });
+  //           sales += doc.data().total;
+  //         }
+  //         setTimestampUsers(usersArr);
+  //         setTimestampOrders(usersArr.length);
+  //         console.log(usersArr);
+  //       });
+  //     });
+  // }, [date]);
 
   useEffect(() => {
     db.collection("admin")
@@ -75,26 +76,53 @@ function Analytics() {
       });
   }, []);
 
-  useEffect(() => {
-    let sales = 0;
-    let usersArr = [];
-    let orders = 0;
-    usersArr = users.filter(
-      (user) => user.timestamp.toDate().toISOString().split("T")[0] === date
-    );
-    setTimestampUsers(usersArr);
-    console.log(usersArr);
-    orders = usersArr.length;
-    usersArr.forEach((user) => {
-      console.log(user.total);
-      sales += user.total;
-    });
-	console.log(sales);
-    setTimestampSales(sales);
-  }, [date]);
+  // useEffect(() => {
+  //   let sales = 0;
+  //   let usersArr = [];
+  //   let orders = 0;
+  //   usersArr = users.filter(
+  //     (user) => user.timestamp.toDate().toISOString().split("T")[0] === date
+  //   );
+  //   setTimestampUsers(usersArr);
+  //   console.log(usersArr);
+  //   orders = usersArr.length;
+  //   usersArr.forEach((user) => {
+  //     console.log(user.total);
+  //     sales += user.total;
+  //   });
+  //   console.log(sales);
+  //   setTimestampSales(sales);
+  // }, [date]);
   //   setTimeout(function () {
   //     window.location.reload();
   //   }, 60000);
+
+  useEffect(() => {
+    let sales = 0;
+    let orders = 0;
+    let usersArr = [];
+    let timestampdate = date;
+    db.collection("users")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) => {
+        snapshot.forEach((user) => {
+          if (
+            user.data().timestamp.toDate().toISOString().split("T")[0] ===
+            timestampdate
+          ) {
+            usersArr.push({ ...user.data(), id: user.id });
+            sales += user.data().total;
+            orders += 1;
+            console.log(usersArr);
+            console.log(sales);
+            console.log(orders);
+          }
+        });
+        setTimestampUsers(usersArr);
+        setTimestampSales(sales);
+        setTimestampOrders(orders);
+      });
+  }, [date]);
 
   return (
     <div className="main_analytics">
@@ -115,15 +143,81 @@ function Analytics() {
           </div>
         </nav>
 
-        <div className="divs-combine row">
+        {date ? (
+          <>
+            <div className="divs-combine row">
+              <div className="income col">
+                <h2>Your Sales</h2>
+                <h3>{timestampSales}</h3>
+              </div>
+              <div className="served-orders col">
+                <h2>Orders served</h2>
+
+                <h3>{timestampOrders}</h3>
+              </div>
+              <div className="input_Date div-combine col">
+                <input
+                  type="date"
+                  onChange={(e) => {
+                    setDate(e.target.value);
+                    console.log(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <div className="main_orders">
+              <div className="orders">
+                {timestampUsers.map((user) => (
+                  <AnalyticsUserData key={user.id} user={user} />
+                ))}
+              </div>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="divs-combine row">
+              <div className="income col">
+                <h1>Your Sales</h1>
+                <h3>{adminSales}</h3>
+              </div>
+              <div className="served-orders col">
+                <h1>Orders Served</h1>
+                <h3>{orders}</h3>
+              </div>
+              <div className="input_Date div-combine col">
+                <input
+                  type="date"
+                  onChange={(e) => {
+                    setDate(e.target.value);
+                    console.log(e.target.value);
+                  }}
+                />
+              </div>
+            </div>
+            <div className="main_orders">
+              <div className="orders">
+                {users.map((user) => (
+                  <AnalyticsUserData key={user.id} user={user} />
+                ))}
+              </div>
+            </div>
+          </>
+        )}
+        {/* {date
+          ? timestampUsers.map((user) => (
+              <AnalyticsUserData key={user.id} user={user} />
+            ))
+          : users.map((user) => (
+              <AnalyticsUserData key={user.id} user={user} />
+            ))} */}
+        {/* <div className="divs-combine row">
           <div className="income col">
-            <h1>{timestampSales>0 ? `Sales on ${date}` : "Your Sales"}</h1>
-            {/* <h3>{adminSales}</h3> */}
-			<h3>{timestampSales}</h3>
+            <h1>Your Sales</h1>
+            <h3>{adminSales}</h3>
           </div>
           <div className="served-orders col">
             <h1>Orders Served</h1>
-            <h3>{timestampOrders ? timestampOrders : orders}</h3>
+            <h3>{orders}</h3>
           </div>
           <div className="input_Date div-combine col">
             <input
@@ -134,49 +228,10 @@ function Analytics() {
               }}
             />
           </div>
-        </div>
-        <div className="main_orders">
-          <div className="orders">
-            {date
-              ? users
-                  .filter(
-                    (user) =>
-                      user.timestamp.toDate().toISOString().split("T")[0] ===
-                      date
-                  )
-                  .map((user) => {
-                    if (users.length === 0) return "No orders found";
-                    else return <AnalyticsUserData key={user.id} user={user} />;
-                  })
-              : users.map((user) => (
-                  <AnalyticsUserData key={user.id} user={user} />
-                ))}
-            {/* {date ? (
-              users.filter(
-                (user) =>
-                  user.timestamp.toDate().toISOString().split("T")[0] === date
-              ).length === 0 ? (
-                <h4
-                  style={{
-                    textAlign: "center",
-                    color: "gray",
-                    marginTop: "50px",
-                  }}
-                >
-                  Sorry, no orders found on date <span>{date}</span>
-                </h4>
-              ) : (
-                users.map((user) => (
-                  <AnalyticsUserData key={user.id} user={user} />
-                ))
-              )
-            ) : (
-              users.map((user) => (
-                <AnalyticsUserData key={user.id} user={user} />
-              ))
-            )} */}
-          </div>
-        </div>
+        </div> */}
+        {/* <div className="main_orders">
+          <div className="orders"></div>
+        </div> */}
       </div>
     </div>
   );
