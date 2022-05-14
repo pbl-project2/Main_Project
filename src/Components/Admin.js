@@ -16,7 +16,7 @@ function Admin({ user, handleDelete, admin }) {
   const [sales, setSales] = useState(0);
   const [orders, setOrders] = useState(0);
   const [total, setTotal] = useState(0);
-  
+
   // useEffect(async () => {
   //   await db
   //     .collection("users")
@@ -38,7 +38,10 @@ function Admin({ user, handleDelete, admin }) {
       .onSnapshot((snapshot) => {
         let userArr = [];
         snapshot.forEach((doc) => {
-          if (admin.email === doc.data().email && doc.data().completed === false) {
+          if (
+            admin.email === doc.data().email &&
+            doc.data().completed === false
+          ) {
             userArr.push({ ...doc.data(), id: doc.id });
             setTotal(doc.data().total);
           }
@@ -98,6 +101,17 @@ function Admin({ user, handleDelete, admin }) {
     document.title = `Admin | ${admin.email}`;
   }, []);
 
+  setTimeout(() => {
+    let userSales = 0;
+    db.collection("users").onSnapshot((snapshot) => {
+      snapshot.forEach((doc) => {
+        if (doc.data().completed === true && doc.data().email === admin.email) {
+          userSales += doc.data().total;
+        }
+        setSales(userSales);
+      });
+    });
+  }, 1);
   // useEffect(() => {
   //   QRCode.toDataURL(`http://localhost:3000/foodmenu/${admin.email}`).then(
   //     (data) => {
@@ -149,7 +163,7 @@ function Admin({ user, handleDelete, admin }) {
           <div className=" divs-combine row">
             <div className="income col">
               <h1>You've Earned</h1>
-              <h3>Sales: ₹{sales}.00</h3>
+              <h3>Sales: ₹{sales ? sales : "0"}.00</h3>
               {/* <h1>Orders Served: {orders}</h1> */}
             </div>
             <div className="served-orders col">
