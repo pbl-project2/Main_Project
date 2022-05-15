@@ -162,7 +162,7 @@ function Admin({ user, handleDelete, admin }) {
           </p>
           <div className=" divs-combine row">
             <div className="income col">
-              <h1>You've Earned</h1>
+              <h1>Your Sales</h1>
               <h3>Sales: ₹{sales ? sales : "0"}.00</h3>
               {/* <h1>Orders Served: {orders}</h1> */}
             </div>
@@ -180,7 +180,7 @@ function Admin({ user, handleDelete, admin }) {
         <> */}
         {users.length === 0 ? (
           <div style={{ background: "#161616", height: "350px" }}>
-            <p className="orders-title">It's calm for right now!!</p>
+            <p className="orders-title">It's calm right now!!</p>
           </div>
         ) : (
           <>
