@@ -39,11 +39,12 @@ function Admin({ user, handleDelete, admin }) {
         let userArr = [];
         snapshot.forEach((doc) => {
           if (
-            admin.email === doc.data().email &&
-            doc.data().completed === false
+            admin.email === doc.data().email
           ) {
-            userArr.push({ ...doc.data(), id: doc.id });
-            setTotal(doc.data().total);
+            if (doc.data().completed === false) {
+              userArr.push({ ...doc.data(), id: doc.id });
+              setTotal(doc.data().total);
+            }
           }
         });
         setUsers(userArr);
@@ -101,7 +102,7 @@ function Admin({ user, handleDelete, admin }) {
     document.title = `Admin | ${admin.email}`;
   }, []);
 
-  setTimeout(() => {
+  useEffect(() => {
     let userSales = 0;
     db.collection("users").onSnapshot((snapshot) => {
       snapshot.forEach((doc) => {
@@ -111,7 +112,7 @@ function Admin({ user, handleDelete, admin }) {
         setSales(userSales);
       });
     });
-  }, 1);
+  }, []);
   // useEffect(() => {
   //   QRCode.toDataURL(`http://localhost:3000/foodmenu/${admin.email}`).then(
   //     (data) => {
