@@ -18,6 +18,7 @@ const FoodCard = (props) => {
           name: props.name,
           price: props.price * quantity,
           type: props.type,
+          
           id: props.id,
           quantity: quantity,
         });
