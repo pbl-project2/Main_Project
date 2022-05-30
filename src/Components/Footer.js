@@ -30,7 +30,7 @@ function Footer() {
         </div>
         <div className="footer-bottom">
           <p>
-            &copy; Copyrights Reserved {year} - {year + 1}
+            &copy; Copyrights Reserved {year}
             <span> UpMenu</span>
           </p>
         </div>
