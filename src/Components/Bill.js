@@ -220,6 +220,18 @@ function Bill() {
               <button className="login-btn pdf-btn" onClick={generatePdf}>
                 Download PDF <Download />
               </button>
+              <button
+                className="login-btn"
+                onClick={() =>
+                  history.push(
+                    `/payments/${window.location.pathname.split("/")[2]}/${
+                      window.location.pathname.split("/")[3]
+                    }`
+                  )
+                }
+              >
+                Scan QR Code to Pay
+              </button>
               {/* <GooglePayButton
                 environment="TEST"
                 paymentRequest={{

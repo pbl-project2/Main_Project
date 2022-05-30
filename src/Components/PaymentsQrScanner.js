@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { QrReader } from "react-qr-reader";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 import { useHistory } from "react-router-dom";
 import "../Styling/QRCodeScanner.css";
-import Snackbar from "@mui/material/Snackbar";
 import Footer from "./Footer";
-
-function QRCodeScanner() {
+function PaymentsQrScanner() {
   const [scan, setScan] = useState("");
   const history = useHistory();
   const handleError = (err) => {
@@ -18,39 +15,22 @@ function QRCodeScanner() {
     }
   };
   useEffect(() => {
-    document.title = "UpMenu | Scan QR Code";
+    document.title = "UpMenu | Payments";
   }, []);
   return (
     <div className="qrcode_main">
       <nav>
         <h3>UpMenu</h3>
-        <button classname="login-btn" onClick={() => history.push("/")}>
+        <button
+          className="login-btn"
+          onClick={() =>
+            history.push(`/bill/${window.location.pathname.split("/")[2]}`)
+          }
+        >
           Back
         </button>
       </nav>
       <div className="qr-code-scanner">
-        {/* <a href={scan}>{scan}</a> */}
-        {/* <QrReader
-        className="qr-reader"
-        delay={300}
-        onError={handleError}
-        onScan={handleScan}
-        // ref={(node) => {
-        //     this.node = node;
-        // }}
-        // delay={300}
-        style={{ width: "100%" }}
-        // onError={handleError}
-        // onScan={handleScan}
-        onResult={(result, error) => {
-          if (!!result) {
-            setScan(result?.text);
-            console.log(result?.text);
-          } else {
-            console.log(error);
-          }
-        }}
-        /> */}
         <div className="qrcode">
           <div className="row11">
             <BarcodeScannerComponent
@@ -59,16 +39,10 @@ function QRCodeScanner() {
               onUpdate={(err, res) => {
                 if (res) {
                   let result = res.toString();
+				  console.log(result);
                   // setScan(res.text);
-                  if (
-                    result.includes("upmenu") ||
-                    result.includes("canteen-token-system")
-                  ) {
-                    window.location.href = res.text;
-                    setScan("");
-                  } else {
-                    setScan("Invalid QR Code");
-                  }
+                  window.location.href = res.text;
+                  setScan("");
                 } else console.log(err);
               }}
               facingMode="environment"
@@ -85,4 +59,4 @@ function QRCodeScanner() {
   );
 }
 
-export default QRCodeScanner;
+export default PaymentsQrScanner;

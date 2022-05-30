@@ -23,6 +23,7 @@ import "react-toastify/dist/ReactToastify.css";
 import CartSeparate from "./Components/CartSeparate";
 import AboutUs from "./Components/AboutUs";
 import Analytics from "./Components/Analytics";
+import PaymentsQrScanner from "./Components/PaymentsQrScanner";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -242,6 +243,9 @@ function App() {
           </Route>
           <Route path="/about-us">
             <AboutUs />
+          </Route>
+          <Route path="/payments">
+            <PaymentsQrScanner />
           </Route>
         </Switch>
       </Router>
