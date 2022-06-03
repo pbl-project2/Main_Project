@@ -6,6 +6,8 @@ import { v4 as uuid } from "uuid";
 import QRCode from "qrcode";
 import Admin from "./Admin";
 import { toast } from "react-toastify";
+import { useHistory } from "react-router-dom";
+import { Star } from "@mui/icons-material";
 
 function AdminLogin({ sales, orders, handleDelete, users }) {
   const [user, setUser] = useState("");
@@ -19,7 +21,13 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   const [showSnackbar, setShowSnackbar] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState("");
   const [name, setName] = useState("");
+  const [fiveStar, setFiveStar] = useState(0);
+  const [fourStar, setFourStar] = useState(0);
+  const [threeStar, setThreeStar] = useState(0);
+  const [twoStar, setTwoStar] = useState(0);
+  const [oneStar, setOneStar] = useState(0);
   const devEmail = "upmenudevs@upmenu.com";
+  const history = useHistory();
 
   const handleSnackbarClose = () => {
     setShowSnackbar(false);
@@ -28,7 +36,7 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
 
   useEffect(() => {
     document.title = "UpMenu | Admin Login";
-  }, [])
+  }, []);
 
   useEffect(() => {
     db.collection("admin")
@@ -197,58 +205,97 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
     authListener();
   }, []);
 
+  useEffect(() => {
+    db.collection("ratings").doc("1 stars").get().then((doc) => {
+      if (doc.exists) {
+        setOneStar(doc.data().rating);
+      } else {
+        setOneStar(0);
+      }
+    });
+    db.collection("ratings").doc("2 stars").get().then((doc) => {
+      if (doc.exists) {
+        setTwoStar(doc.data().rating);
+      } else {
+        setTwoStar(0);
+      }
+    });
+    db.collection("ratings").doc("3 stars").get().then((doc) => {
+      if (doc.exists) {
+        setThreeStar(doc.data().rating);
+      } else {
+        setThreeStar(0);
+      }
+    });
+    db.collection("ratings").doc("4 stars").get().then((doc) => {
+      if (doc.exists) {
+        setFourStar(doc.data().rating);
+      } else {
+        setFourStar(0);
+      }
+    });
+    db.collection("ratings").doc("5 stars").get().then((doc) => {
+      if (doc.exists) {
+        setFiveStar(doc.data().rating);
+      } else {
+        setFiveStar(0);
+      }
+    });
+  }, []);
+
   return (
     <div>
       {user ? (
         user.email === devEmail ? (
-          <div className="loginContainer">
-            <div className="form1">
-              <h1 className="h1">Registration</h1>
-              {/* <label className="details">Email</label> */}
-              <input
-                type="text"
-                placeholder="Enter CANTEEN NAME"
-                required
-                value={name}
-                onChange={(e) => {
-                  setName(e.target.value);
-                }}
-              />
-              <input
-                type="text"
-                placeholder="Email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              {/* <p className="errorMsg">{emailError}</p> */}
-              {/* <label className="details">Password</label> */}
-              <input
-                placeholder="Password"
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
-              <input
-                placeholder="Re-enter Password"
-                type="text"
-                required
-                value={rePassword}
-                onChange={(e) => setRePassword(e.target.value)}
-              />
-              {/* <p className="errorMsg">{passwordError}</p> */}
-              <div className="btn-container">
-                <div className="login_btn">
-                  <button className="btn" onClick={handleSignUp}>
-                    Sign Up
-                  </button>
-                  <button className="btn" onClick={handleLogout}>
-                    Log Out
-                  </button>
+          <div>
+            <div className="loginContainer">
+              <div className="form3">
+                <h1 className="h1">Registration</h1>
+                {/* <label className="details">Email</label> */}
+                <input
+                  type="text"
+                  placeholder="Enter CANTEEN NAME"
+                  required
+                  value={name}
+                  onChange={(e) => {
+                    setName(e.target.value);
+                  }}
+                />
+                <input
+                  type="text"
+                  placeholder="Email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                {/* <p className="errorMsg">{emailError}</p> */}
+                {/* <label className="details">Password</label> */}
+                <input
+                  placeholder="Password"
+                  type="password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <input
+                  placeholder="Re-enter Password"
+                  type="text"
+                  required
+                  value={rePassword}
+                  onChange={(e) => setRePassword(e.target.value)}
+                />
+                {/* <p className="errorMsg">{passwordError}</p> */}
+                <div className="btn-container">
+                  <div className="login_btn">
+                    <button className="btn" onClick={handleSignUp}>
+                      Sign Up
+                    </button>
+                    <button className="btn" onClick={handleLogout}>
+                      Log Out
+                    </button>
+                  </div>
                 </div>
-              </div>
-              {/* <div className="btn-container">
+                {/* <div className="btn-container">
                 {hasAccount ? (
                   <div className="login_btn">
                     <button className="btn" onClick={handleLogin}>
@@ -280,21 +327,57 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
                     </p>
                   </div>
                 )} */}
-              {/* </div> */}
-              <p className="password-validation">
-                <span>➡️ Password must contain at least 8 characters</span>
-                <br />
-                <span>➡️ Password's first letter must be uppercase</span>
-                <br />
-                <span>
-                  ➡️ Password must contain at least one numeric character
-                </span>
-                <br />
-                <span>
-                  ➡️ Password must contain at least one special character like
-                  $,!,@,#
-                </span>
-              </p>
+                {/* </div> */}
+                <p className="password-validation">
+                  <span>➡️ Password must contain at least 8 characters</span>
+                  <br />
+                  <span>➡️ Password's first letter must be uppercase</span>
+                  <br />
+                  <span>
+                    ➡️ Password must contain at least one numeric character
+                  </span>
+                  <br />
+                  <span>
+                    ➡️ Password must contain at least one special character like
+                    $,!,@,#
+                  </span>
+                </p>
+              </div>
+            </div>
+            <div>
+              <div className="form2">
+                <h1 style={{textAlign: "center"}}>RATINGS</h1>
+                <h3>
+                  <Star />
+                  <Star />
+                  <Star />
+                  <Star />
+                  <Star />
+                  : {fiveStar}
+                </h3>
+                <h3>
+                  <Star />
+                  <Star />
+                  <Star />
+                  <Star />
+                  : {fourStar}
+                </h3>
+                <h3>
+                  <Star />
+                  <Star />
+                  <Star />
+                  : {threeStar}
+                </h3>
+                <h3>
+                  <Star />
+                  <Star />
+                  : {twoStar}
+                </h3>
+                <h3>
+                  <Star />
+                  : {oneStar}
+                </h3>
+              </div>
             </div>
           </div>
         ) : (
