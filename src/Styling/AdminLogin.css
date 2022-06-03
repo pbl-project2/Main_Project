@@ -14,10 +14,43 @@
     /* border-radius: 1.25rem; */
     border-radius: 20px;
 }
+.form3 {
+    width: 30.125rem;
+    /* width: 450px; */
+    padding: 2.5rem;
+    /* padding: 40px; */
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    background: black !important;
+    text-align: center;
+    border: #2ecc71 solid 0.25rem;
+    /* border: #2ecc71 solid 4px; */
+    /* border-radius: 1.25rem; */
+    border-radius: 20px;
+}
+.form2 {
+    width: 30.125rem;
+    /* width: 450px; */
+    padding: 2.5rem;
+    /* padding: 40px; */
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%);
+    background: black !important;
+    /* text-align: center; */
+    border: #DA6161 solid 0.25rem;
+    /* border: #2ecc71 solid 4px; */
+    /* border-radius: 1.25rem; */
+    border-radius: 20px;
+}
 
 .loginContainer {
     background: url("../../public/Untitled.png") no-repeat center center fixed;
     height: 100vh !important;
+    justify-content: space-between;
 }
 
 ::-ms-backdrop {
@@ -60,6 +93,46 @@
 .form1 input[type="text"]:focus,
 .form1 input[type="password"]:focus,
 .form1 input[type="tel"]:focus {
+    width: 18.75rem;
+    /* width: 300px; */
+    border-color: #2ecc71;
+}
+.form3 h1 {
+    /* width: 320px; */
+    width: 100%;
+    background: black !important;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 500;
+}
+
+.form3 input[type="text"],
+.form3 input[type="password"],
+.form3 input[type="tel"] {
+    border: 0;
+    background: none;
+    display: block;
+    height: fit-content !important;
+    margin: 1.25rem auto;
+    /* margin: 20px auto; */
+    text-align: center;
+    width: 15.625rem;
+    /* width: 250px; */
+    padding: 0.825rem 0.625rem;   
+    /* padding: 14px 10px;    */
+    /* border: 2px solid #3498db; */
+    border: 0.125rem solid #3498db;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    /* border-radius: 1.5rem; */
+    transition: 0.25s;
+}
+
+.form3 input[type="text"]:focus,
+.form3 input[type="password"]:focus,
+.form3 input[type="tel"]:focus {
     width: 18.75rem;
     /* width: 300px; */
     border-color: #2ecc71;
