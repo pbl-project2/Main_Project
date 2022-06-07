@@ -1,13 +1,18 @@
 import { FacebookOutlined, Instagram, LinkedIn } from "@mui/icons-material";
 import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import "../Styling/AboutUs.css";
 
 function AboutUs() {
   useEffect(() => {
     document.title = "UpMenu | About Us";
   }, []);
+  const history = useHistory();
   return (
     <div className="main_about_us">
+      <nav style={{display:"flex", justifyContent:"flex-end"}}>
+        <button className="login-btn" onClick={() => history.push("/")}>Home Page</button>
+      </nav>
       <div className="about_us">
         <div className="section">
           <div className="container">
