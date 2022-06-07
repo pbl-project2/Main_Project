@@ -3,12 +3,14 @@ import { Error } from "@mui/icons-material";
 import { Alert } from "@mui/material";
 import { Slide } from "@mui/material";
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { db } from "../firebase/firebase";
 
 //Styling
 import "../Styling/AdminLogin.css";
 
 function Login(props) {
+  const history = useHistory();
   const {
     handleSignUp,
     email,
@@ -164,6 +166,9 @@ function Login(props) {
             <div className="login_btn">
               <button className="btn" onClick={handleLogin}>
                 Login
+              </button>
+              <button className="btn" onClick={() => history.push("/")}>
+                Back
               </button>
               {/* <p>
                 Don't have an Account?
