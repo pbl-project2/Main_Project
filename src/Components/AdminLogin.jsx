@@ -26,6 +26,7 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   const [threeStar, setThreeStar] = useState(0);
   const [twoStar, setTwoStar] = useState(0);
   const [oneStar, setOneStar] = useState(0);
+  const [feedback, setFeedback] = useState([]);
   const devEmail = "upmenudevs@upmenu.com";
   const history = useHistory();
 
@@ -33,6 +34,19 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
     setShowSnackbar(false);
   };
   const [src, setSrc] = useState("");
+
+  useEffect(() => {
+    db.collection("feedback")
+      .get()
+      .then((snapshot) => {
+        let feedbackArr = [];
+        snapshot.forEach((doc) => {
+          feedbackArr.push({ ...doc.data(), id: doc.id });
+        });
+        setFeedback(feedbackArr);
+        console.log(feedbackArr);
+      });
+  }, []);
 
   useEffect(() => {
     document.title = "UpMenu | Admin Login";
@@ -206,41 +220,56 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   }, []);
 
   useEffect(() => {
-    db.collection("ratings").doc("1 stars").get().then((doc) => {
-      if (doc.exists) {
-        setOneStar(doc.data().rating);
-      } else {
-        setOneStar(0);
-      }
-    });
-    db.collection("ratings").doc("2 stars").get().then((doc) => {
-      if (doc.exists) {
-        setTwoStar(doc.data().rating);
-      } else {
-        setTwoStar(0);
-      }
-    });
-    db.collection("ratings").doc("3 stars").get().then((doc) => {
-      if (doc.exists) {
-        setThreeStar(doc.data().rating);
-      } else {
-        setThreeStar(0);
-      }
-    });
-    db.collection("ratings").doc("4 stars").get().then((doc) => {
-      if (doc.exists) {
-        setFourStar(doc.data().rating);
-      } else {
-        setFourStar(0);
-      }
-    });
-    db.collection("ratings").doc("5 stars").get().then((doc) => {
-      if (doc.exists) {
-        setFiveStar(doc.data().rating);
-      } else {
-        setFiveStar(0);
-      }
-    });
+    db.collection("ratings")
+      .doc("1 stars")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setOneStar(doc.data().rating);
+        } else {
+          setOneStar(0);
+        }
+      });
+    db.collection("ratings")
+      .doc("2 stars")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setTwoStar(doc.data().rating);
+        } else {
+          setTwoStar(0);
+        }
+      });
+    db.collection("ratings")
+      .doc("3 stars")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setThreeStar(doc.data().rating);
+        } else {
+          setThreeStar(0);
+        }
+      });
+    db.collection("ratings")
+      .doc("4 stars")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setFourStar(doc.data().rating);
+        } else {
+          setFourStar(0);
+        }
+      });
+    db.collection("ratings")
+      .doc("5 stars")
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          setFiveStar(doc.data().rating);
+        } else {
+          setFiveStar(0);
+        }
+      });
   }, []);
 
   return (
@@ -346,37 +375,43 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
             </div>
             <div>
               <div className="form2">
-                <h1 style={{textAlign: "center"}}>RATINGS</h1>
+                <h1 style={{ textAlign: "center" }}>RATINGS</h1>
                 <h3>
                   <Star />
                   <Star />
                   <Star />
                   <Star />
-                  <Star />
-                  : {fiveStar}
+                  <Star />: {fiveStar}
                 </h3>
                 <h3>
                   <Star />
                   <Star />
                   <Star />
-                  <Star />
-                  : {fourStar}
+                  <Star />: {fourStar}
                 </h3>
                 <h3>
                   <Star />
                   <Star />
-                  <Star />
-                  : {threeStar}
+                  <Star />: {threeStar}
                 </h3>
                 <h3>
                   <Star />
-                  <Star />
-                  : {twoStar}
+                  <Star />: {twoStar}
                 </h3>
                 <h3>
-                  <Star />
-                  : {oneStar}
+                  <Star />: {oneStar}
                 </h3>
+              </div>
+              <div className="form5">
+                <h1 style={{ textAlign: "center" }}>FEEDBACK</h1>
+                {feedback.map((feedback) => (
+                  <div className="feedback">
+                    {/* get the feedback position number */
+          }
+                    <h3>Email: {feedback.email}</h3>
+                    <h3>Feedback: {feedback.feedback}</h3>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
