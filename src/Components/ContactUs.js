@@ -49,7 +49,7 @@ function ContactUs() {
 
       <div className="box">
         <h1>Contact Us</h1>
-        <form onSubmit={handleSubmit}>
+        <form className="contactus-form" onSubmit={handleSubmit}>
           <input
             className="form-input"
             type="email"

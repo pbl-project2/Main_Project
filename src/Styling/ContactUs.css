@@ -8,14 +8,14 @@
   /* margin-top: 100px; */
 }
 
-form {
+.contactus-form {
   /* margin-left: 350px; */
   width: 600px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+} 
 
 .form-input {
   width: 40%;

@@ -46,7 +46,9 @@ function Customer() {
         sessionStorage.setItem("token", token);
         sessionStorage.setItem("timestamp", timestamp);
         sessionStorage.setItem("id", userId);
-        history.push(`/foodmenu/${window.location.pathname.split("/")[2]}/${userId}`);
+        history.push(
+          `/foodmenu/${window.location.pathname.split("/")[2]}/${userId}`
+        );
         setName("");
         setMobile(0);
       } else {
@@ -69,10 +71,16 @@ function Customer() {
             Up<span className="icon-span">Menu</span>
           </h3>
           <div className="right">
-          <button className="login-btn" style={{marginRight: "1rem"}} onClick={() => history.push("/about-us")}>About Us</button>
-          <button className="login-btn" onClick={() => history.push("/")}>
-            Home Page
-          </button>
+            <button
+              className="login-btn"
+              style={{ marginRight: "1rem" }}
+              onClick={() => history.push("/about-us")}
+            >
+              About Us
+            </button>
+            <button className="login-btn" onClick={() => history.push("/")}>
+              Home Page
+            </button>
           </div>
         </nav>
         {
@@ -105,7 +113,7 @@ function Customer() {
           </form>
         </div>
       </div>
-        <Footer />
+      <Footer />
     </div>
   );
 }
