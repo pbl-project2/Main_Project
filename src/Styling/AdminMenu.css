@@ -1,13 +1,19 @@
-.admin_menu_sep {
+/* .admin_menu_sep {
   height: 100vh !important;
   background: url("../../public//Untitled-final.jpg") !important;
 }
+ */
 
+.main_admin {
+  height: 100vh !important;
+  background: url("../../public//Untitled-final.jpg") !important;
+}
 .sep_admin_menu nav .right {
-  display: flex;align-items: center;justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   margin-right: 2rem;
 }
-
 
 .styled-table {
   border-collapse: collapse;
@@ -16,7 +22,11 @@
   margin: auto;
   font-size: 0.9em;
   font-family: sans-serif;
-  max-width: 50rem;
+  max-width: 41rem;
+  display: block;
+  /* overflow-y:scroll; */
+  overflow-y: auto;
+  height: 35rem !important;
   /* max-width: 800px; */
   box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0, 15);
   /* box-shadow: 0 0 20px rgba(0, 0, 0, 0, 15); */
@@ -33,7 +43,6 @@
   padding: 0.75rem 0.938rem;
   /* padding: 12px 15px; */
 }
-
 .styled-table tbody tr {
   border-bottom: 0.063rem solid #dddddd;
   /* border-bottom: 1px solid #dddddd; */
@@ -85,7 +94,6 @@
 }
 
 @media screen and (max-width: 768px) {
-
   nav .right .login-btn {
     margin-right: 1rem;
   }

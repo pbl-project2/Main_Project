@@ -23,8 +23,8 @@ function QRCodeScanner() {
   return (
     <div className="qrcode_main">
       <nav>
-        <h3>UpMenu</h3>
-        <button classname="login-btn" onClick={() => history.push("/")}>
+        <h3>UpMenu</h3> 
+        <button className="back-btn" onClick={() => history.push("/")}>
           Back
         </button>
       </nav>

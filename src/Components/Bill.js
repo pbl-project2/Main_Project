@@ -11,8 +11,8 @@ import firebase from "firebase";
 import Footer from "./Footer";
 import { Cached } from "@mui/icons-material";
 import FadeLoader from "react-spinners/FadeLoader";
-// import GooglePayButton from "@google-pay/button-react";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
+import GooglePayButton from "@google-pay/button-react";
 
 function Bill() {
   const history = useHistory();
@@ -220,22 +220,10 @@ function Bill() {
               <button className="login-btn pdf-btn" onClick={generatePdf}>
                 Download PDF <Download />
               </button>
-              <button
-                className="login-btn"
-                onClick={() =>
-                  history.push(
-                    `/payments/${window.location.pathname.split("/")[2]}/${
-                      window.location.pathname.split("/")[3]
-                    }`
-                  )
-                }
-              >
-                Scan QR Code to Pay
-              </button>
-              {/* <GooglePayButton
+              <GooglePayButton
                 environment="TEST"
                 paymentRequest={{
-                  apiVersion: 2,
+                  apiVersion: "2",
                   apiVersionMinor: 0,
                   allowedPaymentMethods: [
                     {
@@ -254,34 +242,33 @@ function Bill() {
                     },
                   ],
                   merchantInfo: {
-                    merchantId: "12345678901234567890",
-                    merchantName: "Example Merchant",
+                    merchantId: "1234567890",
+                    merchantName: "Demo Merchant",
                   },
                   transactionInfo: {
                     totalPriceStatus: "FINAL",
                     totalPrice: `${total}`,
+                    totalPriceLabel: "Total",
                     currencyCode: "INR",
                     countryCode: "IN",
-                    totalPriceLabel: "Total",
-                    
                   },
-                   
+                  shippingAddressRequired: false,
+                  callbackIntents: ["PAYMENT_AUTHORIZATION"],
                 }}
-                onPaymentSuccess={(paymentData) => {
-                  console.log("Payment Successful: ",paymentData);
+                onLoadPaymentData={(paymentRequest) => {
+                  console.log(paymentRequest);
                 }}
-                onPaymentError={(paymentData) => {
-                  console.log("Payment Error: ",paymentData);
+                onPaymentAuthorized={(paymentResponse) => {
+                  console.log(paymentResponse);
+                  return { transactionState: "SUCCESS" };
                 }}
-              /> */}
+                existingPaymentMethodRequired={false}
+                buttonColor="#a03989"
+                buttonType="PRIMARY"
+              />
             </>
           ) : (
-            //<div className="loading">
-            //<Cached />
-            //</div>
-            /* <div className="loading"> */
             <FadeLoader size={15} color="#ffffff" speedMultiplier={2} />
-            /* </div> */
           )}
         </div>
         <div className="rating-div col">
@@ -294,18 +281,6 @@ function Bill() {
             <div className="row">
               <div className="col-lg-12">
                 <div className="star-rating">
-                  {/* <span class="fa fa-star-o" data-rating="1"></span>
-                  <span class="fa fa-star-o" data-rating="2"></span>
-                  <span class="fa fa-star-o" data-rating="3"></span>
-                  <span class="fa fa-star-o" data-rating="4"></span>
-                  <span class="fa fa-star-o" data-rating="5"></span>
-                  <input
-                    type="hidden"
-                    name="whatever1"
-                    class="rating-value"
-                    value="2.56"
-                  /> */}
-                  {/* <StarRating /> */}
                   <ReactStars
                     count={5}
                     onChange={(value) => setRating(value)}
