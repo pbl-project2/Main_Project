@@ -60,6 +60,7 @@ function CartSeparate() {
         token: sessionStorage.getItem("token"),
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         id: userId,
+        completed: false,
         email: window.location.pathname.split("/")[2],
       });
     // setSales(firebase.firestore.FieldValue.increment(sum));

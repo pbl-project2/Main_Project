@@ -33,6 +33,7 @@ function Admin({ user, handleDelete, admin }) {
   //     });
   // }, [db]);
   useEffect(() => {
+    console.log(admin.email);
     db.collection("users")
       .orderBy("timestamp", "asc")
       .onSnapshot((snapshot) => {

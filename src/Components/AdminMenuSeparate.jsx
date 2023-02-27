@@ -28,6 +28,7 @@ function AdminMenuSeparate() {
           foodArr.push({ ...doc.data(), id: doc.id });
         });
         setFood(foodArr);
+        console.log(foodArr);
         setLoading(true);
         // console.log(foodArr);
       });

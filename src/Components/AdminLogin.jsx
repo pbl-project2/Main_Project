@@ -122,7 +122,6 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
   const authListener = () => {
     let id = uuid();
     sessionStorage.setItem("adminId", id);
-    sessionStorage.setItem("adminId", id);
     app.auth().onAuthStateChanged((user) => {
       if (user) {
         clearInputs();
@@ -132,7 +131,6 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
         db.collection("admin")
           .doc(`${user.email}`)
           .set({
-            adminId: sessionStorage.getItem("adminId"),
             adminId: sessionStorage.getItem("adminId"),
             email: user.email,
             qrcode: src,
@@ -406,8 +404,7 @@ function AdminLogin({ sales, orders, handleDelete, users }) {
                 <h1 style={{ textAlign: "center" }}>FEEDBACK</h1>
                 {feedback.map((feedback) => (
                   <div className="feedback">
-                    {/* get the feedback position number */
-          }
+                    {/* get the feedback position number */}
                     <h3>Email: {feedback.email}</h3>
                     <h3>Feedback: {feedback.feedback}</h3>
                   </div>

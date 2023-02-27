@@ -162,14 +162,28 @@ const FoodMenu = ({ props }) => {
                 setSearch(e.target.value);
               }}
             />
-            <Tooltip title="Cart">
+            <Badge
+              badgeContent={cartCount}
+              color="primary"
+              sx={{ marginRight: "3.125rem" }}
+            >
+              <Link
+                to={`/cart/${window.location.pathname.split("/")[2]}/${
+                  window.location.pathname.split("/")[3]
+                }`}
+              >
+                <AddShoppingCartIcon />
+                &nbsp;
+              </Link>
+            </Badge>
+            {/* <Tooltip title="Cart">
               <Badge badgeContent={cartCount} color="info" className="Cart-link">
                 <Link to={`/cart/${window.location.pathname.split("/")[2]}/${window.location.pathname.split("/")[3]
                   }`}>
-                  <AddShoppingCartIcon />
+                  <AddShoppingCartIcon sx={{color:"white"}} />
                 </Link>
               </Badge>
-            </Tooltip>
+            </Tooltip> */}
             <button onClick={() => history.replace("/")} className="home-btn">
               Home Page
             </button>
@@ -267,8 +281,8 @@ const FoodMenu = ({ props }) => {
           </div>
         </div>
         <Footer />
-      </div >
-    </div >
+      </div>
+    </div>
   );
 };
 

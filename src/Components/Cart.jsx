@@ -72,7 +72,7 @@ const Cart = () => {
         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         id: userId,
         email: window.location.pathname.split("/")[2],
-        completed: false,
+        completed: false, 
       });
     // setSales(firebase.firestore.FieldValue.increment(sum));
     // setOrders(firebase.firestore.FieldValue.increment(1));

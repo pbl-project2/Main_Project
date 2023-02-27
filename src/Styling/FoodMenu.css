@@ -259,15 +259,15 @@ hr {
 }
 
 .Cart-link {
-  border: none;
-  background-color: #161616;
+  /* border: none; */
+  /* background-color: #161616; */
   /* margin-right: 50px !important; */
   margin-right: 3.125rem !important;
 }
 
-.Cart-link .MuiSvgIcon-root {
+/* .Cart-link .MuiSvgIcon-root {
   display: none;
-}
+} */
 
 .header {
   position: fixed;
